@@ -6,7 +6,7 @@
   -> Bei GlassFish location den heruntergeladenen Ordner auswählen (der Ordner, der den bin ordner enthält), z.B. C:\Users\shish\Downloads\glassfish-5.0\glassfish5
   -> Bei Java location den Ordner der installierten JDK auswählen, z.B. C:\Program Files\Java\jdk1.8.0_131
   -> Next -> Unten Haken bei Use JAR archives for deployment -> Finish -> Apply and Close
-5. Rechtsklick auf das Projekt (imao-backend) -> Properties -> Targeted Runtimes -> Haken bei GlassFish 5 -> Apply 
+5. Rechtsklick auf das Projekt (imao-backend) -> Properties -> Targeted Runtimes -> Haken bei GlassFish 5 -> Apply
 6. Java Compiler -> Haken bei Enable project specific settings -> Kein Haken bei Use Compliance from... -> Compiler compliance level auf 1.8 stellen -> Apply and Close -> Yes (Wenn Fehler: Schritt 3 wiederholen)
 7. Rechtsklick auf das Projekt (imao-backend) -> Run as -> Run on Server -> GlassFish 5 auswählen -> Next -> Sicherstellen dass imao-backend in der rechten Spalte ist -> Finish
 8. http://localhost:8080/imao/api/spiel/
@@ -45,8 +45,8 @@ Prof. Dr. Frank Dopatka [23.03.2018 18:23 Uhr via Slack]
 | :microscope: | `:microscope:` | when adding **code coverage** |
 | :lock: | `:lock:` | when dealing with **security** |
 | 💄 | `:lipstick:` | when improving **UI**/Cosmetic |
-| :construction: | `:construction:` | **WIP**(Work In Progress) Commits, _maybe_ with `@REVIEW` Comment Tag |
-| :gem: | `:gem:` | New **Release** |
+| 🚧 | `:construction:` | **WIP**(Work In Progress) Commits, _maybe_ with `@REVIEW` Comment Tag |
+| 💎 | `:gem:` | New **Release** |
 | :bookmark: | `:bookmark:` | Version **Tags** |
 | 🎉 | `:tada:` | **Initial** Commit |
 | :speaker: | `:speaker:` | when Adding **Logging** |
