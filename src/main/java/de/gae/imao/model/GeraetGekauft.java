@@ -2,14 +2,14 @@ package de.gae.imao.model;
 
 import java.util.List;
 
-public class GerätGekauft {
+public class GeraetGekauft {
 	private List<Untersuchungsmethode> methoden;
 	private long budget;
 
-	public GerätGekauft() {
+	public GeraetGekauft() {
 	}
 
-	public GerätGekauft(List<Untersuchungsmethode> methoden, long budget) {
+	public GeraetGekauft(List<Untersuchungsmethode> methoden, long budget) {
 		this.methoden = methoden;
 		this.budget = budget;
 	}

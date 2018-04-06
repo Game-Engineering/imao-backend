@@ -17,7 +17,7 @@ import de.gae.imao.model.Anamnese;
 import de.gae.imao.model.Arzt;
 import de.gae.imao.model.Blutbild;
 import de.gae.imao.model.DiagnoseErgebniss;
-import de.gae.imao.model.GerätGekauft;
+import de.gae.imao.model.GeraetGekauft;
 import de.gae.imao.model.Manager;
 import de.gae.imao.model.Patient;
 import de.gae.imao.model.Person;
@@ -29,12 +29,12 @@ import de.gae.imao.model.Untersuchungsmethode;
 public class Spiel extends ResourceConfig {
 	private List<Patient> aktuellePatienten;
 
-	// @GET
-	// @Path("/")
-	// @Produces(MediaType.TEXT_PLAIN)
-	// public String hello() {
-	// return "It works";
-	// }
+	 @GET
+	 @Path("/")
+	 @Produces(MediaType.TEXT_PLAIN)
+	 public String hello() {
+	 return "It works";
+	}
 
 	@GET
 	@Path("/start/{type}")
@@ -55,7 +55,7 @@ public class Spiel extends ResourceConfig {
 		// TODO Budget berechnen
 		// TODO Ruf berechnen
 		// TODO Anzahl der Patienten berechnen
-		// TODO runde Zählen
+		// TODO runde Zï¿½hlen
 
 		Spielrunde runde = new Spielrunde("erste Runde", 1000, 0, 5, 1);
 		return runde;
@@ -87,17 +87,17 @@ public class Spiel extends ResourceConfig {
 	@GET
 	@Path("/kaufeGeraet/{geraet}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public GerätGekauft kaufeGeraet(@PathParam("geraet") String geraet) {
+	public GeraetGekauft kaufeGeraet(@PathParam("geraet") String geraet) {
 		List<Untersuchungsmethode> methoden = new ArrayList<>();
 		methoden.add(new Untersuchungsmethode("Anamnese", 0, 0, true));
 		methoden.add(new Untersuchungsmethode("Blutbild", 10, 0, true));
 		methoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, false));
-		GerätGekauft gekauft;
+		GeraetGekauft gekauft;
 		if (geraet.equals("Ultraschall")) {
 			methoden.get(2).setFreigeschaltet(true);
-			gekauft = new GerätGekauft(methoden, 0);
+			gekauft = new GeraetGekauft(methoden, 0);
 		} else {
-			gekauft = new GerätGekauft(methoden, 1000);
+			gekauft = new GeraetGekauft(methoden, 1000);
 		}
 		return gekauft;
 	}
