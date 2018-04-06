@@ -1,3 +1,20 @@
+﻿# Lokale Installation
+1. File -> Import -> Maven -> Existing Maven Projects -> Next
+2. Browse -> imao-backend -> Ok -> Finish
+3. Rechtsklick auf imao-backend -> Maven -> Update Project -> Haken bei imao-backend -> Ok
+4. Window -> Preferences -> Server -> Runtime Environments -> Add -> GlassFish (Haken bei Create a new local server) -> Next -> 
+  -> Bei GlassFish location den heruntergeladenen Ordner auswählen (der Ordner, der den bin ordner enthält), z.B. C:\Users\shish\Downloads\glassfish-5.0\glassfish5
+  -> Bei Java location den Ordner der installierten JDK auswählen, z.B. C:\Program Files\Java\jdk1.8.0_131
+  -> Next -> Unten Haken bei Use JAR archives for deployment -> Finish -> Apply and Close
+5. Rechtsklick auf das Projekt (imao-backend) -> Properties -> Targeted Runtimes -> Haken bei GlassFish 5 -> Apply ->
+  -> Java Compiler -> Haken bei Enable project specific settings -> Kein Haken bei Use Compliance from... -> Compiler compliance level auf 1.8 stellen -> Apply and Close -> Yes
+6. Rechtsklick auf das Projekt (imao-backend) -> Run as -> Run on Server -> GlassFish 5 auswählen -> Next -> Sicherstellen dass imao-backend in der rechten Spalte ist -> Finish
+7. http://localhost:8080/imao/api/spiel/
+  -> Ausgabe sollte sein "It works"
+
+
+
+
 ## IMAO
 IMAO (International Medical Aid Organization) project at the Mannheim University of Applied Sciences in the lecture GAE
 
