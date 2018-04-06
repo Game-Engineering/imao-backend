@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# Lokale Installation
 1. File -> Import -> Maven -> Existing Maven Projects -> Next
 2. Browse -> imao-backend -> Ok -> Finish
@@ -16,6 +17,9 @@
 
 
 ## IMAO
+=======
+## IMAO 
+>>>>>>> d144f36ffdf5f30af38d19150896cde8d60a2012
 IMAO (International Medical Aid Organization) project at the Mannheim University of Applied Sciences in the lecture GAE
 
 Der Code und die Commit history ist einfacher zu lesen wenn du dich an folgende Hinweise hälst.
