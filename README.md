@@ -1,9 +1,8 @@
-<<<<<<< HEAD
 ﻿# Lokale Installation
 1. File -> Import -> Maven -> Existing Maven Projects -> Next
 2. Browse -> imao-backend -> Ok -> Finish
 3. Rechtsklick auf imao-backend -> Maven -> Update Project -> Haken bei imao-backend -> Ok
-4. Window -> Preferences -> Server -> Runtime Environments -> Add -> GlassFish (Haken bei Create a new local server) -> Next -> 
+4. Window -> Preferences -> Server -> Runtime Environments -> Add -> GlassFish (Haken bei Create a new local server) -> Next ->
   -> Bei GlassFish location den heruntergeladenen Ordner auswählen (der Ordner, der den bin ordner enthält), z.B. C:\Users\shish\Downloads\glassfish-5.0\glassfish5
   -> Bei Java location den Ordner der installierten JDK auswählen, z.B. C:\Program Files\Java\jdk1.8.0_131
   -> Next -> Unten Haken bei Use JAR archives for deployment -> Finish -> Apply and Close
@@ -14,12 +13,8 @@
   -> Ausgabe sollte sein "It works"
 
 
-
-
 ## IMAO
-=======
-## IMAO 
->>>>>>> d144f36ffdf5f30af38d19150896cde8d60a2012
+
 IMAO (International Medical Aid Organization) project at the Mannheim University of Applied Sciences in the lecture GAE
 
 Der Code und die Commit history ist einfacher zu lesen wenn du dich an folgende Hinweise hälst.
