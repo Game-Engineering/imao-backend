@@ -35,6 +35,13 @@ public class Spiel extends ResourceConfig {
 	 public String hello() {
 	 return "It works";
 	}
+	 
+	 @GET
+	 @Path("/help")
+	 @Produces(MediaType.TEXT_PLAIN)
+	 public String help() {
+	 return "/start/{type} -> (type: arzt/manager) \n /neueRunde -> \n /getPatatient -> \n /getKatalog -> \n /kaufeGeraet/{geraet} -> \n /getUntersuchungsmethoden ->";
+	}
 
 	@GET
 	@Path("/start/{type}")
