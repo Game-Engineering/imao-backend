@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
+import de.hsmannheim.ss18.gae.imao.model.Blutbild;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
 
 @Path("/spiel")
@@ -45,6 +46,13 @@ public class Spiel extends ResourceConfig {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getPatatient() {		
 		return new Patient().toString();
+	}
+	
+	@GET
+	@Path("/getBlutbild")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getBlutbild() {
+		return new Blutbild(1234).toString();
 	}
 
 }

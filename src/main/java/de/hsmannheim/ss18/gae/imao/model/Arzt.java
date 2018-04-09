@@ -1,15 +1,24 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 public class Arzt extends Person {
-	
+
 	private String foo = "bar";
 
 	public Arzt() {
 		super();
 	}
 
-	public Arzt(String name, int alter) {
-		super(name, alter);
+	/**
+	 * 
+	 * @param String
+	 *            vorname
+	 * @param String
+	 *            nachname
+	 * @param int
+	 *            alter
+	 */
+	public Arzt(String vorname, String nachname, int alter) {
+		super(vorname, nachname, alter);
 	}
 
 	public String getFoo() {
@@ -19,5 +28,5 @@ public class Arzt extends Person {
 	public void setFoo(String foo) {
 		this.foo = foo;
 	}
-	
+
 }

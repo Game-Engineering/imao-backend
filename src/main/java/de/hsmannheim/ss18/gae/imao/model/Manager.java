@@ -6,8 +6,16 @@ public class Manager extends Person {
 		super();
 	}
 
-	public Manager(String name, int alter) {
-		super(name, alter);
+	/**
+	 * 
+	 * @param String
+	 *            vorname
+	 * @param String
+	 *            nachname
+	 * @param int
+	 *            alter
+	 */
+	public Manager(String vorname, String nachname, int alter) {
+		super(vorname, nachname, alter);
 	}
-
 }
