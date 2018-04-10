@@ -60,10 +60,14 @@ public class Blutbild {
 
 	}
 
+	/**
+	 * 
+	 * @param patientID
+	 */
 	public Blutbild(int patientID) {
 		this.patientID = patientID;
 		this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
-		this.erstelleKrankesBlutbild(null);
+		this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
 	}
 
 	/**
