@@ -38,7 +38,7 @@ public class Spiel extends ResourceConfig {
 	@Produces(MediaType.TEXT_HTML)
 	public String hello() {
 		return "<h1>It Works!</h1>"
-				+"<h3>Benutze die mitlere Maustaste zum öffnen der Links </h3>"
+				+"<h3>Benutze die mitlere Maustaste zum &ouml;ffnen der Links </h3>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann\">localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getPatatient\">localhost:8080/imao/api/spiel/getPatatient</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/neueRunde\">localhost:8080/imao/api/spiel/neueRunde</a><br>"
