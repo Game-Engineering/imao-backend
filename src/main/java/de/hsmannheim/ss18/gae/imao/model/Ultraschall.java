@@ -1,42 +1,46 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class Ultraschall {
-
-	private String name;
+	private int patientID;
 	private int ultraschallID;
-	private long budget;
-
+	
+	private final int ULTRASCHALL_GESUND = 0;
+	private final int ULTRASCHALL_K1 = 1;
+	private final int ULTRASCHALL_K2 = 2;
+	private final int ULTRASCHALL_K3 = 3;
+	private final int ULTRASCHALL_K4 = 4;
+	private final int ULTRASCHALL_K5 = 5;
+	private final int ULTRASCHALL_K6 = 6;
+	
+	/**
+	 * 
+	 */
 	public Ultraschall() {
+		
 	}
 
-	public Ultraschall(String name, int ultraschallID, long budget) {
-		this.ultraschallID = ultraschallID;
-		this.name = name;
-		this.budget = budget;
+	/**
+	 * 
+	 * @param int patientID
+	 */
+	public Ultraschall(int patientID) {
+		
 	}
+	
+	/**
+	 * 
+	 */
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
 
-	public int getUltraschallID() {
-		return ultraschallID;
-	}
-
-	public void setUltraschallID(int ultraschallID) {
-		this.ultraschallID = ultraschallID;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getBudget() {
-		return budget;
-	}
-
-	public void setBudget(long budget) {
-		this.budget = budget;
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("PatientID", this.patientID);
+		objectNode.put("UltraschallID", this.ultraschallID);
+		
+		return objectNode.toString();
 	}
 
 }

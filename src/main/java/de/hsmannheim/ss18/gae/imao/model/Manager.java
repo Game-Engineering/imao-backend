@@ -15,7 +15,7 @@ public class Manager extends Person {
 	 * @param int
 	 *            alter
 	 */
-	public Manager(String vorname, String nachname, int alter) {
-		super(vorname, nachname, alter);
+	public Manager(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
+		super(vorname, nachname, alter, geschlecht);
 	}
 }

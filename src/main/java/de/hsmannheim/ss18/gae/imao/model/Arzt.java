@@ -17,8 +17,8 @@ public class Arzt extends Person {
 	 * @param int
 	 *            alter
 	 */
-	public Arzt(String vorname, String nachname, int alter) {
-		super(vorname, nachname, alter);
+	public Arzt(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
+		super(vorname, nachname, alter, geschlecht);
 	}
 
 	public String getFoo() {

@@ -7,32 +7,21 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Patient extends Person {
 
+	private static int IDcount = 0;
 	private int patientID;
 	private int erscheinungsID;
-	private String krankheit;
+	private EKrankheit krankheit;
+	private EGeschlecht geschlecht;
+	private boolean diagnose = false;
 
 	public Patient() {
 
 	}
 
-	/**
-	 * 
-	 * @param String
-	 *            vorname
-	 * @param String
-	 *            nachname
-	 * @param int
-	 *            alter
-	 * @param int
-	 *            patientID
-	 * @param int
-	 *            erscheinungsID
-	 */
-	public Patient(String vorname, String nachname, int alter, int patientID, int erscheinungsID) {
-		super(vorname, nachname, alter);
-		this.patientID = patientID;
-		this.erscheinungsID = erscheinungsID;
-		krankheit = "Grippe";
+	public Patient(String vorname, String nachname, int alter, EGeschlecht geschlecht, EKrankheit krankheit) {
+		super(vorname, nachname, alter, geschlecht);
+		this.krankheit = krankheit;
+		this.patientID = IDcount++;
 	}
 
 	public int getPatientID() {
@@ -51,9 +40,28 @@ public class Patient extends Person {
 		this.erscheinungsID = erscheinungsID;
 	}
 
-	public void generierePatient() {
-		Patient neuerPatient = new Patient();
+	public static int getIDcount() {
+		return IDcount;
+	}
 
+	public static void setIDcount(int iDcount) {
+		IDcount = iDcount;
+	}
+
+	public EKrankheit getKrankheit() {
+		return krankheit;
+	}
+
+	public void setKrankheit(EKrankheit krankheit) {
+		this.krankheit = krankheit;
+	}
+
+	public boolean isDiagnose() {
+		return diagnose;
+	}
+
+	public void setDiagnose(boolean diagnose) {
+		this.diagnose = diagnose;
 	}
 
 	@Override

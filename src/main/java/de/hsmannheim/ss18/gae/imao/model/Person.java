@@ -5,15 +5,17 @@ public class Person {
 	public Person() {
 	}
 
-	public Person(String vorname, String nachname, int alter) {
+	public Person(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
 		this.vorname = vorname;
 		this.nachname = nachname;
 		this.alter = alter;
+		this.geschlecht=geschlecht;
 	}
 
 	private String vorname;
 	private String nachname;
 	private int alter;
+	private EGeschlecht geschlecht;
 
 	public String getVorname() {
 		return vorname;

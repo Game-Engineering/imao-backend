@@ -62,8 +62,8 @@ public class Blutbild {
 
 	public Blutbild(int patientID) {
 		this.patientID = patientID;
-		this.erstelleNormalesBlutbild('w');
-		this.erstelleKrankesBlutbild("krankheit");
+		this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
+		this.erstelleKrankesBlutbild(null);
 	}
 
 	/**
@@ -72,27 +72,60 @@ public class Blutbild {
 	 * @param gender
 	 * @return
 	 */
-	private void erstelleNormalesBlutbild(char gender) {
+	private void erstelleNormalesBlutbild(EGeschlecht gender) {
 		this.leukozyten = random(DEFAULT_MIN_LEUKOZYTEN, DEFAULT_MAX_LEUKOZYTEN);
 		this.thrombozyten = random(DEFAULT_MIN_THROMBOZYTEN, DEFAULT_MAX_THROMBOZYTEN);
 		this.mch = random(DEFAULT_MIN_MCH, DEFAULT_MAX_MCH);
 		this.mchc = random(DEFAULT_MIN_MCHC, DEFAULT_MAX_MCHC);
 		this.mcv = random(DEFAULT_MIN_MCV, DEFAULT_MAX_MCV);
-		if (gender == 'm') {
+		if (gender == EGeschlecht.MAENNLICH) {
 			this.erythrozyten = random(DEFAULT_MIN_MANN_ERYTHROZYTEN, DEFAULT_MAX_MANN_ERYTHROZYTEN);
-			this.haemoglobinkonzentration = random(DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION, DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION);
+			this.haemoglobinkonzentration = random(DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION,
+					DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION);
 			this.haematokrit = random(DEFAULT_MIN_MANN_HAEMATOKRIT, DEFAULT_MAX_MANN_HAEMATOKRIT);
-		} else if (gender == 'w') {
+		} else if (gender == EGeschlecht.WEIBLICH) {
 			this.erythrozyten = random(DEFAULT_MIN_FRAU_ERYTHROZYTEN, DEFAULT_MAX_FRAU_ERYTHROZYTEN);
-			this.haemoglobinkonzentration = random(DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION, DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
+			this.haemoglobinkonzentration = random(DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION,
+					DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
 			this.haematokrit = random(DEFAULT_MIN_FRAU_HAEMATOKRIT, DEFAULT_MAX_FRAU_HAEMATOKRIT);
 		}
 	}
-	
-	private void erstelleKrankesBlutbild(String krankheit) {
+
+	/**
+	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab 
+	 * @param krankheit
+	 */
+	private void erstelleKrankesBlutbild(EKrankheit krankheit) {
 		switch (krankheit) {
-		case "gelbsucht":
-			
+		case HIV:
+
+			break;
+		case BILHARZIOSE:
+
+			break;
+		case HAUTLEISHMANIASIS:
+
+			break;
+		case MASERN:
+
+			break;
+		case HEP_A:
+
+			break;
+		case HEP_B:
+
+			break;
+		case CHOLERA:
+
+			break;
+		case TETANUS:
+
+			break;
+		case GELBFIEBER:
+
+			break;
+		case DENGUE_FIEBER:
+
 			break;
 
 		default:
@@ -102,6 +135,7 @@ public class Blutbild {
 
 	/**
 	 * Generiert eine zufälliges double im Bereich min/max mit 2 Nachkommastellen
+	 * 
 	 * @param max
 	 * @param min
 	 * @return
@@ -109,7 +143,7 @@ public class Blutbild {
 	private double random(double min, double max) {
 		Random r = new Random();
 		double n = min + (max - min) * r.nextDouble();
-		n = Math.round(n*100)/100.0;
+		n = Math.round(n * 100) / 100.0;
 		return n;
 	}
 
