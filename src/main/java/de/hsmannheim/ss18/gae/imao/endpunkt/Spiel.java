@@ -51,7 +51,6 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/diagnose/KrankheitID\">localhost:8080/imao/api/spiel/diagnose/KrankheitID</a><br>";
 	}
 	
-	
 	@GET
 	@Path("/start/{type}/{vorname}/{nachname}")
 	@Produces(MediaType.APPLICATION_JSON)
