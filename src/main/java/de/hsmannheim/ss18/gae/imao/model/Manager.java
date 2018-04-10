@@ -8,14 +8,10 @@ public class Manager extends Person {
 
 	/**
 	 * 
-	 * @param String
-	 *            vorname
-	 * @param String
-	 *            nachname
-	 * @param int
-	 *            alter
+	 * @param vorname
+	 * @param nachname
 	 */
-	public Manager(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
-		super(vorname, nachname, alter, geschlecht);
+	public Manager(String vorname, String nachname) {
+		super(vorname, nachname);
 	}
 }

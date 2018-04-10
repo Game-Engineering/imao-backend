@@ -8,17 +8,13 @@ public class Arzt extends Person {
 		super();
 	}
 
-	/**
-	 * 
-	 * @param String
-	 *            vorname
-	 * @param String
-	 *            nachname
-	 * @param int
-	 *            alter
-	 */
-	public Arzt(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
-		super(vorname, nachname, alter, geschlecht);
+/**
+ * 
+ * @param vorname
+ * @param nachname
+ */
+	public Arzt(String vorname, String nachname) {
+		super(vorname, nachname);
 	}
 
 	public String getFoo() {

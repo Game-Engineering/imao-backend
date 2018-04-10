@@ -5,17 +5,13 @@ public class Person {
 	public Person() {
 	}
 
-	public Person(String vorname, String nachname, int alter, EGeschlecht geschlecht) {
+	public Person(String vorname, String nachname) {
 		this.vorname = vorname;
 		this.nachname = nachname;
-		this.alter = alter;
-		this.geschlecht=geschlecht;
 	}
 
 	private String vorname;
 	private String nachname;
-	private int alter;
-	private EGeschlecht geschlecht;
 
 	public String getVorname() {
 		return vorname;
@@ -32,51 +28,4 @@ public class Person {
 	public void setNachname(String nachname) {
 		this.nachname = nachname;
 	}
-
-	public int getAlter() {
-		return alter;
-	}
-
-	public void setAlter(int alter) {
-		this.alter = alter;
-	}
-
-	/*@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + alter;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}*/
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Person other = (Person) obj;
-		if (alter != other.alter)
-			return false;
-		if (vorname == null) {
-			if (other.vorname != null)
-				return false;
-		} else if (!vorname.equals(other.vorname))
-			return false;
-		if (nachname == null) {
-			if (other.nachname != null)
-				return false;
-		} else if (!nachname.equals(other.nachname))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Person [vorname=" + vorname + ", nachname="+ nachname +", alter=" + alter + "]";
-	}
-
 }

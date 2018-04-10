@@ -14,16 +14,24 @@ import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import de.hsmannheim.ss18.gae.imao.model.Anamnese;
+import de.hsmannheim.ss18.gae.imao.model.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.Blutbild;
 import de.hsmannheim.ss18.gae.imao.model.DiagnoseErgebniss;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
+import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
+import de.hsmannheim.ss18.gae.imao.model.Person;
 import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
 import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
 import de.hsmannheim.ss18.gae.imao.model.Untersuchungsmethode;
 
 @Path("/spiel")
 public class Spiel extends ResourceConfig {
+	
+	private int rundencount = 0;
+	private Spielrunde runde;
+	private Arzt arzt;
+	private Manager manager;
 
 	@GET
 	@Path("/")
@@ -31,9 +39,9 @@ public class Spiel extends ResourceConfig {
 	public String hello() {
 		return "<h1>It Works!</h1>"
 				+"<h3>Benutze die mitlere Maustaste zum öffnen der Links </h3>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt\">localhost:8080/imao/api/spiel/start/arzt</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/start/wirtschaft\">localhost:8080/imao/api/spiel/start/wirtschaft</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getPatatient\">localhost:8080/imao/api/spiel/getPatatient\\</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann\">localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getPatatient\">localhost:8080/imao/api/spiel/getPatatient</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/neueRunde\">localhost:8080/imao/api/spiel/neueRunde</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getBlutbild/1234\">localhost:8080/imao/api/spiel/getBlutbild/1234</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getUltraschall/1234\">localhost:8080/imao/api/spiel/getUltraschall/1234</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getKatalog\">localhost:8080/imao/api/spiel/getKatalog</a><br>"
@@ -45,17 +53,20 @@ public class Spiel extends ResourceConfig {
 	
 	
 	@GET
-	@Path("/start/{param}")
+	@Path("/start/{type}/{vorname}/{nachname}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String start(@PathParam("param") String msg) {
-		
-		if ("arzt".equals(msg)) {
-			return "Spiel startet als : Arzt";
-		} else if ("wirtschaft".equals(msg)) {
-			return "Spiel startet als : Wirtschaft";
-		} else {
-			return "Falsche eingabe";
+	public String start(@PathParam("type") String type, @PathParam("vorname") String vorname,
+			@PathParam("nachname") String nachname) {
+		Person person = null;
+		if ("arzt".equals(type)) {
+			arzt = new Arzt(vorname, nachname);
+			person = arzt;
+		} else if ("wirtschaft".equals(type)) {
+			manager = new Manager(vorname, nachname);
+			person = manager;
 		}
+		
+		return person.toString(); 
 	}
 	
 	@GET

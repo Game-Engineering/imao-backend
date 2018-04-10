@@ -9,17 +9,31 @@ public class Patient extends Person {
 
 	private static int IDcount = 0;
 	private int patientID;
+	private int alter;
+	private EGeschlecht geschlecht;
 	private int erscheinungsID;
 	private EKrankheit krankheit;
-	private EGeschlecht geschlecht;
 	private boolean diagnose = false;
 
+	/**
+	 * 
+	 */
 	public Patient() {
 
 	}
 
+	/**
+	 * 
+	 * @param vorname
+	 * @param nachname
+	 * @param alter
+	 * @param geschlecht
+	 * @param krankheit
+	 */
 	public Patient(String vorname, String nachname, int alter, EGeschlecht geschlecht, EKrankheit krankheit) {
-		super(vorname, nachname, alter, geschlecht);
+		super(vorname, nachname);
+		this.geschlecht=geschlecht;
+		this.alter = alter;
 		this.krankheit = krankheit;
 		this.patientID = IDcount++;
 	}
@@ -71,7 +85,7 @@ public class Patient extends Person {
 
 		ObjectNode objectNodeName = mapper.createObjectNode();
 		objectNodeName.put("vorname", this.getVorname());
-		objectNodeName.put("nachname",this.getNachname());
+		objectNodeName.put("nachname", this.getNachname());
 
 		ObjectNode objectNodeSymptome = mapper.createObjectNode();
 		objectNodeSymptome.put("S1", "s1");
@@ -79,28 +93,20 @@ public class Patient extends Person {
 		objectNodeSymptome.put("S3", "s3");
 		objectNodeSymptome.put("S4", "s4");
 		objectNodeSymptome.put("S5", "s5");
-		
+
 		ObjectNode objectNode = mapper.createObjectNode();
 		objectNode.put("name", objectNodeName);
 		objectNode.put("symptome", objectNodeSymptome);
-		objectNode.put("alter", this.getAlter());
+		objectNode.put("alter", this.alter);
 		objectNode.put("ID", this.getErscheinungsID());
-		
+
 		return objectNode.toString();
 
 		/*
-		 * {
-		 * "name":
-		 * 		{"vorname":"Max","nachname":"Mustermann"},
-		 * "symptome":
-		 * 		{"S1":"s1","S2":"s2","S3":"s3","S4":"s4","S5":"s5"},
-		 * "alter":"",
-		 * "geschlecht":"m/w",
-		 * "ID":""
-		 * }
-		 * 
+		 * { "name": {"vorname":"Max","nachname":"Mustermann"}, "symptome":
+		 * {"S1":"s1","S2":"s2","S3":"s3","S4":"s4","S5":"s5"}, "alter":"",
+		 * "geschlecht":"m/w", "ID":"" }
 		 */
-		//return string;
 	}
 
 }
