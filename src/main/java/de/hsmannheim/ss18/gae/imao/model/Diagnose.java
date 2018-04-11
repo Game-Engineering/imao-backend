@@ -1,14 +1,14 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
-public class DiagnoseErgebniss {
+public class Diagnose {
 	private String nachricht;
 	private long budget;
 	private long ruf;
 
-	public DiagnoseErgebniss() {
+	public Diagnose() {
 	}
 
-	public DiagnoseErgebniss(String nachricht, long budget, long ruf) {
+	public Diagnose(String nachricht, long budget, long ruf) {
 		this.nachricht = nachricht;
 		this.budget = budget;
 		this.ruf = ruf;

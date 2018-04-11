@@ -94,14 +94,20 @@ public class Spielrunde {
 	}
 
 	public void setDiagnose(String diagnose) {
-		inZelt.setDiagnose(diagnose.equals(inZelt.getKrankheit()));
+		if (diagnose.equals(inZelt.getKrankheit())) {
+			inZelt.setDiagnose(EDiagnoseErgebniss.ERFOLGREICH);
+		} else {
+			inZelt.setDiagnose(EDiagnoseErgebniss.NICHT_ERFOLGREICH);
+		}
 	}
 
 	public String getDiagnose() {
-		if (inZelt.isDiagnose()) {
-			return "Erfilgreich";
-		} else {
+		if (inZelt.getDiagnose() == EDiagnoseErgebniss.ERFOLGREICH) {
+			return "Erfolgreich";
+		} else if (inZelt.getDiagnose() == EDiagnoseErgebniss.NICHT_ERFOLGREICH) {
 			return "NICHT Erfolgreich";
+		} else {
+			return "Nicht behandelt";
 		}
 	}
 

@@ -16,7 +16,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 import de.hsmannheim.ss18.gae.imao.model.Anamnese;
 import de.hsmannheim.ss18.gae.imao.model.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.Blutbild;
-import de.hsmannheim.ss18.gae.imao.model.DiagnoseErgebniss;
+import de.hsmannheim.ss18.gae.imao.model.Diagnose;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
 import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
@@ -170,13 +170,13 @@ public class Spiel extends ResourceConfig {
 	@Path("/diagnose/{patientID}/{krankheit}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String diagnose(@PathParam("patientID") int patientID, @PathParam("krankheit") String krankheit) {
-		DiagnoseErgebniss ergebniss;
+		Diagnose ergebniss;
 		if (krankheit.equals("abc")) {
 			// erfolgreich => Ruf zuwachs
-			ergebniss = new DiagnoseErgebniss("Erfolgreich", 900, 10);
+			ergebniss = new Diagnose("Erfolgreich", 900, 10);
 		} else {
 			// nicht erfolgreich => Ruf verlust
-			ergebniss = new DiagnoseErgebniss("NICHT Erfolgreich", 900, 0);
+			ergebniss = new Diagnose("NICHT Erfolgreich", 900, 0);
 		}
 
 		return ergebniss.toString();

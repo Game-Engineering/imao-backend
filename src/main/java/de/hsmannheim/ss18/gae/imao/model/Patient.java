@@ -13,7 +13,7 @@ public class Patient extends Person {
 	private EGeschlecht geschlecht;
 	private int erscheinungsID;
 	private EKrankheit krankheit;
-	private boolean diagnose = false;
+	private EDiagnoseErgebniss diagnose = EDiagnoseErgebniss.KEINE_DIAGNOSE;
 
 	/**
 	 * 
@@ -32,7 +32,7 @@ public class Patient extends Person {
 	 */
 	public Patient(String vorname, String nachname, int alter, EGeschlecht geschlecht, EKrankheit krankheit) {
 		super(vorname, nachname);
-		this.geschlecht=geschlecht;
+		this.geschlecht = geschlecht;
 		this.alter = alter;
 		this.krankheit = krankheit;
 		this.patientID = IDcount++;
@@ -70,11 +70,11 @@ public class Patient extends Person {
 		this.krankheit = krankheit;
 	}
 
-	public boolean isDiagnose() {
+	public EDiagnoseErgebniss getDiagnose() {
 		return diagnose;
 	}
 
-	public void setDiagnose(boolean diagnose) {
+	public void setDiagnose(EDiagnoseErgebniss diagnose) {
 		this.diagnose = diagnose;
 	}
 
