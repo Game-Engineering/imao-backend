@@ -56,7 +56,7 @@ Prof. Dr. Frank Dopatka [23.03.2018 18:23 Uhr via Slack]
 | :ribbon: | `:ribbon:`| Vom **Kunden** gewünschte Anpassungen |
 | :snowflake: | `:snowflake:` | changing **Configuration**, Usually together with :penguin: or :ribbon: or :rocket: |
 | :bank: | `:bank:` | **Generic Database** specific (Migrations, Scripts, Extensions, ...) |
-| :handshake: | `:handshake:` | **Merge files** |
+| 🤝 | `:handshake:` | **Merge files** |
 
 
 

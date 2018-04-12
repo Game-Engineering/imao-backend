@@ -6,11 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="optional" value="true"/>
@@ -21,6 +16,11 @@
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/fherb/Downloads/glassfish4/glassfish/modules/jersey-server.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://docs.oracle.com/javaee/7/api/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="oracle.eclipse.tools.glassfish.lib.system">
