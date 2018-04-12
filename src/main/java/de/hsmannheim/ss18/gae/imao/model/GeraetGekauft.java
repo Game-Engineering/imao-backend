@@ -2,32 +2,27 @@ package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class GeraetGekauft {
 	private List<Untersuchungsmethode> methoden;
 	private long budget;
-
-	public GeraetGekauft() {
-	}
 
 	public GeraetGekauft(List<Untersuchungsmethode> methoden, long budget) {
 		this.methoden = methoden;
 		this.budget = budget;
 	}
 
-	public List<Untersuchungsmethode> getMethoden() {
-		return methoden;
-	}
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
 
-	public void setMethoden(List<Untersuchungsmethode> methoden) {
-		this.methoden = methoden;
-	}
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("budget", this.budget);
+		objectNode.put("wartendePatienten", this.methoden.toString());
 
-	public long getBudget() {
-		return budget;
-	}
-
-	public void setBudget(long budget) {
-		this.budget = budget;
+		return objectNode.toString();
 	}
 
 }

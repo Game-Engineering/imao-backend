@@ -1,5 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class Diagnose {
 	private String nachricht;
 	private long budget;
@@ -36,6 +39,18 @@ public class Diagnose {
 
 	public void setRuf(long ruf) {
 		this.ruf = ruf;
+	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("nachricht", this.nachricht);
+		objectNode.put("budget", this.budget);
+		objectNode.put("ruf", this.ruf);
+
+		return objectNode.toString();
 	}
 
 }

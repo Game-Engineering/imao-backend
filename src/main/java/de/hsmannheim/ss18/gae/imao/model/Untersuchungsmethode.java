@@ -1,5 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class Untersuchungsmethode {
 	private String name;
 	private long behandlungsKosten;
@@ -46,6 +49,19 @@ public class Untersuchungsmethode {
 
 	public void setFreigeschaltet(boolean freigeschaltet) {
 		this.freigeschaltet = freigeschaltet;
+	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("name", this.name);
+		objectNode.put("behandlungsKosten", this.behandlungsKosten);
+		objectNode.put("anschaffungsKosten", this.anschaffungsKosten);
+		objectNode.put("freigeschaltet", this.freigeschaltet);
+
+		return objectNode.toString();
 	}
 
 }

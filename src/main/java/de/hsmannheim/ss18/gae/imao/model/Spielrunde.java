@@ -2,7 +2,14 @@ package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.List;
 import java.util.Random;
+
+import org.eclipse.persistence.annotations.ReturnUpdate;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Spielrunde {
 
@@ -13,6 +20,7 @@ public class Spielrunde {
 	private Patient inZelt;
 	private List<Patient> wartendePatienten = new ArrayList<>();
 	private List<Patient> behandeltePatienten = new ArrayList<>();
+	private List<Untersuchungsmethode> untersuchungsmethoden = new ArrayList<>();
 
 	String[] lybischeWeiblicheVornamen = { "Aya", "Reem", "Mona", "Nesreen", "Ranai", "Hoda", "Fatima", "Sarah",
 			"Marwa", "Eisha" };
@@ -24,26 +32,25 @@ public class Spielrunde {
 
 	/**
 	 * 
-	 */
-	public Spielrunde() {
-	}
-
-	/**
-	 * 
 	 * @param runde
 	 */
 	public Spielrunde(int runde) {
-		erzeugeNeueRunde(runde);
+		this.runde = runde;
+		untersuchungsmethoden.add(new Untersuchungsmethode("Anamnese", 0, 0, true));
+		untersuchungsmethoden.add(new Untersuchungsmethode("Blutbild", 10, 0, true));
+		untersuchungsmethoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, false));
+		untersuchungsmethoden.add(new Untersuchungsmethode("Roentgen", 50, 1000, false));
+		erzeugeNeueRunde();
 	}
 
 	/**
 	 * 
 	 * @param runde
 	 */
-	private void erzeugeNeueRunde(int runde) {
+	private void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
-		erzeugeNeueRunde(runde + 3);
-		budget = budget + 100;
+		erzeugePatienten(runde + 2);
+		budget = 1000;
 	}
 
 	/**
@@ -87,18 +94,38 @@ public class Spielrunde {
 	}
 
 	public Patient getPatient() {
-		Patient pat = wartendePatienten.get(0);
-		wartendePatienten.remove(0);
-		inZelt = pat;
+		Patient pat = null;
+		if (wartendePatienten.get(0) != null) {
+			pat = wartendePatienten.get(0);
+			wartendePatienten.remove(0);
+			inZelt = pat;
+		}
 		return pat;
 	}
 
-	public void setDiagnose(String diagnose) {
+	public Patient getPatient(int ID) {
+		if (inZelt.getPatientID() == ID) {
+			return inZelt;
+		} else {
+			return null;
+		}
+
+	}
+
+	public Diagnose setDiagnose(String diagnose) {
+		Diagnose erg = null;
 		if (diagnose.equals(inZelt.getKrankheit())) {
 			inZelt.setDiagnose(EDiagnoseErgebniss.ERFOLGREICH);
+			behandeltePatienten.add(inZelt);
+			inZelt = null;
+			erg = new Diagnose("Erfolgreich", 900, 0);
 		} else {
 			inZelt.setDiagnose(EDiagnoseErgebniss.NICHT_ERFOLGREICH);
+			behandeltePatienten.add(inZelt);
+			inZelt = null;
+			erg = new Diagnose("NICHT Erfolgreich", 900, 0);
 		}
+		return erg;
 	}
 
 	public String getDiagnose() {
@@ -109,6 +136,17 @@ public class Spielrunde {
 		} else {
 			return "Nicht behandelt";
 		}
+	}
+
+	public List<Untersuchungsmethode> kaufeGeraet(String geraet) {
+		Iterator<Untersuchungsmethode> iterator = untersuchungsmethoden.iterator();
+		while (iterator.hasNext()) {
+			Untersuchungsmethode methode = iterator.next();
+			if (geraet.equals(methode.getName())) {
+				methode.setFreigeschaltet(true);
+			}
+		}
+		return untersuchungsmethoden;
 	}
 
 	public String getNachricht() {
@@ -143,9 +181,33 @@ public class Spielrunde {
 		this.runde = runde;
 	}
 
+	public List<Untersuchungsmethode> getKatalog() {
+		return untersuchungsmethoden;
+	}
+
+	public List<Untersuchungsmethode> getUntersuchungsmethoden() {
+		List<Untersuchungsmethode> methoden = new ArrayList<>();
+		Iterator<Untersuchungsmethode> it = methoden.iterator();
+		while (it.hasNext()) {
+			Untersuchungsmethode m = it.next();
+			if (m.isFreigeschaltet()) {
+				methoden.add(m);
+			}
+		}
+		return methoden;
+	}
+
 	@Override
 	public String toString() {
-		return "Spielrunde [Message=" + nachricht + ", Budget=" + budget + ", Ruf=" + ruf + ", WartendePatienten="
-				+ wartendePatienten + ", Runde=" + runde + "]";
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("budget", this.budget);
+		objectNode.put("nachricht", this.nachricht);
+		objectNode.put("ruf", this.ruf);
+		objectNode.put("runde", this.runde);
+		objectNode.put("wartendePatienten", this.wartendePatienten.size());
+
+		return objectNode.toString();
 	}
 }

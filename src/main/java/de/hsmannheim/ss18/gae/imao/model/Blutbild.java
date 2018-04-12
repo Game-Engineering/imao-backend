@@ -34,7 +34,8 @@ public class Blutbild {
 	private final double DEFAULT_MIN_MANN_HAEMATOKRIT = 40;
 	private final double DEFAULT_MAX_MANN_HAEMATOKRIT = 52;
 
-	// MCH | w-> 28-34 pg (Pikogramm pro Zelle) | m-> 28-34 pg (Pikogramm pro Zelle)
+	// MCH | w-> 28-34 pg (Pikogramm pro Zelle) | m-> 28-34 pg (Pikogramm pro
+	// Zelle)
 	private final double DEFAULT_MIN_MCH = 28;
 	private final double DEFAULT_MAX_MCH = 34;
 
@@ -47,6 +48,7 @@ public class Blutbild {
 	private final double DEFAULT_MAX_MCV = 95;
 
 	private int patientID;
+	private int blutbildID;
 	private double erythrozyten;
 	private double leukozyten;
 	private double thrombozyten;
@@ -64,10 +66,11 @@ public class Blutbild {
 	 * 
 	 * @param patientID
 	 */
-	public Blutbild(int patientID) {
+	public Blutbild(int patientID, int blutbildID) {
 		this.patientID = patientID;
-		this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
-		this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
+		this.blutbildID = blutbildID;
+		// this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
+		// this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
 	}
 
 	/**
@@ -96,7 +99,8 @@ public class Blutbild {
 	}
 
 	/**
-	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab 
+	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab
+	 * 
 	 * @param krankheit
 	 */
 	private void erstelleKrankesBlutbild(EKrankheit krankheit) {
@@ -138,7 +142,8 @@ public class Blutbild {
 	}
 
 	/**
-	 * Generiert eine zufälliges double im Bereich min/max mit 2 Nachkommastellen
+	 * Generiert eine zufälliges double im Bereich min/max mit 2
+	 * Nachkommastellen
 	 * 
 	 * @param max
 	 * @param min
@@ -156,15 +161,18 @@ public class Blutbild {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("PatientID", this.patientID);
-		objectNode.put("Erythrozyten", this.erythrozyten);
-		objectNode.put("Leukozyten", this.leukozyten);
-		objectNode.put("Thrombozyten", this.thrombozyten);
-		objectNode.put("Haemoglobinkonzentration", this.haemoglobinkonzentration);
-		objectNode.put("Haematokrit", this.haematokrit);
-		objectNode.put("MCH", this.mch);
-		objectNode.put("MCHC", this.mchc);
-		objectNode.put("MCV", this.mcv);
+		objectNode.put("name", "Blutbild");
+		objectNode.put("budget", "900");
+		objectNode.put("BlutbildID", this.blutbildID);
+		// objectNode.put("Erythrozyten", this.erythrozyten);
+		// objectNode.put("Leukozyten", this.leukozyten);
+		// objectNode.put("Thrombozyten", this.thrombozyten);
+		// objectNode.put("Haemoglobinkonzentration",
+		// this.haemoglobinkonzentration);
+		// objectNode.put("Haematokrit", this.haematokrit);
+		// objectNode.put("MCH", this.mch);
+		// objectNode.put("MCHC", this.mchc);
+		// objectNode.put("MCV", this.mcv);
 
 		return objectNode.toString();
 	}

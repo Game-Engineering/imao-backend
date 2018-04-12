@@ -11,8 +11,7 @@ public class Patient extends Person {
 	private int patientID;
 	private int alter;
 	private EGeschlecht geschlecht;
-	private int erscheinungsID;
-	private EKrankheit krankheit;
+	private Krankheit krankheit;
 	private EDiagnoseErgebniss diagnose = EDiagnoseErgebniss.KEINE_DIAGNOSE;
 
 	/**
@@ -34,8 +33,9 @@ public class Patient extends Person {
 		super(vorname, nachname);
 		this.geschlecht = geschlecht;
 		this.alter = alter;
-		this.krankheit = krankheit;
 		this.patientID = IDcount++;
+		this.krankheit = new Krankheit(krankheit, patientID);
+
 	}
 
 	public int getPatientID() {
@@ -46,28 +46,8 @@ public class Patient extends Person {
 		this.patientID = patientID;
 	}
 
-	public int getErscheinungsID() {
-		return erscheinungsID;
-	}
-
-	public void setErscheinungsID(int erscheinungsID) {
-		this.erscheinungsID = erscheinungsID;
-	}
-
-	public static int getIDcount() {
-		return IDcount;
-	}
-
-	public static void setIDcount(int iDcount) {
-		IDcount = iDcount;
-	}
-
-	public EKrankheit getKrankheit() {
+	public Krankheit getKrankheit() {
 		return krankheit;
-	}
-
-	public void setKrankheit(EKrankheit krankheit) {
-		this.krankheit = krankheit;
 	}
 
 	public EDiagnoseErgebniss getDiagnose() {
@@ -83,30 +63,25 @@ public class Patient extends Person {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		ObjectNode objectNodeName = mapper.createObjectNode();
-		objectNodeName.put("vorname", this.getVorname());
-		objectNodeName.put("nachname", this.getNachname());
+		// ObjectNode objectNodeName = mapper.cre / ateObjectNode();
 
-		ObjectNode objectNodeSymptome = mapper.createObjectNode();
-		objectNodeSymptome.put("S1", "s1");
-		objectNodeSymptome.put("S2", "s2");
-		objectNodeSymptome.put("S3", "s3");
-		objectNodeSymptome.put("S4", "s4");
-		objectNodeSymptome.put("S5", "s5");
+		// ObjectNode objectNodeSymptome = mapper.createObjectNode();
+		// objectNodeSymptome.put("S1", "s1");
+		// objectNodeSymptome.put("S2", "s2");
+		// objectNodeSymptome.put("S3", "s3");
+		// objectNodeSymptome.put("S4", "s4");
+		// objectNodeSymptome.put("S5", "s5");
 
 		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("name", objectNodeName);
-		objectNode.put("symptome", objectNodeSymptome);
+		// objectNode.put("name", objectNodeName);
+		// objectNode.put("symptome", objectNodeSymptome);
+		objectNode.put("vorname", this.getVorname());
+		objectNode.put("nachname", this.getNachname());
 		objectNode.put("alter", this.alter);
-		objectNode.put("ID", this.getErscheinungsID());
+		objectNode.put("erscheinungID", this.krankheit.getErscheinung());
+		objectNode.put("ID", this.patientID);
 
 		return objectNode.toString();
-
-		/*
-		 * { "name": {"vorname":"Max","nachname":"Mustermann"}, "symptome":
-		 * {"S1":"s1","S2":"s2","S3":"s3","S4":"s4","S5":"s5"}, "alter":"",
-		 * "geschlecht":"m/w", "ID":"" }
-		 */
 	}
 
 }

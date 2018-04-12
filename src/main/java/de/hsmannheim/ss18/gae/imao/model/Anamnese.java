@@ -1,47 +1,78 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Anamnese {
 	private Map<String, String> fragebogen;
-	private String name;
-	private long budget;
+	private int patientID;
 
-	public Anamnese() {
+	public Anamnese(int patientID, int anamneseID) {
+		this.fragebogen = new HashMap<>();
+		this.patientID = patientID;
+		Random random = new Random();
+		switch (anamneseID) {
+		case 1:
+			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an Fieber.");
+			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit " + (random.nextInt(4) + 1) + " Tagen so. ");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(5) + 3) + " .");
+			fragebogen.put("Haben Sie weitere Beschwerden?",
+					"Ja, ich leider außerdem an Hauterscheinung und Juckreiz.");
+			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit" + (random.nextInt(4) + 3) + " Tagen so.");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(3) + 6) + " .");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Ja, ich leider außerdem an Husten.");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Ja, ich leider außerdem an Schnupfen.");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Ja, ich leider außerdem an Durchfall.");
+			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit" + (random.nextInt(4) + 3) + " Tagen so.");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(6) + 2) + " .");
+			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an Fieber.");
+			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit" + (random.nextInt(3) + 2) + " Tagen so.");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(4) + 3) + " .");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Nein, das war es.");
+			break;
+		case 2:
+			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an reiswasserartigem Brechdurchfall.");
+			fragebogen.put("Wie lange schon? ",
+					"Es geht mir schon seit " + (random.nextInt(33) + 16) + " Stunden so. ");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(6) + 5) + " .");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Nein, das war es.");
+			break;
+		case 3:
+			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an Fieber.");
+			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit " + (random.nextInt(5) + 5) + " Tagen so. ");
+			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
+					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(4) + 3) + " .");
+			fragebogen.put("Haben Sie weitere Beschwerden?",
+					"Ja, ich leider außerdem an Hauterscheinung und Juckreiz.");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Ja, ich leider außerdem an Harnwegsbefall.");
+			fragebogen.put("Haben Sie weitere Beschwerden?", "Nein, das war es.");
+			break;
+
+		}
 	}
 
-	public Anamnese(Map<String, String> fragebogen, String name, long budget) {
-		this.fragebogen = fragebogen;
-		this.name = name;
-		this.budget = budget;
-	}
-
-	public Map<String, String> getFragebogen() {
+	public Map<String, String> getAnamnese() {
 		return fragebogen;
-	}
-
-	public void setFragebogen(Map<String, String> fragebogen) {
-		this.fragebogen = fragebogen;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public long getBudget() {
-		return budget;
-	}
-
-	public void setBudget(long budget) {
-		this.budget = budget;
 	}
 
 	@Override
 	public String toString() {
-		return "Untersuchungsmethode [Fragebogen=" + fragebogen + ", Name=" + name + ", Budget=" + budget + "]";
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("name", "Anamnese");
+		objectNode.put("budget", "900");
+		objectNode.put("fragebogen", this.fragebogen.toString());
+
+		return objectNode.toString();
 	}
 }

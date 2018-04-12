@@ -1,5 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class Person {
 
 	public Person() {
@@ -10,8 +13,8 @@ public class Person {
 		this.nachname = nachname;
 	}
 
-	private String vorname;
-	private String nachname;
+	protected String vorname;
+	protected String nachname;
 
 	public String getVorname() {
 		return vorname;
@@ -20,7 +23,7 @@ public class Person {
 	public void setVorname(String vorname) {
 		this.vorname = vorname;
 	}
-	
+
 	public String getNachname() {
 		return nachname;
 	}
@@ -31,7 +34,13 @@ public class Person {
 
 	@Override
 	public String toString() {
-				return "{A:a,B:b}";
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("vorname", this.vorname);
+		objectNode.put("nachname", this.nachname);
+
+		return objectNode.toString();
 	}
-	
+
 }

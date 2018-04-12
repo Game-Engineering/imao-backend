@@ -21,13 +21,14 @@ import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
 import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
 import de.hsmannheim.ss18.gae.imao.model.Person;
+import de.hsmannheim.ss18.gae.imao.model.Roentgen;
 import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
 import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
 import de.hsmannheim.ss18.gae.imao.model.Untersuchungsmethode;
 
 @Path("/spiel")
 public class Spiel extends ResourceConfig {
-	
+
 	private int rundencount = 0;
 	private Spielrunde runde;
 	private Arzt arzt;
@@ -37,20 +38,20 @@ public class Spiel extends ResourceConfig {
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
 	public String hello() {
-		return "<h1>It Works!</h1>"
-				+"<h3>Benutze die mitlere Maustaste zum &ouml;ffnen der Links </h3>"
+		return "<h1>It Works!</h1>" + "<h3>Benutze die mitlere Maustaste zum &ouml;ffnen der Links </h3>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann\">localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getPatatient\">localhost:8080/imao/api/spiel/getPatatient</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/neueRunde\">localhost:8080/imao/api/spiel/neueRunde</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getBlutbild/1234\">localhost:8080/imao/api/spiel/getBlutbild/1234</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getUltraschall/1234\">localhost:8080/imao/api/spiel/getUltraschall/1234</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getBlutbild/1\">localhost:8080/imao/api/spiel/getBlutbild/1</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getUltraschall/1\">localhost:8080/imao/api/spiel/getUltraschall/1</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getRoentgen/1\">localhost:8080/imao/api/spiel/getRoentgen/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getKatalog\">localhost:8080/imao/api/spiel/getKatalog</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/kaufeGeraet/geraetID\">localhost:8080/imao/api/spiel/kaufeGeraet/geraetID</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getUntersuchungsmethoden\">localhost:8080/imao/api/spiel/getUntersuchungsmethoden</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getAnamnese/1234\">localhost:8080/imao/api/spiel/getAnamnese/1234</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getAnamnese/1\">localhost:8080/imao/api/spiel/getAnamnese/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/diagnose/KrankheitID\">localhost:8080/imao/api/spiel/diagnose/KrankheitID</a><br>";
 	}
-	
+
 	@GET
 	@Path("/start/{type}/{vorname}/{nachname}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -64,10 +65,10 @@ public class Spiel extends ResourceConfig {
 			manager = new Manager(vorname, nachname);
 			person = manager;
 		}
-		
-		return person.toString(); 
+
+		return person.toString();
 	}
-	
+
 	@GET
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -78,106 +79,115 @@ public class Spiel extends ResourceConfig {
 		// TODO Anzahl der Patienten berechnen
 		// TODO runde Zählen
 
-		Spielrunde runde = new Spielrunde(1);
+		runde = new Spielrunde(++rundencount);
 		return runde.toString();
 	}
-	
+
 	@GET
 	@Path("/getPatatient")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getPatatient() {		
-		return new Patient().toString();
+	public String getPatatient() {
+		Patient pat = runde.getPatient();
+		if (pat != null) {
+			return runde.getPatient().toString();
+		} else {
+			return "Kein Patient";
+		}
 	}
-	
+
 	@GET
 	@Path("/getKatalog")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getKatalog() {
 		// TODO Liste auslesen
 
-		List<Untersuchungsmethode> methoden = new ArrayList<>();
-		methoden.add(new Untersuchungsmethode("Anamnese", 0, 0, true));
-		methoden.add(new Untersuchungsmethode("Blutbild", 10, 0, true));
-		methoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, false));
-		
-		return methoden.toString();
+		return runde.getKatalog().toString();
 	}
-	
+
 	@GET
 	@Path("/kaufeGeraet/{geraet}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String kaufeGeraet(@PathParam("geraet") String geraet) {
-		List<Untersuchungsmethode> methoden = new ArrayList<>();
-		methoden.add(new Untersuchungsmethode("Anamnese", 0, 0, true));
-		methoden.add(new Untersuchungsmethode("Blutbild", 10, 0, true));
-		methoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, false));
-		GeraetGekauft gekauft;
-		if (geraet.equals("Ultraschall")) {
-			methoden.get(2).setFreigeschaltet(true);
-			gekauft = new GeraetGekauft(methoden, 0);
-		} else {
-			gekauft = new GeraetGekauft(methoden, 1000);
-		}
+		GeraetGekauft gekauft = new GeraetGekauft(runde.kaufeGeraet(geraet), 1000);
+
 		return gekauft.toString();
 	}
-	
+
 	@GET
 	@Path("/getUntersuchungsmethoden")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getUntersuchungsmethoden() {
-		List<Untersuchungsmethode> methoden = new ArrayList<>();
-		// TODO Untersuchungsmethoden Speichern bzw aus Speicher laden
-
-		methoden.add(new Untersuchungsmethode("Anamnese", 0, 0, true));
-		methoden.add(new Untersuchungsmethode("Blutbild", 10, 0, true));
-		return methoden.toString();
+		return runde.getUntersuchungsmethoden().toString();
 	}
-	
+
 	@GET
 	@Path("/getBlutbild/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBlutbild(@PathParam("patientID") int patientID) {
-		Blutbild neuesBlutbild = new Blutbild(patientID);
+		Blutbild neuesBlutbild;
+		Patient p = runde.getPatient(patientID);
+		if (p != null) {
+			neuesBlutbild = p.getKrankheit().getBlutbild();
+		} else {
+			return "Patient nicht in Zelt";
+		}
 		// TODO kosten
 		// TODO Blutbild aus Patienten auslesen und senden.
 		return neuesBlutbild.toString();
 	}
-	
+
 	@GET
 	@Path("/getUltraschall/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getUltraschall(@PathParam("patientID") int patientID) {
-		Ultraschall neuesUltraschall = new Ultraschall(patientID);
+		Ultraschall neuesUltraschall;
+		Patient p = runde.getPatient(patientID);
+		if (p != null) {
+			neuesUltraschall = p.getKrankheit().getUltraschall();
+		} else {
+			return "Patient nicht in Zelt";
+		}
 		// TODO Kosten abziehen
 		// TODO Ultraschall aus Patienten auslesen und senden.
 		return neuesUltraschall.toString();
 	}
-	
+
+	@GET
+	@Path("/getRoentgen/{patientID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getRoentgen(@PathParam("patientID") int patientID) {
+		Roentgen neuesRoentgen;
+		Patient p = runde.getPatient(patientID);
+		if (p != null) {
+			neuesRoentgen = p.getKrankheit().getRoentgen();
+		} else {
+			return "Patient nicht in Zelt";
+		}
+		// TODO Kosten abziehen
+		// TODO Ultraschall aus Patienten auslesen und senden.
+		return neuesRoentgen.toString();
+	}
+
 	@GET
 	@Path("/getAnamnese/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAnamnese(@PathParam("patientID") int patientID) {
 		// TODO Kosten abziehen
-		Map<String, String> fragebogen = new HashMap<>();
-		fragebogen.put("Frage 1", "Antwort 1");
-		fragebogen.put("Frage 2", "Antwort 2");
-		fragebogen.put("Frage 3", "Antwort 3");
-		Anamnese anamnese = new Anamnese(fragebogen, "Anamnese", 1000);
+		Anamnese anamnese;
+		Patient p = runde.getPatient(patientID);
+		if (p != null) {
+			anamnese = p.getKrankheit().getAnamnese();
+		} else {
+			return "Patient nicht in Zelt";
+		}
 		return anamnese.toString();
 	}
-	
+
 	@GET
 	@Path("/diagnose/{patientID}/{krankheit}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String diagnose(@PathParam("patientID") int patientID, @PathParam("krankheit") String krankheit) {
-		Diagnose ergebniss;
-		if (krankheit.equals("abc")) {
-			// erfolgreich => Ruf zuwachs
-			ergebniss = new Diagnose("Erfolgreich", 900, 10);
-		} else {
-			// nicht erfolgreich => Ruf verlust
-			ergebniss = new Diagnose("NICHT Erfolgreich", 900, 0);
-		}
+		Diagnose ergebniss = runde.setDiagnose(krankheit);
 
 		return ergebniss.toString();
 	}
