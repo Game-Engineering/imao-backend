@@ -12,7 +12,7 @@ public class Patient extends Person {
 	private int alter;
 	private EGeschlecht geschlecht;
 	private Krankheit krankheit;
-	private EDiagnoseErgebniss diagnose = EDiagnoseErgebniss.KEINE_DIAGNOSE;
+	private EDiagnoseErgebnis diagnose = EDiagnoseErgebnis.KEINE_DIAGNOSE;
 
 	/**
 	 * 
@@ -50,11 +50,11 @@ public class Patient extends Person {
 		return krankheit;
 	}
 
-	public EDiagnoseErgebniss getDiagnose() {
+	public EDiagnoseErgebnis getDiagnose() {
 		return diagnose;
 	}
 
-	public void setDiagnose(EDiagnoseErgebniss diagnose) {
+	public void setDiagnose(EDiagnoseErgebnis diagnose) {
 		this.diagnose = diagnose;
 	}
 

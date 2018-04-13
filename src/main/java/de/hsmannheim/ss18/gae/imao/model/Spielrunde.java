@@ -3,8 +3,6 @@ package de.hsmannheim.ss18.gae.imao.model;
 import java.util.List;
 import java.util.Random;
 
-import org.eclipse.persistence.annotations.ReturnUpdate;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -115,12 +113,12 @@ public class Spielrunde {
 	public Diagnose setDiagnose(String diagnose) {
 		Diagnose erg = null;
 		if (diagnose.equals(inZelt.getKrankheit())) {
-			inZelt.setDiagnose(EDiagnoseErgebniss.ERFOLGREICH);
+			inZelt.setDiagnose(EDiagnoseErgebnis.ERFOLGREICH);
 			behandeltePatienten.add(inZelt);
 			inZelt = null;
 			erg = new Diagnose("Erfolgreich", 900, 0);
 		} else {
-			inZelt.setDiagnose(EDiagnoseErgebniss.NICHT_ERFOLGREICH);
+			inZelt.setDiagnose(EDiagnoseErgebnis.NICHT_ERFOLGREICH);
 			behandeltePatienten.add(inZelt);
 			inZelt = null;
 			erg = new Diagnose("NICHT Erfolgreich", 900, 0);
@@ -129,9 +127,9 @@ public class Spielrunde {
 	}
 
 	public String getDiagnose() {
-		if (inZelt.getDiagnose() == EDiagnoseErgebniss.ERFOLGREICH) {
+		if (inZelt.getDiagnose() == EDiagnoseErgebnis.ERFOLGREICH) {
 			return "Erfolgreich";
-		} else if (inZelt.getDiagnose() == EDiagnoseErgebniss.NICHT_ERFOLGREICH) {
+		} else if (inZelt.getDiagnose() == EDiagnoseErgebnis.NICHT_ERFOLGREICH) {
 			return "NICHT Erfolgreich";
 		} else {
 			return "Nicht behandelt";
