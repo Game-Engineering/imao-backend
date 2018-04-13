@@ -15,8 +15,8 @@ public class Krankheit {
 	public Krankheit(EKrankheit krankheit, int patientID) {
 		super();
 		this.krankheit = krankheit;
-		switch (krankheit.toString()) {
-		case "MASERN":
+		switch (krankheit) {
+		case MASERN:
 			this.ultraschall = new Ultraschall(patientID, 1);
 			this.roentgen = new Roentgen(patientID, 1);
 			this.blutbild = new Blutbild(patientID, 1);
@@ -24,7 +24,7 @@ public class Krankheit {
 			this.erscheinung = 1;
 			this.ID = 1;
 			break;
-		case "CHOLERA":
+		case CHOLERA:
 			this.ultraschall = new Ultraschall(patientID, 2);
 			this.roentgen = new Roentgen(patientID, 2);
 			this.blutbild = new Blutbild(patientID, 2);
@@ -32,22 +32,73 @@ public class Krankheit {
 			this.erscheinung = 2;
 			this.ID = 2;
 			break;
-		case "BILHARZIOSE":
-			this.ultraschall = new Ultraschall(patientID, 3);
-			this.roentgen = new Roentgen(patientID, 3);
-			this.blutbild = new Blutbild(patientID, 3);
-			this.anamnese = new Anamnese(patientID, 3);
-			this.erscheinung = 3;
-			this.ID = 3;
+		case BILHARZIOSE:
+			this.ultraschall = new Ultraschall(patientID, 9);
+			this.roentgen = new Roentgen(patientID, 9);
+			this.blutbild = new Blutbild(patientID, 9);
+			this.anamnese = new Anamnese(patientID, 9);
+			this.erscheinung = 9;
+			this.ID = 9;
 			break;
+		case HIV:
+			this.ultraschall = new Ultraschall(patientID, 4);
+			this.roentgen = new Roentgen(patientID, 4);
+			this.blutbild = new Blutbild(patientID, 4);
+			this.anamnese = new Anamnese(patientID, 4);
+			this.erscheinung = 4;
+			this.ID = 4;
+			break;
+		case HAUTLEISHMANIASIS:
+			this.ultraschall = new Ultraschall(patientID, 4);
+			this.roentgen = new Roentgen(patientID, 4);
+			this.blutbild = new Blutbild(patientID, 4);
+			this.anamnese = new Anamnese(patientID, 4);
+			this.erscheinung = 4;
+			this.ID = 4;
+			break;
+		case HEP_A:
+			this.ultraschall = new Ultraschall(patientID, 5);
+			this.roentgen = new Roentgen(patientID, 5);
+			this.blutbild = new Blutbild(patientID, 5);
+			this.anamnese = new Anamnese(patientID, 5);
+			this.erscheinung = 5;
+			this.ID = 5;
+			break;
+		case HEP_B:
+			this.ultraschall = new Ultraschall(patientID, 6);
+			this.roentgen = new Roentgen(patientID, 6);
+			this.blutbild = new Blutbild(patientID, 6);
+			this.anamnese = new Anamnese(patientID, 6);
+			this.erscheinung = 6;
+			this.ID = 6;
+			break;
+		case TETANUS:
+			this.ultraschall = new Ultraschall(patientID, 7);
+			this.roentgen = new Roentgen(patientID, 7);
+			this.blutbild = new Blutbild(patientID, 7);
+			this.anamnese = new Anamnese(patientID, 7);
+			this.erscheinung = 7;
+			this.ID = 7;
+			break;
+		case GELBFIEBER:
+			this.ultraschall = new Ultraschall(patientID, 8);
+			this.roentgen = new Roentgen(patientID, 8);
+			this.blutbild = new Blutbild(patientID, 8);
+			this.anamnese = new Anamnese(patientID, 8);
+			this.erscheinung = 8;
+			this.ID = 8;
+			break;
+		case DENGUE_FIEBER:
+			this.ultraschall = new Ultraschall(patientID, 9);
+			this.roentgen = new Roentgen(patientID, 9);
+			this.blutbild = new Blutbild(patientID, 9);
+			this.anamnese = new Anamnese(patientID, 9);
+			this.erscheinung = 9;
+			this.ID = 9;
+			break;
+
 		default:
-			krankheit = EKrankheit.MASERN;
-			this.ultraschall = new Ultraschall(patientID, 1);
-			this.roentgen = new Roentgen(patientID, 1);
-			this.blutbild = new Blutbild(patientID, 1);
-			this.anamnese = new Anamnese(patientID, 1);
-			this.erscheinung = 1;
-			this.ID = 1;
+
 		}
 	}
 
