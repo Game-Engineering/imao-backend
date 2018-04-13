@@ -33,12 +33,12 @@ public class Krankheit {
 			this.ID = 2;
 			break;
 		case BILHARZIOSE:
-			this.ultraschall = new Ultraschall(patientID, 9);
-			this.roentgen = new Roentgen(patientID, 9);
-			this.blutbild = new Blutbild(patientID, 9);
-			this.anamnese = new Anamnese(patientID, 9);
-			this.erscheinung = 9;
-			this.ID = 9;
+			this.ultraschall = new Ultraschall(patientID, 3);
+			this.roentgen = new Roentgen(patientID, 3);
+			this.blutbild = new Blutbild(patientID, 3);
+			this.anamnese = new Anamnese(patientID, 3);
+			this.erscheinung = 3;
+			this.ID = 3;
 			break;
 		case HIV:
 			this.ultraschall = new Ultraschall(patientID, 4);
@@ -49,12 +49,12 @@ public class Krankheit {
 			this.ID = 4;
 			break;
 		case HAUTLEISHMANIASIS:
-			this.ultraschall = new Ultraschall(patientID, 4);
-			this.roentgen = new Roentgen(patientID, 4);
-			this.blutbild = new Blutbild(patientID, 4);
-			this.anamnese = new Anamnese(patientID, 4);
-			this.erscheinung = 4;
-			this.ID = 4;
+			this.ultraschall = new Ultraschall(patientID, 10);
+			this.roentgen = new Roentgen(patientID, 10);
+			this.blutbild = new Blutbild(patientID, 10);
+			this.anamnese = new Anamnese(patientID, 10);
+			this.erscheinung = 10;
+			this.ID = 10;
 			break;
 		case HEP_A:
 			this.ultraschall = new Ultraschall(patientID, 5);
