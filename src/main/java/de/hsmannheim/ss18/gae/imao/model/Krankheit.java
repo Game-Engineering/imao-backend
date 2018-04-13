@@ -3,7 +3,7 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class Krankheit {
+public class Krankheit implements KrankheitID{
 	private EKrankheit krankheit;
 	private Ultraschall ultraschall;
 	private Roentgen roentgen;
@@ -17,84 +17,84 @@ public class Krankheit {
 		this.krankheit = krankheit;
 		switch (krankheit) {
 		case MASERN:
-			this.ultraschall = new Ultraschall(patientID, 1);
-			this.roentgen = new Roentgen(patientID, 1);
-			this.blutbild = new Blutbild(patientID, 1);
-			this.anamnese = new Anamnese(patientID, 1);
+			this.ultraschall = new Ultraschall(patientID, MASERN);
+			this.roentgen = new Roentgen(patientID, MASERN);
+			this.blutbild = new Blutbild(patientID, MASERN);
+			this.anamnese = new Anamnese(patientID, MASERN);
 			this.erscheinung = 1;
-			this.ID = 1;
+			this.ID = MASERN;
 			break;
 		case CHOLERA:
-			this.ultraschall = new Ultraschall(patientID, 2);
-			this.roentgen = new Roentgen(patientID, 2);
-			this.blutbild = new Blutbild(patientID, 2);
-			this.anamnese = new Anamnese(patientID, 2);
+			this.ultraschall = new Ultraschall(patientID, CHOLERA);
+			this.roentgen = new Roentgen(patientID, CHOLERA);
+			this.blutbild = new Blutbild(patientID, CHOLERA);
+			this.anamnese = new Anamnese(patientID, CHOLERA);
 			this.erscheinung = 2;
-			this.ID = 2;
+			this.ID = CHOLERA;
 			break;
 		case BILHARZIOSE:
-			this.ultraschall = new Ultraschall(patientID, 3);
-			this.roentgen = new Roentgen(patientID, 3);
-			this.blutbild = new Blutbild(patientID, 3);
-			this.anamnese = new Anamnese(patientID, 3);
+			this.ultraschall = new Ultraschall(patientID, BILHARZIOSE);
+			this.roentgen = new Roentgen(patientID, BILHARZIOSE);
+			this.blutbild = new Blutbild(patientID, BILHARZIOSE);
+			this.anamnese = new Anamnese(patientID, BILHARZIOSE);
 			this.erscheinung = 3;
-			this.ID = 3;
+			this.ID = BILHARZIOSE;
 			break;
 		case HIV:
-			this.ultraschall = new Ultraschall(patientID, 4);
-			this.roentgen = new Roentgen(patientID, 4);
-			this.blutbild = new Blutbild(patientID, 4);
-			this.anamnese = new Anamnese(patientID, 4);
+			this.ultraschall = new Ultraschall(patientID, HIV);
+			this.roentgen = new Roentgen(patientID, HIV);
+			this.blutbild = new Blutbild(patientID, HIV);
+			this.anamnese = new Anamnese(patientID, HIV);
 			this.erscheinung = 4;
-			this.ID = 4;
+			this.ID = HIV;
 			break;
 		case HAUTLEISHMANIASIS:
-			this.ultraschall = new Ultraschall(patientID, 10);
-			this.roentgen = new Roentgen(patientID, 10);
-			this.blutbild = new Blutbild(patientID, 10);
-			this.anamnese = new Anamnese(patientID, 10);
+			this.ultraschall = new Ultraschall(patientID, HAUTLEISHMANIASIS);
+			this.roentgen = new Roentgen(patientID, HAUTLEISHMANIASIS);
+			this.blutbild = new Blutbild(patientID, HAUTLEISHMANIASIS);
+			this.anamnese = new Anamnese(patientID, HAUTLEISHMANIASIS);
 			this.erscheinung = 10;
-			this.ID = 10;
+			this.ID = HAUTLEISHMANIASIS;
 			break;
 		case HEP_A:
-			this.ultraschall = new Ultraschall(patientID, 5);
-			this.roentgen = new Roentgen(patientID, 5);
-			this.blutbild = new Blutbild(patientID, 5);
-			this.anamnese = new Anamnese(patientID, 5);
+			this.ultraschall = new Ultraschall(patientID, HEP_A);
+			this.roentgen = new Roentgen(patientID, HEP_A);
+			this.blutbild = new Blutbild(patientID, HEP_A);
+			this.anamnese = new Anamnese(patientID, HEP_A);
 			this.erscheinung = 5;
-			this.ID = 5;
+			this.ID = HEP_A;
 			break;
 		case HEP_B:
-			this.ultraschall = new Ultraschall(patientID, 6);
-			this.roentgen = new Roentgen(patientID, 6);
-			this.blutbild = new Blutbild(patientID, 6);
-			this.anamnese = new Anamnese(patientID, 6);
+			this.ultraschall = new Ultraschall(patientID, HEP_B);
+			this.roentgen = new Roentgen(patientID, HEP_B);
+			this.blutbild = new Blutbild(patientID, HEP_B);
+			this.anamnese = new Anamnese(patientID, HEP_B);
 			this.erscheinung = 6;
-			this.ID = 6;
+			this.ID = HEP_B;
 			break;
 		case TETANUS:
-			this.ultraschall = new Ultraschall(patientID, 7);
-			this.roentgen = new Roentgen(patientID, 7);
-			this.blutbild = new Blutbild(patientID, 7);
-			this.anamnese = new Anamnese(patientID, 7);
+			this.ultraschall = new Ultraschall(patientID, TETANUS);
+			this.roentgen = new Roentgen(patientID, TETANUS);
+			this.blutbild = new Blutbild(patientID, TETANUS);
+			this.anamnese = new Anamnese(patientID, TETANUS);
 			this.erscheinung = 7;
-			this.ID = 7;
+			this.ID = TETANUS;
 			break;
 		case GELBFIEBER:
-			this.ultraschall = new Ultraschall(patientID, 8);
-			this.roentgen = new Roentgen(patientID, 8);
-			this.blutbild = new Blutbild(patientID, 8);
-			this.anamnese = new Anamnese(patientID, 8);
+			this.ultraschall = new Ultraschall(patientID, GELBFIEBER);
+			this.roentgen = new Roentgen(patientID, GELBFIEBER);
+			this.blutbild = new Blutbild(patientID, GELBFIEBER);
+			this.anamnese = new Anamnese(patientID, GELBFIEBER);
 			this.erscheinung = 8;
-			this.ID = 8;
+			this.ID = GELBFIEBER;
 			break;
 		case DENGUE_FIEBER:
-			this.ultraschall = new Ultraschall(patientID, 9);
-			this.roentgen = new Roentgen(patientID, 9);
-			this.blutbild = new Blutbild(patientID, 9);
-			this.anamnese = new Anamnese(patientID, 9);
+			this.ultraschall = new Ultraschall(patientID, DENGUE_FIEBER);
+			this.roentgen = new Roentgen(patientID, DENGUE_FIEBER);
+			this.blutbild = new Blutbild(patientID, DENGUE_FIEBER);
+			this.anamnese = new Anamnese(patientID, DENGUE_FIEBER);
 			this.erscheinung = 9;
-			this.ID = 9;
+			this.ID = DENGUE_FIEBER;
 			break;
 
 		default:

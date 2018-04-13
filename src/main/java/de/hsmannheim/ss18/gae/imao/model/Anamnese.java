@@ -7,16 +7,17 @@ import java.util.Random;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class Anamnese {
+public class Anamnese implements KrankheitID{
 	private Map<String, String> fragebogen;
 	private int patientID;
+	
 
 	public Anamnese(int patientID, int anamneseID) {
 		this.fragebogen = new HashMap<>();
 		this.patientID = patientID;
 		Random random = new Random();
 		switch (anamneseID) {
-		case 1:
+		case MASERN:
 			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an Fieber.");
 			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit " + (random.nextInt(4) + 1) + " Tagen so. ");
 			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
@@ -38,7 +39,7 @@ public class Anamnese {
 					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(4) + 3) + " .");
 			fragebogen.put("Haben Sie weitere Beschwerden?", "Nein, das war es.");
 			break;
-		case 2:
+		case CHOLERA:
 			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an reiswasserartigem Brechdurchfall.");
 			fragebogen.put("Wie lange schon? ",
 					"Es geht mir schon seit " + (random.nextInt(33) + 16) + " Stunden so. ");
@@ -46,7 +47,7 @@ public class Anamnese {
 					"Auf einer Skala von 1-10 würde ich sagen " + (random.nextInt(6) + 5) + " .");
 			fragebogen.put("Haben Sie weitere Beschwerden?", "Nein, das war es.");
 			break;
-		case 3:
+		case BILHARZIOSE:
 			fragebogen.put("Hallo. Wie kann ich Ihnen helfen?", "Ich leide an Fieber.");
 			fragebogen.put("Wie lange schon? ", "Es geht mir schon seit " + (random.nextInt(5) + 5) + " Tagen so. ");
 			fragebogen.put("Auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?",
