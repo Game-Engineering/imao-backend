@@ -29,10 +29,10 @@ import de.hsmannheim.ss18.gae.imao.model.Untersuchungsmethode;
 @Path("/spiel")
 public class Spiel extends ResourceConfig {
 
-	private int rundencount = 0;
-	private Spielrunde runde;
-	private Arzt arzt;
-	private Manager manager;
+	private static int rundencount = 0;
+	private static Spielrunde runde;
+	private static Arzt arzt;
+	private static Manager manager;
 
 	@GET
 	@Path("/")
@@ -82,6 +82,7 @@ public class Spiel extends ResourceConfig {
 		runde = new Spielrunde(++rundencount);
 		return runde.toString();
 	}
+
 
 	@GET
 	@Path("/getPatatient")
