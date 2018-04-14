@@ -65,12 +65,14 @@ public class Blutbild {
 	/**
 	 * 
 	 * @param patientID
+	 * @param blutbildID
 	 */
 	public Blutbild(int patientID, int blutbildID) {
+		// TODO auslesen und richtiges übergeben
 		this.patientID = patientID;
 		this.blutbildID = blutbildID;
 		this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
-		// this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
+		this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
 	}
 
 	/**
@@ -106,34 +108,34 @@ public class Blutbild {
 	private void erstelleKrankesBlutbild(EKrankheit krankheit) {
 		switch (krankheit) {
 		case HIV:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case BILHARZIOSE:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case HAUTLEISHMANIASIS:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case MASERN:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case HEP_A:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case HEP_B:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case CHOLERA:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case TETANUS:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case GELBFIEBER:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 		case DENGUE_FIEBER:
-
+			// TODO Blutbild an Krankheit anpassen
 			break;
 
 		default:
@@ -160,8 +162,9 @@ public class Blutbild {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("name", "Blutbild");
+		// TODO Budget anpassen
 		objectNode.put("budget", "900");
+		objectNode.put("name", "Blutbild");
 		// objectNode.put("BlutbildID", this.blutbildID);
 		objectNode.put("Erythrozyten", this.erythrozyten);
 		objectNode.put("Leukozyten", this.leukozyten);
