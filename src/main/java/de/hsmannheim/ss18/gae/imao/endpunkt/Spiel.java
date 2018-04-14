@@ -92,7 +92,7 @@ public class Spiel extends ResourceConfig {
 		if (pat != null) {
 			return runde.getPatient().toString();
 		} else {
-			return "Kein Patient";
+			return "{\"Nachricht\":\"Kein Patient\"}";
 		}
 	}
 
