@@ -11,6 +11,8 @@ public class Patient extends Person {
 	private int patientID;
 	private int alter;
 	private EGeschlecht geschlecht;
+
+
 	private Krankheit krankheit;
 	private EDiagnoseErgebnis diagnose = EDiagnoseErgebnis.KEINE_DIAGNOSE;
 
@@ -34,10 +36,13 @@ public class Patient extends Person {
 		this.geschlecht = geschlecht;
 		this.alter = alter;
 		this.patientID = IDcount++;
-		this.krankheit = new Krankheit(krankheit, patientID);
+		this.krankheit = new Krankheit(krankheit, this);
 
 	}
-
+	public EGeschlecht getGeschlecht() {
+		return geschlecht;
+	}
+	
 	public int getPatientID() {
 		return patientID;
 	}
@@ -65,19 +70,13 @@ public class Patient extends Person {
 
 		// ObjectNode objectNodeName = mapper.cre / ateObjectNode();
 
-		// ObjectNode objectNodeSymptome = mapper.createObjectNode();
-		// objectNodeSymptome.put("S1", "s1");
-		// objectNodeSymptome.put("S2", "s2");
-		// objectNodeSymptome.put("S3", "s3");
-		// objectNodeSymptome.put("S4", "s4");
-		// objectNodeSymptome.put("S5", "s5");
-
 		ObjectNode objectNode = mapper.createObjectNode();
 		// objectNode.put("name", objectNodeName);
 		// objectNode.put("symptome", objectNodeSymptome);
 		objectNode.put("vorname", this.getVorname());
 		objectNode.put("nachname", this.getNachname());
 		objectNode.put("alter", this.alter);
+		objectNode.put("geschlecht", this.geschlecht.toString());
 		objectNode.put("erscheinungID", this.krankheit.getErscheinung());
 		objectNode.put("ID", this.patientID);
 

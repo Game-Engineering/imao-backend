@@ -40,15 +40,15 @@ public class Spiel extends ResourceConfig {
 	public String hello() {
 		return "<h1>It Works!</h1>" + "<h3>Benutze die mitlere Maustaste zum &ouml;ffnen der Links </h3>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann\">localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getPatatient\">localhost:8080/imao/api/spiel/getPatatient</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/neueRunde\">localhost:8080/imao/api/spiel/neueRunde</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getPatient\">localhost:8080/imao/api/spiel/getPatient</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/getAnamnese/1\">localhost:8080/imao/api/spiel/getAnamnese/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getBlutbild/1\">localhost:8080/imao/api/spiel/getBlutbild/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getUltraschall/1\">localhost:8080/imao/api/spiel/getUltraschall/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getRoentgen/1\">localhost:8080/imao/api/spiel/getRoentgen/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getKatalog\">localhost:8080/imao/api/spiel/getKatalog</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/kaufeGeraet/geraetID\">localhost:8080/imao/api/spiel/kaufeGeraet/geraetID</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/getUntersuchungsmethoden\">localhost:8080/imao/api/spiel/getUntersuchungsmethoden</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/getAnamnese/1\">localhost:8080/imao/api/spiel/getAnamnese/1</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/diagnose/KrankheitID\">localhost:8080/imao/api/spiel/diagnose/KrankheitID</a><br>";
 	}
 
@@ -85,7 +85,7 @@ public class Spiel extends ResourceConfig {
 
 
 	@GET
-	@Path("/getPatatient")
+	@Path("/getPatient")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getPatatient() {
 		Patient pat = runde.getPatient();

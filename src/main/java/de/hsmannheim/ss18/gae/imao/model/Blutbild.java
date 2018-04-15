@@ -9,46 +9,46 @@ public class Blutbild {
 
 	// Blutbild normalwerte
 	// Erythrozyten | w-> 3,9-5,3 Mio./µl | m->4,3-5,7Mio./µl
-	private final double DEFAULT_MIN_FRAU_ERYTHROZYTEN = 3.9;
-	private final double DEFAULT_MAX_FRAU_ERYTHROZYTEN = 5.3;
-	private final double DEFAULT_MIN_MANN_ERYTHROZYTEN = 4.3;
-	private final double DEFAULT_MAX_MANN_ERYTHROZYTEN = 5.7;
+	private static final double DEFAULT_MIN_FRAU_ERYTHROZYTEN = 3.9;
+	private static final double DEFAULT_MAX_FRAU_ERYTHROZYTEN = 5.3;
+	private static final double DEFAULT_MIN_MANN_ERYTHROZYTEN = 4.3;
+	private static final double DEFAULT_MAX_MANN_ERYTHROZYTEN = 5.7;
 
 	// Leukozyten | w-> 3.800-10.500/µl | w-> 3.800-10.500/µl
-	private final double DEFAULT_MIN_LEUKOZYTEN = 3800;
-	private final double DEFAULT_MAX_LEUKOZYTEN = 10500;
+	private static final double DEFAULT_MIN_LEUKOZYTEN = 3800;
+	private static final double DEFAULT_MAX_LEUKOZYTEN = 10500;
 
 	// Thrombozyten | w-> 140.000-345.000/µl | m-> 140.000-345.000/µl
-	private final double DEFAULT_MIN_THROMBOZYTEN = 140000;
-	private final double DEFAULT_MAX_THROMBOZYTEN = 345000;
+	private static final double DEFAULT_MIN_THROMBOZYTEN = 140000;
+	private static final double DEFAULT_MAX_THROMBOZYTEN = 345000;
 
 	// Hämoglobinkonzentration (Hb) | w-> 12-16 g/dl | m-> 13,5-17 g/dl
-	private final double DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION = 12;
-	private final double DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION = 16;
-	private final double DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION = 13.5;
-	private final double DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION = 17;
+	private static final double DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION = 12;
+	private static final double DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION = 16;
+	private static final double DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION = 13.5;
+	private static final double DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION = 17;
 
 	// Hämatokrit (Hkt) | w-> 37-48 %| m-> 40-52 %
-	private final double DEFAULT_MIN_FRAU_HAEMATOKRIT = 37;
-	private final double DEFAULT_MAX_FRAU_HAEMATOKRIT = 48;
-	private final double DEFAULT_MIN_MANN_HAEMATOKRIT = 40;
-	private final double DEFAULT_MAX_MANN_HAEMATOKRIT = 52;
+	private static final double DEFAULT_MIN_FRAU_HAEMATOKRIT = 37;
+	private static final double DEFAULT_MAX_FRAU_HAEMATOKRIT = 48;
+	private static final double DEFAULT_MIN_MANN_HAEMATOKRIT = 40;
+	private static final double DEFAULT_MAX_MANN_HAEMATOKRIT = 52;
 
 	// MCH | w-> 28-34 pg (Pikogramm pro Zelle) | m-> 28-34 pg (Pikogramm pro
 	// Zelle)
-	private final double DEFAULT_MIN_MCH = 28;
-	private final double DEFAULT_MAX_MCH = 34;
+	private static final double DEFAULT_MIN_MCH = 28;
+	private static final double DEFAULT_MAX_MCH = 34;
 
 	// MCHC | w-> 33-36 g/dl | m-> 33-36 g/dl
-	private final double DEFAULT_MIN_MCHC = 33;
-	private final double DEFAULT_MAX_MCHC = 36;
+	private static final double DEFAULT_MIN_MCHC = 33;
+	private static final double DEFAULT_MAX_MCHC = 36;
 
 	// MCV | w-> 85-95 fl (Femtoliter) | m-> 85-95 fl (Femtoliter)
-	private final double DEFAULT_MIN_MCV = 85;
-	private final double DEFAULT_MAX_MCV = 95;
+	private static final double DEFAULT_MIN_MCV = 85;
+	private static final double DEFAULT_MAX_MCV = 95;
 
-	private int patientID;
-	private int blutbildID;
+	Krankheit krankheit;
+
 	private double erythrozyten;
 	private double leukozyten;
 	private double thrombozyten;
@@ -58,28 +58,21 @@ public class Blutbild {
 	private double mchc;
 	private double mcv;
 
-	private Blutbild() {
-
-	}
-
-	/**
-	 * 
-	 * @param patientID
-	 * @param blutbildID
-	 */
-	public Blutbild(int patientID, int blutbildID) {
+/**
+ * 
+ * @param Krankheit krankheit
+ */
+	public Blutbild(Krankheit krankheit) {
 		// TODO auslesen und richtiges übergeben
-		this.patientID = patientID;
-		this.blutbildID = blutbildID;
-		this.erstelleNormalesBlutbild(EGeschlecht.WEIBLICH);
-		this.erstelleKrankesBlutbild(EKrankheit.BILHARZIOSE);
+		this.krankheit = krankheit;
+		this.erstelleNormalesBlutbild(krankheit.getPatient().getGeschlecht());
+		this.erstelleKrankesBlutbild(krankheit.getKrankheit());
 	}
 
 	/**
 	 * Erstellt ein Blutbild ohne Abweichung der Normalwerte
 	 * 
-	 * @param gender
-	 * @return
+	 * @param EGeschlecht gender
 	 */
 	private void erstelleNormalesBlutbild(EGeschlecht gender) {
 		this.leukozyten = random(DEFAULT_MIN_LEUKOZYTEN, DEFAULT_MAX_LEUKOZYTEN);
@@ -103,7 +96,7 @@ public class Blutbild {
 	/**
 	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab
 	 * 
-	 * @param krankheit
+	 * @param EKrankheit krankheit
 	 */
 	private void erstelleKrankesBlutbild(EKrankheit krankheit) {
 		switch (krankheit) {

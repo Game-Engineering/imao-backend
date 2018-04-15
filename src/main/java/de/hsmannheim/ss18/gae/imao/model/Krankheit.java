@@ -11,7 +11,7 @@ public class Krankheit implements KrankheitID {
 	private Blutbild blutbild;
 	private Anamnese anamnese;
 	private ESymptom[] symptome;
-	int patientID;
+	Patient patient;
 
 	private static final ESymptom[] SYMPTOME_HIV = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL, ESymptom.NACHTSCHWEIS,
 			ESymptom.LYMPHKNOTEN_GESCHWOLLEN, ESymptom.GEWICHTSVERLUST };
@@ -60,116 +60,76 @@ public class Krankheit implements KrankheitID {
 	public ESymptom[] getSymptome() {
 		return symptome;
 	}
+	
+	public Patient getPatient() {
+		return patient;
+	}
 
-	public Krankheit(EKrankheit krankheit, int patientID) {
-		super();
+	public Krankheit(EKrankheit krankheit, Patient patient) {
 		this.krankheit = krankheit;
+		this. patient=patient;
 		switch (krankheit) {
-		case MASERN:
-			this.ultraschall = new Ultraschall(patientID, MASERN);
-			this.roentgen = new Roentgen(patientID, MASERN);
-			this.blutbild = new Blutbild(patientID, MASERN);
-			this.symptome = SYMPTOME_MASERN;
-			this.anamnese = new Anamnese(this);
+		case MASERN:		
+			this.symptome = SYMPTOME_MASERN;			
 			this.erscheinung = 1;
-			this.patientID = MASERN;
 
 			break;
-		case CHOLERA:
-			this.ultraschall = new Ultraschall(patientID, CHOLERA);
-			this.roentgen = new Roentgen(patientID, CHOLERA);
-			this.blutbild = new Blutbild(patientID, CHOLERA);
-			this.symptome = SYMPTOME_CHOLERA;
-			this.anamnese = new Anamnese(this);
+		case CHOLERA:	
+			this.symptome = SYMPTOME_CHOLERA;			
 			this.erscheinung = 2;
-			this.patientID = CHOLERA;
 
 			break;
-		case BILHARZIOSE:
-			this.ultraschall = new Ultraschall(patientID, BILHARZIOSE);
-			this.roentgen = new Roentgen(patientID, BILHARZIOSE);
-			this.blutbild = new Blutbild(patientID, BILHARZIOSE);
-			this.symptome = SYMPTOME_BILHARZIOSE;
-			this.anamnese = new Anamnese(this);
+		case BILHARZIOSE:		
+			this.symptome = SYMPTOME_BILHARZIOSE;			
 			this.erscheinung = 3;
-			this.patientID = BILHARZIOSE;
 
 			break;
-		case HIV:
-			this.ultraschall = new Ultraschall(patientID, HIV);
-			this.roentgen = new Roentgen(patientID, HIV);
-			this.blutbild = new Blutbild(patientID, HIV);
-			this.symptome = SYMPTOME_HIV;
-			this.anamnese = new Anamnese(this);
+		case HIV:		
+			this.symptome = SYMPTOME_HIV;			
 			this.erscheinung = 4;
-			this.patientID = HIV;
-			
+		
 			break;
-		case HAUTLEISHMANIASIS:
-			this.ultraschall = new Ultraschall(patientID, HAUTLEISHMANIASIS);
-			this.roentgen = new Roentgen(patientID, HAUTLEISHMANIASIS);
-			this.blutbild = new Blutbild(patientID, HAUTLEISHMANIASIS);
-			this.symptome = SYMPTOME_HAUTLEISHMANIASIS;
-			this.anamnese = new Anamnese(this);
+		case HAUTLEISHMANIASIS:		
+			this.symptome = SYMPTOME_HAUTLEISHMANIASIS;			
 			this.erscheinung = 10;
-			this.patientID = HAUTLEISHMANIASIS;
 			
 			break;
 		case HEP_A:
-			this.ultraschall = new Ultraschall(patientID, HEP_A);
-			this.roentgen = new Roentgen(patientID, HEP_A);
-			this.blutbild = new Blutbild(patientID, HEP_A);
 			this.symptome = SYMPTOME_HEP;
-			this.anamnese = new Anamnese(this);
 			this.erscheinung = 5;
-			this.patientID = HEP_A;
 			
 			break;
 		case HEP_B:
-			this.ultraschall = new Ultraschall(patientID, HEP_B);
-			this.roentgen = new Roentgen(patientID, HEP_B);
-			this.blutbild = new Blutbild(patientID, HEP_B);
 			this.symptome = SYMPTOME_HEP;
-			this.anamnese = new Anamnese(this);
 			this.erscheinung = 6;
-			this.patientID = HEP_B;
-			
+		
 			break;
 		case TETANUS:
-			this.ultraschall = new Ultraschall(patientID, TETANUS);
-			this.roentgen = new Roentgen(patientID, TETANUS);
-			this.blutbild = new Blutbild(patientID, TETANUS);
 			this.symptome = SYMPTOME_TETANUS;
-			this.anamnese = new Anamnese(this);
 			this.erscheinung = 7;
-			this.patientID = TETANUS;
 			
 			break;
 		case GELBFIEBER:
-			this.ultraschall = new Ultraschall(patientID, GELBFIEBER);
-			this.roentgen = new Roentgen(patientID, GELBFIEBER);
-			this.blutbild = new Blutbild(patientID, GELBFIEBER);
 			this.symptome = SYMPTOME_GELBFIEBER;
-			this.anamnese = new Anamnese(this);
 			this.erscheinung = 8;
-			this.patientID = GELBFIEBER;
-			
+		
 			break;
 		case DENGUE_FIEBER:
-			this.ultraschall = new Ultraschall(patientID, DENGUE_FIEBER);
-			this.roentgen = new Roentgen(patientID, DENGUE_FIEBER);
-			this.blutbild = new Blutbild(patientID, DENGUE_FIEBER);
 			this.symptome = SYMPTOME_DENGUE_FIEBER;
-			this.anamnese = new Anamnese(this);
 			this.erscheinung = 9;
-			this.patientID = DENGUE_FIEBER;
 			
 			break;
 
 		default:
 
 		}
+		this.blutbild = new Blutbild(this);
+		this.anamnese = new Anamnese(this);
+		this.roentgen=new Roentgen(this);
+		this.ultraschall=new Ultraschall(this);
 	}
+
+
 
 	@Override
 	public String toString() {
