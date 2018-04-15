@@ -50,6 +50,7 @@ public class Anamnese {
 
 		ObjectNode objectNode = mapper.createObjectNode();
 		objectNode.put("name", "Anamnese");
+		objectNode.put("krankheitDEBUG", krankheit.getKrankheit().toString());
 		objectNode.put("antwort", this.antwort);
 		objectNode.put("fragen", arrayNode);
 		objectNode.put("option", this.weitereOption);
