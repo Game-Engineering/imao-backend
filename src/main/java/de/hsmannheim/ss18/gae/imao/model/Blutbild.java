@@ -58,21 +58,23 @@ public class Blutbild {
 	private double mchc;
 	private double mcv;
 
-/**
- * 
- * @param Krankheit krankheit
- */
+	/**
+	 * 
+	 * @param Krankheit
+	 *            krankheit
+	 */
 	public Blutbild(Krankheit krankheit) {
 		// TODO auslesen und richtiges übergeben
 		this.krankheit = krankheit;
 		this.erstelleNormalesBlutbild(krankheit.getPatient().getGeschlecht());
-		this.erstelleKrankesBlutbild(krankheit.getKrankheit());
+		this.erstelleKrankesBlutbild(krankheit.getPatient().getGeschlecht(),krankheit.getKrankheit());
 	}
 
 	/**
 	 * Erstellt ein Blutbild ohne Abweichung der Normalwerte
 	 * 
-	 * @param EGeschlecht gender
+	 * @param EGeschlecht
+	 *            gender
 	 */
 	private void erstelleNormalesBlutbild(EGeschlecht gender) {
 		this.leukozyten = random(DEFAULT_MIN_LEUKOZYTEN, DEFAULT_MAX_LEUKOZYTEN);
@@ -96,39 +98,77 @@ public class Blutbild {
 	/**
 	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab
 	 * 
-	 * @param EKrankheit krankheit
+	 * @param EKrankheit
+	 *            krankheit
 	 */
-	private void erstelleKrankesBlutbild(EKrankheit krankheit) {
+	private void erstelleKrankesBlutbild(EGeschlecht geschlecht, EKrankheit krankheit) {
+		// Erhöhte Thrombozyten
+		double krankThrombozytenErhoetLeichtMin = DEFAULT_MAX_THROMBOZYTEN;
+		double krankThrombozytenErhoetLeichtMax = DEFAULT_MAX_THROMBOZYTEN
+				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+		double krankThrombozytenErhoetStarkMin = DEFAULT_MAX_THROMBOZYTEN
+				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+		double krankThrombozytenErhoetStarkMax = DEFAULT_MAX_THROMBOZYTEN
+				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
+
+		// Geringe Thrombozyten
+		double krankThrombozytenGeringLeichtMin = DEFAULT_MIN_THROMBOZYTEN
+				- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+		double krankThrombozytenGeringLeichtMax = DEFAULT_MIN_THROMBOZYTEN;
+		double krankThrombozytenGeringStarkMin = DEFAULT_MIN_THROMBOZYTEN
+				- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
+		double krankThrombozytenGeringStarkMax = DEFAULT_MIN_THROMBOZYTEN
+				- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1;
+
+		// Erhöhte Leukozyten
+		double krankLeukozytenErhoetLeichtMin = DEFAULT_MAX_LEUKOZYTEN;
+		double krankLeukozytenErhoetLeichtMax = DEFAULT_MAX_LEUKOZYTEN
+				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+		double krankLeukozytenErhoetStarkMin = DEFAULT_MAX_LEUKOZYTEN
+				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+		double krankLeukozytenErhoetStarkMax = DEFAULT_MAX_LEUKOZYTEN
+				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+
+		// Geringe Leukozyten
+		double krankLeukozytenGeringLeichtMin = DEFAULT_MIN_LEUKOZYTEN
+				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+		double krankLeukozytenGeringLeichtMax = DEFAULT_MIN_LEUKOZYTEN;
+		double krankLeukozytenGeringStarkMin = DEFAULT_MIN_LEUKOZYTEN
+				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+		double krankLeukozytenGeringStarkMax = DEFAULT_MIN_LEUKOZYTEN
+				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+
 		switch (krankheit) {
 		case HIV:
-			// TODO Blutbild an Krankheit anpassen
+			this.leukozyten=random(krankLeukozytenGeringLeichtMin,krankLeukozytenGeringLeichtMax);
 			break;
 		case BILHARZIOSE:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case HAUTLEISHMANIASIS:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case MASERN:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case HEP_A:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case HEP_B:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case CHOLERA:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case TETANUS:
-			// TODO Blutbild an Krankheit anpassen
+			// keine auswirkung
 			break;
 		case GELBFIEBER:
-			// TODO Blutbild an Krankheit anpassen
+			this.leukozyten=random(krankLeukozytenErhoetLeichtMin,krankLeukozytenErhoetLeichtMax);
+			this.thrombozyten=random(krankThrombozytenGeringLeichtMin,krankThrombozytenGeringLeichtMax);
 			break;
 		case DENGUE_FIEBER:
-			// TODO Blutbild an Krankheit anpassen
+			this.thrombozyten = random(krankThrombozytenErhoetStarkMin, krankThrombozytenErhoetStarkMax);
 			break;
 
 		default:
