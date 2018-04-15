@@ -170,18 +170,31 @@ public class Spiel extends ResourceConfig {
 	}
 
 	@GET
-	@Path("/getAnamnese/{patientID}")
+	@Path("/getAnamnese/{patientID}/{frageID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getAnamnese(@PathParam("patientID") int patientID) {
-		// TODO Kosten abziehen
-		Anamnese anamnese;
+	public String getAnamnese(@PathParam("patientID") int patientID,@PathParam("frageID") int frageID ) {
+		String antwort;
 		Patient p = runde.getPatient(patientID);
 		if (p != null) {
-			anamnese = p.getKrankheit().getAnamnese();
+			antwort = p.getKrankheit().getAnamnese().getAntwort(frageID);
 		} else {
 			return "Patient nicht in Zelt";
 		}
-		return anamnese.toString();
+		return antwort;
+	}
+	
+	@GET
+	@Path("/getAnamnese/{patientID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String startAnamnese(@PathParam("patientID") int patientID) {
+		String antwort;
+		Patient p = runde.getPatient(patientID);
+		if (p != null) {
+			antwort = p.getKrankheit().getAnamnese().getAntwort();
+		} else {
+			return "Patient nicht in Zelt";
+		}
+		return antwort;
 	}
 
 	@GET
