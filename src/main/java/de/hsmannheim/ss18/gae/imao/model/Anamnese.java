@@ -60,7 +60,7 @@ public class Anamnese {
 
 	private void erstelleAntwort(String frage) {
 
-		String antwort = null;
+		String antwort = "";
 
 		switch (frage) {
 		case DIALOG_1_FRAGE_1:
@@ -86,11 +86,11 @@ public class Anamnese {
 		case DIALOG_1_FRAGE_3:
 			// TODO frage 1 und 2 hinzufügen wenn nötig
 			if (this.verfügbareSymptome.length > 0) {
-				antwort += "Ja, ich habe auch noch ";
-				antwort += symptomText();
-				antwort += ".";
+				antwort += "Ja, ich habe auch noch " + symptomText() + ".";
 				entferneSymptom();
+				// System.out.println("*******************Versuche Frage 1 hinzuzufügen");
 				addFrage(DIALOG_1_FRAGE_1);
+				// System.out.println("*******************Versuche Frage 2 hinzuzufügen");
 				addFrage(DIALOG_1_FRAGE_2);
 			} else {
 				antwort = "Nein, das war es.";
@@ -125,7 +125,7 @@ public class Anamnese {
 
 	private String symptomText() {
 		String antwort = "";
-		
+
 		switch (this.verfügbareSymptome[0]) {
 		case JUCKREITZ:
 			antwort += "Juckreitz";
@@ -256,24 +256,42 @@ public class Anamnese {
 	}
 
 	/**
-	 * Füge eine frage dem Array der verfügbaren Fragen hinzu, wenn nicht schon enthalten.
+	 * Füge eine frage dem Array der verfügbaren Fragen hinzu, wenn nicht schon
+	 * enthalten.
 	 * 
 	 * @param frage
 	 */
 	private void addFrage(String frage) {
-		//prüfe ob frage beriets vorhanden
+		// prüfe ob frage beriets vorhanden
 		for (int i = 0; i < this.dialog1VerfügbareFragen.length; i++) {
-			if(this.dialog1VerfügbareFragen[i].equals(frage)) {
+			if (this.dialog1VerfügbareFragen[i].equals(frage)) {
+				/*
+				 * //DEBUG System.out.println("*******************Frage (" + frage +
+				 * ") bereits vorhanden"); for (int j = 0; j <
+				 * this.dialog1VerfügbareFragen.length; j++) {
+				 * System.out.println("*******************Frage: " +
+				 * this.dialog1VerfügbareFragen[j]); } //DEBUG
+				 */
+
 				return;
 			}
 		}
-		
-		//füge frage ein
+
+		// füge frage ein
 		String[] newDialog1VerfügbareFragen = new String[this.dialog1VerfügbareFragen.length + 1];
 		for (int i = 0; i < this.dialog1VerfügbareFragen.length; i++) {
 			newDialog1VerfügbareFragen[i] = this.dialog1VerfügbareFragen[i];
 		}
 		newDialog1VerfügbareFragen[newDialog1VerfügbareFragen.length - 1] = frage;
+
+		this.dialog1VerfügbareFragen = newDialog1VerfügbareFragen;
+		/*
+		 * //DEBUG System.out.println("*******************Frage (" + frage +
+		 * ") eingefügt an position "+(newDialog1VerfügbareFragen.length - 1)); for (int
+		 * j = 0; j < newDialog1VerfügbareFragen.length; j++) {
+		 * System.out.println("*******************Frage "+j +": " +
+		 * this.dialog1VerfügbareFragen[j]); } //DEBUG
+		 */
 	}
 
 	/**
