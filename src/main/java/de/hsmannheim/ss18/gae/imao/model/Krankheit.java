@@ -162,63 +162,63 @@ public class Krankheit implements KrankheitID {
 			this.symptome = SYMPTOME_CHOLERA;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 2;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case BILHARZIOSE:
 			this.symptome = SYMPTOME_BILHARZIOSE;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 3;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case HIV:
 			this.symptome = SYMPTOME_HIV;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 4;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case HAUTLEISHMANIASIS:
 			this.symptome = SYMPTOME_HAUTLEISHMANIASIS;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 10;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case HEP_A:
 			this.symptome = SYMPTOME_HEP;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.GELB;
-			this.erscheinung = 5;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case HEP_B:
 			this.symptome = SYMPTOME_HEP;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.GELB;
-			this.erscheinung = 6;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case TETANUS:
 			this.symptome = SYMPTOME_TETANUS;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 7;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case GELBFIEBER:
 			this.symptome = SYMPTOME_GELBFIEBER;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 8;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 		case DENGUE_FIEBER:
 			this.symptome = SYMPTOME_DENGUE_FIEBER;
 			this.symptomHautveraenderung = EHautveränderung.NORMAL;
 			this.symptomHautfarbe = EHautfarbe.NORMAL;
-			this.erscheinung = 9;
+			this.erscheinung = brerchneErscheinung(patient);
 
 			break;
 
