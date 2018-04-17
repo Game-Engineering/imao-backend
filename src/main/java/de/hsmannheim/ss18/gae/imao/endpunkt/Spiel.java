@@ -18,6 +18,7 @@ import de.hsmannheim.ss18.gae.imao.model.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.Blutbild;
 import de.hsmannheim.ss18.gae.imao.model.Diagnose;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
+import de.hsmannheim.ss18.gae.imao.model.Krankheit;
 import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
 import de.hsmannheim.ss18.gae.imao.model.Person;
@@ -82,7 +83,6 @@ public class Spiel extends ResourceConfig {
 		runde = new Spielrunde(++rundencount);
 		return runde.toString();
 	}
-
 
 	@GET
 	@Path("/getPatient")
@@ -172,7 +172,7 @@ public class Spiel extends ResourceConfig {
 	@GET
 	@Path("/getAnamnese/{patientID}/{frageID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String getAnamnese(@PathParam("patientID") int patientID,@PathParam("frageID") int frageID ) {
+	public String getAnamnese(@PathParam("patientID") int patientID, @PathParam("frageID") int frageID) {
 		String antwort;
 		Patient p = runde.getPatient(patientID);
 		if (p != null) {
@@ -182,7 +182,7 @@ public class Spiel extends ResourceConfig {
 		}
 		return antwort;
 	}
-	
+
 	@GET
 	@Path("/getAnamnese/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -206,4 +206,12 @@ public class Spiel extends ResourceConfig {
 		return ergebniss.toString();
 	}
 
+	@GET
+	@Path("/getAlleKrankheiten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String diagnose() {
+		String ergebniss = Krankheit.getAlleKrankheiten();
+
+		return ergebniss;
+	}
 }

@@ -12,7 +12,6 @@ public class Patient extends Person {
 	private int alter;
 	private EGeschlecht geschlecht;
 
-
 	private Krankheit krankheit;
 	private EDiagnoseErgebnis diagnose = EDiagnoseErgebnis.KEINE_DIAGNOSE;
 
@@ -39,10 +38,11 @@ public class Patient extends Person {
 		this.krankheit = new Krankheit(krankheit, this);
 
 	}
+
 	public EGeschlecht getGeschlecht() {
 		return geschlecht;
 	}
-	
+
 	public int getPatientID() {
 		return patientID;
 	}
@@ -61,6 +61,10 @@ public class Patient extends Person {
 
 	public void setDiagnose(EDiagnoseErgebnis diagnose) {
 		this.diagnose = diagnose;
+	}
+
+	public int getAlter() {
+		return alter;
 	}
 
 	@Override
