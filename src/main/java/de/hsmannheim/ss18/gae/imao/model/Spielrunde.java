@@ -185,7 +185,7 @@ public class Spielrunde {
 
 	public List<Untersuchungsmethode> getUntersuchungsmethoden() {
 		List<Untersuchungsmethode> methoden = new ArrayList<>();
-		Iterator<Untersuchungsmethode> it = methoden.iterator();
+		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();
 		while (it.hasNext()) {
 			Untersuchungsmethode m = it.next();
 			if (m.isFreigeschaltet()) {
