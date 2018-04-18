@@ -29,12 +29,19 @@ public class Anamnese {
 	}
 
 	public String getAntwort() {
-		this.antwort = "Hallo! Ich habe " + symptomText();
-		entferneSymptom();
+		if(this.letztesSymtom == null) {
+			//this.letztesSymtom=this.verfügbareSymptome[0];
+			entferneSymptom();
+		}
+		this.antwort = "Hello! Ich habe " + symptomText();
+		this.weitereOption=null;
 		return erstelleJSON();
 	}
 
 	public String getAntwort(int frage) {
+		if(this.dialog1VerfügbareFragen.length <= frage) {
+			return "{\"error\"}";
+		}
 		erstelleAntwort(dialog1VerfügbareFragen[frage]);
 		return erstelleJSON();
 
@@ -86,8 +93,8 @@ public class Anamnese {
 		case DIALOG_1_FRAGE_3:
 			// TODO frage 1 und 2 hinzufügen wenn nötig
 			if (this.verfügbareSymptome.length > 0) {
-				antwort += "Ja, ich habe auch noch " + symptomText() + ".";
 				entferneSymptom();
+				antwort += "Ja, ich habe auch noch " + symptomText() + ".";
 				// System.out.println("*******************Versuche Frage 1 hinzuzufügen");
 				addFrage(DIALOG_1_FRAGE_1);
 				// System.out.println("*******************Versuche Frage 2 hinzuzufügen");
@@ -126,104 +133,104 @@ public class Anamnese {
 	private String symptomText() {
 		String antwort = "";
 
-		switch (this.verfügbareSymptome[0]) {
+		switch (this.letztesSymtom) {
 		case JUCKREITZ:
-			antwort += "Juckreitz";
+			antwort = "Juckreitz";
 			break;
 		case FIEBER_NORMAL:
-			antwort += "Fieber";
+			antwort = "Fieber";
 			break;
 		case FIEBER_LANG:
-			antwort += "Fieber";
+			antwort = "Fieber";
 			// TODO zeit 7 tage +
 			break;
 		case FIEBER_HOCH_WECHSELHAFT:
-			antwort += "sehr hohes Fieber";
+			antwort = "sehr hohes Fieber";
 			break;
 		case HARNWEGSBEFALL:
-			antwort += "Harnwegsbefall";
+			antwort = "Harnwegsbefall";
 			break;
 		case EINSTICHSTELLE_KNOETCHENBILDUNG:
-			antwort += "Knötchenbildung Einstichstelle";
+			antwort = "Knötchenbildung Einstichstelle";
 			break;
 		case EINSTICHSTELLE_BEULE:
-			antwort += "große Beule Einstichstelle";
+			antwort = "große Beule Einstichstelle";
 			// TODO zeit nach ein paar wochen
 			break;
 		case HUSTEN:
-			antwort += "Husten";
+			antwort= "Husten";
 			break;
 		case SCHNUPFEN:
-			antwort += "Schnupfen";
+			antwort = "Schnupfen";
 			break;
 		case BINDEHAUTENTZUENDUNG:
-			antwort += "Bindehautentzündung";
+			antwort = "Bindehautentzündung";
 			break;
 		case DURCHFALL:
-			antwort += "Durchfall";
+			antwort = "Durchfall";
 			break;
 		case BRECHDURCHFALL:
-			antwort += "Reiswasserartiger Brechdurchfall";
+			antwort = "Reiswasserartiger Brechdurchfall";
 			break;
 		case MUEDIGKEIT:
-			antwort += "Müdigkeit";
+			antwort = "Müdigkeit";
 			break;
 		case ERBRECHEN_UEBELKEIT:
-			antwort += "Übelkeit und Erbrechen";
+			antwort = "Übelkeit und Erbrechen";
 			break;
 		case ERBRECHEN_BLUT:
-			antwort += "Bluterbrechen";
+			antwort = "Bluterbrechen";
 			break;
 		case VOELLEGEFUEHL:
-			antwort += "ein Völlegefühl";
+			antwort = "ein Völlegefühl";
 			break;
 		case HAUT_GELB:
-			antwort += "gelbe Haut";
+			antwort = "gelbe Haut";
 			break;
 		case AUGEN_GELBFAERBUNG:
-			antwort += "eine Gelbfärbung der Skleren der Augen";
+			antwort = "eine Gelbfärbung der Skleren der Augen";
 			break;
 		case URIN_BRAUN:
-			antwort += "braunen Urin";
+			antwort = "braunen Urin";
 			break;
 		case STUHL_HELL:
-			antwort += "eine Hellfärbung des Stuhls";
+			antwort = "eine Hellfärbung des Stuhls";
 			break;
 		case MUSKELSCHMERZEN:
-			antwort += "Muskelschmerzen";
+			antwort = "Muskelschmerzen";
 			break;
 		case KIEFERSPERRE:
-			antwort += "eine Kiefersperre";
+			antwort = "eine Kiefersperre";
 			break;
 		case SCHLUCKSTOERUNG:
-			antwort += "Schluckstörung";
+			antwort = "Schluckstörung";
 			break;
 		case ATEMSTOERUNG:
-			antwort += "Atemstörung";
+			antwort = "Atemstörung";
 			break;
 		case GESICHTSMUSKELKRAEMPFE:
-			antwort += "Gesichtsmuskelkrämpfe";
+			antwort = "Gesichtsmuskelkrämpfe";
 			break;
 		case BLUTUNG:
-			antwort += "Blutung der Haut";
+			antwort = "Blutung der Haut";
 			break;
 		case SCHUETTELFROST:
-			antwort += "Schüttelfrost";
+			antwort = "Schüttelfrost";
 			break;
 		case GELENKSCHMERZEN:
-			antwort += "Gelenkschmerzen";
+			antwort = "Gelenkschmerzen";
 			break;
 		case PULS_NIEDRIG:
-			antwort += "einen niedrigen Puls";
+			antwort = "einen niedrigen Puls";
 			break;
 		case NACHTSCHWEIS:
-			antwort += "Nachtschweiß";
+			antwort = "Nachtschweiß";
 			break;
 		case LYMPHKNOTEN_GESCHWOLLEN:
-			antwort += "geschwollene Lymphknoten";
+			antwort = "geschwollene Lymphknoten";
 			break;
 		case GEWICHTSVERLUST:
-			antwort += "Gewichtsverlust";
+			antwort = "Gewichtsverlust";
 			break;
 
 		default:
