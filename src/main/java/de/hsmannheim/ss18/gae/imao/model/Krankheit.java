@@ -40,59 +40,202 @@ public class Krankheit implements KrankheitID {
 
 	private int brerchneErscheinung(Patient patient) {
 		int id = 0;
-		String hautfarbe = "1";
-		String hautveränderung = "1";
 
 		switch (patient.getGeschlecht()) {
 		case MAENNLICH:
-			id += 1 * 1000;
+			switch (krankheit) {
+			case MASERN:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case CHOLERA:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case BILHARZIOSE:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HIV:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HEP_A:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HEP_B:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case TETANUS:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case GELBFIEBER:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case DENGUE_FIEBER:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HAUTLEISHMANIASIS:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			default:
+				id = 1;
+			}
 			break;
 		case WEIBLICH:
-			id += 2 * 1000;
+			switch (krankheit) {
+			case MASERN:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case CHOLERA:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case BILHARZIOSE:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HIV:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HEP_A:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HEP_B:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case TETANUS:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case GELBFIEBER:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case DENGUE_FIEBER:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			case HAUTLEISHMANIASIS:
+				if (patient.getAlter() <= 25) {
+					id = 1;
+				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
+					id = 1;
+				} else {
+					id = 1;
+				}
+				break;
+			default:
+				id = 1;
+			}
 			break;
 		default:
-			id += 1 * 1000;
-		}
-
-		if (patient.getAlter() <= 25) {
-			id += 1 * 100;
-		} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-			id += 2 * 100;
-		} else {
-			id += 3 * 100;
-		}
-
-		switch (symptomHautfarbe) {
-		case NORMAL:
-			id += 1 * 10;
-			break;
-		case GELB:
-			id += 2 * 10;
-			break;
-		case ROT:
-			id += 3 * 10;
-			break;
-		case BLASS:
-			id += 4 * 10;
-			break;
-		default:
-			id += 1 * 10;
-		}
-		switch (symptomHautveraenderung) {
-		case NORMAL:
-			id += 1;
-			break;
-		case PUSTELN:
-			id += 2;
-			break;
-		case BEULEN:
-			id += 3;
-			break;
-		case EKZEME:
-			id += 4;
-			break;
-		default:
-			id += 1;
+			id = 1;
 		}
 		return id;
 	}
