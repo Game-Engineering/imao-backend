@@ -65,6 +65,13 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/werbeSponsorAn/sponsorID\">localhost:8080/imao/api/spiel/werbeSponsorAn/2</a><br>";
 	}
 
+	/**
+	 * 
+	 * @param type ("arzt"/"wirtschaft")
+	 * @param vorname
+	 * @param nachname
+	 * @return
+	 */
 	@GET
 	@Path("/start/{type}/{vorname}/{nachname}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -82,6 +89,10 @@ public class Spiel extends ResourceConfig {
 		return person.toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -96,6 +107,10 @@ public class Spiel extends ResourceConfig {
 		return runde.toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getPatient")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -108,6 +123,10 @@ public class Spiel extends ResourceConfig {
 		}
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getKatalog")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -117,6 +136,10 @@ public class Spiel extends ResourceConfig {
 		return runde.getKatalog().toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getUntersuchungsmethoden")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -124,6 +147,11 @@ public class Spiel extends ResourceConfig {
 		return runde.getUntersuchungsmethoden().toString();
 	}
 
+	/**
+	 * 
+	 * @param patientID (int)
+	 * @return
+	 */
 	@GET
 	@Path("/getBlutbild/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -140,6 +168,11 @@ public class Spiel extends ResourceConfig {
 		return neuesBlutbild.toString();
 	}
 
+	/**
+	 * 
+	 * @param patientID (int)
+	 * @return
+	 */
 	@GET
 	@Path("/getUltraschall/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -156,6 +189,11 @@ public class Spiel extends ResourceConfig {
 		return neuesUltraschall.toString();
 	}
 
+	/**
+	 * 
+	 * @param patientID (int)
+	 * @return
+	 */
 	@GET
 	@Path("/getRoentgen/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -172,6 +210,12 @@ public class Spiel extends ResourceConfig {
 		return neuesRoentgen.toString();
 	}
 
+	/**
+	 * Anamnese mit veränderung der Befragung
+	 * @param patientID (int)
+	 * @param frageID (int)
+	 * @return
+	 */
 	@GET
 	@Path("/getAnamnese/{patientID}/{frageID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -186,6 +230,11 @@ public class Spiel extends ResourceConfig {
 		return antwort;
 	}
 
+	/**
+	 * Anamnese aufruf ohne veränderung/nebenwirkungen, ideal um Anamnese zu starten
+	 * @param patientID (int)
+	 * @return
+	 */
 	@GET
 	@Path("/getAnamnese/{patientID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -200,6 +249,12 @@ public class Spiel extends ResourceConfig {
 		return antwort;
 	}
 
+	/**
+	 * 
+	 * @param patientID (int)
+	 * @param krankheit (int)
+	 * @return
+	 */
 	@GET
 	@Path("/diagnose/{patientID}/{krankheit}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -209,6 +264,10 @@ public class Spiel extends ResourceConfig {
 		return ergebniss.toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getAlleKrankheiten")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -218,6 +277,11 @@ public class Spiel extends ResourceConfig {
 		return ergebniss;
 	}
 
+	/**
+	 * 
+	 * @param geraet (String)
+	 * @return
+	 */
 	@GET
 	@Path("/kaufeGeraet/{geraet}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -227,6 +291,10 @@ public class Spiel extends ResourceConfig {
 		return gekauft.toString();
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/interview")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -235,6 +303,11 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @param antwortID (String)
+	 * @return
+	 */
 	@GET
 	@Path("/interview/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -243,6 +316,10 @@ public class Spiel extends ResourceConfig {
 		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/haltePressekonferenz")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -251,6 +328,10 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getBudgetbreicht")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -259,6 +340,10 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getArztbreicht")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -267,6 +352,10 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getMails")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -275,6 +364,10 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getMoeglicheSendeMails")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -283,6 +376,11 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @param mailID (String)
+	 * @return
+	 */
 	@GET
 	@Path("/sendeMail/{mailID}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -291,6 +389,10 @@ public class Spiel extends ResourceConfig {
 		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getAktuelleSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -299,6 +401,10 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
 	@Path("/getMoeglicheSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -307,6 +413,11 @@ public class Spiel extends ResourceConfig {
 		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	/**
+	 * 
+	 * @param sponsorID String)
+	 * @return
+	 */
 	@GET
 	@Path("/werbeSponsorAn/{sponsorID}")
 	@Produces(MediaType.APPLICATION_JSON)
