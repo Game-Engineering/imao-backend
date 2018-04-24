@@ -203,7 +203,7 @@ public class Spiel extends ResourceConfig {
 	@GET
 	@Path("/diagnose/{patientID}/{krankheit}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String diagnose(@PathParam("patientID") int patientID, @PathParam("krankheit") String krankheit) {
+	public String diagnose(@PathParam("patientID") int patientID, @PathParam("krankheit") int krankheit) {
 		Diagnose ergebniss = runde.setDiagnose(krankheit);
 
 		return ergebniss.toString();

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Spielrunde {
+public class Spielrunde{
 
 	private String nachricht;
 	private long budget;
@@ -110,9 +110,11 @@ public class Spielrunde {
 
 	}
 
-	public Diagnose setDiagnose(String diagnose) {
+	public Diagnose setDiagnose(int krankheitID) {
+		System.out.println("***DIAGNOSE: Vermutung:"+krankheitID);
+		System.out.println("***DIAGNOSE: Tatsächlich:"+inZelt.getKrankheit().getKrankheit().getId());
 		Diagnose erg = null;
-		if (diagnose.equals(inZelt.getKrankheit())) {
+		if (krankheitID == inZelt.getKrankheit().getKrankheit().getId()) {
 			inZelt.setDiagnose(EDiagnoseErgebnis.ERFOLGREICH);
 			behandeltePatienten.add(inZelt);
 			inZelt = null;
