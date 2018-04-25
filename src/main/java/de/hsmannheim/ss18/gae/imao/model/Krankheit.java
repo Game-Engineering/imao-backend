@@ -1,8 +1,5 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -46,20 +43,20 @@ public class Krankheit implements KrankheitID {
 			switch (krankheit) {
 			case MASERN:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 5;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 5;
 				} else {
-					id = 1;
+					id = 5;
 				}
 				break;
 			case CHOLERA:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 8;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 8;
 				} else {
-					id = 1;
+					id = 8;
 				}
 				break;
 			case BILHARZIOSE:
@@ -82,20 +79,20 @@ public class Krankheit implements KrankheitID {
 				break;
 			case HEP_A:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 3;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 3;
 				} else {
-					id = 1;
+					id = 3;
 				}
 				break;
 			case HEP_B:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 3;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 3;
 				} else {
-					id = 1;
+					id = 3;
 				}
 				break;
 			case TETANUS:
@@ -142,11 +139,11 @@ public class Krankheit implements KrankheitID {
 			switch (krankheit) {
 			case MASERN:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 6;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 6;
 				} else {
-					id = 1;
+					id = 6;
 				}
 				break;
 			case CHOLERA:
@@ -169,29 +166,29 @@ public class Krankheit implements KrankheitID {
 				break;
 			case HIV:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 7;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 7;
 				} else {
-					id = 1;
+					id = 7;
 				}
 				break;
 			case HEP_A:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 4;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 4;
 				} else {
-					id = 1;
+					id = 4;
 				}
 				break;
 			case HEP_B:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 4;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 4;
 				} else {
-					id = 1;
+					id = 4;
 				}
 				break;
 			case TETANUS:
@@ -214,20 +211,20 @@ public class Krankheit implements KrankheitID {
 				break;
 			case DENGUE_FIEBER:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 9;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 9;
 				} else {
-					id = 1;
+					id = 9;
 				}
 				break;
 			case HAUTLEISHMANIASIS:
 				if (patient.getAlter() <= 25) {
-					id = 1;
+					id = 2;
 				} else if (patient.getAlter() > 25 && patient.getAlter() <= 35) {
-					id = 1;
+					id = 2;
 				} else {
-					id = 1;
+					id = 2;
 				}
 				break;
 			default:

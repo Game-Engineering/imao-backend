@@ -17,7 +17,8 @@ import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
 @Path("spiel/medizin")
 public class Medizin extends Spiel {
 	private static int rundencount = 0;
-	
+
+	@Override
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
@@ -47,7 +48,7 @@ public class Medizin extends Spiel {
 	public String getPatatient() {
 		Patient pat = runde.getPatient();
 		if (pat != null) {
-			return runde.getPatient().toString();
+			return pat.toString();
 		} else {
 			return "{\"Nachricht\":\"Kein Patient\"}";
 		}

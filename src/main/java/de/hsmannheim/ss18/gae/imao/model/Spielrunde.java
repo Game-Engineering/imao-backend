@@ -1,15 +1,16 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class Spielrunde{
+public class Spielrunde {
 
 	private String nachricht;
 	private long budget;
@@ -18,6 +19,7 @@ public class Spielrunde{
 	private Patient inZelt;
 	private List<Patient> wartendePatienten = new ArrayList<>();
 	private List<Patient> behandeltePatienten = new ArrayList<>();
+	private List<Patient> nichtBehandeltePatienten = new ArrayList<>();
 	private List<Untersuchungsmethode> untersuchungsmethoden = new ArrayList<>();
 
 	String[] lybischeWeiblicheVornamen = { "Aya", "Reem", "Mona", "Nesreen", "Ranai", "Hoda", "Fatima", "Sarah",
@@ -93,10 +95,17 @@ public class Spielrunde{
 
 	public Patient getPatient() {
 		Patient pat = null;
-		if (wartendePatienten.get(0) != null) {
+		System.out.println("" + wartendePatienten);
+		if (inZelt != null) {
+			nichtBehandeltePatienten.add(inZelt);
+			inZelt = null;
+		}
+		if (wartendePatienten.size() > 0) {
 			pat = wartendePatienten.get(0);
-			wartendePatienten.remove(0);
-			inZelt = pat;
+			if (pat != null) {
+				wartendePatienten.remove(pat);
+				inZelt = pat;
+			}
 		}
 		return pat;
 	}
@@ -111,8 +120,8 @@ public class Spielrunde{
 	}
 
 	public Diagnose setDiagnose(int krankheitID) {
-		System.out.println("***DIAGNOSE: Vermutung:"+krankheitID);
-		System.out.println("***DIAGNOSE: Tatsächlich:"+inZelt.getKrankheit().getKrankheit().getId());
+		System.out.println("***DIAGNOSE: Vermutung:" + krankheitID);
+		System.out.println("***DIAGNOSE: Tatsächlich:" + inZelt.getKrankheit().getKrankheit().getId());
 		Diagnose erg = null;
 		if (krankheitID == inZelt.getKrankheit().getKrankheit().getId()) {
 			inZelt.setDiagnose(EDiagnoseErgebnis.ERFOLGREICH);
@@ -147,6 +156,32 @@ public class Spielrunde{
 			}
 		}
 		return untersuchungsmethoden;
+	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("budget", this.budget);
+		objectNode.put("nachricht", this.nachricht);
+		objectNode.put("ruf", this.ruf);
+		objectNode.put("runde", this.runde);
+		objectNode.put("wartendePatienten", this.wartendePatienten.size());
+
+		Map<String, Integer> patientenNode = new HashMap<>();
+		System.out.println("BBBBBB");
+		List<Map<String, Integer>> patienten = new ArrayList<>();
+		for (Patient patient : wartendePatienten) {
+			Map<String, Integer> map = new HashMap<>();
+			map.put("ID", patient.getPatientID());
+			map.put("erscheinung", patient.getKrankheit().getErscheinung());
+			patienten.add(map);
+		}
+
+		objectNode.put("patienten", patienten.toString());
+		System.out.println(patienten);
+		return objectNode.toString();
 	}
 
 	public String getNachricht() {
@@ -197,17 +232,4 @@ public class Spielrunde{
 		return methoden;
 	}
 
-	@Override
-	public String toString() {
-		ObjectMapper mapper = new ObjectMapper();
-
-		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("budget", this.budget);
-		objectNode.put("nachricht", this.nachricht);
-		objectNode.put("ruf", this.ruf);
-		objectNode.put("runde", this.runde);
-		objectNode.put("wartendePatienten", this.wartendePatienten.size());
-
-		return objectNode.toString();
-	}
 }
