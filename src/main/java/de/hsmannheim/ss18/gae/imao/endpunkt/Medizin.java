@@ -11,12 +11,13 @@ import de.hsmannheim.ss18.gae.imao.model.Diagnose;
 import de.hsmannheim.ss18.gae.imao.model.Krankheit;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
 import de.hsmannheim.ss18.gae.imao.model.Roentgen;
-import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
+import de.hsmannheim.ss18.gae.imao.model.SpielrundeMedizin;
 import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
 
 @Path("spiel/medizin")
 public class Medizin extends Spiel {
 	private static int rundencount = 0;
+	private static SpielrundeMedizin rundeArzt;
 
 	@Override
 	@GET
@@ -34,8 +35,8 @@ public class Medizin extends Spiel {
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String neueRunde() {
-		runde = new Spielrunde(++rundencount);
-		return runde.toString();
+		rundeArzt = new SpielrundeMedizin(++rundencount);
+		return rundeArzt.toString();
 	}
 
 	/**
@@ -46,7 +47,7 @@ public class Medizin extends Spiel {
 	@Path("/getPatient")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getPatatient() {
-		Patient pat = runde.getPatient();
+		Patient pat = rundeArzt.getPatient();
 		if (pat != null) {
 			return pat.toString();
 		} else {
@@ -64,7 +65,7 @@ public class Medizin extends Spiel {
 	public String getKatalog() {
 		// TODO Liste auslesen
 
-		return runde.getKatalog().toString();
+		return rundeArzt.getKatalog().toString();
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class Medizin extends Spiel {
 	@Path("/getUntersuchungsmethoden")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getUntersuchungsmethoden() {
-		return runde.getUntersuchungsmethoden().toString();
+		return rundeArzt.getUntersuchungsmethoden().toString();
 	}
 
 	/**
@@ -89,7 +90,7 @@ public class Medizin extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBlutbild(@PathParam("patientID") int patientID) {
 		Blutbild neuesBlutbild;
-		Patient p = runde.getPatient(patientID);
+		Patient p = rundeArzt.getPatient(patientID);
 		if (p != null) {
 			neuesBlutbild = p.getKrankheit().getBlutbild();
 		} else {
@@ -111,7 +112,7 @@ public class Medizin extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getUltraschall(@PathParam("patientID") int patientID) {
 		Ultraschall neuesUltraschall;
-		Patient p = runde.getPatient(patientID);
+		Patient p = rundeArzt.getPatient(patientID);
 		if (p != null) {
 			neuesUltraschall = p.getKrankheit().getUltraschall();
 		} else {
@@ -133,7 +134,7 @@ public class Medizin extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getRoentgen(@PathParam("patientID") int patientID) {
 		Roentgen neuesRoentgen;
-		Patient p = runde.getPatient(patientID);
+		Patient p = rundeArzt.getPatient(patientID);
 		if (p != null) {
 			neuesRoentgen = p.getKrankheit().getRoentgen();
 		} else {
@@ -158,7 +159,7 @@ public class Medizin extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAnamnese(@PathParam("patientID") int patientID, @PathParam("frageID") int frageID) {
 		String antwort;
-		Patient p = runde.getPatient(patientID);
+		Patient p = rundeArzt.getPatient(patientID);
 		if (p != null) {
 			antwort = p.getKrankheit().getAnamnese().getAntwort(frageID);
 		} else {
@@ -180,7 +181,7 @@ public class Medizin extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String startAnamnese(@PathParam("patientID") int patientID) {
 		String antwort;
-		Patient p = runde.getPatient(patientID);
+		Patient p = rundeArzt.getPatient(patientID);
 		if (p != null) {
 			antwort = p.getKrankheit().getAnamnese().getAntwort();
 		} else {
@@ -201,7 +202,7 @@ public class Medizin extends Spiel {
 	@Path("/diagnose/{patientID}/{krankheit}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String diagnose(@PathParam("patientID") int patientID, @PathParam("krankheit") int krankheit) {
-		Diagnose ergebniss = runde.setDiagnose(krankheit);
+		Diagnose ergebniss = rundeArzt.setDiagnose(krankheit);
 
 		return ergebniss.toString();
 	}

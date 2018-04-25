@@ -7,12 +7,13 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
-import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
+import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 
-@Path("/wirtschaft")
+@Path("spiel/wirtschaft")
 public class Wirtschaft extends Spiel {
 	private static int rundencount = 0;
-	
+	private static SpielrundeWirtschaft rundeManager;
+
 	/**
 	 * 
 	 * @return
@@ -21,8 +22,21 @@ public class Wirtschaft extends Spiel {
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String neueRunde() {
-		runde = new Spielrunde(++rundencount);
-		return runde.toString();
+		rundeManager = new SpielrundeWirtschaft(++rundencount);
+		return rundeManager.toString();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getKatalog")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getKatalog() {
+		// TODO Liste auslesen
+
+		return rundeManager.getKatalog().toString();
 	}
 
 	/**
@@ -35,7 +49,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/kaufeGeraet/{geraet}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String kaufeGeraet(@PathParam("geraet") String geraet) {
-		GeraetGekauft gekauft = new GeraetGekauft(runde.kaufeGeraet(geraet), 1000);
+		GeraetGekauft gekauft = new GeraetGekauft(rundeManager.kaufeGeraet(geraet), 1000);
 
 		return gekauft.toString();
 	}
@@ -135,9 +149,9 @@ public class Wirtschaft extends Spiel {
 	@GET
 	@Path("/sendeMail/{mailID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String sendeMail(@PathParam("mailID") String mailID) {
+	public String sendeMail(@PathParam("mailID") int mailID) {
 
-		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.sendeMail(mailID);
 	}
 
 	/**

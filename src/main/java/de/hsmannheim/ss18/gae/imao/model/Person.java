@@ -5,31 +5,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Person {
 
-	public Person() {
-	}
-
-	public Person(String vorname, String nachname) {
-		this.vorname = vorname;
-		this.nachname = nachname;
-	}
-
 	protected String vorname;
 	protected String nachname;
+	protected EGeschlecht geschlecht;
 
-	public String getVorname() {
-		return vorname;
-	}
-
-	public void setVorname(String vorname) {
+	public Person(String vorname, String nachname, EGeschlecht geschlecht) {
 		this.vorname = vorname;
-	}
-
-	public String getNachname() {
-		return nachname;
-	}
-
-	public void setNachname(String nachname) {
 		this.nachname = nachname;
+		this.geschlecht = geschlecht;
 	}
 
 	@Override
@@ -41,6 +24,18 @@ public class Person {
 		objectNode.put("nachname", this.nachname);
 
 		return objectNode.toString();
+	}
+
+	public String getVorname() {
+		return vorname;
+	}
+
+	public String getNachname() {
+		return nachname;
+	}
+
+	public EGeschlecht getGeschlecht() {
+		return geschlecht;
 	}
 
 }
