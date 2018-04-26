@@ -24,6 +24,7 @@ public class Manager extends Person {
 	}
 
 	public void erhalteMail(Mail mail) {
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		this.posteingang.add(mail);
 	}
 
@@ -58,4 +59,13 @@ public class Manager extends Person {
 	public void setRuf(long ruf) {
 		this.ruf = ruf;
 	}
+
+	public List<Mail> getPosteingang() {
+		return posteingang;
+	}
+
+	public List<Mail> getPostausgang() {
+		return postausgang;
+	}
+
 }

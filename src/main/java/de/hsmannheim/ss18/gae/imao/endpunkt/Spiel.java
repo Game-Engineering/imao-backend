@@ -15,8 +15,8 @@ import de.hsmannheim.ss18.gae.imao.model.Person;
 
 @Path("/spiel")
 public class Spiel extends ResourceConfig {
-	protected static Arzt arzt;
-	protected static Manager manager;
+	protected static Arzt arzt = null;
+	protected static Manager manager = null;
 
 	@GET
 	@Path("/")
@@ -25,7 +25,7 @@ public class Spiel extends ResourceConfig {
 		return "<h1>It Works!</h1>" + "<h3>Benutze die mitlere Maustaste zum &ouml;ffnen der Links </h3>"
 				+ "<h4>Start:</h4>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann/maennlich\">localhost:8080/imao/api/spiel/start/arzt/Max/Mustermann/maennlich</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/start/arzt/Susanne/Mustermann/weiblich\">localhost:8080/imao/api/spiel/start/arzt/Susanne/Mustermann/weiblich</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/start/manager/Susanne/Mustermann/weiblich\">localhost:8080/imao/api/spiel/start/manager/Susanne/Mustermann/weiblich</a><br>"
 				+ "<h4>Arzt:</h4>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/neueRunde\">localhost:8080/imao/api/spiel/medizin/neueRunde</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/getPatient\">localhost:8080/imao/api/spiel/medizin/getPatient</a><br>"
@@ -40,18 +40,18 @@ public class Spiel extends ResourceConfig {
 				+ "<h4>Manager:</h4>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/neueRunde\">localhost:8080/imao/api/spiel/wirtschaft/neueRunde</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getKatalog\">localhost:8080/imao/api/spiel/wirtschaft/getKatalog</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/gkaufeGeraet/geraetID\">localhost:8080/imao/api/spiel/wirtschaft/kaufeGeraet/geraetID</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/ginterview\">localhost:8080/imao/api/spiel/wirtschaft/interview</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/ginterview/antwortID\">localhost:8080/imao/api/spiel/wirtschaft/interview/1</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/ghaltePressekonferenz\">localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/kaufeGeraet/Ultraschall\">localhost:8080/imao/api/spiel/wirtschaft/kaufeGeraet/geraetID</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/interview\">localhost:8080/imao/api/spiel/wirtschaft/interview</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/interview/1\">localhost:8080/imao/api/spiel/wirtschaft/interview/antwortID</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz\">localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getBudgetbreicht\">localhost:8080/imao/api/spiel/wirtschaft/getBudgetbreicht</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getArztbreicht\">localhost:8080/imao/api/spiel/wirtschaft/getArztbreicht</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMails\">localhost:8080/imao/api/spiel/wirtschaft/getMails</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSendeMails\">localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSendeMails</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/sendeMail/mailID\">localhost:8080/imao/api/spiel/wirtschaft/sendeMail/1</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/sendeMail/lob\">localhost:8080/imao/api/spiel/wirtschaft/sendeMail/mailID</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getAktuelleSponsoren\">localhost:8080/imao/api/spiel/wirtschaft/getAktuelleSponsoren</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren\">localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/sponsorID\">localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/2</a><br>";
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/2\">localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/sponsorID</a><br>";
 	}
 
 	/**
@@ -75,13 +75,15 @@ public class Spiel extends ResourceConfig {
 				arzt = new Arzt(vorname, nachname, EGeschlecht.MAENNLICH);
 			}
 			person = arzt;
-		} else if ("wirtschaft".equals(type)) {
+		} else if ("manager".equals(type)) {
 			if (EGeschlecht.WEIBLICH.name().equals(geschlecht.toUpperCase())) {
 				manager = new Manager(vorname, nachname, EGeschlecht.WEIBLICH);
 			} else {
 				manager = new Manager(vorname, nachname, EGeschlecht.MAENNLICH);
 			}
 			person = manager;
+		} else {
+			return "Den Typ gibe es nicht, bitte geben sie arzt oder manager ein";
 		}
 
 		return person.toString();

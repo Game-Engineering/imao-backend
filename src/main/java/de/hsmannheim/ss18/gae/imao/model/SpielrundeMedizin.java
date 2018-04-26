@@ -10,11 +10,8 @@ import java.util.Random;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import de.hsmannheim.ss18.gae.imao.endpunkt.Spiel;
-
 public class SpielrundeMedizin extends Spielrunde {
 
-	private String nachricht;
 	private Patient inZelt;
 	private List<Patient> wartendePatienten = new ArrayList<>();
 	private List<Patient> behandeltePatienten = new ArrayList<>();
@@ -32,8 +29,8 @@ public class SpielrundeMedizin extends Spielrunde {
 	 * 
 	 * @param runde
 	 */
-	public SpielrundeMedizin(int runde) {
-		super(runde);
+	public SpielrundeMedizin(int runde, Manager manager, Arzt arzt) {
+		super(runde, manager, arzt);
 		erzeugeNeueRunde();
 	}
 
@@ -46,8 +43,8 @@ public class SpielrundeMedizin extends Spielrunde {
 	protected void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
 		erzeugePatienten(runde + 2);
-		Spiel.getArzt().setBudget(1000);
-		Spiel.getArzt().setRuf(1000);
+		arzt.setBudget(1000);
+		arzt.setRuf(1000);
 	}
 
 	/**
@@ -148,13 +145,13 @@ public class SpielrundeMedizin extends Spielrunde {
 		String absender;
 		String mailInhalt;
 		if (ID == 1) {
-			absender = "" + Spiel.getArzt().vorname + " " + Spiel.getArzt().vorname;
+			absender = "" + arzt.vorname + " " + arzt.vorname;
 			mailInhalt = EMoeglicheMails.valueOf("" + ID).getMailText();
 			System.out.println(absender + ", " + mailInhalt);
 			Mail mail = new Mail(absender, mailInhalt);
-			Spiel.getArzt().sendeMail(mail);
-			if (Spiel.getManager() != null) {
-				Spiel.getManager().erhalteMail(mail);
+			arzt.sendeMail(mail);
+			if (manager != null) {
+				manager.erhalteMail(mail);
 			}
 			return mail.toString();
 		} else {
@@ -167,14 +164,12 @@ public class SpielrundeMedizin extends Spielrunde {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("budget", Spiel.getArzt().getBudget());
-		objectNode.put("nachricht", this.nachricht);
-		objectNode.put("ruf", Spiel.getArzt().getRuf());
-		objectNode.put("runde", this.runde);
-		objectNode.put("wartendePatienten", this.wartendePatienten.size());
+		objectNode.put("budget", arzt.getBudget());
+		objectNode.put("nachricht", nachricht);
+		objectNode.put("ruf", arzt.getRuf());
+		objectNode.put("runde", runde);
+		objectNode.put("wartendePatienten", wartendePatienten.size());
 
-		Map<String, Integer> patientenNode = new HashMap<>();
-		System.out.println("BBBBBB");
 		List<Map<String, Integer>> patienten = new ArrayList<>();
 		for (Patient patient : wartendePatienten) {
 			Map<String, Integer> map = new HashMap<>();

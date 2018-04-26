@@ -7,24 +7,37 @@ public class Untersuchungsmethode {
 	private String name;
 	private long behandlungsKosten;
 	private long anschaffungsKosten;
+	private long unterhaltsKosten;
 	private boolean freigeschaltet;
 
 	public Untersuchungsmethode() {
 	}
 
-	public Untersuchungsmethode(String name, int behandlungsKosten, int anschaffungsKosten, boolean freigeschaltet) {
+	public Untersuchungsmethode(String name, int behandlungsKosten, int anschaffungsKosten, int unterhaltsKosten,
+			boolean freigeschaltet) {
 		this.name = name;
 		this.behandlungsKosten = behandlungsKosten;
 		this.anschaffungsKosten = anschaffungsKosten;
+		this.unterhaltsKosten = unterhaltsKosten;
 		this.freigeschaltet = freigeschaltet;
+	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("name", this.name);
+		objectNode.put("behandlungsKosten", this.behandlungsKosten);
+		objectNode.put("anschaffungsKosten", this.anschaffungsKosten);
+		objectNode.put("unterhaltsKosten", this.unterhaltsKosten);
+		objectNode.put("freigeschaltet", this.freigeschaltet);
+
+		return objectNode.toString();
 	}
 
 	public String getName() {
 		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public long getBehandlungsKosten() {
@@ -51,17 +64,12 @@ public class Untersuchungsmethode {
 		this.freigeschaltet = freigeschaltet;
 	}
 
-	@Override
-	public String toString() {
-		ObjectMapper mapper = new ObjectMapper();
+	public long getUnterhaltsKosten() {
+		return unterhaltsKosten;
+	}
 
-		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("name", this.name);
-		objectNode.put("behandlungsKosten", this.behandlungsKosten);
-		objectNode.put("anschaffungsKosten", this.anschaffungsKosten);
-		objectNode.put("freigeschaltet", this.freigeschaltet);
-
-		return objectNode.toString();
+	public void setUnterhaltsKosten(long unterhaltsKosten) {
+		this.unterhaltsKosten = unterhaltsKosten;
 	}
 
 }

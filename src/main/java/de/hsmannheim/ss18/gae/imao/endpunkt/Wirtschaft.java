@@ -6,6 +6,13 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import de.hsmannheim.ss18.gae.imao.model.Arzt;
+import de.hsmannheim.ss18.gae.imao.model.EAufgaben;
+import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
 import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 
@@ -22,7 +29,13 @@ public class Wirtschaft extends Spiel {
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String neueRunde() {
-		rundeManager = new SpielrundeWirtschaft(++rundencount);
+		if (manager == null) {
+			return "Sie Haben keinen Manager angelegt";
+		}
+		if (arzt == null) {
+			arzt = new Arzt("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+		}
+		rundeManager = new SpielrundeWirtschaft(++rundencount, manager, arzt);
 		return rundeManager.toString();
 	}
 
@@ -50,7 +63,9 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String kaufeGeraet(@PathParam("geraet") String geraet) {
 		GeraetGekauft gekauft = new GeraetGekauft(rundeManager.kaufeGeraet(geraet), 1000);
-
+		if (EAufgaben.GREAET_KAUFEN.equals(rundeManager.getAufgabe().getAufgabe())) {
+			rundeManager.getAufgabe().erledigt();
+		}
 		return gekauft.toString();
 	}
 
@@ -76,6 +91,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/interview/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String interview(@PathParam("antwortID") String antwortID) {
+		// bei letzter Antwort prüfen ob Inerview die aufgabe war ind wenn ja
+		// auf aufgabe.erledigt() ausführen
 
 		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
@@ -89,7 +106,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String haltePressekonferenz() {
 
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.haltePressekonferenz();
 	}
 
 	/**
@@ -124,8 +141,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/getMails")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMails() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		System.out.println(manager.getPosteingang().toString());
+		return manager.getPosteingang().toString();
 	}
 
 	/**
@@ -137,7 +154,16 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMoeglicheSendeMails() {
 
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put(EMoeglicheMails.LOB.name(), EMoeglicheMails.LOB.getMailText());
+		objectNode.put(EMoeglicheMails.ABMAHNUNG.name(), EMoeglicheMails.ABMAHNUNG.getMailText());
+		objectNode.put(EMoeglicheMails.GERAET_GEKAUFT.name(), EMoeglicheMails.GERAET_GEKAUFT.getMailText());
+		objectNode.put(EMoeglicheMails.DEFAULT_MAIL.name(), EMoeglicheMails.DEFAULT_MAIL.getMailText());
+
+		return objectNode.toString();
+
 	}
 
 	/**
@@ -149,7 +175,7 @@ public class Wirtschaft extends Spiel {
 	@GET
 	@Path("/sendeMail/{mailID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String sendeMail(@PathParam("mailID") int mailID) {
+	public String sendeMail(@PathParam("mailID") String mailID) {
 
 		return rundeManager.sendeMail(mailID);
 	}

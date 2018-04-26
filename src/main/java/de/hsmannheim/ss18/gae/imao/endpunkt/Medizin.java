@@ -8,7 +8,9 @@ import javax.ws.rs.core.MediaType;
 
 import de.hsmannheim.ss18.gae.imao.model.Blutbild;
 import de.hsmannheim.ss18.gae.imao.model.Diagnose;
+import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.Krankheit;
+import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Patient;
 import de.hsmannheim.ss18.gae.imao.model.Roentgen;
 import de.hsmannheim.ss18.gae.imao.model.SpielrundeMedizin;
@@ -35,7 +37,13 @@ public class Medizin extends Spiel {
 	@Path("/neueRunde")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String neueRunde() {
-		rundeArzt = new SpielrundeMedizin(++rundencount);
+		if (arzt == null) {
+			return "Sie Haben keinen Arzt angelegt";
+		}
+		if (manager == null) {
+			manager = new Manager("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+		}
+		rundeArzt = new SpielrundeMedizin(++rundencount, manager, arzt);
 		return rundeArzt.toString();
 	}
 
