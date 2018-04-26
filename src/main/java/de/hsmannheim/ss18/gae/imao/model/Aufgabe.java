@@ -2,12 +2,11 @@ package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.Random;
 
-import de.hsmannheim.ss18.gae.imao.endpunkt.Medizin;
-
 public class Aufgabe {
 	private EAufgaben aufgabe = null;
 	private boolean erledigt = false;
-	private long rufschaden = 0;
+	private int rufschaden = 0;
+	private Mail aufgabenMail;
 
 	public Aufgabe() {
 		neueAufgabe();
@@ -43,7 +42,7 @@ public class Aufgabe {
 	}
 
 	private void sendeAufgabenMail() {
-		Medizin.getManager().erhalteMail(new Mail("CHEF", aufgabe.getAufgabeText()));
+		aufgabenMail = new Mail("CHEF", aufgabe.getAufgabeText());
 	}
 
 	public void erledigt() {
@@ -54,12 +53,16 @@ public class Aufgabe {
 		return erledigt;
 	}
 
-	public long getRufschaden() {
+	public int getRufschaden() {
 		return rufschaden;
 	}
 
 	public EAufgaben getAufgabe() {
 		return aufgabe;
+	}
+
+	public Mail getAufgabenMail() {
+		return aufgabenMail;
 	}
 
 }

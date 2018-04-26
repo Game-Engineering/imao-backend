@@ -1,7 +1,9 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,22 +11,30 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class Manager extends Person {
 	private List<Mail> posteingang = new ArrayList<>();
 	private List<Mail> postausgang = new ArrayList<>();
-	private long budget;
-	private long ruf;
+	private Map<String, Integer> einnahmen = new HashMap<>();
+	private Map<String, Integer> ausgaben = new HashMap<>();
+	private Map<String, Integer> rufzuwachs = new HashMap<>();
+	private Map<String, Integer> rufverlust = new HashMap<>();
+	private int rufbilanz = 0;
+	private int budgetbilanz = 0;
+	private int budget = 0;
+	private int ruf = 0;
 
 	public Manager(String vorname, String nachname, EGeschlecht geschlecht) {
 		super(vorname, nachname, geschlecht);
 	}
 
-	public void rundenanfang(List<Mail> neueMails, long budget, long ruf) {
+	public void rundenanfang(List<Mail> neueMails) {
 		posteingang.addAll(neueMails);
-		this.budget += budget;
-		this.ruf += ruf;
-
+		einnahmen.clear();
+		ausgaben.clear();
+		rufzuwachs.clear();
+		rufverlust.clear();
+		rufbilanz = 0;
+		budgetbilanz = 0;
 	}
 
 	public void erhalteMail(Mail mail) {
-		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		this.posteingang.add(mail);
 	}
 
@@ -44,20 +54,36 @@ public class Manager extends Person {
 		return objectNode.toString();
 	}
 
+	public void einnahme(String grund, int budget) {
+		this.budget += budget;
+		budgetbilanz += budget;
+		einnahmen.put(grund, budget);
+	}
+
+	public void ausgabe(String grund, int budget) {
+		this.budget -= budget;
+		budgetbilanz -= budget;
+		ausgaben.put(grund, budget);
+	}
+
+	public void rufZuwachs(String grund, int ruf) {
+		this.ruf += ruf;
+		rufbilanz += ruf;
+		rufzuwachs.put(grund, ruf);
+	}
+
+	public void rufVerlust(String grund, int ruf) {
+		this.ruf -= ruf;
+		rufbilanz -= ruf;
+		rufverlust.put(grund, ruf);
+	}
+
 	public long getBudget() {
 		return budget;
 	}
 
-	public void setBudget(long budget) {
-		this.budget = budget;
-	}
-
 	public long getRuf() {
 		return ruf;
-	}
-
-	public void setRuf(long ruf) {
-		this.ruf = ruf;
 	}
 
 	public List<Mail> getPosteingang() {
@@ -66,6 +92,30 @@ public class Manager extends Person {
 
 	public List<Mail> getPostausgang() {
 		return postausgang;
+	}
+
+	public Map<String, Integer> getEinnahmen() {
+		return einnahmen;
+	}
+
+	public Map<String, Integer> getAusgaben() {
+		return ausgaben;
+	}
+
+	public Map<String, Integer> getRufzuwachs() {
+		return rufzuwachs;
+	}
+
+	public Map<String, Integer> getRufverlust() {
+		return rufverlust;
+	}
+
+	public int getRufbilanz() {
+		return rufbilanz;
+	}
+
+	public int getBudgetbilanz() {
+		return budgetbilanz;
 	}
 
 }

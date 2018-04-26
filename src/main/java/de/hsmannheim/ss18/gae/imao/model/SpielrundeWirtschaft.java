@@ -1,28 +1,48 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class SpielrundeWirtschaft extends Spielrunde {
 	private Aufgabe aufgabe = null;
+	private String arztbericht;
+	private String budgetbericht;
 
-	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt) {
+	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt, Aufgabe aufgabe) {
 		super(runde, manager, arzt);
+		this.aufgabe = aufgabe;
 		erzeugeNeueRunde();
 	}
 
 	@Override
 	protected void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
-		long neuerRuf = manager.getRuf();
 		if (aufgabe != null) {
 			if (!aufgabe.isErledigt()) {
-				neuerRuf -= aufgabe.getRufschaden();
+				manager.rufVerlust("Nicht erfüllte Aufgabe", aufgabe.getRufschaden());
 			}
 		}
-		manager.setBudget(1000);
-		manager.setRuf(neuerRuf);
 		aufgabe = new Aufgabe();
+		List<Mail> mails = new ArrayList<>();
+		mails.add(aufgabe.getAufgabenMail());
+		if (runde == 1) {
+			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilfe, ich versinke im Chaos!!!"));
+		}
+		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();
+		while (it.hasNext()) {
+			Untersuchungsmethode m = it.next();
+			if (m.isFreigeschaltet()) {
+				manager.ausgabe(m.getName() + " Unterhalt", m.getUnterhaltsKosten());
+			}
+		}
+		manager.einnahme("Sponsor 1", 10000);
+		getBerichteVonLetzterRunde();
+		manager.rundenanfang(mails);
+
 	}
 
 	public String sendeMail(String ID) {
@@ -57,11 +77,53 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	}
 
 	public String haltePressekonferenz() {
-		manager.setRuf(manager.getRuf() + 10);
+		manager.rufZuwachs("Pressekonferenz", 10);
+		manager.ausgabe("Pressekonferenz", 50);
 		if (EAufgaben.PRESSEKONFERENZ.equals(aufgabe.getAufgabe())) {
 			aufgabe.erledigt();
 		}
 		return "Eine Pressekonferenz wurde gehalten Ihr Ruf ist um 10 Gestiegen";
+	}
+
+	public List<Untersuchungsmethode> kaufeGeraet(String geraet) {
+		Iterator<Untersuchungsmethode> iterator = untersuchungsmethoden.iterator();
+		while (iterator.hasNext()) {
+			Untersuchungsmethode methode = iterator.next();
+			if (geraet.equals(methode.getName())) {
+
+				manager.ausgabe(methode.getName() + " gekauft", methode.getAnschaffungsKosten());
+				methode.setFreigeschaltet(true);
+			}
+		}
+
+		if (EAufgaben.GREAET_KAUFEN.equals(aufgabe.getAufgabe())) {
+			aufgabe.erledigt();
+		}
+		return untersuchungsmethoden;
+	}
+
+	private void getBerichteVonLetzterRunde() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ObjectNode budget = mapper.createObjectNode();
+		budget.put("einnahmen", manager.getEinnahmen().toString());
+		budget.put("ausgaben", manager.getAusgaben().toString());
+		budget.put("rufzuwachs", manager.getRufzuwachs().toString());
+		budget.put("rufverlust", manager.getRufverlust().toString());
+		budget.put("Rufbilanz", manager.getRufbilanz());
+		budget.put("Gesamtausgaben", manager.getBudgetbilanz());
+		budgetbericht = budget.toString();
+
+		ObjectNode medBericht = mapper.createObjectNode();
+		medBericht.put("ausgaben", arzt.getAusgaben().toString());
+		medBericht.put("rufzuwachs", arzt.getRufzuwachs().toString());
+		medBericht.put("rufverlust", arzt.getRufverlust().toString());
+		medBericht.put("erfolgreich behandelte Patienten", 8);
+		medBericht.put("nicht erfolgreich behandelte Patienten", 4);
+		medBericht.put("nicht behandelte Patienten", 6);
+		medBericht.put("Rufbilanz", -60);
+		medBericht.put("Gesamtausgaben", 120);
+		arztbericht = medBericht.toString();
 	}
 
 	@Override
@@ -80,6 +142,14 @@ public class SpielrundeWirtschaft extends Spielrunde {
 
 	public Aufgabe getAufgabe() {
 		return aufgabe;
+	}
+
+	public String getArztbericht() {
+		return arztbericht;
+	}
+
+	public String getBudgetbericht() {
+		return budgetbericht;
 	}
 
 }

@@ -5,9 +5,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Untersuchungsmethode {
 	private String name;
-	private long behandlungsKosten;
-	private long anschaffungsKosten;
-	private long unterhaltsKosten;
+	private int behandlungsKosten;
+	private int anschaffungsKosten;
+	private int unterhaltsKosten;
 	private boolean freigeschaltet;
 
 	public Untersuchungsmethode() {
@@ -40,19 +40,19 @@ public class Untersuchungsmethode {
 		return name;
 	}
 
-	public long getBehandlungsKosten() {
+	public int getBehandlungsKosten() {
 		return behandlungsKosten;
 	}
 
-	public void setBehandlungsKosten(long kosten) {
+	public void setBehandlungsKosten(int kosten) {
 		this.behandlungsKosten = kosten;
 	}
 
-	public long getAnschaffungsKosten() {
+	public int getAnschaffungsKosten() {
 		return anschaffungsKosten;
 	}
 
-	public void setAnschaffungsKosten(long anschaffungsKosten) {
+	public void setAnschaffungsKosten(int anschaffungsKosten) {
 		this.anschaffungsKosten = anschaffungsKosten;
 	}
 
@@ -64,11 +64,11 @@ public class Untersuchungsmethode {
 		this.freigeschaltet = freigeschaltet;
 	}
 
-	public long getUnterhaltsKosten() {
+	public int getUnterhaltsKosten() {
 		return unterhaltsKosten;
 	}
 
-	public void setUnterhaltsKosten(long unterhaltsKosten) {
+	public void setUnterhaltsKosten(int unterhaltsKosten) {
 		this.unterhaltsKosten = unterhaltsKosten;
 	}
 

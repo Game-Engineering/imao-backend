@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public enum EMoeglicheMails {
 	LOB("Gut gemacht. Weiter so!"),
-	ABMAHNUNG("Schlimm, schlimm, schlimm. Hören Sie auf leute umzubirngen, sonst sind Sie gefeuert!"),
+	ABMAHNUNG("Schlimm, schlimm, schlimm. Hören Sie auf leute umzubringen, sonst sind Sie gefeuert!"),
 	GERAET_GEKAUFT("Ich habe ein neues Gerät für Sie gekauft."), 
 	DEFAULT_MAIL("JVBERi0xLjQNJeLjz9MNCjQgMCBvYmoNPDwvTGluZWFyaXplZCAxL0wgMTUzODA4L08gNi9FIDE0"
 					+ "OTgxNC9OIDEvVCAxNTM2MDkvSCBbIDc3NiAxODFdPj4NZW5kb2JqDSAgICAgICAgICAgICAgICAg"

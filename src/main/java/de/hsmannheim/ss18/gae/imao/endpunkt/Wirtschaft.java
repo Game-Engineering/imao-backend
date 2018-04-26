@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import de.hsmannheim.ss18.gae.imao.model.Arzt;
-import de.hsmannheim.ss18.gae.imao.model.EAufgaben;
+import de.hsmannheim.ss18.gae.imao.model.Aufgabe;
 import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
@@ -20,6 +20,7 @@ import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 public class Wirtschaft extends Spiel {
 	private static int rundencount = 0;
 	private static SpielrundeWirtschaft rundeManager;
+	private static Aufgabe aufgabe = null;
 
 	/**
 	 * 
@@ -34,8 +35,40 @@ public class Wirtschaft extends Spiel {
 		}
 		if (arzt == null) {
 			arzt = new Arzt("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+			arzt.getAusgaben().put("Blutbild Patient 1", 10);
+			arzt.getAusgaben().put("Blutbild Patient 2", 10);
+			arzt.getAusgaben().put("Blutbild Patient 3", 10);
+			arzt.getAusgaben().put("Blutbild Patient 4", 10);
+			arzt.getAusgaben().put("Blutbild Patient 5", 10);
+			arzt.getAusgaben().put("Blutbild Patient 6", 10);
+			arzt.getAusgaben().put("Blutbild Patient 7", 10);
+			arzt.getAusgaben().put("Blutbild Patient 8", 10);
+			arzt.getAusgaben().put("Blutbild Patient 9", 10);
+			arzt.getAusgaben().put("Blutbild Patient 10", 10);
+			arzt.getAusgaben().put("Blutbild Patient 11", 10);
+			arzt.getAusgaben().put("Blutbild Patient 12", 10);
+			arzt.getRufzuwachs().put("Patient 1 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 3 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 5 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 8 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 9 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 11 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 12 erfolgreich behandelt", 5);
+			arzt.getRufzuwachs().put("Patient 13 erfolgreich behandelt", 5);
+			arzt.getRufverlust().put("Patient 2 nicht erfolgreich behandelt", 10);
+			arzt.getRufverlust().put("Patient 4 nicht erfolgreich behandelt", 10);
+			arzt.getRufverlust().put("Patient 6 nicht erfolgreich behandelt", 10);
+			arzt.getRufverlust().put("Patient 7 nicht behandelt", 10);
+			arzt.getRufverlust().put("Patient 10 nichterfolgreich behandelt", 10);
+			arzt.getRufverlust().put("Patient 14 nicht behandelt", 10);
+			arzt.getRufverlust().put("Patient 15 nicht behandelt", 10);
+			arzt.getRufverlust().put("Patient 16 nicht behandelt", 10);
+			arzt.getRufverlust().put("Patient 17 nicht behandelt", 10);
+			arzt.getRufverlust().put("Patient 18 nicht behandelt", 10);
+
 		}
-		rundeManager = new SpielrundeWirtschaft(++rundencount, manager, arzt);
+		rundeManager = new SpielrundeWirtschaft(++rundencount, manager, arzt, aufgabe);
+		aufgabe = rundeManager.getAufgabe();
 		return rundeManager.toString();
 	}
 
@@ -63,9 +96,6 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String kaufeGeraet(@PathParam("geraet") String geraet) {
 		GeraetGekauft gekauft = new GeraetGekauft(rundeManager.kaufeGeraet(geraet), 1000);
-		if (EAufgaben.GREAET_KAUFEN.equals(rundeManager.getAufgabe().getAufgabe())) {
-			rundeManager.getAufgabe().erledigt();
-		}
 		return gekauft.toString();
 	}
 
@@ -118,7 +148,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBudgetbreicht() {
 
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.getBudgetbericht();
 	}
 
 	/**
@@ -130,7 +160,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getArztbreicht() {
 
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.getArztbericht();
 	}
 
 	/**

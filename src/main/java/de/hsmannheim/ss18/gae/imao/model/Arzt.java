@@ -1,7 +1,9 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -9,8 +11,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class Arzt extends Person {
 	private List<Mail> posteingang = new ArrayList<>();
 	private List<Mail> postausgang = new ArrayList<>();
-	private long budget;
-	private long ruf;
+	private Map<String, Integer> rufzuwachs = new HashMap<>();
+	private Map<String, Integer> rufverlust = new HashMap<>();
+	private Map<String, Integer> ausgaben = new HashMap<>();
+	private int budget;
+	private int ruf;
 
 	/**
 	 * 
@@ -45,7 +50,7 @@ public class Arzt extends Person {
 		return budget;
 	}
 
-	public void setBudget(long budget) {
+	public void setBudget(int budget) {
 		this.budget = budget;
 	}
 
@@ -53,8 +58,20 @@ public class Arzt extends Person {
 		return ruf;
 	}
 
-	public void setRuf(long ruf) {
+	public void setRuf(int ruf) {
 		this.ruf = ruf;
+	}
+
+	public Map<String, Integer> getRufzuwachs() {
+		return rufzuwachs;
+	}
+
+	public Map<String, Integer> getRufverlust() {
+		return rufverlust;
+	}
+
+	public Map<String, Integer> getAusgaben() {
+		return ausgaben;
 	}
 
 }

@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class SpielrundeMedizin extends Spielrunde {
 
+	private String nachricht;
 	private Patient inZelt;
 	private List<Patient> wartendePatienten = new ArrayList<>();
 	private List<Patient> behandeltePatienten = new ArrayList<>();
@@ -165,10 +166,10 @@ public class SpielrundeMedizin extends Spielrunde {
 
 		ObjectNode objectNode = mapper.createObjectNode();
 		objectNode.put("budget", arzt.getBudget());
-		objectNode.put("nachricht", nachricht);
+		objectNode.put("nachricht", this.nachricht);
 		objectNode.put("ruf", arzt.getRuf());
-		objectNode.put("runde", runde);
-		objectNode.put("wartendePatienten", wartendePatienten.size());
+		objectNode.put("runde", this.runde);
+		objectNode.put("wartendePatienten", this.wartendePatienten.size());
 
 		List<Map<String, Integer>> patienten = new ArrayList<>();
 		for (Patient patient : wartendePatienten) {
