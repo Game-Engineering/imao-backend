@@ -35,7 +35,7 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/getRoentgen/0\">localhost:8080/imao/api/spiel/medizin/getRoentgen/0</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/getKatalog\">localhost:8080/imao/api/spiel/medizin/getKatalog</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/getUntersuchungsmethoden\">localhost:8080/imao/api/spiel/medizin/getUntersuchungsmethoden</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/diagnose/KrankheitID\">localhost:8080/imao/api/spiel/medizin/diagnose/KrankheitID</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/diagnose/0/2\">localhost:8080/imao/api/spiel/medizin/diagnose/PatientID/KrankheitID</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/medizin/getAlleKrankheiten\">localhost:8080/imao/api/spiel/medizin/getAlleKrankheiten</a><br>"
 				+ "<h4>Manager:</h4>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/neueRunde\">localhost:8080/imao/api/spiel/wirtschaft/neueRunde</a><br>"
