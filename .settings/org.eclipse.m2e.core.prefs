@@ -1,4 +1,4 @@
-activeProfiles=
+activeProfiles=junit, jackson, javadoc
 eclipse.preferences.version=1
 resolveWorkspaceProjects=true
 version=1

@@ -4,25 +4,56 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Roentgen {
-	private int patientID;
+	private Krankheit krankheit;
 	private int roentgenID;
 
-	private final int ROENTGEN_GESUND = 0;
-	private final int ROENTGEN_K1 = 1;
-	private final int ROENTGEN_K2 = 2;
-	private final int ROENTGEN_K3 = 3;
-	private final int ROENTGEN_K4 = 4;
-	private final int ROENTGEN_K5 = 5;
-	private final int ROENTGEN_K6 = 6;
+	private static final int ROENTGEN_GESUND = 0;
+	private static final int ROENTGEN_K1 = 1;
+	private static final int ROENTGEN_K2 = 2;
+	private static final int ROENTGEN_K3 = 3;
+	private static final int ROENTGEN_K4 = 4;
+	private static final int ROENTGEN_K5 = 5;
+	private static final int ROENTGEN_K6 = 6;
 
 	/**
 	 * 
-	 * @param int
-	 *            patientID
+	 * @param krankheit
 	 */
-	public Roentgen(int patientID, int roentgenID) {
-		this.patientID = patientID;
-		this.roentgenID = roentgenID;
+	public Roentgen(Krankheit krankheit) {
+		//TODO reduziere Budget
+		this.krankheit = krankheit;
+		switch (krankheit.getKrankheit()) {
+		case MASERN:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case CHOLERA:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case BILHARZIOSE:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case HIV:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case HAUTLEISHMANIASIS:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case HEP_A:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case HEP_B:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case TETANUS:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case GELBFIEBER:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		case DENGUE_FIEBER:
+			this.roentgenID = ROENTGEN_GESUND;
+			break;
+		}
 	}
 
 	@Override
