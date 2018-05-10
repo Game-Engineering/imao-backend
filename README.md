@@ -1,15 +1,18 @@
 ﻿# Lokale Installation
-1. File -> Import -> Maven -> Existing Maven Projects -> Next
-2. Browse -> imao-backend -> Ok -> Finish
-3. Rechtsklick auf imao-backend -> Maven -> Update Project -> Haken bei imao-backend -> Ok
-4. Window -> Preferences -> Server -> Runtime Environments -> Add -> GlassFish (Haken bei Create a new local server) -> Next ->
-  -> Bei GlassFish location den heruntergeladenen Ordner auswählen (der Ordner, der den bin ordner enthält), z.B. C:\Users\shish\Downloads\glassfish-5.0\glassfish5
+Einige Schritte könnten bereits automatisch erfolgt sein. In Schritt 3 wird manchmal Glassfish nicht direkt angezeigt. Das System neu starten könnte abhilfe schaffen. Irgendwann taucht es dann von alleine auf. 
+
+0. Glassfish laden (Backend->Glassfish-4.1.2.zip): https://drive.google.com/drive/folders/1rh7hl3w-4DVOCfcjfwYi4SxY9XDq9CQb?usp=sharing
+0. Projekt aus GitHub clonen: https://github.com/Game-Engineering/imao-backend.git
+1. File -> Import -> Maven -> Existing Maven Projects -> Next -> Browse -> .../imao-backend -> Ok -> Finish
+2. Rechtsklick auf imao-backend -> Maven -> Update Project -> Haken bei imao-backend -> Ok
+3. Window -> Preferences -> Server -> Runtime Environments -> Add -> GlassFish (Haken bei Create a new local server) -> Next ->
+  -> Bei GlassFish location den heruntergeladenen Ordner auswählen (der Ordner, der den bin ordner enthält), z.B. C:\Users\shish\Downloads\glassfish-4.1.2\glassfish4
   -> Bei Java location den Ordner der installierten JDK auswählen, z.B. C:\Program Files\Java\jdk1.8.0_131
   -> Next -> Unten Haken bei Use JAR archives for deployment -> Finish -> Ok
-5. Rechtsklick auf das Projekt (imao-backend) -> Properties -> Targeted Runtimes -> Haken bei GlassFish 5 -> Apply
-6. Java Compiler -> Haken bei Enable project specific settings -> Kein Haken bei Use Compliance from... -> Compiler compliance level auf 1.8 stellen -> Apply and Close -> Yes (Wenn Fehler: Schritt 3 wiederholen)
-7. Rechtsklick auf das Projekt (imao-backend) -> Run as -> Run on Server -> GlassFish 5 auswählen -> Next -> Sicherstellen dass imao-backend in der rechten Spalte ist -> Finish
-8. http://localhost:8080/imao/api/spiel/
+4. Rechtsklick auf das Projekt (imao-backend) -> Properties -> Targeted Runtimes -> Haken bei GlassFish 4 -> Apply
+5. Java Compiler -> Haken bei Enable project specific settings -> Kein Haken bei Use Compliance from... -> Compiler compliance level auf 1.8 stellen -> Apply and Close -> Yes (Wenn Projekt Fehler anzeigt: Schritt 2 wiederholen)
+6. Rechtsklick auf das Projekt (imao-backend) -> Run as -> Run on Server -> GlassFish 4 auswählen -> Next -> Sicherstellen dass imao-backend in der rechten Spalte ist -> Finish
+7. http://localhost:8080/imao/api/spiel/
   -> Ausgabe sollte sein "It works"
 
 
