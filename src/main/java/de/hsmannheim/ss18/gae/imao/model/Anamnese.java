@@ -15,6 +15,8 @@ public class Anamnese {
 	private ESymptom[] bekannteSymtome = {};
 	private String antwort = "";
 	private String weitereOption = null;
+	private int schmerzFürLetztesSymptom;
+	private int dauerFürLetztesSymptom;
 
 	private static final String DIALOG_1_FRAGE_1 = "Wie lange haben Sie ihre Beschwerden schon?";
 	private static final String DIALOG_1_FRAGE_2 = "Und auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?";
@@ -76,17 +78,16 @@ public class Anamnese {
 			Random rand1 = new Random();
 			int randomNum1 = rand1.nextInt((max1 - min1) + 1) + min1;
 			// TODO anpassen an Syndrom
-			antwort = "Es geht mir schon seit " + randomNum1 + " Tagen so.";
+			antwort = "Es geht mir schon seit " + dauerFürLetztesSymptom + " Tagen so.";
 			this.weitereOption = null;
 			entferneFrage(frage);
 			break;
 		case DIALOG_1_FRAGE_2:
 			int min2 = 1;
 			int max2 = 10;
-			Random rand2 = new Random();
-			int randomNum2 = rand2.nextInt((max2 - min2) + 1) + min2;
+			
 			// TODO anpassen an Syndrom
-			antwort = "Auf einer Skala von 1-10 würde ich sagen… " + randomNum2;
+			antwort = "Auf einer Skala von 1-10 würde ich sagen… " + schmerzFürLetztesSymptom;
 			this.weitereOption = null;
 			entferneFrage(frage);
 			break;
@@ -94,13 +95,14 @@ public class Anamnese {
 			// TODO frage 1 und 2 hinzufügen wenn nötig
 			if (this.verfügbareSymptome.length > 0) {
 				entferneSymptom();
-				antwort += "Ja, ich habe auch noch " + symptomText() + ".";
+				antwort += symptomText();
 				// System.out.println("*******************Versuche Frage 1 hinzuzufügen");
 				addFrage(DIALOG_1_FRAGE_1);
 				// System.out.println("*******************Versuche Frage 2 hinzuzufügen");
 				addFrage(DIALOG_1_FRAGE_2);
 			} else {
 				antwort = "Nein, das war es.";
+				entferneFrage(frage);
 			}
 			this.weitereOption = null;
 			// NOTE frage wird nicht entfernt
@@ -131,109 +133,175 @@ public class Anamnese {
 	}
 
 	private String symptomText() {
+		Random rand2 = new Random();
 		String antwort = "";
 
 		switch (this.letztesSymtom) {
 		case JUCKREITZ:
-			antwort = "Juckreitz";
+			antwort = "Ich habe ein Jucken.";
+			dauerFürLetztesSymptom = rand2.nextInt((7 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case FIEBER_NORMAL:
-			antwort = "Fieber";
+			antwort = "Mir ist sehr warm, ich glaube ich habe Fieber.";
+			dauerFürLetztesSymptom = rand2.nextInt((7 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case FIEBER_LANG:
-			antwort = "Fieber";
-			// TODO zeit 7 tage +
+			antwort = "Ja, ich habe schon seit längerem Fieber.";
+			dauerFürLetztesSymptom = rand2.nextInt((14 - 7) + 1) + 7;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case FIEBER_HOCH_WECHSELHAFT:
-			antwort = "sehr hohes Fieber";
+			antwort = "Mir ist sehr warm, dass muss Fieber sein.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((10 - 5) + 1) + 5;
 			break;
 		case HARNWEGSBEFALL:
-			antwort = "Harnwegsbefall";
+			antwort = "Harnwegsbefall [Hier fehlt noch der Passende Text]";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case EINSTICHSTELLE_KNOETCHENBILDUNG:
-			antwort = "Knötchenbildung Einstichstelle";
+			antwort = "Ich habe hier eine stelle, an der ich, glaube ich gestochen wurde.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case EINSTICHSTELLE_BEULE:
-			antwort = "große Beule Einstichstelle";
-			// TODO zeit nach ein paar wochen
+			antwort = "Ich habe hier eine größe Beule, an der ich vor ein paar Wochen gestochen wurde.";
+			dauerFürLetztesSymptom = rand2.nextInt((20 - 10) + 1) + 7;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case HUSTEN:
-			antwort= "Husten";
+			antwort= "*HUST* Ich habe *Hust* Husten.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case SCHNUPFEN:
-			antwort = "Schnupfen";
+			antwort = "*Schnief* Meine Nase hört nicht auf zu laufen *Schnief*, ich glaue ich habe Schnupfen. ";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case BINDEHAUTENTZUENDUNG:
-			antwort = "Bindehautentzündung";
+			antwort = "Meine Augen brennen und sind ganz rot.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case DURCHFALL:
-			antwort = "Durchfall";
+			antwort = "Ich habe Durchfall";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case BRECHDURCHFALL:
-			antwort = "Reiswasserartiger Brechdurchfall";
+			antwort = "Ich habe Durchfall und muss mich ab und zu übergeben.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case MUEDIGKEIT:
-			antwort = "Müdigkeit";
+			antwort = "*Gähn* Ich bin immer so müde.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case ERBRECHEN_UEBELKEIT:
-			antwort = "Übelkeit und Erbrechen";
+			antwort = "Mir ist total übel";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case ERBRECHEN_BLUT:
-			antwort = "Bluterbrechen";
+			antwort = "Wenn ich mich übergebe, dann breche ich auch Blut.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case VOELLEGEFUEHL:
-			antwort = "ein Völlegefühl";
+			antwort = "Ich habe ein Völlegefühl";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case HAUT_GELB:
-			antwort = "gelbe Haut";
+			antwort = "Sehen sie das nicht? Meine Haut ist total gelb.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case AUGEN_GELBFAERBUNG:
-			antwort = "eine Gelbfärbung der Skleren der Augen";
+			antwort = "Schauen Sie mir mal in die Augen, die müssten Gelb sein.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case URIN_BRAUN:
-			antwort = "braunen Urin";
+			antwort = "Mein Urin sieht komisch aus, der ist braun.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case STUHL_HELL:
-			antwort = "eine Hellfärbung des Stuhls";
+			antwort = "Mein STuhlgang ist merkwürdig hell.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case MUSKELSCHMERZEN:
-			antwort = "Muskelschmerzen";
+			antwort = "Meine Muskeln schmerzen.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case KIEFERSPERRE:
-			antwort = "eine Kiefersperre";
+			antwort = "Es tut weh, wenn ich den Mund bewege.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case SCHLUCKSTOERUNG:
-			antwort = "Schluckstörung";
+			antwort = "Ich kann nicht mehr so gut schlucken.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case ATEMSTOERUNG:
-			antwort = "Atemstörung";
+			antwort = "Das Atmen fällt mir schwer.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case GESICHTSMUSKELKRAEMPFE:
-			antwort = "Gesichtsmuskelkrämpfe";
+			antwort = "Ich habe manchmal einen Krampf im Gesicht.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case BLUTUNG:
-			antwort = "Blutung der Haut";
+			antwort = "Schauen Sie mal hier, ich habe hier eine Blutung.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case SCHUETTELFROST:
-			antwort = "Schüttelfrost";
+			antwort = "Mir ist immer so kalt.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case GELENKSCHMERZEN:
-			antwort = "Gelenkschmerzen";
+			antwort = "Meine Gelenke tuhen weh.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case PULS_NIEDRIG:
-			antwort = "einen niedrigen Puls";
+			antwort = "Ich glaube mein Puls ist nicht normal, das sollten Sie sich mal ansehen.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case NACHTSCHWEIS:
-			antwort = "Nachtschweiß";
+			antwort = "Ich schwitze nachts immer so doll.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case LYMPHKNOTEN_GESCHWOLLEN:
-			antwort = "geschwollene Lymphknoten";
+			antwort = "geschwollene Lymphknoten [Hier fehlt noch der Passende Text]";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case GEWICHTSVERLUST:
-			antwort = "Gewichtsverlust";
+			antwort = "Ich habe in den letzten Tagen stark abgenommen.";
+			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
+			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 
 		default:
+			antwort = "Etwas ist schiefgelaufen [Anamnese.java:symptomText()].";
+			dauerFürLetztesSymptom = 0;
+			schmerzFürLetztesSymptom = 0;
 			break;
 		}
 		return antwort;
