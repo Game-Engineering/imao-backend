@@ -61,7 +61,7 @@ public class Anamnese {
 		objectNode.put("name", "Anamnese");
 		objectNode.put("krankheitDEBUG", krankheit.getKrankheit().toString());
 		objectNode.put("antwort", this.antwort);
-		objectNode.put("fragen", arrayNode);
+		objectNode.set("fragen", arrayNode);
 		objectNode.put("option", this.weitereOption);
 
 		return objectNode.toString();
@@ -73,26 +73,17 @@ public class Anamnese {
 
 		switch (frage) {
 		case DIALOG_1_FRAGE_1:
-			int min1 = 1;
-			int max1 = 10;
-			Random rand1 = new Random();
-			int randomNum1 = rand1.nextInt((max1 - min1) + 1) + min1;
-			// TODO anpassen an Syndrom
 			antwort = "Es geht mir schon seit " + dauerFürLetztesSymptom + " Tagen so.";
 			this.weitereOption = null;
 			entferneFrage(frage);
 			break;
 		case DIALOG_1_FRAGE_2:
-			int min2 = 1;
-			int max2 = 10;
-			
-			// TODO anpassen an Syndrom
+
 			antwort = "Auf einer Skala von 1-10 würde ich sagen… " + schmerzFürLetztesSymptom;
 			this.weitereOption = null;
 			entferneFrage(frage);
 			break;
 		case DIALOG_1_FRAGE_3:
-			// TODO frage 1 und 2 hinzufügen wenn nötig
 			if (this.verfügbareSymptome.length > 0) {
 				entferneSymptom();
 				antwort += symptomText();
