@@ -64,10 +64,10 @@ public class Spiel extends ResourceConfig {
 		if ("arzt".equals(type)) {
 			if (arzt != null) {
 				einleitung = "<h1>Willkommen bei IMAO<h1>"
-						+ "<h3>Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verfügung,<br>"
-						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie möglich.<br>"
+						+ "<h3>Sie sind gerade in Ihrem Zelt (in der W&uuml;ste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verf&uuml;gung,<br>"
+						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie m&ouml;glich.<br>"
 						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation.<br>"
-						+ "Wenn Sie neue Gerätschaften benötigen können Sie diese bei ihrem Manager anfordern.<br>"
+						+ "Wenn Sie neue Gerätschaften benö&ouml;tigen können Sie diese bei ihrem Manager anfordern.<br>"
 						+ "<br>Viel Erfolg<br>" + "Ihr IMAO Team</h3>";
 			} else {
 				einleitung = "bitte erzeugen Sie zuerst einen Arzt";
@@ -76,8 +76,8 @@ public class Spiel extends ResourceConfig {
 			if (manager != null) {
 				einleitung = "<h1>Willkommen bei IMAO<h1>"
 						+ "<h3>Sie haben gerade Ihren neuen Job bei IMAO begonnen.<br>"
-						+ "Ihr vorgänger hat ziemlich Schlecht gewirtschaftet.<br>"
-						+ "Sie haben nur ein Camp, das nicht besonders gut ausgreüstet ist.<br>"
+						+ "Ihr vorg&oauml;nger hat ziemlich Schlecht gewirtschaftet.<br>"
+						+ "Sie haben nur ein Camp, das nicht besonders gut ausgre&uuml;stet ist.<br>"
 						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor.<br>"
 						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus.<br>"
 						+ "<br>Viel Erfolg<br>" + "Ihr IMAO Team</h3>";

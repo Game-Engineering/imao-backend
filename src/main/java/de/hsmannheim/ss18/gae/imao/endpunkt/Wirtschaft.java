@@ -172,7 +172,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMails() {
 		System.out.println(manager.getPosteingang().toString());
-		return manager.getPosteingang().toString();
+		return "{ \"mailliste\" :" + manager.getPosteingang().toString() + "}";
 	}
 
 	/**
@@ -192,7 +192,7 @@ public class Wirtschaft extends Spiel {
 		objectNode.put(EMoeglicheMails.GERAET_GEKAUFT.name(), EMoeglicheMails.GERAET_GEKAUFT.getMailText());
 		objectNode.put(EMoeglicheMails.DEFAULT_MAIL.name(), EMoeglicheMails.DEFAULT_MAIL.getMailText());
 
-		return objectNode.toString();
+		return "{ \"moeglicheMails\" :" + objectNode.toString() + "}";
 
 	}
 
