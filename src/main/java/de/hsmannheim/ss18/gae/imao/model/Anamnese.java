@@ -35,7 +35,7 @@ public class Anamnese {
 			//this.letztesSymtom=this.verfügbareSymptome[0];
 			entferneSymptom();
 		}
-		this.antwort = "Hello! Ich habe " + symptomText();
+		this.antwort = "Hallo! " + symptomText();
 		this.weitereOption=null;
 		return erstelleJSON();
 	}
