@@ -1,5 +1,5 @@
 ﻿# Lokale Installation
-Einige Schritte könnten bereits automatisch erfolgt sein. In Schritt 3 wird manchmal Glassfish nicht direkt angezeigt. Das System neu starten könnte abhilfe schaffen. Irgendwann taucht es dann von alleine auf. 
+Einige Schritte könnten bereits automatisch erfolgt sein. In Schritt 3 wird manchmal Glassfish nicht direkt angezeigt. Das System neu starten könnte abhilfe schaffen. Irgendwann taucht es dann von alleine auf.
 
 0. Glassfish laden (Backend->Glassfish-4.1.2.zip): https://drive.google.com/drive/folders/1rh7hl3w-4DVOCfcjfwYi4SxY9XDq9CQb?usp=sharing
 0. Projekt aus GitHub clonen: https://github.com/Game-Engineering/imao-backend.git
@@ -56,7 +56,7 @@ Prof. Dr. Frank Dopatka [23.03.2018 18:23 Uhr via Slack]
 | :mute: | `:mute:` | when Reducing **Logging** |
 | ✨ | `:sparkles:` | **Neue Funktion** |
 | :bulb: | `:bulb:` | Neue **Idea**, mit `@IDEA` Comment Tag |
-| :ribbon: | `:ribbon:`| Vom **Kunden** gewünschte Anpassungen |
+| 🎀 | `:ribbon:`| Vom **Kunden** gewünschte Anpassungen |
 | :snowflake: | `:snowflake:` | changing **Configuration**, Usually together with :penguin: or :ribbon: or :rocket: |
 | :bank: | `:bank:` | **Generic Database** specific (Migrations, Scripts, Extensions, ...) |
 | 🤝 | `:handshake:` | **Merge files** |
