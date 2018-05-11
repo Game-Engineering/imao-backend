@@ -72,5 +72,19 @@ public class Sponsor {
 		this.angeworben=angeworben;
 	}
 
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("ID", this.getSponsorID());
+		objectNode.put("sponsorName", this.getSponsorName());
+		objectNode.put("monatlicherBetrag", this.getMonatlicherBetrag());
+		objectNode.put("benoetigtesAnsehen", this.getBenoetigtesAnsehen());
+		objectNode.put("zeitraum", this.getZeitraum());
+		objectNode.put("absprungansehen", this.getAbsprungansehen());
+		objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus anwerbekosten und -dauer zusammensetzt
+		objectNode.put("angeworben", this.isAngeworben());
+		
+		return objectNode.toString();
+	}
 
 }

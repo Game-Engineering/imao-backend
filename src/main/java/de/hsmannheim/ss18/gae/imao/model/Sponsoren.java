@@ -28,9 +28,8 @@ public class Sponsoren {
 
 		this.sponsoren = new Sponsor[15];
 
-		this.sponsoren[0] = new Sponsor(this.getIdCount(), "Jack Foxskin", 100000, 0, 1, 0, 0, Integer.MIN_VALUE);
+		this.sponsoren[0] = new Sponsor(this.getIdCount(), "Jack Foxskin", 100000, 0, 12, 0, 0, Integer.MIN_VALUE);
 		this.sponsoren[0].setAngeworben(true);
-
 		this.sponsoren[1] = new Sponsor(this.getIdCount(), "Blue Bull", 0, 0, 0, 0, 0, 0);
 		this.sponsoren[2] = new Sponsor(this.getIdCount(), "Engelbert Fasan", 0, 0, 0, 0, 0, 0);
 		this.sponsoren[3] = new Sponsor(this.getIdCount(), "Sachse AG", 1600000, 0, 0, 0, 0, 0);
@@ -74,17 +73,7 @@ public class Sponsoren {
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (ansehen >= this.sponsoren[i].getBenoetigtesAnsehen()) {
-				ObjectNode objectNode = mapper.createObjectNode();
-				objectNode.put("ID", this.sponsoren[i].getSponsorID());
-				objectNode.put("sponsorName", this.sponsoren[i].getSponsorName());
-				objectNode.put("monatlicherBetrag", this.sponsoren[i].getMonatlicherBetrag());
-				objectNode.put("benoetigtesAnsehen", this.sponsoren[i].getBenoetigtesAnsehen());
-				objectNode.put("zeitraum", this.sponsoren[i].getZeitraum());
-				objectNode.put("absprungansehen", this.sponsoren[i].getAbsprungansehen());
-				objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus anwerbekosten und -dauer zusammensetzt
-				objectNode.put("angeworben", this.sponsoren[i].isAngeworben());
-
-				arrayNode.add(objectNode);
+				arrayNode.add(sponsoren[i].toString());
 			}
 		}
 		return arrayNode.toString();
