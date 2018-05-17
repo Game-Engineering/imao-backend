@@ -57,38 +57,51 @@ public class Spiel extends ResourceConfig {
 	}
 
 	@GET
+	@Path("/test")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String test() {
+		return "{OK}";
+	}
+	
+	@GET
 	@Path("/start/{type}")
-	@Produces(MediaType.TEXT_HTML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public String start(@PathParam("type") String type) {
-		String einleitung = "";
+		String ueberschrift = "";
+		String text = "";
 		if ("arzt".equals(type)) {
 			if (arzt != null) {
-				einleitung = "<h1>Willkommen bei IMAO<h1>"
-						+ "<h3>Sie sind gerade in Ihrem Zelt (in der W&uuml;ste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verf&uuml;gung,<br>"
-						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie m&ouml;glich.<br>"
-						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation.<br>"
-						+ "Wenn Sie neue Gerätschaften benö&ouml;tigen können Sie diese bei ihrem Manager anfordern.<br>"
-						+ "<br>Viel Erfolg<br>" + "Ihr IMAO Team</h3>";
+				ueberschrift = "Willkommen bei IMAO";
+				text = "Sie sind gerade in Ihrem Zelt (in der W&uuml;ste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verf&uuml;gung,"
+						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie m&ouml;glich."
+						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation."
+						+ "Wenn Sie neue Gerätschaften benö&ouml;tigen können Sie diese bei ihrem Manager anfordern."
+						+ "Viel Erfolg "
+						+ "Ihr IMAO Team";
 			} else {
-				einleitung = "bitte erzeugen Sie zuerst einen Arzt";
+				ueberschrift = "Fehler";
+				text = "bitte erzeugen Sie zuerst einen Arzt";
 			}
 		} else if ("manager".equals(type)) {
 			if (manager != null) {
-				einleitung = "<h1>Willkommen bei IMAO<h1>"
-						+ "<h3>Sie haben gerade Ihren neuen Job bei IMAO begonnen.<br>"
-						+ "Ihr vorg&oauml;nger hat ziemlich Schlecht gewirtschaftet.<br>"
-						+ "Sie haben nur ein Camp, das nicht besonders gut ausgre&uuml;stet ist.<br>"
-						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor.<br>"
-						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus.<br>"
-						+ "<br>Viel Erfolg<br>" + "Ihr IMAO Team</h3>";
+				ueberschrift = "Willkommen bei IMAO";
+				text = "Sie haben gerade Ihren neuen Job bei IMAO begonnen."
+						+ "Ihr vorg&oauml;nger hat ziemlich Schlecht gewirtschaftet."
+						+ "Sie haben nur ein Camp, das nicht besonders gut ausgre&uuml;stet ist."
+						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor."
+						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus."
+						+ "Viel Erfolg "
+						+ "Ihr IMAO Team";
 			} else {
-				einleitung = "bitte erzeugen Sie zuerst einen Manager";
+				ueberschrift = "Fehler";
+				text = "bitte erzeugen Sie zuerst einen Manager";
 			}
 		} else {
-			return "Den Typ gibe es nicht, bitte geben sie arzt oder manager ein";
+			ueberschrift = "Fehler";
+			text = "Den Typ gibe es nicht, bitte geben sie arzt oder manager ein";
 		}
 
-		return einleitung;
+		return "{\"ueberschrift\" :\""+ueberschrift+" \",\"text\" :\""+text+"\"}";
 	}
 
 	/**

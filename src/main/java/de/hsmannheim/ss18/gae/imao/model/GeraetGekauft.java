@@ -19,8 +19,7 @@ public class GeraetGekauft {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ObjectNode objectNode = mapper.createObjectNode();
-		objectNode.put("budget", this.budget);
-		objectNode.put("wartendePatienten", this.methoden.toString());
+				objectNode.put("methoden", this.methoden.toString());
 
 		return objectNode.toString();
 	}

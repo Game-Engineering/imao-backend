@@ -1,5 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 public class InterviewPartner {
 
 
@@ -50,5 +53,20 @@ public class InterviewPartner {
 	public boolean isVerfuegbar() {
 		return verfuegbar;
 	}
+
+	@Override
+	public String toString() {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("ID", id);
+		objectNode.put("name", name);
+		objectNode.put("maxAnsehen", maxAnsehen);
+		objectNode.put("schwierigkeit",schwierigkeit);
+
+		return objectNode.toString();
+	}
+	
+	
 
 }

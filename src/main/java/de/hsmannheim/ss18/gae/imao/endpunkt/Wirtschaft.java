@@ -1,5 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,6 +17,7 @@ import de.hsmannheim.ss18.gae.imao.model.Aufgabe;
 import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
+import de.hsmannheim.ss18.gae.imao.model.InterviewPartner;
 import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 
 @Path("spiel/wirtschaft")
@@ -77,6 +81,18 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
+	@Path("/getArztDaten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getArztDaten() {
+		
+		return arzt.toString();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
 	@Path("/getKatalog")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getKatalog() {
@@ -97,6 +113,23 @@ public class Wirtschaft extends Spiel {
 	public String kaufeGeraet(@PathParam("geraet") String geraet) {
 		GeraetGekauft gekauft = new GeraetGekauft(rundeManager.kaufeGeraet(geraet), 1000);
 		return gekauft.toString();
+	}
+
+	/**
+	 * 
+	 * @param sponsorID
+	 *            String)
+	 * @return
+	 */
+	@GET
+	@Path("/getInterviewPartner")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getInterviewPartner() {
+		List<InterviewPartner> partnerListe = new ArrayList<>();
+		partnerListe.add( new InterviewPartner(1, "Hans", 35, 3));
+		partnerListe.add( new InterviewPartner(2, "Peter", 30, 2));
+		partnerListe.add( new InterviewPartner(5, "Wurst", 10, 0));
+		return " { \"partnerListe\":"+partnerListe.toString()+"}";
 	}
 
 	/**
@@ -192,7 +225,7 @@ public class Wirtschaft extends Spiel {
 		objectNode.put(EMoeglicheMails.GERAET_GEKAUFT.name(), EMoeglicheMails.GERAET_GEKAUFT.getMailText());
 		objectNode.put(EMoeglicheMails.DEFAULT_MAIL.name(), EMoeglicheMails.DEFAULT_MAIL.getMailText());
 
-		return "{ \"moeglicheMails\" :" + objectNode.toString() + "}";
+		return objectNode.toString();
 
 	}
 
@@ -219,7 +252,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAktuelleSponsoren() {
 
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return "{\"Frage\": \"ID\", \"AntwortA\": \"ID\", \"AntwortB\",: \"ID\", \"AntwortC\": \"ID\", \"AntwortD\": \"ID\"}";
 	}
 
 	/**
@@ -247,4 +280,5 @@ public class Wirtschaft extends Spiel {
 
 		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
+
 }
