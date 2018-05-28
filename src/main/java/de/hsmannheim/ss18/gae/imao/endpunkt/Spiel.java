@@ -64,6 +64,21 @@ public class Spiel extends ResourceConfig {
 	}
 	
 	@GET
+	@Path("/neuesSpiel")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String neuesSpiel() {
+		Medizin.resetRundencount();
+		Medizin.resetRundeArzt();
+		Wirtschaft.resetAufgabe();
+		Wirtschaft.resetRundeManager();
+		Wirtschaft.resetRundencount();
+		arzt=null;
+		manager=null;
+		
+		return "{neues Spiel wurde gestartet}";
+	}
+	
+	@GET
 	@Path("/start/{type}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String start(@PathParam("type") String type) {
@@ -72,10 +87,10 @@ public class Spiel extends ResourceConfig {
 		if ("arzt".equals(type)) {
 			if (arzt != null) {
 				ueberschrift = "Willkommen bei IMAO";
-				text = "Sie sind gerade in Ihrem Zelt (in der W&uuml;ste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verf&uuml;gung,"
-						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie m&ouml;glich."
-						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation."
-						+ "Wenn Sie neue Gerätschaften benö&ouml;tigen können Sie diese bei ihrem Manager anfordern."
+				text = "Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verfügung,"
+						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie möglich.  "
+						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation. "
+						+ "Wenn Sie neue Gerätschaften benötigen können Sie diese bei ihrem Manager anfordern. "
 						+ "Viel Erfolg "
 						+ "Ihr IMAO Team";
 			} else {
@@ -85,11 +100,11 @@ public class Spiel extends ResourceConfig {
 		} else if ("manager".equals(type)) {
 			if (manager != null) {
 				ueberschrift = "Willkommen bei IMAO";
-				text = "Sie haben gerade Ihren neuen Job bei IMAO begonnen."
-						+ "Ihr vorg&oauml;nger hat ziemlich Schlecht gewirtschaftet."
-						+ "Sie haben nur ein Camp, das nicht besonders gut ausgre&uuml;stet ist."
-						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor."
-						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus."
+				text = "Sie haben gerade Ihren neuen Job bei IMAO begonnen. "
+						+ "Ihr vorgänger hat ziemlich schlecht gewirtschaftet. "
+						+ "Sie haben nur ein Camp, das nicht besonders gut ausgreüstet ist. "
+						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor. "
+						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus. "
 						+ "Viel Erfolg "
 						+ "Ihr IMAO Team";
 			} else {

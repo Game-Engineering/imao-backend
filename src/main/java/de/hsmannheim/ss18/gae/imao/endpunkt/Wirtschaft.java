@@ -281,4 +281,16 @@ public class Wirtschaft extends Spiel {
 		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
+	public static void resetRundencount() {
+		Wirtschaft.rundencount = 0;
+	}
+
+	public static void resetRundeManager() {
+		Wirtschaft.rundeManager = null;
+	}
+
+	public static void resetAufgabe() {
+		Wirtschaft.aufgabe = null;
+	}
+
 }

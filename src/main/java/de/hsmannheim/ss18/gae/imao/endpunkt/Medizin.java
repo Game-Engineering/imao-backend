@@ -227,4 +227,14 @@ public class Medizin extends Spiel {
 
 		return ergebniss;
 	}
-}
+
+	public static void resetRundencount() {
+		Medizin.rundencount = 0;
+	}
+
+	public static void resetRundeArzt() {
+		Medizin.rundeArzt = null;
+	}
+	
+	
+	}
