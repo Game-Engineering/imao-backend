@@ -42,7 +42,7 @@ public class Sponsoren {
 		this.sponsoren[10] = new Sponsor(this.getIdCount(), "Mississippis", 14000000, 0, 0, 0, 0, 0);
 		this.sponsoren[11] = new Sponsor(this.getIdCount(), "Pear", 23000000, 0, 0, 0, 0, 0);
 		this.sponsoren[12] = new Sponsor(this.getIdCount(), "Gigasoft", 11500000, 0, 0, 0, 0, 0);
-		this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner", 18600, 0, 0, 0, 0, 0);
+		this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner", 18600, -100, 0, 0, 0, 0);
 
 	}
 
@@ -57,25 +57,29 @@ public class Sponsoren {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
 				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
-					return "{\"Sponsor\":\""+sponsoren[i].getSponsorID()+"\", \"angeworben\":\""+sponsoren[i].isAngeworben() +"\"}";
+					return "{\"Sponsor\":\"" + sponsoren[i].getSponsorID() + "\", \"angeworben\":\""
+							+ sponsoren[i].isAngeworben() + "\"}";
 				}
 			}
 		}
-		return "{\"Sponsor\":\""+sponsorId+"\", \"angeworben\":\""+false +"\"}";
+		return "{\"Sponsor\":\"" + sponsorId + "\", \"angeworben\":\"" + false + "\"}";
 	}
-	
+
 	public String getAktuelleSponsoren() {
 		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode objectNode = mapper.createObjectNode();
 
 		ArrayNode arrayNode = mapper.createArrayNode();
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (this.sponsoren[i].isAngeworben()) {
-				
-				ObjectNode objectNode = sponsorNode(i);
-				arrayNode.add(objectNode);
+
+				ObjectNode objectNode1 = sponsorNode(i);
+				arrayNode.add(objectNode1);
 			}
 		}
-		return arrayNode.toString();
+
+		objectNode.set("aktuelleSponsoren", arrayNode);
+		return objectNode.toString();
 	}
 
 	public String getAlleSponsoren() {
@@ -84,19 +88,22 @@ public class Sponsoren {
 
 	public String getVerfuegbareSponsoren(long ruf) {
 		ObjectMapper mapper = new ObjectMapper();
-
+		ObjectNode objectNode = mapper.createObjectNode();
+		
 		ArrayNode arrayNode = mapper.createArrayNode();
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (ruf >= this.sponsoren[i].getBenoetigtesAnsehen()) {
-				
-				ObjectNode objectNode = sponsorNode(i);
-				arrayNode.add(objectNode);
+
+				ObjectNode objectNode1 = sponsorNode(i);
+				arrayNode.add(objectNode1);
 			}
 		}
-		return arrayNode.toString();
+		
+		objectNode.set("verfuegbareSponsoren", arrayNode);
+		return objectNode.toString();
 	}
-	
+
 	private ObjectNode sponsorNode(int i) {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();
@@ -108,7 +115,7 @@ public class Sponsoren {
 		objectNode.put("absprungansehen", sponsoren[i].getAbsprungansehen());
 		objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus anwerbekosten und -dauer zusammensetzt
 		objectNode.put("angeworben", sponsoren[i].isAngeworben());
-		
+
 		return objectNode;
 	}
 }

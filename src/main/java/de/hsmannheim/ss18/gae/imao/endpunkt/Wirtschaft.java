@@ -140,10 +140,10 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
-	@Path("/interview")
+	@Path("/interview/{partnerID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String interview() {
-		return this.rundeManager.getManager().getInterview().startInterview();
+	public String interview(@PathParam("partnerID") String partnerID) {
+		return this.rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID));
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
@@ -154,12 +154,12 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
-	@Path("/interview/{antwortID}")
+	@Path("/interview/{partnerID}/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String interview(@PathParam("antwortID") String antwortID) {
+	public String interview(@PathParam("partnerID") String partnerID, @PathParam("antwortID") String antwortID) {
 		// bei letzter Antwort prüfen ob Inerview die aufgabe war ind wenn ja
 		// auf aufgabe.erledigt() ausführen
-		return this.rundeManager.getManager().getInterview().getInterview(Integer.parseInt(antwortID));
+		return this.rundeManager.getManager().getInterview().getInterview(Integer.parseInt(partnerID), Integer.parseInt(antwortID));
 		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
