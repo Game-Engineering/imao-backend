@@ -18,7 +18,7 @@ public class Anamnese {
 	private int schmerzFürLetztesSymptom;
 	private int dauerFürLetztesSymptom;
 
-	private static final String DIALOG_1_FRAGE_1 = "Wie lange haben Sie ihre Beschwerden schon?";
+	private static final String DIALOG_1_FRAGE_1 = "Wie lange haben Sie diese Beschwerden schon?";
 	private static final String DIALOG_1_FRAGE_2 = "Und auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?";
 	private static final String DIALOG_1_FRAGE_3 = "Haben Sie weitere Beschwerden?";
 	private static final String DIALOG_1_FRAGE_4 = "Ich brauche eine Blutprobe von Ihnen.";
@@ -100,13 +100,13 @@ public class Anamnese {
 			break;
 		case DIALOG_1_FRAGE_4:
 
-			antwort = "Okay, dann machen wir ein Blutbild";
+			antwort = "Okay, dann machen wir ein Blutbild.";
 			this.weitereOption = "blutbild";
 			entferneFrage(frage);
 			break;
 		case DIALOG_1_FRAGE_5:
 
-			antwort = "Okay, dann machen wir ein Ultraschall";
+			antwort = "Okay, dann machen wir ein Ultraschall.";
 			this.weitereOption = "ultraschall";
 			entferneFrage(frage);
 			break;
@@ -134,7 +134,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case FIEBER_NORMAL:
-			antwort = "Mir ist sehr warm, ich glaube ich habe Fieber.";
+			antwort = "Mir ist sehr warm. Ich glaube, ich habe Fieber.";
 			dauerFürLetztesSymptom = rand2.nextInt((7 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -149,17 +149,17 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((10 - 5) + 1) + 5;
 			break;
 		case HARNWEGSBEFALL:
-			antwort = "Harnwegsbefall [Hier fehlt noch der Passende Text]";
+			antwort = "Ich glaube, mit meinem Harnweg stimmt was nicht.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case EINSTICHSTELLE_KNOETCHENBILDUNG:
-			antwort = "Ich habe hier eine stelle, an der ich, glaube ich gestochen wurde.";
+			antwort = "Hallo! Ich habe hier eine Stelle, an der ich, glaube ich, gestochen wurde.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case EINSTICHSTELLE_BEULE:
-			antwort = "Ich habe hier eine größe Beule, an der ich vor ein paar Wochen gestochen wurde.";
+			antwort = "Ich habe hier eine große Beule, wo ich vor ein paar Wochen gestochen wurde.";
 			dauerFürLetztesSymptom = rand2.nextInt((20 - 10) + 1) + 7;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -169,7 +169,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case SCHNUPFEN:
-			antwort = "*Schnief* Meine Nase hört nicht auf zu laufen *Schnief*, ich glaue ich habe Schnupfen. ";
+			antwort = "*Schnief* Meine Nase hört nicht auf zu laufen, *schnief* ich glaube, ich habe Schnupfen.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -179,7 +179,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case DURCHFALL:
-			antwort = "Ich habe Durchfall";
+			antwort = "Ich habe Durchfall.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -194,7 +194,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case ERBRECHEN_UEBELKEIT:
-			antwort = "Mir ist total übel";
+			antwort = "Mir ist total übel.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -204,17 +204,17 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case VOELLEGEFUEHL:
-			antwort = "Ich habe ein Völlegefühl";
+			antwort = "Mein Bauch fühlt sich an, als würde er gleich platzen.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case HAUT_GELB:
-			antwort = "Sehen sie das nicht? Meine Haut ist total gelb.";
+			antwort = "Sehen Sie das nicht? Meine Haut ist total gelb.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case AUGEN_GELBFAERBUNG:
-			antwort = "Schauen Sie mir mal in die Augen, die müssten Gelb sein.";
+			antwort = "Schauen Sie mir mal in die Augen. Die müssten gelb sein.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -224,7 +224,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case STUHL_HELL:
-			antwort = "Mein STuhlgang ist merkwürdig hell.";
+			antwort = "Mein Stuhlgang ist merkwürdig hell.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -264,7 +264,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case GELENKSCHMERZEN:
-			antwort = "Meine Gelenke tuhen weh.";
+			antwort = "Meine Gelenke tun weh.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
@@ -279,7 +279,7 @@ public class Anamnese {
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;
 		case LYMPHKNOTEN_GESCHWOLLEN:
-			antwort = "geschwollene Lymphknoten [Hier fehlt noch der Passende Text]";
+			antwort = "Mein Hals ist geschwollen. Das könnten die Lymphknoten sein.";
 			dauerFürLetztesSymptom = rand2.nextInt((10 - 1) + 1) + 1;
 			schmerzFürLetztesSymptom = rand2.nextInt((7 - 3) + 1) + 3;
 			break;

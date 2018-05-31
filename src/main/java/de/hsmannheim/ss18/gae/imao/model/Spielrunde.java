@@ -17,8 +17,8 @@ public abstract class Spielrunde {
 		this.arzt = arzt;
 		untersuchungsmethoden.add(new Untersuchungsmethode("Anamnese", 0, 0, 0, true));
 		untersuchungsmethoden.add(new Untersuchungsmethode("Blutbild", 10, 0, 100, true));
-		untersuchungsmethoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, 500, false));
-		untersuchungsmethoden.add(new Untersuchungsmethode("Roentgen", 50, 1000, 500, false));
+		untersuchungsmethoden.add(new Untersuchungsmethode("Ultraschall", 50, 1000, 500, true));
+		untersuchungsmethoden.add(new Untersuchungsmethode("Roentgen", 50, 1000, 500, true));
 	}
 
 	public List<Untersuchungsmethode> getKatalog() {

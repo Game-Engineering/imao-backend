@@ -119,7 +119,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		if (EAufgaben.PRESSEKONFERENZ.equals(aufgabe.getAufgabe())) {
 			aufgabe.erledigt();
 		}
-		return "Eine Pressekonferenz wurde gehalten Ihr Ruf ist um 10 Gestiegen";
+		return "Eine Pressekonferenz wurde gehalten. Ihr Ruf ist um 10 gestiegen.";
 	}
 
 	public List<Untersuchungsmethode> kaufeGeraet(String geraet) {

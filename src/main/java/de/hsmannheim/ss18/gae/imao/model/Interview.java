@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sun.xml.bind.v2.TODO;
 
 import de.hsmannheim.ss18.gae.imao.model.InterviewFrage.Antwort;
-import jersey.repackaged.com.google.common.collect.ObjectArrays;
 
 public class Interview {
 

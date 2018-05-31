@@ -87,27 +87,27 @@ public class Spiel extends ResourceConfig {
 		String text = "";
 		if ("arzt".equals(type)) {
 			if (arzt != null) {
-				ueberschrift = "Willkommen bei IMAO";
-				text = "Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, ihnen stehen verschiedene Untersuchungsmethoden zur verfügung,"
-						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie möglich.  "
-						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation. "
-						+ "Wenn Sie neue Gerätschaften benötigen können Sie diese bei ihrem Manager anfordern. "
-						+ "Viel Erfolg "
-						+ "Ihr IMAO Team";
+				ueberschrift = "Willkommen bei IMAO!"
+						+ "Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, Ihnen stehen verschiedene Untersuchungsmethoden zur Verfügung."
+						+ " Einige Patienten warten schon auf Sie. Behandeln Sie so viele Patienten wie möglich."
+						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation."
+						+ "Wenn Sie neue Gerätschaften benötigen, können Sie diese bei Ihrem Manager anfordern."
+						+ "Viel Erfolg"
+						+ "Ihr IMAO-Team";
 			} else {
 				ueberschrift = "Fehler";
 				text = "bitte erzeugen Sie zuerst einen Arzt";
 			}
 		} else if ("manager".equals(type)) {
 			if (manager != null) {
-				ueberschrift = "Willkommen bei IMAO";
-				text = "Sie haben gerade Ihren neuen Job bei IMAO begonnen. "
-						+ "Ihr vorgänger hat ziemlich schlecht gewirtschaftet. "
-						+ "Sie haben nur ein Camp, das nicht besonders gut ausgerüstet ist. "
-						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor. "
-						+ "Steigern Sie den Ruf der Organisation, gewinnen Sie neue Sponsoren und bauen Sie das Camp aus. "
-						+ "Viel Erfolg "
-						+ "Ihr IMAO Team";
+				ueberschrift = "Willkommen bei IMAO!"
+						+ "Sie haben gerade Ihren neuen Job bei IMAO begonnen."
+						+ "Ihr Vorgänger hat ziemlich schlecht gewirtschaftet."
+						+ "Sie haben nur ein Camp, das nicht besonders gut ausgerüstet ist."
+						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor."
+						+ "Steigern Sie den Ruf der Organisation, gewinnen Sie neue Sponsoren und bauen Sie das Camp aus."
+						+ "Viel Erfolg"
+						+ "Ihr IMAO-Team";
 			} else {
 				ueberschrift = "Fehler";
 				text = "bitte erzeugen Sie zuerst einen Manager";
