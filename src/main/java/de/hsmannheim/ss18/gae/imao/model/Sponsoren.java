@@ -26,7 +26,7 @@ public class Sponsoren {
 	 */
 	private void erstelleAlleSponsoren() {
 
-		this.sponsoren = new Sponsor[15];
+		this.sponsoren = new Sponsor[14];
 
 		this.sponsoren[0] = new Sponsor(this.getIdCount(), "Jack Foxskin", 100000, 0, 12, 0, 0, Integer.MIN_VALUE);
 		this.sponsoren[0].setAngeworben(true);
@@ -52,30 +52,63 @@ public class Sponsoren {
 	 * 
 	 * @param sponsorId
 	 */
-	public void werbeSponsorAn(int sponsorId, int ansehen) {
+	public String werbeSponsorAn(int sponsorId, long ruf) {
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
-				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ansehen) {
+				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
+					return "{\"Sponsor\":\""+sponsoren[i].getSponsorID()+"\", \"angeworben\":\""+sponsoren[i].isAngeworben() +"\"}";
 				}
 			}
 		}
+		return "{\"Sponsor\":\""+sponsorId+"\", \"angeworben\":\""+false +"\"}";
+	}
+	
+	public String getAktuelleSponsoren() {
+		ObjectMapper mapper = new ObjectMapper();
+
+		ArrayNode arrayNode = mapper.createArrayNode();
+		for (int i = 0; i < this.sponsoren.length; i++) {
+			if (this.sponsoren[i].isAngeworben()) {
+				
+				ObjectNode objectNode = sponsorNode(i);
+				arrayNode.add(objectNode);
+			}
+		}
+		return arrayNode.toString();
 	}
 
 	public String getAlleSponsoren() {
 		return getVerfuegbareSponsoren(Integer.MAX_VALUE);
 	}
 
-	public String getVerfuegbareSponsoren(int ansehen) {
+	public String getVerfuegbareSponsoren(long ruf) {
 		ObjectMapper mapper = new ObjectMapper();
 
 		ArrayNode arrayNode = mapper.createArrayNode();
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
-			if (ansehen >= this.sponsoren[i].getBenoetigtesAnsehen()) {
-				arrayNode.add(sponsoren[i].toString());
+			if (ruf >= this.sponsoren[i].getBenoetigtesAnsehen()) {
+				
+				ObjectNode objectNode = sponsorNode(i);
+				arrayNode.add(objectNode);
 			}
 		}
 		return arrayNode.toString();
+	}
+	
+	private ObjectNode sponsorNode(int i) {
+		ObjectMapper mapper = new ObjectMapper();
+		ObjectNode objectNode = mapper.createObjectNode();
+		objectNode.put("ID", sponsoren[i].getSponsorID());
+		objectNode.put("sponsorName", sponsoren[i].getSponsorName());
+		objectNode.put("monatlicherBetrag", sponsoren[i].getMonatlicherBetrag());
+		objectNode.put("benoetigtesAnsehen", sponsoren[i].getBenoetigtesAnsehen());
+		objectNode.put("zeitraum", sponsoren[i].getZeitraum());
+		objectNode.put("absprungansehen", sponsoren[i].getAbsprungansehen());
+		objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus anwerbekosten und -dauer zusammensetzt
+		objectNode.put("angeworben", sponsoren[i].isAngeworben());
+		
+		return objectNode;
 	}
 }

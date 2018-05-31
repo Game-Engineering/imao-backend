@@ -12,6 +12,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	private String arztbericht;
 	private String budgetbericht;
 
+
 	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt, Aufgabe aufgabe) {
 		super(runde, manager, arzt);
 		this.aufgabe = aufgabe;
@@ -27,6 +28,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 			}
 		}
 		aufgabe = new Aufgabe();
+		
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());
 		if (runde == 1) {
@@ -185,6 +187,10 @@ public class SpielrundeWirtschaft extends Spielrunde {
 
 	public String getBudgetbericht() {
 		return budgetbericht;
+	}
+	
+	public Manager getManager() {
+		return manager;
 	}
 
 }

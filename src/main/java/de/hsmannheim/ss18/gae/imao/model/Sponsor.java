@@ -18,7 +18,17 @@ public class Sponsor {
 	// private EBoni[] boni; //Bonus, welchen der Sponsor mit sich bringt
 	// private EMali[] mali; //Mali, welche der Sponsor mit sich bringt
 
-	
+	/**
+	 * 
+	 * @param sponsorId
+	 * @param name
+	 * @param monatlicherBetrag
+	 * @param benoetigtesAnsehen
+	 * @param zeitraum
+	 * @param anwerbekosten
+	 * @param anwerbedauer
+	 * @param absprungansehen
+	 */
 	public Sponsor(int sponsorId, String name, int monatlicherBetrag, int benoetigtesAnsehen, int zeitraum, int anwerbekosten,
 			int anwerbedauer, int absprungansehen) {
 		this.sponsorID = sponsorId;
@@ -75,6 +85,7 @@ public class Sponsor {
 	public String toString() {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();
+		
 		objectNode.put("ID", this.getSponsorID());
 		objectNode.put("sponsorName", this.getSponsorName());
 		objectNode.put("monatlicherBetrag", this.getMonatlicherBetrag());

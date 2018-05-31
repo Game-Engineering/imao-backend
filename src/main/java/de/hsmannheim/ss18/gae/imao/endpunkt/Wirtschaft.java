@@ -84,7 +84,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/getArztDaten")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getArztDaten() {
-		
+
 		return arzt.toString();
 	}
 
@@ -125,11 +125,14 @@ public class Wirtschaft extends Spiel {
 	@Path("/getInterviewPartner")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getInterviewPartner() {
-		List<InterviewPartner> partnerListe = new ArrayList<>();
-		partnerListe.add( new InterviewPartner(1, "Hans", 35, 3));
-		partnerListe.add( new InterviewPartner(2, "Peter", 30, 2));
-		partnerListe.add( new InterviewPartner(5, "Wurst", 10, 0));
-		return " { \"partnerListe\":"+partnerListe.toString()+"}";
+		return this.rundeManager.getManager().getInterview().getInterviewParter();
+		/*
+		 * List<InterviewPartner> partnerListe = new ArrayList<>(); partnerListe.add(
+		 * new InterviewPartner(1, "Hans", 35, 3)); partnerListe.add( new
+		 * InterviewPartner(2, "Peter", 30, 2)); partnerListe.add( new
+		 * InterviewPartner(5, "Wurst", 10, 0)); return
+		 * " { \"partnerListe\":"+partnerListe.toString()+"}";
+		 */
 	}
 
 	/**
@@ -140,8 +143,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/interview")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String interview() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return this.rundeManager.getManager().getInterview().startInterview();
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -156,8 +159,8 @@ public class Wirtschaft extends Spiel {
 	public String interview(@PathParam("antwortID") String antwortID) {
 		// bei letzter Antwort prüfen ob Inerview die aufgabe war ind wenn ja
 		// auf aufgabe.erledigt() ausführen
-
-		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return this.rundeManager.getManager().getInterview().getInterview(Integer.parseInt(antwortID));
+		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -251,8 +254,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/getAktuelleSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAktuelleSponsoren() {
-
-		return "{\"Frage\": \"ID\", \"AntwortA\": \"ID\", \"AntwortB\",: \"ID\", \"AntwortC\": \"ID\", \"AntwortD\": \"ID\"}";
+		return this.rundeManager.getManager().getSponsoren().getAktuelleSponsoren();
+		//return "{\"Frage\": \"ID\", \"AntwortA\": \"ID\", \"AntwortB\",: \"ID\", \"AntwortC\": \"ID\", \"AntwortD\": \"ID\"}";
 	}
 
 	/**
@@ -263,8 +266,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/getMoeglicheSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMoeglicheSponsoren() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return this.rundeManager.getManager().getSponsoren().getVerfuegbareSponsoren(this.rundeManager.getManager().getRuf());
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -277,8 +280,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/werbeSponsorAn/{sponsorID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String werbeSponsorAn(@PathParam("sponsorID") String sponsorID) {
-
-		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return this.rundeManager.getManager().getSponsoren().werbeSponsorAn(Integer.parseInt(sponsorID),this.rundeManager.getManager().getRuf());
+		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	public static void resetRundencount() {
@@ -286,7 +289,7 @@ public class Wirtschaft extends Spiel {
 	}
 
 	public static void resetRundeManager() {
-		Wirtschaft.rundeManager = null;
+		rundeManager = null;
 	}
 
 	public static void resetAufgabe() {

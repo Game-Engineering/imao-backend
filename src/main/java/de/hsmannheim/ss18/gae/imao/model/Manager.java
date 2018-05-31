@@ -19,6 +19,9 @@ public class Manager extends Person {
 	private int budgetbilanz = 0;
 	private int budget = 0;
 	private int ruf = 0;
+	
+	private Interview interview; 
+	private Sponsoren sponsoren;
 
 	public Manager(String vorname, String nachname, EGeschlecht geschlecht) {
 		super(vorname, nachname, geschlecht);
@@ -32,6 +35,9 @@ public class Manager extends Person {
 		rufverlust.clear();
 		rufbilanz = 0;
 		budgetbilanz = 0;
+		this.interview = new Interview();
+		this.sponsoren=new Sponsoren();
+		
 	}
 
 	public void erhalteMail(Mail mail) {
@@ -116,6 +122,14 @@ public class Manager extends Person {
 
 	public int getBudgetbilanz() {
 		return budgetbilanz;
+	}
+	
+	public Interview getInterview() {
+		return this.interview;
+	}
+	
+	public Sponsoren getSponsoren() {
+		return this.sponsoren;
 	}
 
 }
