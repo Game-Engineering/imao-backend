@@ -43,7 +43,7 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/neueRunde\">localhost:8080/imao/api/spiel/wirtschaft/neueRunde</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getKatalog\">localhost:8080/imao/api/spiel/wirtschaft/getKatalog</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/kaufeGeraet/Ultraschall\">localhost:8080/imao/api/spiel/wirtschaft/kaufeGeraet/geraetID</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren\">localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getInterviewPartner\">localhost:8080/imao/api/spiel/wirtschaft/getInterviewPartner</a><br>"
 				+ "localhost:8080/imao/api/spiel/wirtschaft/interview/interviewPartnerID<br>"
 				+ "localhost:8080/imao/api/spiel/wirtschaft/interview/interviewPartnerID/antwortID<br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz\">localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz</a><br>"

@@ -143,7 +143,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/interview/{partnerID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String interview(@PathParam("partnerID") String partnerID) {
-		return this.rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID));
+		return this.rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID), "neue/erste Anfrage");
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
