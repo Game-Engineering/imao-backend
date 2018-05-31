@@ -87,7 +87,7 @@ public class Spiel extends ResourceConfig {
 		if ("arzt".equals(type)) {
 			if (arzt != null) {
 				ueberschrift = "Willkommen bei IMAO";
-				text = "Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, ihnen sehen verschiedene Unersuchungsmethoden zur verfügung,"
+				text = "Sie sind gerade in Ihrem Zelt (in der Wüste) angekommen, ihnen stehen verschiedene Untersuchungsmethoden zur verfügung,"
 						+ "Einige Patienten warten schon auf Sie, behandeln Sie so viele Patienten wie möglich.  "
 						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation. "
 						+ "Wenn Sie neue Gerätschaften benötigen können Sie diese bei ihrem Manager anfordern. "
@@ -102,9 +102,9 @@ public class Spiel extends ResourceConfig {
 				ueberschrift = "Willkommen bei IMAO";
 				text = "Sie haben gerade Ihren neuen Job bei IMAO begonnen. "
 						+ "Ihr vorgänger hat ziemlich schlecht gewirtschaftet. "
-						+ "Sie haben nur ein Camp, das nicht besonders gut ausgreüstet ist. "
+						+ "Sie haben nur ein Camp, das nicht besonders gut ausgerüstet ist. "
 						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor. "
-						+ "Steigern Sie den Ruf der Organisation, gewinnwn Sie neue Sponsoren und bauen Sie das Camp aus. "
+						+ "Steigern Sie den Ruf der Organisation, gewinnen Sie neue Sponsoren und bauen Sie das Camp aus. "
 						+ "Viel Erfolg "
 						+ "Ihr IMAO Team";
 			} else {
