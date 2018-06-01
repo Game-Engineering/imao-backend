@@ -67,5 +67,8 @@ public class Patient extends Person {
 	public int getAlter() {
 		return alter;
 	}
+	public static void resetIDCount(){
+		IDcount=0;
+	}
 
 }
