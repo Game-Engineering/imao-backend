@@ -57,12 +57,11 @@ public class Sponsoren {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
 				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
-					return "{\"Sponsor\":\"" + sponsoren[i].getSponsorID() + "\", \"angeworben\":\""
-							+ sponsoren[i].isAngeworben() + "\"}";
+					return StatusToString.ok("Der Sponsor ("+sponsorId+") wurde angeworben");
 				}
 			}
 		}
-		return "{\"Sponsor\":\"" + sponsorId + "\", \"angeworben\":\"" + false + "\"}";
+		return StatusToString.fehler("Der Sponsor ("+sponsorId+") wurde nicht angeworben");
 	}
 
 	public String getAktuelleSponsoren() {
