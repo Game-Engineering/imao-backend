@@ -257,6 +257,18 @@ public class Wirtschaft extends Spiel {
 		return this.rundeManager.getManager().getSponsoren().getVerfuegbareSponsoren(this.rundeManager.getManager().getRuf());
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getAlleSponsoren")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getAlleSponsoren() {
+		return this.rundeManager.getManager().getSponsoren().getAlleSponsoren();
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+	}
 
 	/**
 	 * 
@@ -272,14 +284,23 @@ public class Wirtschaft extends Spiel {
 		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	@GET
-	@Path("/startePressekonferenz/")
+	@Path("/startePressekonferenz")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String startePressekonferenz() {
 		return this.rundeManager.startePressekonferenz();
 		
 	}
 	
+	/**
+	 * 
+	 * @param antwortID
+	 * @return
+	 */
 	@GET
 	@Path("/pressekonferenz/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
