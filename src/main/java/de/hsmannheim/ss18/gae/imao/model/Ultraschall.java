@@ -26,15 +26,15 @@ public class Ultraschall {
 		case MASERN:
 			this.ultraschallID = ULTRASCHALL_GESUND;
 			break;
-		case CHOLERA:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
-		case BILHARZIOSE:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
-		case HIV:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
+//		case CHOLERA:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
+//		case BILHARZIOSE:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
+//		case HIV:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
 		case HAUTLEISHMANIASIS:
 			this.ultraschallID = ULTRASCHALL_GESUND;
 			break;
@@ -44,15 +44,15 @@ public class Ultraschall {
 		case HEP_B:
 			this.ultraschallID = ULTRASCHALL_GESUND;
 			break;
-		case TETANUS:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
-		case GELBFIEBER:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
-		case DENGUE_FIEBER:
-			this.ultraschallID = ULTRASCHALL_GESUND;
-			break;
+//		case TETANUS:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
+//		case GELBFIEBER:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
+//		case DENGUE_FIEBER:
+//			this.ultraschallID = ULTRASCHALL_GESUND;
+//			break;
 		}
 	}
 
