@@ -234,7 +234,8 @@ public class Medizin extends Spiel {
 
 	public static void resetRundeArzt() {
 		Medizin.rundeArzt = null;
-	}
+		Patient.resetIDCount();
+			}
 	
 	
 	}
