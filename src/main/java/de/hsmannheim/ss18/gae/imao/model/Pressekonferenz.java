@@ -36,6 +36,11 @@ public class Pressekonferenz {
 		for (int i = 0; i < this.pressekonferenzThemen.length; i++) {
 			if (this.pressekonferenzThemen[i].isVerfuegbar()) {
 				if (antwortIndex < this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten().length && antwortIndex >=0) {
+					
+					if (this.aktuellerFrageIndex==0) {
+						this.einleitung=this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten()[antwortIndex].getAntwort();
+					}
+					
 					this.punkteFuerAktuelleKonferenz += this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten()[antwortIndex].getPunkte();
 					this.aktuellerFrageIndex++;
 					
@@ -96,7 +101,7 @@ public class Pressekonferenz {
 		objectNode.put("frage", frage.getFrage());
 		
 		for (int j = 0; j < frage.getAntworten().length; j++) {
-			arrayNode.add(frage.getAntworten()[j].toString());
+			arrayNode.add(frage.getAntworten()[j].getAntwort());
 		}
 		
 		objectNode.set("antworten", arrayNode);
