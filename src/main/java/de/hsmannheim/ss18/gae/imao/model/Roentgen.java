@@ -26,15 +26,15 @@ public class Roentgen {
 		case MASERN:
 			this.roentgenID = ROENTGEN_GESUND;
 			break;
-		case CHOLERA:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
-		case BILHARZIOSE:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
-		case HIV:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
+//		case CHOLERA:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
+//		case BILHARZIOSE:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
+//		case HIV:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
 		case HAUTLEISHMANIASIS:
 			this.roentgenID = ROENTGEN_GESUND;
 			break;
@@ -44,15 +44,15 @@ public class Roentgen {
 		case HEP_B:
 			this.roentgenID = ROENTGEN_GESUND;
 			break;
-		case TETANUS:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
-		case GELBFIEBER:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
-		case DENGUE_FIEBER:
-			this.roentgenID = ROENTGEN_GESUND;
-			break;
+//		case TETANUS:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
+//		case GELBFIEBER:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
+//		case DENGUE_FIEBER:
+//			this.roentgenID = ROENTGEN_GESUND;
+//			break;
 		}
 	}
 

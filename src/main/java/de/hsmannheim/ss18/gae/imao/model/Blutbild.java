@@ -139,12 +139,12 @@ public class Blutbild {
 				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
 
 		switch (krankheit) {
-		case HIV:
-			this.leukozyten=random(krankLeukozytenGeringLeichtMin,krankLeukozytenGeringLeichtMax);
-			break;
-		case BILHARZIOSE:
-			// keine auswirkung
-			break;
+//		case HIV:
+//			this.leukozyten=random(krankLeukozytenGeringLeichtMin,krankLeukozytenGeringLeichtMax);
+//			break;
+//		case BILHARZIOSE:
+//			// keine auswirkung
+//			break;
 		case HAUTLEISHMANIASIS:
 			// keine auswirkung
 			break;
@@ -157,19 +157,19 @@ public class Blutbild {
 		case HEP_B:
 			// keine auswirkung
 			break;
-		case CHOLERA:
-			// keine auswirkung
-			break;
-		case TETANUS:
-			// keine auswirkung
-			break;
-		case GELBFIEBER:
-			this.leukozyten=random(krankLeukozytenErhoetLeichtMin,krankLeukozytenErhoetLeichtMax);
-			this.thrombozyten=random(krankThrombozytenGeringLeichtMin,krankThrombozytenGeringLeichtMax);
-			break;
-		case DENGUE_FIEBER:
-			this.thrombozyten = random(krankThrombozytenErhoetStarkMin, krankThrombozytenErhoetStarkMax);
-			break;
+//		case CHOLERA:
+//			// keine auswirkung
+//			break;
+//		case TETANUS:
+//			// keine auswirkung
+//			break;
+//		case GELBFIEBER:
+//			this.leukozyten=random(krankLeukozytenErhoetLeichtMin,krankLeukozytenErhoetLeichtMax);
+//			this.thrombozyten=random(krankThrombozytenGeringLeichtMin,krankThrombozytenGeringLeichtMax);
+//			break;
+//		case DENGUE_FIEBER:
+//			this.thrombozyten = random(krankThrombozytenErhoetStarkMin, krankThrombozytenErhoetStarkMax);
+//			break;
 
 		default:
 			break;
