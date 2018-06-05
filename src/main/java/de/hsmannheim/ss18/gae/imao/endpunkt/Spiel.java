@@ -46,7 +46,8 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getInterviewPartner\">localhost:8080/imao/api/spiel/wirtschaft/getInterviewPartner</a><br>"
 				+ "localhost:8080/imao/api/spiel/wirtschaft/interview/interviewPartnerID<br>"
 				+ "localhost:8080/imao/api/spiel/wirtschaft/interview/interviewPartnerID/antwortID<br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz\">localhost:8080/imao/api/spiel/wirtschaft/haltePressekonferenz</a><br>"
+				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/startePressekonferenz\">localhost:8080/imao/api/spiel/wirtschaft/startePressekonferenz</a><br>"
+				+ "localhost:8080/imao/api/spiel/wirtschaft/pressekonferenz/antwortID<br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getBudgetbreicht\">localhost:8080/imao/api/spiel/wirtschaft/getBudgetbreicht</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getArztbreicht\">localhost:8080/imao/api/spiel/wirtschaft/getArztbreicht</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMails\">localhost:8080/imao/api/spiel/wirtschaft/getMails</a><br>"
@@ -54,7 +55,7 @@ public class Spiel extends ResourceConfig {
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/sendeMail/lob\">localhost:8080/imao/api/spiel/wirtschaft/sendeMail/mailID</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getAktuelleSponsoren\">localhost:8080/imao/api/spiel/wirtschaft/getAktuelleSponsoren</a><br>"
 				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren\">localhost:8080/imao/api/spiel/wirtschaft/getMoeglicheSponsoren</a><br>"
-				+ "<a href=\"localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/2\">localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/sponsorID</a><br>";
+				+ "localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/sponsorID<br>";
 	}
 
 	@GET

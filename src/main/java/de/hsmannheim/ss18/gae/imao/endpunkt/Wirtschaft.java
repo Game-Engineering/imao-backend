@@ -168,18 +168,6 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
-	@Path("/haltePressekonferenz")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String haltePressekonferenz() {
-
-		return rundeManager.haltePressekonferenz();
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	@GET
 	@Path("/getBudgetbreicht")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getBudgetbreicht() {
@@ -282,6 +270,21 @@ public class Wirtschaft extends Spiel {
 	public String werbeSponsorAn(@PathParam("sponsorID") String sponsorID) {
 		return this.rundeManager.getManager().getSponsoren().werbeSponsorAn(Integer.parseInt(sponsorID),this.rundeManager.getManager().getRuf());
 		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+	}
+	
+	@GET
+	@Path("/startePressekonferenz/")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String startePressekonferenz() {
+		return this.rundeManager.startePressekonferenz();
+		
+	}
+	
+	@GET
+	@Path("/pressekonferenz/{antwortID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String antwortePressekonferenz(@PathParam("antwortID") String antwortID) {
+		return this.rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
 	}
 
 	public static void resetRundencount() {

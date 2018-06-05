@@ -19,7 +19,15 @@ public class Aufgabe {
 			rufschaden = 10;
 			break;
 		case 1:
-			aufgabe = EAufgaben.PRESSEKONFERENZ;
+			aufgabe = EAufgaben.PRESSEKONFERENZ_DUERRE;
+			rufschaden = 10;
+			break;
+		case 5:
+			aufgabe = EAufgaben.PRESSEKONFERENZ_GUTEARBEIT;
+			rufschaden = 0;
+			break;
+		case 6:
+			aufgabe = EAufgaben.PRESSEKONFERENZ_VIELETOTE;
 			rufschaden = 10;
 			break;
 		case 2:

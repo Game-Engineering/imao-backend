@@ -6,19 +6,20 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Pressekonferenz {
 
-	PressekonferenzThema[] pressekonferenzThemen;
+	private PressekonferenzThema[] pressekonferenzThemen;
 	private int punkteFuerAktuelleKonferenz = 0;
 	private int aktuellerFrageIndex = 0;
 	private String einleitung = null;
 
-	private static int idCount = 1;
+	private SpielrundeWirtschaft spielrundeWirtschaft;
 
-	public Pressekonferenz() {
+	public Pressekonferenz(SpielrundeWirtschaft spielrundeWirtschaft) {
+		this.spielrundeWirtschaft=spielrundeWirtschaft;
 		createKonferenzThemen();
 	}
-
-	private static int idCount() {
-		return idCount++;
+	
+	public PressekonferenzThema[] getPressekonferenzThemen() {
+		return this.pressekonferenzThemen;
 	}
 
 	public String startePressekonferenz() {
@@ -42,7 +43,7 @@ public class Pressekonferenz {
 						return startePressekonferenz();
 					}else {//pressekonferenz beenden
 						
-						rufAktuallisieren(this.punkteFuerAktuelleKonferenz);
+						this.spielrundeWirtschaft.beendePressekonferenz(this.punkteFuerAktuelleKonferenz);
 						this.aktuellerFrageIndex=0;
 						this.punkteFuerAktuelleKonferenz=0;
 						this.einleitung=null;
@@ -68,14 +69,6 @@ public class Pressekonferenz {
 		}
 
 		return StatusToString.fehler("Momentan ist keine Pressekonferenz verfügbar");
-	}
-	
-	/**
-	 * 
-	 * @param punkte
-	 */
-	private void rufAktuallisieren(int punkte) {
-		//TODO
 	}
 
 	
@@ -150,7 +143,7 @@ public class Pressekonferenz {
 		Frage p1f4 = new Frage("Widerspricht das, was passiert, nicht genau Ihrer eigentlichen Mission?", p1f4a);
 
 		Frage[] Pre1Fragen = { p1f1, p1f2, p1f3, p1f4 };
-		this.pressekonferenzThemen[0] = new PressekonferenzThema(idCount(),
+		this.pressekonferenzThemen[0] = new PressekonferenzThema(1,
 				"Falsche Diagnosen führen zu vielen Toten im Krisengebiet, in dem IMAO aktiv ist", 10, 1, Pre1Fragen);
 
 		// Fragen und Antworten für 2. Pressekonferenz
@@ -195,7 +188,7 @@ public class Pressekonferenz {
 		Frage p2f4 = new Frage("Wie kann man ein derart positives Ergebnis beibehalten?", p2f4a);
 
 		Frage[] Pre2Fragen = { p2f1, p2f2, p2f3, p2f4 };
-		this.pressekonferenzThemen[1] = new PressekonferenzThema(idCount(), "IMAOs Ärzte retten viele Menschenleben.",
+		this.pressekonferenzThemen[1] = new PressekonferenzThema(2, "IMAOs Ärzte retten viele Menschenleben.",
 				10, 1, Pre2Fragen);
 		
 
@@ -241,7 +234,7 @@ public class Pressekonferenz {
 		Frage p3f4 = new Frage("Wird sich die Lage noch verschlimmern?", p3f4a);
 
 		Frage[] Pre3Fragen = { p3f1, p3f2, p3f3, p3f4 };
-		this.pressekonferenzThemen[2] = new PressekonferenzThema(idCount(), "IMAOs Ärzte retten viele Menschenleben.",
+		this.pressekonferenzThemen[2] = new PressekonferenzThema(3, "IMAOs Ärzte retten viele Menschenleben.",
 				10, 1, Pre3Fragen);
 
 	}

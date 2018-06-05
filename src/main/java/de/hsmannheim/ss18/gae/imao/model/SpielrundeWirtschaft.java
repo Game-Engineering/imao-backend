@@ -11,6 +11,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	private Aufgabe aufgabe = null;
 	private String arztbericht;
 	private String budgetbericht;
+	private Pressekonferenz pressekonferenz;
 
 	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt, Aufgabe aufgabe) {
 		super(runde, manager, arzt);
@@ -21,6 +22,15 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	@Override
 	protected void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
+		
+		//Pressekonferenzen nicht mehr verfügbar
+		if (this.pressekonferenz == null) {
+			this.pressekonferenz = new Pressekonferenz(this);
+		}
+		for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+			this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(false);
+		}
+		
 		if (aufgabe != null) {
 			if (!aufgabe.isErledigt()) {
 				manager.rufVerlust("Nicht erfüllte Aufgabe", aufgabe.getRufschaden());
@@ -31,7 +41,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());
 		if (runde == 1) {
-			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname,"Hilferuf", "Hilfe, ich versinke im Chaos!!!"));
+			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilferuf", "Hilfe, ich versinke im Chaos!!!"));
 
 		}
 		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();
@@ -48,32 +58,32 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	}
 
 	public String sendeMail(String ID) {
-		String absender= "" + manager.vorname + " " + manager.nachname;
+		String absender = "" + manager.vorname + " " + manager.nachname;
 		String betreff;
 		String mailInhalt;
-				switch (ID.toUpperCase()) {
+		switch (ID.toUpperCase()) {
 		case "LOB":
 			mailInhalt = EMoeglicheMails.LOB.getMailText();
-			betreff="Lob";
+			betreff = "Lob";
 			break;
 		case "ABMAHNUNG":
 			mailInhalt = EMoeglicheMails.ABMAHNUNG.getMailText();
-			betreff="Abmahnung";
+			betreff = "Abmahnung";
 			if (EAufgaben.ARZT_ABMAHNEN.equals(aufgabe.getAufgabe())) {
 				aufgabe.erledigt();
 			}
 			break;
 		case "GERAET_GEKAUFT":
 			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
-			betreff="Gerät gekauft";
+			betreff = "Gerät gekauft";
 			break;
 		default:
 			mailInhalt = EMoeglicheMails.DEFAULT_MAIL.getMailText();
-			betreff="Default";
+			betreff = "Default";
 		}
 
-		System.out.println(absender + ", " +betreff+ ", " + mailInhalt);
-		Mail mail = new Mail(absender,betreff, mailInhalt);
+		System.out.println(absender + ", " + betreff + ", " + mailInhalt);
+		Mail mail = new Mail(absender, betreff, mailInhalt);
 		manager.sendeMail(mail);
 		if (arzt != null) {
 			arzt.erhalteMail(mail);
@@ -82,13 +92,36 @@ public class SpielrundeWirtschaft extends Spielrunde {
 
 	}
 
-	public String haltePressekonferenz() {
-		manager.rufZuwachs("Pressekonferenz", 10);
-		manager.ausgabe("Pressekonferenz", 50);
-		if (EAufgaben.PRESSEKONFERENZ.equals(aufgabe.getAufgabe())) {
-			aufgabe.erledigt();
+	public String startePressekonferenz() {
+		if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_DUERRE) {
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 3) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
+		} else if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_GUTEARBEIT) {
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 2) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
+		} else if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_VIELETOTE) {
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 1) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
 		}
-		return "Eine Pressekonferenz wurde gehalten. Ihr Ruf ist um 10 gestiegen.";
+		return this.pressekonferenz.startePressekonferenz();
+	}
+
+	public String antwortePressekonferenz(int id) {
+		return this.pressekonferenz.antwortePressekonferenz(id);
+	}
+
+	public void beendePressekonferenz(int rufzuwachs) {
+		manager.rufZuwachs("Pressekonferenz", rufzuwachs);
+		aufgabe.erledigt();
 	}
 
 	public List<Untersuchungsmethode> kaufeGeraet(String geraet) {
