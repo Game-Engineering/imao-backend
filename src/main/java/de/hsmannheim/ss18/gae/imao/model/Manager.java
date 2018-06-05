@@ -42,7 +42,7 @@ public class Manager extends Person {
 		rufverlust.clear();
 		rufbilanz = 0;
 		budgetbilanz = 0;
-		this.interview = new Interview();
+		this.interview = new Interview(this);
 		this.sponsoren=new Sponsoren(this);
 		
 	}

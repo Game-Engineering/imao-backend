@@ -11,8 +11,10 @@ public class Interview {
 	private int aktuellerInterviewPartner = 0;
 	private int punkteFuerAktuellesInterview = 0;
 	private int aktuellerFrageIndex = 0;
+	private Manager manager;
 
-	public Interview() {
+	public Interview(Manager manager) {
+		this.manager = manager;
 		createInterviewPartner();
 	}
 
@@ -109,12 +111,18 @@ public class Interview {
 							.getAntworten().length) {
 						return startInterview(interviewpartnerID, neuerStatus);
 					} else {
-						// TODO Ruf erhöhen
+
+						if (this.punkteFuerAktuellesInterview > 0) {
+							this.manager.rufZuwachs("Erfolgreiches Interview", this.punkteFuerAktuellesInterview);
+						} else if (this.punkteFuerAktuellesInterview < 0) {
+							this.manager.rufVerlust("Schlechtes Interview", this.punkteFuerAktuellesInterview);
+						}
+
 						this.aktuellerFrageIndex = 0;
 						this.aktuellerInterviewPartner = 0;
 						this.punkteFuerAktuellesInterview = 0;
-						
-						//Über ende des Interviews benachrichtigen
+
+						// Über ende des Interviews benachrichtigen
 						ObjectMapper mapper = new ObjectMapper();
 						ObjectNode objectNode = mapper.createObjectNode();
 						ArrayNode arrayNode = mapper.createArrayNode();
