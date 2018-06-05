@@ -8,9 +8,11 @@ public class Sponsoren {
 	private Sponsor[] sponsoren;
 	public static int idCounter = 1;
 
+	private Manager manager;
 	private boolean sponsorenErstellt = false;
 
-	public Sponsoren() {
+	public Sponsoren(Manager manager) {
+		this.manager=manager;
 		if (!this.sponsorenErstellt) {
 			erstelleAlleSponsoren();
 			this.sponsorenErstellt = true;
@@ -58,8 +60,15 @@ public class Sponsoren {
 				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
 					
+					this.manager.getPosteingang().add(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage", "Wir freuen uns ihnen mitteilen zu können, dass wir sie für "+ this.sponsoren[i].getAnwerbedauer()+" Monate mit einem monatlichen Betrag von "+this.sponsoren[i].getMonatlicherBetrag()+"€ unterstützen werden. \n\n Mit freundlichen Grüßen, \n"+this.sponsoren[i].getSponsorName()));
 					return StatusToString.ok("Der Sponsor ("+sponsorId+") wurde angeworben");
 				}
+			}
+		}
+
+		for (int i = 0; i < this.sponsoren.length; i++) {
+			if (sponsorId == this.sponsoren[i].getSponsorID()) {
+				this.manager.getPosteingang().add(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage", "Es tut uns leid ihnen mitteilen zu müssen, das wir sie nicht unterstützen könen. \n\n Mit freundlichen Grüßen, \n"+this.sponsoren[i].getSponsorName()));
 			}
 		}
 		return StatusToString.fehler("Der Sponsor ("+sponsorId+") wurde nicht angeworben");
