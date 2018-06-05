@@ -19,4 +19,6 @@ public class Frage {
 	public Antwort[] getAntworten() {
 		return this.antworten;
 	}
+	
+	
 }
