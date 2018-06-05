@@ -10,7 +10,7 @@ public class InterviewPartner {
 	private int maxAnsehen;
 	private int schwierigkeit;
 	
-	private InterviewFrage[] fragen;
+	private Frage[] fragen;
 	private boolean verfuegbar = true;
 
 	/**
@@ -20,7 +20,7 @@ public class InterviewPartner {
 	 * @param maxAnsehen
 	 * @param schweirigkeit
 	 */
-	public InterviewPartner(int id, String name, int maxAnsehen, int schweirigkeit,InterviewFrage[] fragen) {
+	public InterviewPartner(int id, String name, int maxAnsehen, int schweirigkeit,Frage[] fragen) {
 		this.id = id;
 		this.name = name;
 		this.maxAnsehen = maxAnsehen;
@@ -56,7 +56,7 @@ public class InterviewPartner {
 		return verfuegbar;
 	}
 	
-	public InterviewFrage[] getFragen() {
+	public Frage[] getFragen() {
 		return this.fragen;
 	}
 

@@ -3,9 +3,6 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.sun.xml.bind.v2.TODO;
-
-import de.hsmannheim.ss18.gae.imao.model.InterviewFrage.Antwort;
 
 public class Interview {
 
@@ -144,25 +141,25 @@ public class Interview {
 		// Fragen und Antworten für 1. Interviewpartner
 		Antwort[] p1f1a = { new Antwort("Antwort 10P", 10), new Antwort("Antwort 20P", 20),
 				new Antwort("Antwort 0P", 0), new Antwort("Antwort -10P", -10) };
-		InterviewFrage p1f1 = new InterviewFrage("Frage 1", p1f1a);
+		Frage p1f1 = new Frage("Frage 1", p1f1a);
 
 		Antwort[] p1f2a = { new Antwort("Antwort 10P", 10), new Antwort("Antwort 20P", 20),
 				new Antwort("Antwort 0P", 0), new Antwort("Antwort -10P", -10) };
-		InterviewFrage p1f2 = new InterviewFrage("Frage 2", p1f2a);
+		Frage p1f2 = new Frage("Frage 2", p1f2a);
 
 		Antwort[] p1f3a = { new Antwort("Antwort 10P", 10), new Antwort("Antwort 20P", 20),
 				new Antwort("Antwort 0P", 0), new Antwort("Antwort -10P", -10) };
-		InterviewFrage p1f3 = new InterviewFrage("Frage 3", p1f3a);
+		Frage p1f3 = new Frage("Frage 3", p1f3a);
 
 		Antwort[] p1f4a = { new Antwort("Antwort 10P", 10), new Antwort("Antwort 20P", 20),
 				new Antwort("Antwort 0P", 0), new Antwort("Antwort -10P", -10) };
-		InterviewFrage p1f4 = new InterviewFrage("Frage 4", p1f4a);
+		Frage p1f4 = new Frage("Frage 4", p1f4a);
 
 		Antwort[] p1f5a = { new Antwort("Antwort 10P", 10), new Antwort("Antwort 20P", 20),
 				new Antwort("Antwort 0P", 0), new Antwort("Antwort -10P", -10) };
-		InterviewFrage p1f5 = new InterviewFrage("Frage 5", p1f5a);
+		Frage p1f5 = new Frage("Frage 5", p1f5a);
 
-		InterviewFrage[] InPar1Fragen = { p1f1, p1f2, p1f3, p1f4, p1f5 };
+		Frage[] InPar1Fragen = { p1f1, p1f2, p1f3, p1f4, p1f5 };
 		this.interviewPartner[0] = new InterviewPartner(idCount(), "InPar1", 10, 1, InPar1Fragen);
 
 	}
