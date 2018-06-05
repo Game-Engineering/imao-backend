@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Sponsoren {
 	private Sponsor[] sponsoren;
-	private static int idCounter = 1;
+	public static int idCounter = 1;
 
 	private boolean sponsorenErstellt = false;
 
@@ -57,6 +57,7 @@ public class Sponsoren {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
 				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
+					
 					return StatusToString.ok("Der Sponsor ("+sponsorId+") wurde angeworben");
 				}
 			}
