@@ -18,6 +18,7 @@ public class Anamnese {
 	private int schmerzFürLetztesSymptom;
 	private int dauerFürLetztesSymptom;
 
+	//Fragen des Arztes an den Patienten bei einer normalen Annamnese
 	private static final String DIALOG_1_FRAGE_1 = "Wie lange haben Sie diese Beschwerden schon?";
 	private static final String DIALOG_1_FRAGE_2 = "Und auf einer Skala von 1-10, wie stark schätzen Sie Ihre Beschwerden ein?";
 	private static final String DIALOG_1_FRAGE_3 = "Haben Sie weitere Beschwerden?";
@@ -30,9 +31,12 @@ public class Anamnese {
 		this.verfügbareSymptome = krankheit.getSymptome();
 	}
 
+	/**
+	 * starte die Anamnese
+	 * @return
+	 */
 	public String getAntwort() {
 		if(this.letztesSymtom == null) {
-			//this.letztesSymtom=this.verfügbareSymptome[0];
 			entferneSymptom();
 		}
 		this.antwort = "Hallo! " + symptomText();
@@ -40,15 +44,24 @@ public class Anamnese {
 		return erstelleJSON();
 	}
 
+	/**
+	 * reagiere auf Antwort
+	 * @param frage
+	 * @return
+	 */
 	public String getAntwort(int frage) {
 		if(this.dialog1VerfügbareFragen.length <= frage) {
-			return "{\"error\"}";
+			return StatusToString.fehler("Fehlerhafte FrageID");
 		}
 		erstelleAntwort(dialog1VerfügbareFragen[frage]);
 		return erstelleJSON();
 
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	private String erstelleJSON() {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -67,6 +80,10 @@ public class Anamnese {
 		return objectNode.toString();
 	}
 
+	/**
+	 * this.antwort wird aktuallisiert und bekommt die neue Antwort des Patienten
+	 * @param frage
+	 */
 	private void erstelleAntwort(String frage) {
 
 		String antwort = "";
@@ -123,6 +140,10 @@ public class Anamnese {
 		this.antwort = antwort;
 	}
 
+	/**
+	 * ändere Daten this.dauerFürLetztesSymptom und this.schmerzFürLetztesSymptom passend für Symptom und erstelle passenden text für symptom
+	 * @return
+	 */
 	private String symptomText() {
 		Random rand2 = new Random();
 		String antwort = "";
