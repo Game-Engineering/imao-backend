@@ -1,8 +1,11 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +31,11 @@ public class Manager extends Person {
 	}
 
 	public void rundenanfang(List<Mail> neueMails) {
+		List<Mail> alteMails=new ArrayList<Mail>() ;
+		alteMails.addAll(posteingang);
+		posteingang.clear();
 		posteingang.addAll(neueMails);
+		posteingang.addAll(alteMails);
 		einnahmen.clear();
 		ausgaben.clear();
 		rufzuwachs.clear();

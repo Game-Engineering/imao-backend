@@ -142,22 +142,36 @@ public class SpielrundeMedizin extends Spielrunde {
 		}
 	}
 
-	public String sendeMail(int ID) {
-		String absender;
+	public String sendeMail(String ID) {
+		String absender = "" + arzt.vorname + " " + arzt.vorname;
+		String betreff;
 		String mailInhalt;
-		if (ID == 1) {
-			absender = "" + arzt.vorname + " " + arzt.vorname;
-			mailInhalt = EMoeglicheMails.valueOf("" + ID).getMailText();
-			System.out.println(absender + ", " + mailInhalt);
-			Mail mail = new Mail(absender, mailInhalt);
-			arzt.sendeMail(mail);
-			if (manager != null) {
-				manager.erhalteMail(mail);
-			}
-			return mail.toString();
-		} else {
-			return "Mail nicht gesendet";
+		switch (ID.toUpperCase()) {
+		case "LOB":
+			mailInhalt = EMoeglicheMails.LOB.getMailText();
+			betreff = "Lob";
+			break;
+		case "ABMAHNUNG":
+			mailInhalt = EMoeglicheMails.ABMAHNUNG.getMailText();
+			betreff = "Abmahnung";
+			break;
+		case "GERAET_GEKAUFT":
+			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
+			betreff = "Gerät gekauft";
+			break;
+		default:
+			mailInhalt = EMoeglicheMails.DEFAULT_MAIL.getMailText();
+			betreff = "Default";
 		}
+
+		System.out.println(absender + ", " + betreff + ", " + mailInhalt);
+		Mail mail = new Mail(absender, betreff, mailInhalt);
+		arzt.sendeMail(mail);
+		if (manager != null) {
+			manager.erhalteMail(mail);
+		}
+		return mail.toString();
+
 	}
 
 	@Override

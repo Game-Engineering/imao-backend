@@ -8,11 +8,11 @@ public class Aufgabe {
 	private int rufschaden = 0;
 	private Mail aufgabenMail;
 
-	public Aufgabe() {
-		neueAufgabe();
+	public Aufgabe(int runde) {
+		neueAufgabe(runde);
 	}
 
-	private void neueAufgabe() {
+	private void neueAufgabe(int runde) {
 		switch (new Random().nextInt(5)) {
 		case 0:
 			aufgabe = EAufgaben.INTERVIEW;
@@ -38,11 +38,11 @@ public class Aufgabe {
 			aufgabe = EAufgaben.INTERVIEW;
 			rufschaden = 10;
 		}
-		sendeAufgabenMail();
+		sendeAufgabenMail(runde);
 	}
 
-	private void sendeAufgabenMail() {
-		aufgabenMail = new Mail("CHEF", aufgabe.getAufgabeText());
+	private void sendeAufgabenMail(int runde) {
+		aufgabenMail = new Mail("CHEF", "Aufgabe Runde "+runde,aufgabe.getAufgabeText());
 	}
 
 	public void erledigt() {

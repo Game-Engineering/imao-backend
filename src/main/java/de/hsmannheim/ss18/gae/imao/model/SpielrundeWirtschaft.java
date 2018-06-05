@@ -12,7 +12,6 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	private String arztbericht;
 	private String budgetbericht;
 
-
 	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt, Aufgabe aufgabe) {
 		super(runde, manager, arzt);
 		this.aufgabe = aufgabe;
@@ -27,48 +26,14 @@ public class SpielrundeWirtschaft extends Spielrunde {
 				manager.rufVerlust("Nicht erfüllte Aufgabe", aufgabe.getRufschaden());
 			}
 		}
-		aufgabe = new Aufgabe();
-		
+		aufgabe = new Aufgabe(runde);
+
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());
 		if (runde == 1) {
-			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilfe, ich versinke im Chaos!!!"));
+			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname,"Hilferuf", "Hilfe, ich versinke im Chaos!!!"));
 
 		}
-		mails.add(new Mail("Test1" + ", " + "Test1", "Test1"));
-		mails.add(new Mail("Test2" + ", " + "Test2", "Test2"));
-		mails.add(new Mail("Test3" + ", " + "Test3", "Test3"));
-		mails.add(new Mail("Test4" + ", " + "Test4", "Test4"));
-		mails.add(new Mail("Test5" + ", " + "Test5", "Test5"));
-		mails.add(new Mail("Test6" + ", " + "Test6", "Test6"));
-		mails.add(new Mail("Test7" + ", " + "Test7", "Test7"));
-		mails.add(new Mail("Test8" + ", " + "Test8", "Test8"));
-		mails.add(new Mail("Test9" + ", " + "Test9", "Test9"));
-
-		mails.add(new Mail(arzt.vorname + ", " + arzt.nachname,
-				"AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC" + "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCC"
-						+ "AAAAAAAAAAABBBBBBBBBBBBB CCCCCCCCCCCCCCCCCCCCCCCCD"));
 		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();
 		while (it.hasNext()) {
 			Untersuchungsmethode m = it.next();
@@ -83,28 +48,32 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	}
 
 	public String sendeMail(String ID) {
-		String absender;
+		String absender= "" + manager.vorname + " " + manager.nachname;
+		String betreff;
 		String mailInhalt;
-		absender = "" + manager.vorname + " " + manager.nachname;
-		switch (ID.toUpperCase()) {
+				switch (ID.toUpperCase()) {
 		case "LOB":
 			mailInhalt = EMoeglicheMails.LOB.getMailText();
+			betreff="Lob";
 			break;
 		case "ABMAHNUNG":
 			mailInhalt = EMoeglicheMails.ABMAHNUNG.getMailText();
+			betreff="Abmahnung";
 			if (EAufgaben.ARZT_ABMAHNEN.equals(aufgabe.getAufgabe())) {
 				aufgabe.erledigt();
 			}
 			break;
 		case "GERAET_GEKAUFT":
 			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
+			betreff="Gerät gekauft";
 			break;
 		default:
 			mailInhalt = EMoeglicheMails.DEFAULT_MAIL.getMailText();
+			betreff="Default";
 		}
 
-		System.out.println(absender + ", " + mailInhalt);
-		Mail mail = new Mail(absender, mailInhalt);
+		System.out.println(absender + ", " +betreff+ ", " + mailInhalt);
+		Mail mail = new Mail(absender,betreff, mailInhalt);
 		manager.sendeMail(mail);
 		if (arzt != null) {
 			arzt.erhalteMail(mail);
@@ -188,7 +157,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	public String getBudgetbericht() {
 		return budgetbericht;
 	}
-	
+
 	public Manager getManager() {
 		return manager;
 	}
