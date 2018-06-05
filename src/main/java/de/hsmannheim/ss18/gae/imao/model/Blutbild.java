@@ -8,11 +8,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class Blutbild {
 
 	// Blutbild normalwerte
-	// Erythrozyten | w-> 3,9-5,3 Mio./µl | m->4,3-5,7Mio./µl
-	private static final double DEFAULT_MIN_FRAU_ERYTHROZYTEN = 3.9;
-	private static final double DEFAULT_MAX_FRAU_ERYTHROZYTEN = 5.3;
-	private static final double DEFAULT_MIN_MANN_ERYTHROZYTEN = 4.3;
-	private static final double DEFAULT_MAX_MANN_ERYTHROZYTEN = 5.7;
+	// Haemoglobinkonzentration | w-> 3,9-5,3 Mio./µl | m->4,3-5,7Mio./µl
+	private static final double DEFAULT_MIN_FRAU_Haemoglobinkonzentration = 3.9;
+	private static final double DEFAULT_MAX_FRAU_Haemoglobinkonzentration = 5.3;
+	private static final double DEFAULT_MIN_MANN_Haemoglobinkonzentration = 4.3;
+	private static final double DEFAULT_MAX_MANN_Haemoglobinkonzentration = 5.7;
 
 	// Leukozyten | w-> 3.800-10.500/µl | w-> 3.800-10.500/µl
 	private static final double DEFAULT_MIN_LEUKOZYTEN = 3800;
@@ -47,9 +47,163 @@ public class Blutbild {
 	private static final double DEFAULT_MIN_MCV = 85;
 	private static final double DEFAULT_MAX_MCV = 95;
 
-	Krankheit krankheit;
+	// ########################################grenzwerte start
 
-	private double erythrozyten;
+	// grenzwerte Haemoglobinkonzentration Frau
+	private static final double KRANK_Haemoglobinkonzentration_FRAU_ERHOET_LEICHT = DEFAULT_MAX_FRAU_Haemoglobinkonzentration
+			+ ((DEFAULT_MAX_FRAU_Haemoglobinkonzentration - DEFAULT_MIN_FRAU_Haemoglobinkonzentration) * 0.1);
+	private static final double KRANK_Haemoglobinkonzentration_FRAU_ERHOET_STARK = DEFAULT_MAX_FRAU_Haemoglobinkonzentration
+			+ ((DEFAULT_MAX_FRAU_Haemoglobinkonzentration - DEFAULT_MIN_FRAU_Haemoglobinkonzentration) * 0.25);
+
+	private static final double KRANK_Haemoglobinkonzentration_FRAU_GERING_LEICHT = DEFAULT_MIN_FRAU_Haemoglobinkonzentration
+			- ((DEFAULT_MAX_FRAU_Haemoglobinkonzentration - DEFAULT_MIN_FRAU_Haemoglobinkonzentration) * 0.1);
+	private static final double KRANK_Haemoglobinkonzentration_FRAU_GERING_STARK = DEFAULT_MIN_FRAU_Haemoglobinkonzentration
+			- (DEFAULT_MAX_FRAU_Haemoglobinkonzentration - DEFAULT_MIN_FRAU_Haemoglobinkonzentration) * 0.25;
+
+	// grenzwerte Haemoglobinkonzentration Mann
+	private static final double KRANK_Haemoglobinkonzentration_MANN_ERHOET_LEICHT = DEFAULT_MAX_MANN_Haemoglobinkonzentration
+			+ ((DEFAULT_MAX_MANN_Haemoglobinkonzentration - DEFAULT_MIN_MANN_Haemoglobinkonzentration) * 0.1);
+	private static final double KRANK_Haemoglobinkonzentration_MANN_ERHOET_STARK = DEFAULT_MAX_MANN_Haemoglobinkonzentration
+			+ ((DEFAULT_MAX_MANN_Haemoglobinkonzentration - DEFAULT_MIN_MANN_Haemoglobinkonzentration) * 0.25);
+
+	private static final double KRANK_Haemoglobinkonzentration_MANN_GERING_LEICHT = DEFAULT_MIN_MANN_Haemoglobinkonzentration
+			- ((DEFAULT_MAX_MANN_Haemoglobinkonzentration - DEFAULT_MIN_MANN_Haemoglobinkonzentration) * 0.1);
+	private static final double KRANK_Haemoglobinkonzentration_MANN_GERING_STARK = DEFAULT_MIN_MANN_Haemoglobinkonzentration
+			- (DEFAULT_MAX_MANN_Haemoglobinkonzentration - DEFAULT_MIN_MANN_Haemoglobinkonzentration) * 0.25;
+
+	// grenzwerte LEUKOZYTEN
+	private static final double KRANK_LEUKOZYTEN_ERHOET_LEICHT = DEFAULT_MAX_LEUKOZYTEN
+			+ ((DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1);
+	private static final double KRANK_LEUKOZYTEN_ERHOET_STARK = DEFAULT_MAX_LEUKOZYTEN
+			+ ((DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25);
+
+	private static final double KRANK_LEUKOZYTEN_GERING_LEICHT = DEFAULT_MIN_LEUKOZYTEN
+			- ((DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1);
+	private static final double KRANK_LEUKOZYTEN_GERING_STARK = DEFAULT_MIN_LEUKOZYTEN
+			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+
+	// grenzwerte THROMBOZYTEN
+	private static final double KRANK_THROMBOZYTEN_ERHOET_LEICHT = DEFAULT_MAX_THROMBOZYTEN
+			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+	private static final double KRANK_THROMBOZYTEN_ERHOET_STARK = DEFAULT_MAX_THROMBOZYTEN
+			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
+
+	private static final double KRANK_THROMBOZYTEN_GERING_LEICHT = DEFAULT_MIN_THROMBOZYTEN
+			- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+	private static final double KRANK_THROMBOZYTEN_GERING_STARK = DEFAULT_MIN_THROMBOZYTEN
+			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
+
+	// grenzwerte MCH
+	private static final double KRANK_MCH_ERHOET_LEICHT = DEFAULT_MAX_MCH + ((DEFAULT_MAX_MCH - DEFAULT_MIN_MCH) * 0.1);
+	private static final double KRANK_MCH_ERHOET_STARK = DEFAULT_MAX_MCH + ((DEFAULT_MAX_MCH - DEFAULT_MIN_MCH) * 0.25);
+
+	private static final double KRANK_MCH_GERING_LEICHT = DEFAULT_MIN_MCH - ((DEFAULT_MAX_MCH - DEFAULT_MIN_MCH) * 0.1);
+	private static final double KRANK_MCH_GERING_STARK = DEFAULT_MIN_MCH - (DEFAULT_MAX_MCH - DEFAULT_MIN_MCH) * 0.25;
+
+	// grenzwerte MCHC
+	private static final double KRANK_MCHC_ERHOET_LEICHT = DEFAULT_MAX_MCHC
+			+ ((DEFAULT_MAX_MCHC - DEFAULT_MIN_MCHC) * 0.1);
+	private static final double KRANK_MCHC_ERHOET_STARK = DEFAULT_MAX_MCHC
+			+ ((DEFAULT_MAX_MCHC - DEFAULT_MIN_MCHC) * 0.25);
+
+	private static final double KRANK_MCHC_GERING_LEICHT = DEFAULT_MIN_MCHC
+			- ((DEFAULT_MAX_MCHC - DEFAULT_MIN_MCHC) * 0.1);
+	private static final double KRANK_MCHC_GERING_STARK = DEFAULT_MIN_MCHC
+			- (DEFAULT_MAX_MCHC - DEFAULT_MIN_MCHC) * 0.25;
+
+	// grenzwerte MCV
+	private static final double KRANK_MCV_ERHOET_LEICHT = DEFAULT_MAX_MCV + ((DEFAULT_MAX_MCV - DEFAULT_MIN_MCV) * 0.1);
+	private static final double KRANK_MCV_ERHOET_STARK = DEFAULT_MAX_MCV + ((DEFAULT_MAX_MCV - DEFAULT_MIN_MCV) * 0.25);
+
+	private static final double KRANK_MCV_GERING_LEICHT = DEFAULT_MIN_MCV - ((DEFAULT_MAX_MCV - DEFAULT_MIN_MCV) * 0.1);
+	private static final double KRANK_MCV_GERING_STARK = DEFAULT_MIN_MCV - (DEFAULT_MAX_MCV - DEFAULT_MIN_MCV) * 0.25;
+
+	// grenzwerte HAEMOGLOBINKONZENTRATION Frau
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_FRAU_ERHOET_LEICHT = DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION
+			+ ((DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION) * 0.1);
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_FRAU_ERHOET_STARK = DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION
+			+ ((DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION) * 0.25);
+
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_LEICHT = DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION
+			- ((DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION) * 0.1);
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_STARK = DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION
+			- (DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION) * 0.25;
+
+	// grenzwerte HAEMOGLOBINKONZENTRATION Mann
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_LEICHT = DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION
+			+ ((DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION) * 0.1);
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_STARK = DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION
+			+ ((DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION) * 0.25);
+
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_MANN_GERING_LEICHT = DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION
+			- ((DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION) * 0.1);
+	private static final double KRANK_HAEMOGLOBINKONZENTRATION_MANN_GERING_STARK = DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION
+			- (DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION - DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION) * 0.25;
+
+	// grenzwerte HAEMATOKRIT Frau
+	private static final double KRANK_HAEMATOKRIT_FRAU_ERHOET_LEICHT = DEFAULT_MAX_FRAU_HAEMATOKRIT
+			+ ((DEFAULT_MAX_FRAU_HAEMATOKRIT - DEFAULT_MIN_FRAU_HAEMATOKRIT) * 0.1);
+	private static final double KRANK_HAEMATOKRIT_FRAU_ERHOET_STARK = DEFAULT_MAX_FRAU_HAEMATOKRIT
+			+ ((DEFAULT_MAX_FRAU_HAEMATOKRIT - DEFAULT_MIN_FRAU_HAEMATOKRIT) * 0.25);
+
+	private static final double KRANK_HAEMATOKRIT_FRAU_GERING_LEICHT = DEFAULT_MIN_FRAU_HAEMATOKRIT
+			- ((DEFAULT_MAX_FRAU_HAEMATOKRIT - DEFAULT_MIN_FRAU_HAEMATOKRIT) * 0.1);
+	private static final double KRANK_HAEMATOKRIT_FRAU_GERING_STARK = DEFAULT_MIN_FRAU_HAEMATOKRIT
+			- (DEFAULT_MAX_FRAU_HAEMATOKRIT - DEFAULT_MIN_FRAU_HAEMATOKRIT) * 0.25;
+
+	// grenzwerte HAEMATOKRIT Mann
+	private static final double KRANK_HAEMATOKRIT_MANN_ERHOET_LEICHT = DEFAULT_MAX_MANN_HAEMATOKRIT
+			+ ((DEFAULT_MAX_MANN_HAEMATOKRIT - DEFAULT_MIN_MANN_HAEMATOKRIT) * 0.1);
+	private static final double KRANK_HAEMATOKRIT_MANN_ERHOET_STARK = DEFAULT_MAX_MANN_HAEMATOKRIT
+			+ ((DEFAULT_MAX_MANN_HAEMATOKRIT - DEFAULT_MIN_MANN_HAEMATOKRIT) * 0.25);
+
+	private static final double KRANK_HAEMATOKRIT_MANN_GERING_LEICHT = DEFAULT_MIN_MANN_HAEMATOKRIT
+			- ((DEFAULT_MAX_MANN_HAEMATOKRIT - DEFAULT_MIN_MANN_HAEMATOKRIT) * 0.1);
+	private static final double KRANK_HAEMATOKRIT_MANN_GERING_STARK = DEFAULT_MIN_MANN_HAEMATOKRIT
+			- (DEFAULT_MAX_MANN_HAEMATOKRIT - DEFAULT_MIN_MANN_HAEMATOKRIT) * 0.25;
+
+	// ##############################################grenzwerte ende
+
+	// Erhöhte Thrombozyten
+	private static final double krankThrombozytenErhoetLeichtMin = DEFAULT_MAX_THROMBOZYTEN;
+	private static final double krankThrombozytenErhoetLeichtMax = DEFAULT_MAX_THROMBOZYTEN
+			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+	private static final double krankThrombozytenErhoetStarkMin = DEFAULT_MAX_THROMBOZYTEN
+			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+	private static final double krankThrombozytenErhoetStarkMax = DEFAULT_MAX_THROMBOZYTEN
+			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
+
+	// Geringe Thrombozyten
+	private static final double krankThrombozytenGeringLeichtMin = DEFAULT_MIN_THROMBOZYTEN
+			- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+	private static final double krankThrombozytenGeringLeichtMax = DEFAULT_MIN_THROMBOZYTEN;
+	private static final double krankThrombozytenGeringStarkMin = DEFAULT_MIN_THROMBOZYTEN
+			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
+	private static final double krankThrombozytenGeringStarkMax = DEFAULT_MIN_THROMBOZYTEN
+			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1;
+
+	// Erhöhte Leukozyten
+	private static final double krankLeukozytenErhoetLeichtMin = DEFAULT_MAX_LEUKOZYTEN;
+	private static final double krankLeukozytenErhoetLeichtMax = DEFAULT_MAX_LEUKOZYTEN
+			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+	private static final double krankLeukozytenErhoetStarkMin = DEFAULT_MAX_LEUKOZYTEN
+			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+	private static final double krankLeukozytenErhoetStarkMax = DEFAULT_MAX_LEUKOZYTEN
+			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+
+	// Geringe Leukozyten
+	private static final double krankLeukozytenGeringLeichtMin = DEFAULT_MIN_LEUKOZYTEN
+			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+	private static final double krankLeukozytenGeringLeichtMax = DEFAULT_MIN_LEUKOZYTEN;
+	private static final double krankLeukozytenGeringStarkMin = DEFAULT_MIN_LEUKOZYTEN
+			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+	private static final double krankLeukozytenGeringStarkMax = DEFAULT_MIN_LEUKOZYTEN
+			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+
+	private Krankheit krankheit;
+	private EGeschlecht geschlecht;
+
+	private double Haemoglobinkonzentration;
 	private double leukozyten;
 	private double thrombozyten;
 	private double haemoglobinkonzentration;
@@ -60,14 +214,14 @@ public class Blutbild {
 
 	/**
 	 * 
-	 * @param Krankheit
-	 *            krankheit
+	 * @param krankheit
 	 */
 	public Blutbild(Krankheit krankheit) {
 		// TODO auslesen und richtiges übergeben
 		this.krankheit = krankheit;
-		this.erstelleNormalesBlutbild(krankheit.getPatient().getGeschlecht());
-		this.erstelleKrankesBlutbild(krankheit.getPatient().getGeschlecht(),krankheit.getKrankheit());
+		this.geschlecht = krankheit.getPatient().getGeschlecht();
+		this.erstelleNormalesBlutbild(this.geschlecht);
+		this.erstelleKrankesBlutbild(this.geschlecht, krankheit.getKrankheit());
 	}
 
 	/**
@@ -83,12 +237,12 @@ public class Blutbild {
 		this.mchc = random(DEFAULT_MIN_MCHC, DEFAULT_MAX_MCHC);
 		this.mcv = random(DEFAULT_MIN_MCV, DEFAULT_MAX_MCV);
 		if (gender == EGeschlecht.MAENNLICH) {
-			this.erythrozyten = random(DEFAULT_MIN_MANN_ERYTHROZYTEN, DEFAULT_MAX_MANN_ERYTHROZYTEN);
+			this.Haemoglobinkonzentration = random(DEFAULT_MIN_MANN_Haemoglobinkonzentration, DEFAULT_MAX_MANN_Haemoglobinkonzentration);
 			this.haemoglobinkonzentration = random(DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION,
 					DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION);
 			this.haematokrit = random(DEFAULT_MIN_MANN_HAEMATOKRIT, DEFAULT_MAX_MANN_HAEMATOKRIT);
 		} else if (gender == EGeschlecht.WEIBLICH) {
-			this.erythrozyten = random(DEFAULT_MIN_FRAU_ERYTHROZYTEN, DEFAULT_MAX_FRAU_ERYTHROZYTEN);
+			this.Haemoglobinkonzentration = random(DEFAULT_MIN_FRAU_Haemoglobinkonzentration, DEFAULT_MAX_FRAU_Haemoglobinkonzentration);
 			this.haemoglobinkonzentration = random(DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION,
 					DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
 			this.haematokrit = random(DEFAULT_MIN_FRAU_HAEMATOKRIT, DEFAULT_MAX_FRAU_HAEMATOKRIT);
@@ -102,49 +256,13 @@ public class Blutbild {
 	 *            krankheit
 	 */
 	private void erstelleKrankesBlutbild(EGeschlecht geschlecht, EKrankheit krankheit) {
-		// Erhöhte Thrombozyten
-		double krankThrombozytenErhoetLeichtMin = DEFAULT_MAX_THROMBOZYTEN;
-		double krankThrombozytenErhoetLeichtMax = DEFAULT_MAX_THROMBOZYTEN
-				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-		double krankThrombozytenErhoetStarkMin = DEFAULT_MAX_THROMBOZYTEN
-				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-		double krankThrombozytenErhoetStarkMax = DEFAULT_MAX_THROMBOZYTEN
-				+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
-
-		// Geringe Thrombozyten
-		double krankThrombozytenGeringLeichtMin = DEFAULT_MIN_THROMBOZYTEN
-				- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-		double krankThrombozytenGeringLeichtMax = DEFAULT_MIN_THROMBOZYTEN;
-		double krankThrombozytenGeringStarkMin = DEFAULT_MIN_THROMBOZYTEN
-				- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
-		double krankThrombozytenGeringStarkMax = DEFAULT_MIN_THROMBOZYTEN
-				- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1;
-
-		// Erhöhte Leukozyten
-		double krankLeukozytenErhoetLeichtMin = DEFAULT_MAX_LEUKOZYTEN;
-		double krankLeukozytenErhoetLeichtMax = DEFAULT_MAX_LEUKOZYTEN
-				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-		double krankLeukozytenErhoetStarkMin = DEFAULT_MAX_LEUKOZYTEN
-				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-		double krankLeukozytenErhoetStarkMax = DEFAULT_MAX_LEUKOZYTEN
-				+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
-
-		// Geringe Leukozyten
-		double krankLeukozytenGeringLeichtMin = DEFAULT_MIN_LEUKOZYTEN
-				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-		double krankLeukozytenGeringLeichtMax = DEFAULT_MIN_LEUKOZYTEN;
-		double krankLeukozytenGeringStarkMin = DEFAULT_MIN_LEUKOZYTEN
-				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
-		double krankLeukozytenGeringStarkMax = DEFAULT_MIN_LEUKOZYTEN
-				- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
 
 		switch (krankheit) {
-//		case HIV:
-//			this.leukozyten=random(krankLeukozytenGeringLeichtMin,krankLeukozytenGeringLeichtMax);
-//			break;
-//		case BILHARZIOSE:
-//			// keine auswirkung
-//			break;
+		/*
+		 * case HIV: this.leukozyten=random(krankLeukozytenGeringLeichtMin,
+		 * krankLeukozytenGeringLeichtMax); break; case BILHARZIOSE: // keine auswirkung
+		 * break;
+		 */
 		case HAUTLEISHMANIASIS:
 			// keine auswirkung
 			break;
@@ -157,19 +275,16 @@ public class Blutbild {
 		case HEP_B:
 			// keine auswirkung
 			break;
-//		case CHOLERA:
-//			// keine auswirkung
-//			break;
-//		case TETANUS:
-//			// keine auswirkung
-//			break;
-//		case GELBFIEBER:
-//			this.leukozyten=random(krankLeukozytenErhoetLeichtMin,krankLeukozytenErhoetLeichtMax);
-//			this.thrombozyten=random(krankThrombozytenGeringLeichtMin,krankThrombozytenGeringLeichtMax);
-//			break;
-//		case DENGUE_FIEBER:
-//			this.thrombozyten = random(krankThrombozytenErhoetStarkMin, krankThrombozytenErhoetStarkMax);
-//			break;
+		/*
+		 * case CHOLERA: // keine auswirkung break; case TETANUS: // keine auswirkung
+		 * break; case GELBFIEBER:
+		 * this.leukozyten=random(krankLeukozytenErhoetLeichtMin,
+		 * krankLeukozytenErhoetLeichtMax);
+		 * this.thrombozyten=random(krankThrombozytenGeringLeichtMin,
+		 * krankThrombozytenGeringLeichtMax); break; case DENGUE_FIEBER:
+		 * this.thrombozyten = random(krankThrombozytenErhoetStarkMin,
+		 * krankThrombozytenErhoetStarkMax); break;
+		 */
 
 		default:
 			break;
@@ -199,14 +314,102 @@ public class Blutbild {
 		objectNode.put("budget", "900");
 		objectNode.put("name", "Blutbild");
 		// objectNode.put("BlutbildID", this.blutbildID);
-		objectNode.put("Erythrozyten", this.erythrozyten);
+		objectNode.put("Haemoglobinkonzentration", this.Haemoglobinkonzentration);
+		if (this.geschlecht.equals(EGeschlecht.MAENNLICH)) {
+			objectNode.put("Haemoglobinkonzentration_min_normal", DEFAULT_MIN_MANN_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_max_normal", DEFAULT_MAX_MANN_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_Haemoglobinkonzentration_MANN_GERING_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_Haemoglobinkonzentration_MANN_GERING_STARK);
+			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_Haemoglobinkonzentration_MANN_ERHOET_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_Haemoglobinkonzentration_MANN_ERHOET_STARK);
+		} else {
+			objectNode.put("Haemoglobinkonzentration_min", DEFAULT_MIN_FRAU_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_max", DEFAULT_MAX_FRAU_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_Haemoglobinkonzentration_FRAU_GERING_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_Haemoglobinkonzentration_FRAU_GERING_STARK);
+			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_Haemoglobinkonzentration_FRAU_ERHOET_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_Haemoglobinkonzentration_FRAU_ERHOET_STARK);
+		}
+
 		objectNode.put("Leukozyten", this.leukozyten);
+		objectNode.put("Leukozyten_min_normal", DEFAULT_MIN_LEUKOZYTEN);
+		objectNode.put("Leukozyten_max_normal", DEFAULT_MAX_LEUKOZYTEN);
+		objectNode.put("Leukozyten_min_veringert", KRANK_LEUKOZYTEN_GERING_LEICHT);
+		objectNode.put("Leukozyten_max_veringert", KRANK_LEUKOZYTEN_GERING_STARK);
+		objectNode.put("Leukozyten_min_erhoeht", KRANK_LEUKOZYTEN_ERHOET_LEICHT);
+		objectNode.put("Leukozyten_max_erhoeht", KRANK_LEUKOZYTEN_ERHOET_STARK);
+		
+
 		objectNode.put("Thrombozyten", this.thrombozyten);
+		objectNode.put("Thrombozyten_min_normal", DEFAULT_MIN_THROMBOZYTEN);
+		objectNode.put("Thrombozyten_max_normal", DEFAULT_MAX_THROMBOZYTEN);
+		objectNode.put("Thrombozyten_min_veringert", KRANK_THROMBOZYTEN_GERING_LEICHT);
+		objectNode.put("Thrombozyten_max_veringert", KRANK_THROMBOZYTEN_GERING_STARK);
+		objectNode.put("Thrombozyten_min_erhoeht", KRANK_THROMBOZYTEN_ERHOET_LEICHT);
+		objectNode.put("Thrombozyten_max_erhoeht", KRANK_THROMBOZYTEN_ERHOET_STARK);
+		
+		
 		objectNode.put("Haemoglobinkonzentration", this.haemoglobinkonzentration);
+		if (this.geschlecht.equals(EGeschlecht.MAENNLICH)) {
+			objectNode.put("Haemoglobinkonzentration_min_normal", DEFAULT_MIN_MANN_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_max_normal", DEFAULT_MAX_MANN_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_HAEMOGLOBINKONZENTRATION_MANN_GERING_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_HAEMOGLOBINKONZENTRATION_MANN_GERING_STARK);
+			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_STARK);
+		} else {
+			objectNode.put("Haemoglobinkonzentration_min", DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_max", DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_STARK);
+			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_ERHOET_LEICHT);
+			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_ERHOET_STARK);
+		}
+		
+		
 		objectNode.put("Haematokrit", this.haematokrit);
-		objectNode.put("MCH", this.mch);
-		objectNode.put("MCHC", this.mchc);
+		if (this.geschlecht.equals(EGeschlecht.MAENNLICH)) {
+			objectNode.put("Haematokrit_min_normal", DEFAULT_MIN_MANN_HAEMATOKRIT);
+			objectNode.put("Haematokrit_max_normal", DEFAULT_MAX_MANN_HAEMATOKRIT);
+			objectNode.put("Haematokrit_min_veringert", KRANK_HAEMATOKRIT_MANN_GERING_LEICHT);
+			objectNode.put("Haematokrit_max_veringert", KRANK_HAEMATOKRIT_MANN_GERING_STARK);
+			objectNode.put("Haematokrit_min_erhoeht", KRANK_HAEMATOKRIT_MANN_ERHOET_LEICHT);
+			objectNode.put("Haematokrit_max_erhoeht", KRANK_HAEMATOKRIT_MANN_ERHOET_STARK);
+		} else {
+			objectNode.put("Haematokrit_min", DEFAULT_MIN_FRAU_HAEMATOKRIT);
+			objectNode.put("Haematokrit_max", DEFAULT_MAX_FRAU_HAEMATOKRIT);
+			objectNode.put("Haematokrit_min_veringert", KRANK_HAEMATOKRIT_FRAU_GERING_LEICHT);
+			objectNode.put("Haematokrit_max_veringert", KRANK_HAEMATOKRIT_FRAU_GERING_STARK);
+			objectNode.put("Haematokrit_min_erhoeht", KRANK_HAEMATOKRIT_FRAU_ERHOET_LEICHT);
+			objectNode.put("Haematokrit_max_erhoeht", KRANK_HAEMATOKRIT_FRAU_ERHOET_STARK);
+		}
+		
+		
+		objectNode.put("MCH", this.mch);		
+		objectNode.put("MCH_min_normal", DEFAULT_MIN_MCH);
+		objectNode.put("MCH_max_normal", DEFAULT_MAX_MCH);
+		objectNode.put("MCH_min_veringert", KRANK_MCH_GERING_LEICHT);
+		objectNode.put("MCH_max_veringert", KRANK_MCH_GERING_STARK);
+		objectNode.put("MCH_min_erhoeht", KRANK_MCH_ERHOET_LEICHT);
+		objectNode.put("MCH_max_erhoeht", KRANK_MCH_ERHOET_STARK);
+		
+		
+		objectNode.put("MCHCC", this.mchc);
+		objectNode.put("MCHC_min_normal", DEFAULT_MIN_MCHC);
+		objectNode.put("MCHC_max_normal", DEFAULT_MAX_MCHC);
+		objectNode.put("MCHC_min_veringert", KRANK_MCHC_GERING_LEICHT);
+		objectNode.put("MCHC_max_veringert", KRANK_MCHC_GERING_STARK);
+		objectNode.put("MCHC_min_erhoeht", KRANK_MCHC_ERHOET_LEICHT);
+		objectNode.put("MCHC_max_erhoeht", KRANK_MCHC_ERHOET_STARK);
+		
+		
 		objectNode.put("MCV", this.mcv);
+		objectNode.put("MCV_min_normal", DEFAULT_MIN_MCV);
+		objectNode.put("MCV_max_normal", DEFAULT_MAX_MCV);
+		objectNode.put("MCV_min_veringert", KRANK_MCV_GERING_LEICHT);
+		objectNode.put("MCV_max_veringert", KRANK_MCV_GERING_STARK);
+		objectNode.put("MCV_min_erhoeht", KRANK_MCV_ERHOET_LEICHT);
+		objectNode.put("MCV_max_erhoeht", KRANK_MCV_ERHOET_STARK);
 
 		return objectNode.toString();
 	}
