@@ -46,6 +46,18 @@ public class Medizin extends Spiel {
 		rundeArzt = new SpielrundeMedizin(++rundencount, manager, arzt);
 		return rundeArzt.toString();
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getManagerDaten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getManagerDaten() {
+
+		return manager.toString();
+	}
 
 	/**
 	 * 

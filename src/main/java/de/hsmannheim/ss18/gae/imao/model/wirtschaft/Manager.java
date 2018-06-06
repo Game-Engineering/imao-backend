@@ -48,11 +48,19 @@ public class Manager extends Person {
 	}
 
 	public void erhalteMail(Mail mail) {
-		this.posteingang.add(mail);
+		List<Mail> alteMails=new ArrayList<Mail>() ;
+		alteMails.addAll(posteingang);
+		posteingang.clear();
+		posteingang.add(mail);
+		posteingang.addAll(alteMails);
 	}
 
 	public void sendeMail(Mail mail) {
-		this.postausgang.add(mail);
+		List<Mail> alteMails=new ArrayList<Mail>() ;
+		alteMails.addAll(posteingang);
+		postausgang.clear();
+		postausgang.add(mail);
+		postausgang.addAll(alteMails);
 	}
 
 	@Override
