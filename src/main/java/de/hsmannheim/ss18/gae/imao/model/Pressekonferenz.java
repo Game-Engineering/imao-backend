@@ -22,6 +22,10 @@ public class Pressekonferenz {
 		return this.pressekonferenzThemen;
 	}
 
+	/**
+	 * Starte die Pressekonferenz, keine zustandsänderung
+	 * @return
+	 */
 	public String startePressekonferenz() {
 		for (int i = 0; i < this.pressekonferenzThemen.length; i++) {
 			if (this.pressekonferenzThemen[i].isVerfuegbar()) {
@@ -32,6 +36,11 @@ public class Pressekonferenz {
 		return StatusToString.fehler("Momentan ist keine Pressekonferenz verfügbar");
 	}
 
+	/**
+	 * Antworte auf eine Frage, Zustandsänderung
+	 * @param antwortIndex 0-X
+	 * @return
+	 */
 	public String antwortePressekonferenz(int antwortIndex) {
 		for (int i = 0; i < this.pressekonferenzThemen.length; i++) {
 			if (this.pressekonferenzThemen[i].isVerfuegbar()) {
@@ -109,6 +118,9 @@ public class Pressekonferenz {
 		return objectNode.toString();
 	}
 
+	/**
+	 * Erstelle die Themen mit Fragen und Antworten der Pressekonferenzen
+	 */
 	private void createKonferenzThemen() {
 
 		this.pressekonferenzThemen = new PressekonferenzThema[3];

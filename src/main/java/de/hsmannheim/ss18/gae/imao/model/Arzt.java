@@ -8,6 +8,8 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+
 public class Arzt extends Person {
 	private List<Mail> posteingang = new ArrayList<>();
 	private List<Mail> postausgang = new ArrayList<>();

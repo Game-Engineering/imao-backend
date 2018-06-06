@@ -3,7 +3,12 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class Krankheit implements KrankheitID {
+import de.hsmannheim.ss18.gae.imao.model.enums.EHautfarbe;
+import de.hsmannheim.ss18.gae.imao.model.enums.EHautveränderung;
+import de.hsmannheim.ss18.gae.imao.model.enums.EKrankheit;
+import de.hsmannheim.ss18.gae.imao.model.enums.ESymptom;
+
+public class Krankheit {
 	private EKrankheit krankheit;
 	private Ultraschall ultraschall;
 	private Roentgen roentgen;
@@ -15,6 +20,7 @@ public class Krankheit implements KrankheitID {
 	private EHautveränderung symptomHautveraenderung;
 	Patient patient;
 
+	// Symptome für Krankheiten
 	private static final ESymptom[] SYMPTOME_HIV = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL, ESymptom.NACHTSCHWEIS,
 			ESymptom.LYMPHKNOTEN_GESCHWOLLEN, ESymptom.GEWICHTSVERLUST };
 	private static final ESymptom[] SYMPTOME_BILHARZIOSE = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL,
@@ -35,6 +41,11 @@ public class Krankheit implements KrankheitID {
 			ESymptom.ERBRECHEN_BLUT, ESymptom.MUSKELSCHMERZEN, ESymptom.BLUTUNG, ESymptom.SCHUETTELFROST,
 			ESymptom.GELENKSCHMERZEN, ESymptom.PULS_NIEDRIG };
 
+	/**
+	 * erstelle ID abhängig von Geschlecht, Alter und Krankheit
+	 * @param patient
+	 * @return ID
+	 */
 	private int brerchneErscheinung(Patient patient) {
 		int id = 0;
 
@@ -237,6 +248,10 @@ public class Krankheit implements KrankheitID {
 		return id;
 	}
 
+	/**
+	 * 
+	 * @return JSON mit allen vorhandenen Krankheiten
+	 */
 	public static String getAlleKrankheiten() {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -287,6 +302,11 @@ public class Krankheit implements KrankheitID {
 		return patient;
 	}
 
+	/**
+	 * erstellt Krankheit und Dazugehörige objekte (Annamnese, Blutbild, Roentgen und Ultraschall)
+	 * @param krankheit
+	 * @param patient
+	 */
 	public Krankheit(EKrankheit krankheit, Patient patient) {
 		this.krankheit = krankheit;
 		this.patient = patient;

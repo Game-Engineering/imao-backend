@@ -9,10 +9,10 @@ import javax.ws.rs.core.MediaType;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import de.hsmannheim.ss18.gae.imao.model.Arzt;
-import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.Manager;
 import de.hsmannheim.ss18.gae.imao.model.Person;
 import de.hsmannheim.ss18.gae.imao.model.Sponsoren;
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 
 @Path("/spiel")
 public class Spiel extends ResourceConfig {

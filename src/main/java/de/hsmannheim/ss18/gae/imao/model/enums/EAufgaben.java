@@ -1,5 +1,10 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.enums;
 
+/**
+ * Enum für Aufgaben, die der Manager erhalten kann.
+ * 
+ *
+ */
 public enum EAufgaben {
 	INTERVIEW("Geben Sie ein Interview"), PRESSEKONFERENZ_VIELETOTE(
 			"Halten Sie eine Pressekonferenz zu den Todesfällen"), PRESSEKONFERENZ_GUTEARBEIT(

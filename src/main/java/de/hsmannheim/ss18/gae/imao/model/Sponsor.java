@@ -1,9 +1,13 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+/**
+ * Sponsorobjekt wird von der Klasse "Sponsoren" erzeugt.
+ * @author lange
+ *
+ */
 public class Sponsor {
 
 	private int sponsorID;

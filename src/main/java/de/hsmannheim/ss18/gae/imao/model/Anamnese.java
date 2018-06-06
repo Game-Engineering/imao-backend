@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.ESymptom;
+
 public class Anamnese {
 	private Krankheit krankheit;
 	private String[] dialog1VerfügbareFragen = { DIALOG_1_FRAGE_1, DIALOG_1_FRAGE_2, DIALOG_1_FRAGE_3, DIALOG_1_FRAGE_4,

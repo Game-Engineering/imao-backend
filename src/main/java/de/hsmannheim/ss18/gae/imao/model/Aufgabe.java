@@ -2,6 +2,8 @@ package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.Random;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EAufgaben;
+
 public class Aufgabe {
 	private EAufgaben aufgabe = null;
 	private boolean erledigt = false;
@@ -12,6 +14,12 @@ public class Aufgabe {
 		neueAufgabe(runde);
 	}
 
+	/**
+	 * erstelle zufällig eine neue Aufgabe für den Manager
+	 * this.aufgabe enthält neue Aufgabe. 
+	 * Es wird eine Email an den Manager gesendet.
+	 * @param runde
+	 */
 	private void neueAufgabe(int runde) {
 		switch (new Random().nextInt(5)) {
 		case 0:

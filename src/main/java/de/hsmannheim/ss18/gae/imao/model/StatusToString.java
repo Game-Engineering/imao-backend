@@ -6,7 +6,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 public class StatusToString {
 
 	
-	
+	/**
+	 * erstellt JSON für kurze Fehlerrückmeldungen
+	 * @param nachricht
+	 * @return
+	 */
 	public static String fehler(String nachricht) {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -17,6 +21,11 @@ public class StatusToString {
 		return objectNode.toString();
 	}
 	
+	/**
+	 * erstellt JSON für kurze OK-Rückmeldungen
+	 * @param nachricht
+	 * @return
+	 */
 	public static String ok(String nachricht) {
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -27,6 +36,11 @@ public class StatusToString {
 		return objectNode.toString();
 	}
 	
+	/**
+	 * erstellt JSON für kurze Rückmeldungen, sollte eine Funktion noch nicht  implementiert sein.
+	 * @param nachricht
+	 * @return
+	 */
 	public static String notReady(String nachricht) {
 		ObjectMapper mapper = new ObjectMapper();
 

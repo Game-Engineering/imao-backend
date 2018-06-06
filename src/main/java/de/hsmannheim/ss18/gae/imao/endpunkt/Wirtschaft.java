@@ -14,11 +14,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import de.hsmannheim.ss18.gae.imao.model.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.Aufgabe;
-import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
-import de.hsmannheim.ss18.gae.imao.model.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
 import de.hsmannheim.ss18.gae.imao.model.InterviewPartner;
 import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
 
 @Path("spiel/wirtschaft")
 public class Wirtschaft extends Spiel {

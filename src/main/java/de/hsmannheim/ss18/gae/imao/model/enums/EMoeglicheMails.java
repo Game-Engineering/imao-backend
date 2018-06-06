@@ -1,5 +1,10 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.enums;
 
+/**
+ * 
+ * enum für E-Mail texte
+ *
+ */
 public enum EMoeglicheMails {
 	LOB("Gut gemacht. Weiter so!"), ABMAHNUNG(
 			"Schlimm, schlimm, schlimm. Hören Sie auf, Leute umzubringen, sonst sind Sie gefeuert."), GERAET_GEKAUFT(

@@ -18,6 +18,10 @@ public class Interview {
 		createInterviewPartner();
 	}
 
+	/**
+	 * return ein JSON mit allen verfügbaren InterviewPartnern
+	 * @return
+	 */
 	public String getInterviewParter() {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -40,6 +44,12 @@ public class Interview {
 
 	}
 
+	/**
+	 * Starte ein Interview, bewirkt keine Änderung der Zustände
+	 * @param interviewpartnerID
+	 * @param status
+	 * @return
+	 */
 	public String startInterview(int interviewpartnerID, String status) {
 
 		for (int i = 0; i < this.interviewPartner.length; i++) {
@@ -70,6 +80,12 @@ public class Interview {
 		return "ERROR: ID falsch oder Interviewpartner nicht verfügbar.";
 	}
 
+	/**
+	 * Antworte auf Aktuelle frage, bewirkt Änderung der Zustände
+	 * @param interviewpartnerID
+	 * @param antwortID
+	 * @return
+	 */
 	public String getInterview(int interviewpartnerID, int antwortID) {
 		String neuerStatus = "unknown";
 
@@ -143,6 +159,9 @@ public class Interview {
 		return "ERROR: Fehler in getInterview. Ursache unbekannt.";
 	}
 
+	/**
+	 * Erstelle InterviewPartner
+	 */
 	private void createInterviewPartner() {
 		this.interviewPartner = new InterviewPartner[1];
 

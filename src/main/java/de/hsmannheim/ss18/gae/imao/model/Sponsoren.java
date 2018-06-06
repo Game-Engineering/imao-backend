@@ -4,6 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+/**
+ * Verwaltende Klasse für Sponsoren
+ * @author lange
+ *
+ */
 public class Sponsoren {
 	private Sponsor[] sponsoren;
 	public static int idCounter = 1;
@@ -24,6 +29,7 @@ public class Sponsoren {
 	}
 
 	/**
+	 * Erstelle alle Sponsoren
 	 * monatlicher Betrag entspricht 0,01% des Firmenwertes
 	 */
 	private void erstelleAlleSponsoren() {
@@ -74,6 +80,10 @@ public class Sponsoren {
 		return StatusToString.fehler("Der Sponsor ("+sponsorId+") wurde nicht angeworben");
 	}
 
+	/**
+	 * gibt ein JSON zurück mit allen bereits angeworbenen Sponsoren
+	 * @return
+	 */
 	public String getAktuelleSponsoren() {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();
@@ -91,10 +101,19 @@ public class Sponsoren {
 		return objectNode.toString();
 	}
 
+	/**
+	 * gibt alle Sponsoren, auch diejenigen, für die der Ruf nicht ausreicht als JSON zurück
+	 * @return
+	 */
 	public String getAlleSponsoren() {
 		return getVerfuegbareSponsoren(Integer.MAX_VALUE);
 	}
 
+	/**
+	 * gibt alle Sponsoren zurück, für die der Ruf ausreicht
+	 * @param ruf
+	 * @return
+	 */
 	public String getVerfuegbareSponsoren(long ruf) {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();

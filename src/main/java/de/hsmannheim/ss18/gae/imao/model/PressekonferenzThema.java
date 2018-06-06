@@ -3,17 +3,23 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+/**
+ * Das Thema einer Presserkonferenz. Eine Pressekonferenz besitzt Fragen und ist
+ * erst Verfügbar wenn, ein bestimmtes Erigniss eingetreten ist.
+ * 
+ * @author lange
+ *
+ */
 public class PressekonferenzThema {
-	
+
 	private int id;
 	private String thema;
 	private int maxAnsehen;
 	private int schwierigkeit;
-	
+
 	private Frage[] fragen;
 	private boolean verfuegbar = false;
-	
-	
+
 	/**
 	 * 
 	 * @param id
@@ -22,15 +28,14 @@ public class PressekonferenzThema {
 	 * @param schweirigkeit
 	 * @param fragen
 	 */
-	public PressekonferenzThema(int id, String thema, int maxAnsehen, int schweirigkeit,Frage[] fragen) {
+	public PressekonferenzThema(int id, String thema, int maxAnsehen, int schweirigkeit, Frage[] fragen) {
 		this.id = id;
 		this.thema = thema;
 		this.maxAnsehen = maxAnsehen;
 		this.schwierigkeit = schweirigkeit;
-		this.fragen=fragen;
+		this.fragen = fragen;
 	}
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -54,11 +59,11 @@ public class PressekonferenzThema {
 	public boolean isVerfuegbar() {
 		return verfuegbar;
 	}
-	
+
 	public void setVerfuegbar(boolean verfuegbar) {
-		this.verfuegbar=verfuegbar;
+		this.verfuegbar = verfuegbar;
 	}
-	
+
 	@Override
 	public String toString() {
 		ObjectMapper mapper = new ObjectMapper();
@@ -72,5 +77,5 @@ public class PressekonferenzThema {
 
 		return objectNode.toString();
 	}
-	
+
 }

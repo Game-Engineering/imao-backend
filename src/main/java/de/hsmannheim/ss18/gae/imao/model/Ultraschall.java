@@ -16,7 +16,7 @@ public class Ultraschall {
 	private static final int ULTRASCHALL_K6 = 6;
 
 	/**
-	 * 
+	 * weist einer Krankheit die Passende BildID zu
 	 * @param krankheit
 	 */
 	public Ultraschall(Krankheit krankheit) {

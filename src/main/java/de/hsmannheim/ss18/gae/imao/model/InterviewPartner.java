@@ -3,6 +3,13 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+/**
+ * InterviewPartner werden in Interview erstellt.
+ * Sie besitzen haben Fragen und sind nicht immer Verfügbar.
+ * Einige sind schwieriger und geben somit auch mehr Ruf als andere
+ * @author lange
+ *
+ */
 public class InterviewPartner {
 
 	private int id;

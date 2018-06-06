@@ -3,6 +3,10 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EDiagnoseErgebnis;
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.enums.EKrankheit;
+
 public class Patient extends Person {
 
 	private static int IDcount = 0;
