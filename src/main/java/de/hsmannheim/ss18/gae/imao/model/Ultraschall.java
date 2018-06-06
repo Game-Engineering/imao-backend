@@ -4,16 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Ultraschall {
-	private Krankheit krankheit;
+	//private Krankheit krankheit;
 	private int ultraschallID;
 	
 	private static final int ULTRASCHALL_GESUND = 0;
-	private static final int ULTRASCHALL_K1 = 1;
-	private static final int ULTRASCHALL_K2 = 2;
-	private static final int ULTRASCHALL_K3 = 3;
-	private static final int ULTRASCHALL_K4 = 4;
-	private static final int ULTRASCHALL_K5 = 5;
-	private static final int ULTRASCHALL_K6 = 6;
+//	private static final int ULTRASCHALL_K1 = 1;
+//	private static final int ULTRASCHALL_K2 = 2;
+//	private static final int ULTRASCHALL_K3 = 3;
+//	private static final int ULTRASCHALL_K4 = 4;
+//	private static final int ULTRASCHALL_K5 = 5;
+//	private static final int ULTRASCHALL_K6 = 6;
 
 	/**
 	 * weist einer Krankheit die Passende BildID zu
@@ -21,7 +21,7 @@ public class Ultraschall {
 	 */
 	public Ultraschall(Krankheit krankheit) {
 		//TODO reduziere Budget
-		this.krankheit = krankheit;
+		//this.krankheit = krankheit;
 		switch (krankheit.getKrankheit()) {
 		case MASERN:
 			this.ultraschallID = ULTRASCHALL_GESUND;

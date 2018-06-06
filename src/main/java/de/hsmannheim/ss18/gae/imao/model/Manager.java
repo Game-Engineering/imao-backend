@@ -1,11 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

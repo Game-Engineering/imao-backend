@@ -25,7 +25,7 @@ public class Sponsoren {
 	}
 
 	private int getIdCount() {
-		return this.idCounter++;
+		return idCounter++;
 	}
 
 	/**

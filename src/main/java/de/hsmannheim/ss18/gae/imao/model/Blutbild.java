@@ -168,42 +168,42 @@ public class Blutbild {
 	// ##############################################grenzwerte ende
 
 	// Erhöhte Thrombozyten
-	private static final double krankThrombozytenErhoetLeichtMin = DEFAULT_MAX_THROMBOZYTEN;
-	private static final double krankThrombozytenErhoetLeichtMax = DEFAULT_MAX_THROMBOZYTEN
-			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-	private static final double krankThrombozytenErhoetStarkMin = DEFAULT_MAX_THROMBOZYTEN
-			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-	private static final double krankThrombozytenErhoetStarkMax = DEFAULT_MAX_THROMBOZYTEN
-			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
+//	private static final double krankThrombozytenErhoetLeichtMin = DEFAULT_MAX_THROMBOZYTEN;
+//	private static final double krankThrombozytenErhoetLeichtMax = DEFAULT_MAX_THROMBOZYTEN
+//			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+//	private static final double krankThrombozytenErhoetStarkMin = DEFAULT_MAX_THROMBOZYTEN
+//			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+//	private static final double krankThrombozytenErhoetStarkMax = DEFAULT_MAX_THROMBOZYTEN
+//			+ ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25);
 
 	// Geringe Thrombozyten
-	private static final double krankThrombozytenGeringLeichtMin = DEFAULT_MIN_THROMBOZYTEN
-			- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
-	private static final double krankThrombozytenGeringLeichtMax = DEFAULT_MIN_THROMBOZYTEN;
-	private static final double krankThrombozytenGeringStarkMin = DEFAULT_MIN_THROMBOZYTEN
-			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
-	private static final double krankThrombozytenGeringStarkMax = DEFAULT_MIN_THROMBOZYTEN
-			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1;
+//	private static final double krankThrombozytenGeringLeichtMin = DEFAULT_MIN_THROMBOZYTEN
+//			- ((DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1);
+//	private static final double krankThrombozytenGeringLeichtMax = DEFAULT_MIN_THROMBOZYTEN;
+//	private static final double krankThrombozytenGeringStarkMin = DEFAULT_MIN_THROMBOZYTEN
+//			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.25;
+//	private static final double krankThrombozytenGeringStarkMax = DEFAULT_MIN_THROMBOZYTEN
+//			- (DEFAULT_MAX_THROMBOZYTEN - DEFAULT_MIN_THROMBOZYTEN) * 0.1;
 
 	// Erhöhte Leukozyten
-	private static final double krankLeukozytenErhoetLeichtMin = DEFAULT_MAX_LEUKOZYTEN;
-	private static final double krankLeukozytenErhoetLeichtMax = DEFAULT_MAX_LEUKOZYTEN
-			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-	private static final double krankLeukozytenErhoetStarkMin = DEFAULT_MAX_LEUKOZYTEN
-			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-	private static final double krankLeukozytenErhoetStarkMax = DEFAULT_MAX_LEUKOZYTEN
-			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+//	private static final double krankLeukozytenErhoetLeichtMin = DEFAULT_MAX_LEUKOZYTEN;
+//	private static final double krankLeukozytenErhoetLeichtMax = DEFAULT_MAX_LEUKOZYTEN
+//			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+//	private static final double krankLeukozytenErhoetStarkMin = DEFAULT_MAX_LEUKOZYTEN
+//			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+//	private static final double krankLeukozytenErhoetStarkMax = DEFAULT_MAX_LEUKOZYTEN
+//			+ (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
 
 	// Geringe Leukozyten
-	private static final double krankLeukozytenGeringLeichtMin = DEFAULT_MIN_LEUKOZYTEN
-			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
-	private static final double krankLeukozytenGeringLeichtMax = DEFAULT_MIN_LEUKOZYTEN;
-	private static final double krankLeukozytenGeringStarkMin = DEFAULT_MIN_LEUKOZYTEN
-			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
-	private static final double krankLeukozytenGeringStarkMax = DEFAULT_MIN_LEUKOZYTEN
-			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+//	private static final double krankLeukozytenGeringLeichtMin = DEFAULT_MIN_LEUKOZYTEN
+//			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
+//	private static final double krankLeukozytenGeringLeichtMax = DEFAULT_MIN_LEUKOZYTEN;
+//	private static final double krankLeukozytenGeringStarkMin = DEFAULT_MIN_LEUKOZYTEN
+//			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.25;
+//	private static final double krankLeukozytenGeringStarkMax = DEFAULT_MIN_LEUKOZYTEN
+//			- (DEFAULT_MAX_LEUKOZYTEN - DEFAULT_MIN_LEUKOZYTEN) * 0.1;
 
-	private Krankheit krankheit;
+//	private Krankheit krankheit;
 	private EGeschlecht geschlecht;
 
 	private double Haemoglobinkonzentration;
@@ -221,7 +221,7 @@ public class Blutbild {
 	 */
 	public Blutbild(Krankheit krankheit) {
 		// TODO auslesen und richtiges übergeben
-		this.krankheit = krankheit;
+//		this.krankheit = krankheit;
 		this.geschlecht = krankheit.getPatient().getGeschlecht();
 		this.erstelleNormalesBlutbild(this.geschlecht);
 		this.erstelleKrankesBlutbild(this.geschlecht, krankheit.getKrankheit());

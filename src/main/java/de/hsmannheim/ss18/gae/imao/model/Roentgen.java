@@ -4,16 +4,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class Roentgen {
-	private Krankheit krankheit;
+	//private Krankheit krankheit;
 	private int roentgenID;
 
 	private static final int ROENTGEN_GESUND = 0;
-	private static final int ROENTGEN_K1 = 1;
-	private static final int ROENTGEN_K2 = 2;
-	private static final int ROENTGEN_K3 = 3;
-	private static final int ROENTGEN_K4 = 4;
-	private static final int ROENTGEN_K5 = 5;
-	private static final int ROENTGEN_K6 = 6;
+//	private static final int ROENTGEN_K1 = 1;
+//	private static final int ROENTGEN_K2 = 2;
+//	private static final int ROENTGEN_K3 = 3;
+//	private static final int ROENTGEN_K4 = 4;
+//	private static final int ROENTGEN_K5 = 5;
+//	private static final int ROENTGEN_K6 = 6;
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class Roentgen {
 	 */
 	public Roentgen(Krankheit krankheit) {
 		//TODO reduziere Budget
-		this.krankheit = krankheit;
+		//this.krankheit = krankheit;
 		switch (krankheit.getKrankheit()) {
 		case MASERN:
 			this.roentgenID = ROENTGEN_GESUND;

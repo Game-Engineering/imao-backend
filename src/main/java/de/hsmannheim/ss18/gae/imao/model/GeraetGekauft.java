@@ -7,11 +7,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 public class GeraetGekauft {
 	private List<Untersuchungsmethode> methoden;
-	private long budget;
+//	private long budget;
 
 	public GeraetGekauft(List<Untersuchungsmethode> methoden, long budget) {
 		this.methoden = methoden;
-		this.budget = budget;
+//		this.budget = budget;
 	}
 
 	@Override

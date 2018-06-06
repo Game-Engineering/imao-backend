@@ -64,7 +64,6 @@ public class Pressekonferenz {
 						this.pressekonferenzThemen[i].setVerfuegbar(false);
 						
 						ObjectMapper mapper = new ObjectMapper();
-						ArrayNode arrayNode = mapper.createArrayNode();
 						ObjectNode objectNode = mapper.createObjectNode();
 						
 						objectNode.put("name", "pressekonferenz");

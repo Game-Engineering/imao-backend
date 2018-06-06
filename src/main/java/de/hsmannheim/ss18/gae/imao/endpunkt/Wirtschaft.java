@@ -1,7 +1,5 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +13,6 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import de.hsmannheim.ss18.gae.imao.model.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.Aufgabe;
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
-import de.hsmannheim.ss18.gae.imao.model.InterviewPartner;
 import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
@@ -125,7 +122,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/getInterviewPartner")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getInterviewPartner() {
-		return this.rundeManager.getManager().getInterview().getInterviewParter();
+		return rundeManager.getManager().getInterview().getInterviewParter();
 		/*
 		 * List<InterviewPartner> partnerListe = new ArrayList<>(); partnerListe.add(
 		 * new InterviewPartner(1, "Hans", 35, 3)); partnerListe.add( new
@@ -143,7 +140,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/interview/{partnerID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String interview(@PathParam("partnerID") String partnerID) {
-		return this.rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID), "neue/erste Anfrage");
+		return rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID), "neue/erste Anfrage");
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
@@ -159,7 +156,7 @@ public class Wirtschaft extends Spiel {
 	public String interview(@PathParam("partnerID") String partnerID, @PathParam("antwortID") String antwortID) {
 		// bei letzter Antwort prüfen ob Inerview die aufgabe war ind wenn ja
 		// auf aufgabe.erledigt() ausführen
-		return this.rundeManager.getManager().getInterview().getInterview(Integer.parseInt(partnerID), Integer.parseInt(antwortID));
+		return rundeManager.getManager().getInterview().getInterview(Integer.parseInt(partnerID), Integer.parseInt(antwortID));
 		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
@@ -242,7 +239,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/getAktuelleSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAktuelleSponsoren() {
-		return this.rundeManager.getManager().getSponsoren().getAktuelleSponsoren();
+		return rundeManager.getManager().getSponsoren().getAktuelleSponsoren();
 		//return "{\"Frage\": \"ID\", \"AntwortA\": \"ID\", \"AntwortB\",: \"ID\", \"AntwortC\": \"ID\", \"AntwortD\": \"ID\"}";
 	}
 
@@ -254,7 +251,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/getMoeglicheSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMoeglicheSponsoren() {
-		return this.rundeManager.getManager().getSponsoren().getVerfuegbareSponsoren(this.rundeManager.getManager().getRuf());
+		return rundeManager.getManager().getSponsoren().getVerfuegbareSponsoren(rundeManager.getManager().getRuf());
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 	
@@ -266,7 +263,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/getAlleSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAlleSponsoren() {
-		return this.rundeManager.getManager().getSponsoren().getAlleSponsoren();
+		return rundeManager.getManager().getSponsoren().getAlleSponsoren();
 		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
@@ -280,7 +277,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/werbeSponsorAn/{sponsorID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String werbeSponsorAn(@PathParam("sponsorID") String sponsorID) {
-		return this.rundeManager.getManager().getSponsoren().werbeSponsorAn(Integer.parseInt(sponsorID),this.rundeManager.getManager().getRuf());
+		return rundeManager.getManager().getSponsoren().werbeSponsorAn(Integer.parseInt(sponsorID),rundeManager.getManager().getRuf());
 		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 	
@@ -292,7 +289,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/startePressekonferenz")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String startePressekonferenz() {
-		return this.rundeManager.startePressekonferenz();
+		return rundeManager.startePressekonferenz();
 		
 	}
 	
@@ -305,7 +302,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/pressekonferenz/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String antwortePressekonferenz(@PathParam("antwortID") String antwortID) {
-		return this.rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
+		return rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
 	}
 
 	public static void resetRundencount() {

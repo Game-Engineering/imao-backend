@@ -21,10 +21,10 @@ public class Krankheit {
 	Patient patient;
 
 	// Symptome für Krankheiten
-	private static final ESymptom[] SYMPTOME_HIV = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL, ESymptom.NACHTSCHWEIS,
-			ESymptom.LYMPHKNOTEN_GESCHWOLLEN, ESymptom.GEWICHTSVERLUST };
-	private static final ESymptom[] SYMPTOME_BILHARZIOSE = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL,
-			ESymptom.FIEBER_LANG, ESymptom.HARNWEGSBEFALL };
+//	private static final ESymptom[] SYMPTOME_HIV = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL, ESymptom.NACHTSCHWEIS,
+//			ESymptom.LYMPHKNOTEN_GESCHWOLLEN, ESymptom.GEWICHTSVERLUST };
+//	private static final ESymptom[] SYMPTOME_BILHARZIOSE = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL,
+//			ESymptom.FIEBER_LANG, ESymptom.HARNWEGSBEFALL };
 	private static final ESymptom[] SYMPTOME_HAUTLEISHMANIASIS = { ESymptom.EINSTICHSTELLE_KNOETCHENBILDUNG,
 			ESymptom.EINSTICHSTELLE_BEULE };
 	private static final ESymptom[] SYMPTOME_MASERN = { ESymptom.JUCKREITZ, ESymptom.FIEBER_NORMAL, ESymptom.HUSTEN,
@@ -32,14 +32,14 @@ public class Krankheit {
 	private static final ESymptom[] SYMPTOME_HEP = { ESymptom.FIEBER_NORMAL, ESymptom.MUEDIGKEIT,
 			ESymptom.ERBRECHEN_UEBELKEIT, ESymptom.VOELLEGEFUEHL, ESymptom.HAUT_GELB, ESymptom.AUGEN_GELBFAERBUNG,
 			ESymptom.URIN_BRAUN, ESymptom.STUHL_HELL };
-	private static final ESymptom[] SYMPTOME_CHOLERA = { ESymptom.BRECHDURCHFALL };
-	private static final ESymptom[] SYMPTOME_TETANUS = { ESymptom.MUSKELSCHMERZEN, ESymptom.KIEFERSPERRE,
-			ESymptom.SCHLUCKSTOERUNG, ESymptom.ATEMSTOERUNG, ESymptom.GESICHTSMUSKELKRAEMPFE };
-	private static final ESymptom[] SYMPTOME_GELBFIEBER = { ESymptom.FIEBER_NORMAL, ESymptom.FIEBER_HOCH_WECHSELHAFT,
-			ESymptom.MUEDIGKEIT, ESymptom.ERBRECHEN_UEBELKEIT, ESymptom.ERBRECHEN_BLUT, ESymptom.HAUT_GELB };
-	private static final ESymptom[] SYMPTOME_DENGUE_FIEBER = { ESymptom.FIEBER_NORMAL, ESymptom.ERBRECHEN_UEBELKEIT,
-			ESymptom.ERBRECHEN_BLUT, ESymptom.MUSKELSCHMERZEN, ESymptom.BLUTUNG, ESymptom.SCHUETTELFROST,
-			ESymptom.GELENKSCHMERZEN, ESymptom.PULS_NIEDRIG };
+//	private static final ESymptom[] SYMPTOME_CHOLERA = { ESymptom.BRECHDURCHFALL };
+//	private static final ESymptom[] SYMPTOME_TETANUS = { ESymptom.MUSKELSCHMERZEN, ESymptom.KIEFERSPERRE,
+//			ESymptom.SCHLUCKSTOERUNG, ESymptom.ATEMSTOERUNG, ESymptom.GESICHTSMUSKELKRAEMPFE };
+//	private static final ESymptom[] SYMPTOME_GELBFIEBER = { ESymptom.FIEBER_NORMAL, ESymptom.FIEBER_HOCH_WECHSELHAFT,
+//			ESymptom.MUEDIGKEIT, ESymptom.ERBRECHEN_UEBELKEIT, ESymptom.ERBRECHEN_BLUT, ESymptom.HAUT_GELB };
+//	private static final ESymptom[] SYMPTOME_DENGUE_FIEBER = { ESymptom.FIEBER_NORMAL, ESymptom.ERBRECHEN_UEBELKEIT,
+//			ESymptom.ERBRECHEN_BLUT, ESymptom.MUSKELSCHMERZEN, ESymptom.BLUTUNG, ESymptom.SCHUETTELFROST,
+//			ESymptom.GELENKSCHMERZEN, ESymptom.PULS_NIEDRIG };
 
 	/**
 	 * erstelle ID abhängig von Geschlecht, Alter und Krankheit
