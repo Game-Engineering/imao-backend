@@ -1,4 +1,4 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.Person;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 
 public class Manager extends Person {

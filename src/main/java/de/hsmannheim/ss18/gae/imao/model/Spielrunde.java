@@ -3,6 +3,10 @@ package de.hsmannheim.ss18.gae.imao.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Untersuchungsmethode;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
+
 public abstract class Spielrunde {
 	protected List<Untersuchungsmethode> untersuchungsmethoden = new ArrayList<>();
 	protected int runde;

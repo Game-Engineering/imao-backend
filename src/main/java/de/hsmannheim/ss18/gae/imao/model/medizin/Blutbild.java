@@ -1,4 +1,4 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.medizin;
 
 import java.util.Random;
 

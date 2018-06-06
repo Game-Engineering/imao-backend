@@ -5,6 +5,8 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.medizin.Untersuchungsmethode;
+
 public class GeraetGekauft {
 	private List<Untersuchungsmethode> methoden;
 //	private long budget;

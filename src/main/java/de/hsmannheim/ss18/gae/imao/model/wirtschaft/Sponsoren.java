@@ -1,8 +1,10 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import de.hsmannheim.ss18.gae.imao.model.StatusToString;
 
 /**
  * Verwaltende Klasse für Sponsoren

@@ -6,15 +6,15 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.hsmannheim.ss18.gae.imao.model.Blutbild;
-import de.hsmannheim.ss18.gae.imao.model.Diagnose;
-import de.hsmannheim.ss18.gae.imao.model.Krankheit;
-import de.hsmannheim.ss18.gae.imao.model.Manager;
-import de.hsmannheim.ss18.gae.imao.model.Patient;
-import de.hsmannheim.ss18.gae.imao.model.Roentgen;
-import de.hsmannheim.ss18.gae.imao.model.SpielrundeMedizin;
-import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Blutbild;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Diagnose;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Krankheit;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Patient;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Roentgen;
+import de.hsmannheim.ss18.gae.imao.model.medizin.SpielrundeMedizin;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Ultraschall;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
 
 @Path("spiel/medizin")
 public class Medizin extends Spiel {

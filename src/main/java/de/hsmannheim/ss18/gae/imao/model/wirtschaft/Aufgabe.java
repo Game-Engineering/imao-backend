@@ -1,4 +1,4 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
 import java.util.Random;
 

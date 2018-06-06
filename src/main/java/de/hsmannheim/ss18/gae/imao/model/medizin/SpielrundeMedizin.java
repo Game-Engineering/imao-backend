@@ -1,4 +1,4 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.medizin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,10 +10,13 @@ import java.util.Random;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
 import de.hsmannheim.ss18.gae.imao.model.enums.EDiagnoseErgebnis;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.enums.EKrankheit;
 import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Mail;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
 
 public class SpielrundeMedizin extends Spielrunde {
 

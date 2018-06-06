@@ -7,8 +7,8 @@ import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 
 public class Person {
 
-	protected String vorname;
-	protected String nachname;
+	public String vorname;
+	public String nachname;
 	protected EGeschlecht geschlecht;
 
 	public Person(String vorname, String nachname, EGeschlecht geschlecht) {
