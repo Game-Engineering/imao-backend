@@ -8,6 +8,7 @@ import de.hsmannheim.ss18.gae.imao.model.StatusToString;
 
 /**
  * Verwaltende Klasse für Sponsoren
+ * 
  * @author lange
  *
  */
@@ -19,7 +20,7 @@ public class Sponsoren {
 	private boolean sponsorenErstellt = false;
 
 	public Sponsoren(Manager manager) {
-		this.manager=manager;
+		this.manager = manager;
 		if (!this.sponsorenErstellt) {
 			erstelleAlleSponsoren();
 			this.sponsorenErstellt = true;
@@ -31,8 +32,8 @@ public class Sponsoren {
 	}
 
 	/**
-	 * Erstelle alle Sponsoren
-	 * monatlicher Betrag entspricht 0,01% des Firmenwertes
+	 * Erstelle alle Sponsoren monatlicher Betrag entspricht 0,01% des
+	 * Firmenwertes
 	 */
 	private void erstelleAlleSponsoren() {
 
@@ -67,23 +68,35 @@ public class Sponsoren {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
 				if (this.sponsoren[i].getBenoetigtesAnsehen() <= ruf) {
 					this.sponsoren[i].setAngeworben(true);
-					
-					this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage", "Wir freuen uns ihnen mitteilen zu können, dass wir sie für "+ this.sponsoren[i].getAnwerbedauer()+" Monate mit einem monatlichen Betrag von "+this.sponsoren[i].getMonatlicherBetrag()+"€ unterstützen werden. \n\n Mit freundlichen Grüßen, \n"+this.sponsoren[i].getSponsorName()));
-					return StatusToString.ok("Der Sponsor ("+sponsorId+") wurde angeworben");
+
+					this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage",
+							"Sehr geehrter Vorstand von IMAO,\n"
+									+ "Es freut uns Ihnen mitteilen zu können, dass wir die Aktivitäten von IMAO unterstützen wollen und zu diesem Zweck die Organisation mit einem Geldbetrag in Höhe von "
+									+ this.sponsoren[i].getMonatlicherBetrag() + "€ für die Dauer von "
+									+ this.sponsoren[i].getAnwerbedauer() + ".Monaten unterstützen.\n"
+									+ "Mit freundlichen Grüßen,\n\n" + this.sponsoren[i].getSponsorName()));
+					return StatusToString.ok("Der Sponsor (" + sponsorId + ") wurde angeworben");
 				}
 			}
 		}
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (sponsorId == this.sponsoren[i].getSponsorID()) {
-				this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage", "Es tut uns leid ihnen mitteilen zu müssen, das wir sie nicht unterstützen könen. \n\n Mit freundlichen Grüßen, \n"+this.sponsoren[i].getSponsorName()));
+				this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage",
+						"Sehr geehrter Vorstand von IMAO,\n\n"
+								+ "herzlichen Dank für Ihre Anfrage und Ihr damit verbundenes Interesse an unserem Unternehmen. "
+								+ "Wir haben uns sehr darüber gefreut, dass Sie im Rahmen einer Sponsoringanfrage an uns gedacht haben.\n"
+								+ "Aufgrund der zahlreichen Anfragen, die im Laufe eines Jahres an uns herangetragen werden, ist es uns jedoch leider nicht möglich, jedem Wunsch zu entsprehcen. "
+								+ "Aus diesem Grund können wir Ihre Anfrage nicht berücksichtigen.\n"
+								+ "Mit freundlichen Grüßen,\n\n" + this.sponsoren[i].getSponsorName()));
 			}
 		}
-		return StatusToString.fehler("Der Sponsor ("+sponsorId+") wurde nicht angeworben");
+		return StatusToString.fehler("Der Sponsor (" + sponsorId + ") wurde nicht angeworben");
 	}
 
 	/**
 	 * gibt ein JSON zurück mit allen bereits angeworbenen Sponsoren
+	 * 
 	 * @return
 	 */
 	public String getAktuelleSponsoren() {
@@ -104,7 +117,9 @@ public class Sponsoren {
 	}
 
 	/**
-	 * gibt alle Sponsoren, auch diejenigen, für die der Ruf nicht ausreicht als JSON zurück
+	 * gibt alle Sponsoren, auch diejenigen, für die der Ruf nicht ausreicht als
+	 * JSON zurück
+	 * 
 	 * @return
 	 */
 	public String getAlleSponsoren() {
@@ -113,13 +128,14 @@ public class Sponsoren {
 
 	/**
 	 * gibt alle Sponsoren zurück, für die der Ruf ausreicht
+	 * 
 	 * @param ruf
 	 * @return
 	 */
 	public String getVerfuegbareSponsoren(long ruf) {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();
-		
+
 		ArrayNode arrayNode = mapper.createArrayNode();
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
@@ -129,7 +145,7 @@ public class Sponsoren {
 				arrayNode.add(objectNode1);
 			}
 		}
-		
+
 		objectNode.set("verfuegbareSponsoren", arrayNode);
 		return objectNode.toString();
 	}
@@ -143,7 +159,9 @@ public class Sponsoren {
 		objectNode.put("benoetigtesAnsehen", sponsoren[i].getBenoetigtesAnsehen());
 		objectNode.put("zeitraum", sponsoren[i].getZeitraum());
 		objectNode.put("absprungansehen", sponsoren[i].getAbsprungansehen());
-		objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus anwerbekosten und -dauer zusammensetzt
+		objectNode.put("anspruch", 0);// Skalar 1-10, welche sich aus
+										// anwerbekosten und -dauer
+										// zusammensetzt
 		objectNode.put("angeworben", sponsoren[i].isAngeworben());
 
 		return objectNode;

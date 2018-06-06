@@ -79,13 +79,14 @@ public class SpielrundeWirtschaft extends Spielrunde {
 				aufgabe.erledigt();
 			}
 			break;
-		case "GERAET_GEKAUFT":
-			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
-			betreff = "Gerät gekauft";
-			break;
+//		case "GERAET_GEKAUFT":
+//			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
+//			betreff = "Gerät gekauft";
+//			break;
 		default:
-			mailInhalt = EMoeglicheMails.DEFAULT_MAIL.getMailText();
-			betreff = "Default";
+			mailInhalt = "Mail konnte nicht gesendet werden.";
+			betreff = "Fehler";
+			
 		}
 
 		System.out.println(absender + ", " + betreff + ", " + mailInhalt);
@@ -141,9 +142,9 @@ public class SpielrundeWirtschaft extends Spielrunde {
 			}
 		}
 
-		if (EAufgaben.GREAET_KAUFEN.equals(aufgabe.getAufgabe())) {
-			aufgabe.erledigt();
-		}
+//		if (EAufgaben.GREAET_KAUFEN.equals(aufgabe.getAufgabe())) {
+//			aufgabe.erledigt();
+//		}
 		return untersuchungsmethoden;
 	}
 

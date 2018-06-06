@@ -163,13 +163,13 @@ public class SpielrundeMedizin extends Spielrunde {
 			mailInhalt = EMoeglicheMails.ABMAHNUNG.getMailText();
 			betreff = "Abmahnung";
 			break;
-		case "GERAET_GEKAUFT":
-			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
-			betreff = "Gerät gekauft";
-			break;
+//		case "GERAET_GEKAUFT":
+//			mailInhalt = EMoeglicheMails.GERAET_GEKAUFT.getMailText();
+//			betreff = "Gerät gekauft";
+//			break;
 		default:
-			mailInhalt = EMoeglicheMails.DEFAULT_MAIL.getMailText();
-			betreff = "Default";
+			mailInhalt = "Mail konnte nicht gesendet werden.";
+			betreff = "Fehler";
 		}
 
 		System.out.println(absender + ", " + betreff + ", " + mailInhalt);

@@ -38,10 +38,10 @@ public class Aufgabe {
 			aufgabe = EAufgaben.PRESSEKONFERENZ_VIELETOTE;
 			rufschaden = 10;
 			break;
-		case 2:
-			aufgabe = EAufgaben.GREAET_KAUFEN;
-			rufschaden = 10;
-			break;
+//		case 2:
+//			aufgabe = EAufgaben.GREAET_KAUFEN;
+//			rufschaden = 10;
+//			break;
 		case 3:
 			aufgabe = EAufgaben.SPONSOR_ANWERBEN;
 			rufschaden = 10;
