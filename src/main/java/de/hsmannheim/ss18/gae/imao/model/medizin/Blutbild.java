@@ -326,8 +326,8 @@ public class Blutbild {
 			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_Haemoglobinkonzentration_MANN_ERHOET_LEICHT);
 			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_Haemoglobinkonzentration_MANN_ERHOET_STARK);
 		} else {
-			objectNode.put("Haemoglobinkonzentration_min", DEFAULT_MIN_FRAU_Haemoglobinkonzentration);
-			objectNode.put("Haemoglobinkonzentration_max", DEFAULT_MAX_FRAU_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_min_normal", DEFAULT_MIN_FRAU_Haemoglobinkonzentration);
+			objectNode.put("Haemoglobinkonzentration_max_normal", DEFAULT_MAX_FRAU_Haemoglobinkonzentration);
 			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_Haemoglobinkonzentration_FRAU_GERING_LEICHT);
 			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_Haemoglobinkonzentration_FRAU_GERING_STARK);
 			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_Haemoglobinkonzentration_FRAU_ERHOET_LEICHT);
@@ -361,8 +361,8 @@ public class Blutbild {
 			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_LEICHT);
 			objectNode.put("Haemoglobinkonzentration_max_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_MANN_ERHOET_STARK);
 		} else {
-			objectNode.put("Haemoglobinkonzentration_min", DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION);
-			objectNode.put("Haemoglobinkonzentration_max", DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_min_normal", DEFAULT_MIN_FRAU_HAEMOGLOBINKONZENTRATION);
+			objectNode.put("Haemoglobinkonzentration_max_normal", DEFAULT_MAX_FRAU_HAEMOGLOBINKONZENTRATION);
 			objectNode.put("Haemoglobinkonzentration_min_veringert", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_LEICHT);
 			objectNode.put("Haemoglobinkonzentration_max_veringert", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_GERING_STARK);
 			objectNode.put("Haemoglobinkonzentration_min_erhoeht", KRANK_HAEMOGLOBINKONZENTRATION_FRAU_ERHOET_LEICHT);
@@ -379,8 +379,8 @@ public class Blutbild {
 			objectNode.put("Haematokrit_min_erhoeht", KRANK_HAEMATOKRIT_MANN_ERHOET_LEICHT);
 			objectNode.put("Haematokrit_max_erhoeht", KRANK_HAEMATOKRIT_MANN_ERHOET_STARK);
 		} else {
-			objectNode.put("Haematokrit_min", DEFAULT_MIN_FRAU_HAEMATOKRIT);
-			objectNode.put("Haematokrit_max", DEFAULT_MAX_FRAU_HAEMATOKRIT);
+			objectNode.put("Haematokrit_min_normal", DEFAULT_MIN_FRAU_HAEMATOKRIT);
+			objectNode.put("Haematokrit_max_normal", DEFAULT_MAX_FRAU_HAEMATOKRIT);
 			objectNode.put("Haematokrit_min_veringert", KRANK_HAEMATOKRIT_FRAU_GERING_LEICHT);
 			objectNode.put("Haematokrit_max_veringert", KRANK_HAEMATOKRIT_FRAU_GERING_STARK);
 			objectNode.put("Haematokrit_min_erhoeht", KRANK_HAEMATOKRIT_FRAU_ERHOET_LEICHT);
