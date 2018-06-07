@@ -21,7 +21,7 @@ public class Aufgabe {
 	 * @param runde
 	 */
 	private void neueAufgabe(int runde) {
-		switch (new Random().nextInt(5)) {
+		switch (new Random().nextInt(7)) {
 		case 0:
 			aufgabe = EAufgaben.INTERVIEW;
 			rufschaden = 10;

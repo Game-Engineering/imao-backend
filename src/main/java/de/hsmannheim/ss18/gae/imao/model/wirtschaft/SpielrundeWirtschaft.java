@@ -47,7 +47,9 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());
 		if (runde == 1) {
-			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilferuf", "Hilfe, ich versinke im Chaos!!!"));
+			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilferuf", "Sehr geehrter IMAO Manager,\n"
+					+ "Im Camp ist Chaos ausgebrochen, wir brauchen Hilfe, bitte senden Sie uns Hilfe in Form von Geld oder Materialien.\n\n"
+					+ "Ihr IMAO Arzt"));
 
 		}
 		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();
