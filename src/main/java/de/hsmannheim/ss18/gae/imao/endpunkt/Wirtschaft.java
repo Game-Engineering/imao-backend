@@ -288,6 +288,7 @@ public class Wirtschaft extends Spiel {
 	@Path("/startePressekonferenz")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String startePressekonferenz() {
+		//FIXME hier tritt eine NullPointerException auf 
 		return rundeManager.startePressekonferenz();
 		
 	}
