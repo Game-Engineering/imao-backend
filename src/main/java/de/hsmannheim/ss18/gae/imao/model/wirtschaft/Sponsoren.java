@@ -32,28 +32,36 @@ public class Sponsoren {
 	}
 
 	/**
-	 * Erstelle alle Sponsoren monatlicher Betrag entspricht 0,01% des
-	 * Firmenwertes
+	 * 
 	 */
 	private void erstelleAlleSponsoren() {
 
-		this.sponsoren = new Sponsor[14];
+		this.sponsoren = new Sponsor[5];
 
 		this.sponsoren[0] = new Sponsor(this.getIdCount(), "Jack Foxskin", 100000, 0, 12, 0, 0, Integer.MIN_VALUE);
 		this.sponsoren[0].setAngeworben(true);
-		this.sponsoren[1] = new Sponsor(this.getIdCount(), "Blue Bull", 0, 0, 0, 0, 0, 0);
-		this.sponsoren[2] = new Sponsor(this.getIdCount(), "Engelbert Fasan", 0, 0, 0, 0, 0, 0);
-		this.sponsoren[3] = new Sponsor(this.getIdCount(), "Sachse AG", 1600000, 0, 0, 0, 0, 0);
-		this.sponsoren[4] = new Sponsor(this.getIdCount(), "Stodo Arzneimittel", 200000, 0, 0, 0, 0, 0);
-		this.sponsoren[5] = new Sponsor(this.getIdCount(), "Navortis", 4600000, 0, 0, 0, 0, 0);
-		this.sponsoren[6] = new Sponsor(this.getIdCount(), "Rob Bash GmbH", 7800000, 0, 0, 0, 0, 0);
-		this.sponsoren[7] = new Sponsor(this.getIdCount(), "IBN", 8000000, 0, 0, 0, 0, 0);
-		this.sponsoren[8] = new Sponsor(this.getIdCount(), "BWM", 9400000, 0, 0, 0, 0, 0);
-		this.sponsoren[9] = new Sponsor(this.getIdCount(), "McDagobert´s", 9700000, 0, 0, 0, 0, 0);
-		this.sponsoren[10] = new Sponsor(this.getIdCount(), "Mississippis", 14000000, 0, 0, 0, 0, 0);
-		this.sponsoren[11] = new Sponsor(this.getIdCount(), "Pear", 23000000, 0, 0, 0, 0, 0);
-		this.sponsoren[12] = new Sponsor(this.getIdCount(), "Gigasoft", 11500000, 0, 0, 0, 0, 0);
-		this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner", 18600, -100, 0, 0, 0, 0);
+		this.sponsoren[1] = new Sponsor(this.getIdCount(), "Blue Bull", 300000, 20, 6, 0, 0, 0);
+		this.sponsoren[2] = new Sponsor(this.getIdCount(), "Engelbert Fasan", 50000, 50, 48, 0, 0, 0);
+		this.sponsoren[3] = new Sponsor(this.getIdCount(), "Sachse AG", 1600000, 150, 3, 0, 0, 0);
+		this.sponsoren[4] = new Sponsor(this.getIdCount(), "Stodo Arzneimittel", 200000, 80, 12, 0, 0, 0);
+		// this.sponsoren[5] = new Sponsor(this.getIdCount(), "Navortis", 4600000, 0, 0,
+		// 0, 0, 0);
+		// this.sponsoren[6] = new Sponsor(this.getIdCount(), "Rob Bash GmbH", 7800000,
+		// 0, 0, 0, 0, 0);
+		// this.sponsoren[7] = new Sponsor(this.getIdCount(), "IBN", 8000000, 0, 0, 0,
+		// 0, 0);
+		// this.sponsoren[8] = new Sponsor(this.getIdCount(), "BWM", 9400000, 0, 0, 0,
+		// 0, 0);
+		// this.sponsoren[9] = new Sponsor(this.getIdCount(), "McDagobert´s", 9700000,
+		// 0, 0, 0, 0, 0);
+		// this.sponsoren[10] = new Sponsor(this.getIdCount(), "Mississippis", 14000000,
+		// 0, 0, 0, 0, 0);
+		// this.sponsoren[11] = new Sponsor(this.getIdCount(), "Pear", 23000000, 0, 0,
+		// 0, 0, 0);
+		// this.sponsoren[12] = new Sponsor(this.getIdCount(), "Gigasoft", 11500000, 0,
+		// 0, 0, 0, 0);
+		// this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner", 18600,
+		// -100, 0, 0, 0, 0);
 
 	}
 
@@ -140,9 +148,10 @@ public class Sponsoren {
 
 		for (int i = 0; i < this.sponsoren.length; i++) {
 			if (ruf >= this.sponsoren[i].getBenoetigtesAnsehen()) {
-
-				ObjectNode objectNode1 = sponsorNode(i);
-				arrayNode.add(objectNode1);
+				if (!this.sponsoren[i].isAngeworben()) {
+					ObjectNode objectNode1 = sponsorNode(i);
+					arrayNode.add(objectNode1);
+				}
 			}
 		}
 
