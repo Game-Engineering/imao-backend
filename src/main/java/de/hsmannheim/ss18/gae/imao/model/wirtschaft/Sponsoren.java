@@ -14,7 +14,7 @@ import de.hsmannheim.ss18.gae.imao.model.StatusToString;
  */
 public class Sponsoren {
 	private Sponsor[] sponsoren;
-	public static int idCounter = 1;
+	public static int idCounter = 0;
 
 	private Manager manager;
 	private boolean sponsorenErstellt = false;
