@@ -78,4 +78,8 @@ public class Arzt extends Person {
 		return ausgaben;
 	}
 
+	public List<Mail> getPosteingang() {
+		return posteingang;
+	}
+
 }

@@ -8,7 +8,7 @@ public class Ultraschall {
 	private int ultraschallID;
 	
 	private static final int ULTRASCHALL_GESUND = 0;
-//	private static final int ULTRASCHALL_K1 = 1;
+	private static final int ULTRASCHALL_HEP = 1;
 //	private static final int ULTRASCHALL_K2 = 2;
 //	private static final int ULTRASCHALL_K3 = 3;
 //	private static final int ULTRASCHALL_K4 = 4;
@@ -39,10 +39,10 @@ public class Ultraschall {
 			this.ultraschallID = ULTRASCHALL_GESUND;
 			break;
 		case HEP_A:
-			this.ultraschallID = ULTRASCHALL_GESUND;
+			this.ultraschallID = ULTRASCHALL_HEP;
 			break;
 		case HEP_B:
-			this.ultraschallID = ULTRASCHALL_GESUND;
+			this.ultraschallID = ULTRASCHALL_HEP;
 			break;
 //		case TETANUS:
 //			this.ultraschallID = ULTRASCHALL_GESUND;

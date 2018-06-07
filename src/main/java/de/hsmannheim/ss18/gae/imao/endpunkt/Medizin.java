@@ -58,6 +58,17 @@ public class Medizin extends Spiel {
 
 		return manager.toString();
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getMails")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getMails() {
+		System.out.println(arzt.getPosteingang().toString());
+		return "{ \"mailliste\" :" + arzt.getPosteingang().toString() + "}";
+	}
 
 	/**
 	 * 
