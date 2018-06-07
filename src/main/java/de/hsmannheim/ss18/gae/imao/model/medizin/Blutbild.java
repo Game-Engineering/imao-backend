@@ -397,7 +397,7 @@ public class Blutbild {
 		objectNode.put("MCH_max_erhoeht", KRANK_MCH_ERHOET_STARK);
 		
 		
-		objectNode.put("MCHCC", this.mchc);
+		objectNode.put("MCHC", this.mchc);
 		objectNode.put("MCHC_min_normal", DEFAULT_MIN_MCHC);
 		objectNode.put("MCHC_max_normal", DEFAULT_MAX_MCHC);
 		objectNode.put("MCHC_min_veringert", KRANK_MCHC_GERING_LEICHT);
