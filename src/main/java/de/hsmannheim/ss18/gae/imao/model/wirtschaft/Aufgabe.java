@@ -9,9 +9,12 @@ public class Aufgabe {
 	private boolean erledigt = false;
 	private int rufschaden = 0;
 	private Mail aufgabenMail;
+	private Pressekonferenz pressekonferenz;
 
-	public Aufgabe(int runde) {
+	public Aufgabe(int runde, Pressekonferenz pressekonf) {
+		this.pressekonferenz=pressekonf;
 		neueAufgabe(runde);
+		
 	}
 
 	/**
@@ -29,14 +32,29 @@ public class Aufgabe {
 		case 1:
 			aufgabe = EAufgaben.PRESSEKONFERENZ_DUERRE;
 			rufschaden = 10;
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 3) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
 			break;
 		case 5:
 			aufgabe = EAufgaben.PRESSEKONFERENZ_GUTEARBEIT;
 			rufschaden = 0;
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 2) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
 			break;
 		case 6:
 			aufgabe = EAufgaben.PRESSEKONFERENZ_VIELETOTE;
 			rufschaden = 10;
+			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
+				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 1) {
+					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
+				}
+			}
 			break;
 //		case 2:
 //			aufgabe = EAufgaben.GREAET_KAUFEN;

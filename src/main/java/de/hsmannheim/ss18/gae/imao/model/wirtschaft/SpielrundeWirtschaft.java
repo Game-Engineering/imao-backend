@@ -25,6 +25,10 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		erzeugeNeueRunde();
 	}
 
+	public Pressekonferenz getPressekonferenz() {
+		return this.pressekonferenz;
+	}
+	
 	@Override
 	protected void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
@@ -42,7 +46,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 				manager.rufVerlust("Nicht erfüllte Aufgabe", aufgabe.getRufschaden());
 			}
 		}
-		aufgabe = new Aufgabe(runde);
+		aufgabe = new Aufgabe(runde, pressekonferenz);
 
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());
@@ -102,25 +106,6 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	}
 
 	public String startePressekonferenz() {
-		if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_DUERRE) {
-			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
-				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 3) {
-					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
-				}
-			}
-		} else if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_GUTEARBEIT) {
-			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
-				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 2) {
-					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
-				}
-			}
-		} else if (aufgabe.getAufgabe() == EAufgaben.PRESSEKONFERENZ_VIELETOTE) {
-			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
-				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 1) {
-					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
-				}
-			}
-		}
 		return this.pressekonferenz.startePressekonferenz();
 	}
 
