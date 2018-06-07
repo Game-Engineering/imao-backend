@@ -63,6 +63,10 @@ public class InterviewPartner {
 		return verfuegbar;
 	}
 	
+	public void setVerfuegbar(boolean verfuegbar) {
+		this.verfuegbar=verfuegbar;
+	}
+	
 	public Frage[] getFragen() {
 		return this.fragen;
 	}

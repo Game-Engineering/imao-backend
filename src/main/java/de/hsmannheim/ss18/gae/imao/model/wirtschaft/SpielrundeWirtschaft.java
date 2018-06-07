@@ -129,7 +129,12 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	}
 
 	public void beendePressekonferenz(int rufzuwachs) {
-		manager.rufZuwachs("Pressekonferenz", rufzuwachs);
+		if (rufzuwachs > 0) {
+			manager.rufZuwachs("Gute Pressekonferenz", rufzuwachs);
+		}else if(rufzuwachs < 0) {
+			manager.rufVerlust("Schlechte Pressekonferenz", rufzuwachs*-1);
+		}
+		
 		aufgabe.erledigt();
 	}
 

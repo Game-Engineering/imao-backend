@@ -28,6 +28,8 @@ public class Manager extends Person {
 
 	public Manager(String vorname, String nachname, EGeschlecht geschlecht) {
 		super(vorname, nachname, geschlecht);
+		this.interview = new Interview(this);
+		this.sponsoren=new Sponsoren(this);
 	}
 
 	public void rundenanfang(List<Mail> neueMails) {
@@ -42,9 +44,6 @@ public class Manager extends Person {
 		rufverlust.clear();
 		rufbilanz = 0;
 		budgetbilanz = 0;
-		this.interview = new Interview(this);
-		this.sponsoren=new Sponsoren(this);
-		
 	}
 
 	public void erhalteMail(Mail mail) {
