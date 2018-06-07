@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
+import de.hsmannheim.ss18.gae.imao.model.StatusToString;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
@@ -304,6 +305,36 @@ public class Wirtschaft extends Spiel {
 	public String antwortePressekonferenz(@PathParam("antwortID") String antwortID) {
 		return rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
 	}
+	
+
+	@GET
+	@Path("/cheatRUF/{menge}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String cheatRUF(@PathParam("menge") String menge) {
+		if(Integer.parseInt(menge) < 0) {
+			manager.rufVerlust("CHEAT", Integer.parseInt(menge)*-1);
+			return StatusToString.ok("Ruf verringert");
+		}else if(Integer.parseInt(menge) > 0) {
+			manager.rufZuwachs("CHEAT", Integer.parseInt(menge));
+			return StatusToString.ok("Ruf erhöht");
+		}
+		return StatusToString.fehler("Ruf nicht geändert");
+	}
+	
+	@GET
+	@Path("/cheatBUDGET/{menge}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String cheatBUDGET(@PathParam("menge") String menge) {
+		if(Integer.parseInt(menge) < 0) {
+			manager.ausgabe("CHEAT", Integer.parseInt(menge)*-1);
+			return StatusToString.ok("Budget verringert");
+		}else if(Integer.parseInt(menge) > 0) {
+			manager.einnahme("CHEAT", Integer.parseInt(menge));
+			return StatusToString.ok("Budget erhöht");
+		}
+		return StatusToString.fehler("Budget nicht geändert");
+	}
+	
 
 	public static void resetRundencount() {
 		Wirtschaft.rundencount = 0;
