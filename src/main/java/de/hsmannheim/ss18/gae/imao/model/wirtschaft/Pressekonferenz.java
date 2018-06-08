@@ -16,22 +16,24 @@ public class Pressekonferenz {
 	private SpielrundeWirtschaft spielrundeWirtschaft;
 
 	public Pressekonferenz(SpielrundeWirtschaft spielrundeWirtschaft) {
-		this.spielrundeWirtschaft=spielrundeWirtschaft;
+		this.spielrundeWirtschaft = spielrundeWirtschaft;
 		createKonferenzThemen();
 	}
-	
+
 	public PressekonferenzThema[] getPressekonferenzThemen() {
 		return this.pressekonferenzThemen;
 	}
 
 	/**
 	 * Starte die Pressekonferenz, keine zustandsänderung
+	 * 
 	 * @return
 	 */
 	public String startePressekonferenz() {
 		for (int i = 0; i < this.pressekonferenzThemen.length; i++) {
 			if (this.pressekonferenzThemen[i].isVerfuegbar()) {
-				return frageToString(this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex], this.pressekonferenzThemen[i].getThema(), "ok", this.einleitung);
+				return frageToString(this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex],
+						this.pressekonferenzThemen[i].getThema(), "ok", this.einleitung);
 			}
 		}
 
@@ -40,44 +42,94 @@ public class Pressekonferenz {
 
 	/**
 	 * Antworte auf eine Frage, Zustandsänderung
-	 * @param antwortIndex 0-X
+	 * 
+	 * @param antwortIndex
+	 *            0-X
 	 * @return
 	 */
 	public String antwortePressekonferenz(int antwortIndex) {
 		for (int i = 0; i < this.pressekonferenzThemen.length; i++) {
 			if (this.pressekonferenzThemen[i].isVerfuegbar()) {
-				if (antwortIndex < this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten().length && antwortIndex >=0) {
-					
-					if (this.aktuellerFrageIndex==0) {
-						this.einleitung=this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten()[antwortIndex].getAntwort();
+				if (antwortIndex < this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex]
+						.getAntworten().length && antwortIndex >= 0) {
+
+					if (this.aktuellerFrageIndex == 0) {
+						this.einleitung = this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex]
+								.getAntworten()[antwortIndex].getAntwort();
 					}
-					
-					this.punkteFuerAktuelleKonferenz += this.pressekonferenzThemen[i].getFragen()[this.aktuellerFrageIndex].getAntworten()[antwortIndex].getPunkte();
+
+					this.punkteFuerAktuelleKonferenz += this.pressekonferenzThemen[i]
+							.getFragen()[this.aktuellerFrageIndex].getAntworten()[antwortIndex].getPunkte();
 					this.aktuellerFrageIndex++;
-					
-					if(this.aktuellerFrageIndex < this.pressekonferenzThemen[i].getFragen().length) {
+
+					if (this.aktuellerFrageIndex < this.pressekonferenzThemen[i].getFragen().length) {
 						return startePressekonferenz();
-					}else {//pressekonferenz beenden
+					} else {// pressekonferenz beenden
+				
+						switch (i) {
+						case 0://Viele Tote
+							if(this.punkteFuerAktuelleKonferenz >= -11) {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\nDer Ruf unserer Organisation ist gesunken seit der letzten Pressekonferenz, es hätte jedoch auch schlimmer kommen können. Ich danke Ihnen, dass Sie den Schaden in Grenzen halten konnten."));
+							}else {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
+										"ihre letzte Pressekonferenz war ein Fiasko, der Ruf unserer Organisation ist auf dem Weg in den Keller wie schon lange nicht mehr. Tun Sie etwas!\r\n"));
+							}
+							break;
+						case 1://Gute Arbeit
+							if (this.punkteFuerAktuelleKonferenz <= 6) {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
+										"die Arbeit unserer Ärzte ist hervorragend, Ihre lässt ehr zu wünschen übrig. Unser Ruf ist zwar gestiegen, aber dass ist sicher nicht ihr verdienst. \r\n"));
+							
+							}else {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
+										"Ihre Pressekonferenz war wunderbar, ich bin froh, dass alle bei IMAO so großartig mitarbeiten.\r\n"));
+							}
+							
+							break;
+						case 2://Dürre
+							if (this.punkteFuerAktuelleKonferenz <= 10) {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
+										"ich bin froh, dass die Presse gnädig zu Ihnen war, Ihre Antworten waren grauenhaft. Es hätte wesentlich schlimmer ausgehen können.\r\n"));
+							
+							}else {
+								this.spielrundeWirtschaft.getManager()
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
+										"das war eine tolle Pressekonferenz, ich bin mir sicher, dass wir neuen Sponsoren nun nähergekommen  sind. \r\n"));
+							}
+							break;
+
+						default:
+							this.spielrundeWirtschaft.getManager()
+							.erhalteMail(new Mail("CHEF", "Pressekonferenz?","Sehr geehrter Vorstand,\r\n" + 
+									"irgendetwas hat meinen Terminkalender durcheinandergebracht. Ich habe Ihre Pressekonferenz leider verpasst. Ich hoffe sie lief gut.\r\n"));
+							break;
+						}
 						
+
 						this.spielrundeWirtschaft.beendePressekonferenz(this.punkteFuerAktuelleKonferenz);
-						this.aktuellerFrageIndex=0;
-						this.punkteFuerAktuelleKonferenz=0;
-						this.einleitung=null;
+						this.aktuellerFrageIndex = 0;
+						this.punkteFuerAktuelleKonferenz = 0;
+						this.einleitung = null;
 						this.pressekonferenzThemen[i].setVerfuegbar(false);
-						
+
 						ObjectMapper mapper = new ObjectMapper();
 						ObjectNode objectNode = mapper.createObjectNode();
-						
+
 						objectNode.put("name", "pressekonferenz");
 						objectNode.put("thema", this.pressekonferenzThemen[i].getThema());
 						objectNode.put("status", "ENDE");
 
-						objectNode.set("frage", null);				
+						objectNode.set("frage", null);
 						objectNode.set("antworten", null);
 
 						return objectNode.toString();
 					}
-					
+
 				}
 				return StatusToString.notReady("Die Pressekonferenz ist verfügbar, es gibt nur keinen Inhalt");
 			}
@@ -86,34 +138,34 @@ public class Pressekonferenz {
 		return StatusToString.fehler("Momentan ist keine Pressekonferenz verfügbar");
 	}
 
-	
 	/**
 	 * 
 	 * @param frage
 	 * @param thema
 	 * @param status
-	 * @param einleitung (kann null sein)
+	 * @param einleitung
+	 *            (kann null sein)
 	 * @return
 	 */
 	private String frageToString(Frage frage, String thema, String status, String einleitung) {
 		ObjectMapper mapper = new ObjectMapper();
 		ArrayNode arrayNode = mapper.createArrayNode();
 		ObjectNode objectNode = mapper.createObjectNode();
-		
+
 		objectNode.put("name", "pressekonferenz");
 		objectNode.put("thema", thema);
 		objectNode.put("status", status);
-		
-		if(einleitung != null) {
+
+		if (einleitung != null) {
 			objectNode.put("einleitung", einleitung);
 		}
-		
+
 		objectNode.put("frage", frage.getFrage());
-		
+
 		for (int j = 0; j < frage.getAntworten().length; j++) {
 			arrayNode.add(frage.getAntworten()[j].getAntwort());
 		}
-		
+
 		objectNode.set("antworten", arrayNode);
 
 		return objectNode.toString();
@@ -206,17 +258,16 @@ public class Pressekonferenz {
 		Frage p2f4 = new Frage("Wie kann man ein derart positives Ergebnis beibehalten?", p2f4a);
 
 		Frage[] Pre2Fragen = { p2f1, p2f2, p2f3, p2f4 };
-		this.pressekonferenzThemen[1] = new PressekonferenzThema(2, "IMAOs Ärzte retten viele Menschenleben.",
-				10, 1, Pre2Fragen);
-		
+		this.pressekonferenzThemen[1] = new PressekonferenzThema(2, "IMAOs Ärzte retten viele Menschenleben.", 10, 1,
+				Pre2Fragen);
 
 		// Fragen und Antworten für 3. Pressekonferenz
-		Antwort[] p3f1a = { new Antwort("Sehr geehrtes Publikum,\r\n" + 
-				"wie Sie sicher gehört haben, herrscht zurzeit in unserem Einsatzgebiet eine schwere Dürre. Das Wasser ist für alles Nötige zu knapp. Unsere Ärzte haben große Schwierigkeiten, mit der Situation umzugehen. Es gibt kaum genug Wasser, um zu trinken und die nötige Hygiene für die effektive Behandlung von Patienten zu gewährleisten. Außerdem werden durch die Wasserknappheit auch mehr Menschen krank. Wir bitten deshalb um Ihre Unterstützung.\r\n" + 
-				"Haben Sie Fragen?\r\n", 3),
-				new Antwort("Sehr geehrtes Publikum,\r\n" + 
-						"unsere großartigen Ärzteteams sind im Moment in einem Gebiet aktiv, in dem eine schwere Dürre herrscht. Die Wasserknappheit gefährdet die dort lebenden Menschen und erschwert den Ärzten die Arbeit sehr. Um unseren Ärzten jetzt möglichst schnell und effektiv zu helfen, brauchen wir dringend finanzielle Unterstützung. Jede einzelne Spende rettet jetzt Menschenleben.\r\n" + 
-						"Haben Sie Fragen?\r\n", 4) };
+		Antwort[] p3f1a = { new Antwort("Sehr geehrtes Publikum,\r\n"
+				+ "wie Sie sicher gehört haben, herrscht zurzeit in unserem Einsatzgebiet eine schwere Dürre. Das Wasser ist für alles Nötige zu knapp. Unsere Ärzte haben große Schwierigkeiten, mit der Situation umzugehen. Es gibt kaum genug Wasser, um zu trinken und die nötige Hygiene für die effektive Behandlung von Patienten zu gewährleisten. Außerdem werden durch die Wasserknappheit auch mehr Menschen krank. Wir bitten deshalb um Ihre Unterstützung.\r\n"
+				+ "Haben Sie Fragen?\r\n", 3),
+				new Antwort("Sehr geehrtes Publikum,\r\n"
+						+ "unsere großartigen Ärzteteams sind im Moment in einem Gebiet aktiv, in dem eine schwere Dürre herrscht. Die Wasserknappheit gefährdet die dort lebenden Menschen und erschwert den Ärzten die Arbeit sehr. Um unseren Ärzten jetzt möglichst schnell und effektiv zu helfen, brauchen wir dringend finanzielle Unterstützung. Jede einzelne Spende rettet jetzt Menschenleben.\r\n"
+						+ "Haben Sie Fragen?\r\n", 4) };
 		Frage p3f1 = new Frage("Welche Mittteilung gibst du der auf der Pressekonferenz?", p3f1a);
 
 		Antwort[] p3f2a = { new Antwort(
@@ -231,7 +282,8 @@ public class Pressekonferenz {
 		Frage p3f2 = new Frage("Wie landet das gespendete Geld im Krisengebiet?", p3f2a);
 
 		Antwort[] p3f3a = { new Antwort(
-				"Die Menschen, die von der Dürre betroffen sind, verdursten. Wir müssen ihnen in erster Linie Trinkwasser zur Verfügung stellen.", 3),
+				"Die Menschen, die von der Dürre betroffen sind, verdursten. Wir müssen ihnen in erster Linie Trinkwasser zur Verfügung stellen.",
+				3),
 				new Antwort(
 						"Der Wassermangel verschlechtert die Hygiene. Unsere Ärzte brauchen dringend Wasser, um effektiv behandeln zu können.",
 						1),
@@ -240,20 +292,16 @@ public class Pressekonferenz {
 						1) };
 		Frage p3f3 = new Frage("Wofür wird das durch Spendengelder gekaufte Wasser im Krisengebiet eingesetzt?", p3f3a);
 
-		Antwort[] p3f4a = { new Antwort(
-				"Das sollten Sie wohl eher einen Wetterexperten fragen.",
-				-3),
-				new Antwort(
-						"Leider ist zurzeit davon auszugehen, dass die Dürre anhält, deshalb müssen wir dringend helfen.",
-						1),
+		Antwort[] p3f4a = { new Antwort("Das sollten Sie wohl eher einen Wetterexperten fragen.", -3), new Antwort(
+				"Leider ist zurzeit davon auszugehen, dass die Dürre anhält, deshalb müssen wir dringend helfen.", 1),
 				new Antwort(
 						"Wetterexperten gehen davon aus, dass die Dürre bald vorüber sein wird. Wir müssen also nur über einen begrenzten Zeitraum verstärkt helfen. Schnell zu reagieren hat jetzt oberste Priorität, um möglichst vielen Menschen zu helfen.",
 						2) };
 		Frage p3f4 = new Frage("Wird sich die Lage noch verschlimmern?", p3f4a);
 
 		Frage[] Pre3Fragen = { p3f1, p3f2, p3f3, p3f4 };
-		this.pressekonferenzThemen[2] = new PressekonferenzThema(3, "IMAOs Ärzte retten viele Menschenleben.",
-				10, 1, Pre3Fragen);
+		this.pressekonferenzThemen[2] = new PressekonferenzThema(3, "Dürrekatastrophe – dringende Krisenhilfe benötigt", 10, 1,
+				Pre3Fragen);
 
 	}
 
