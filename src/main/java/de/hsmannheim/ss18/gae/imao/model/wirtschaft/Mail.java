@@ -8,6 +8,12 @@ public class Mail {
 	private String betreff;
 	private String mailInhalt;
 
+	/**
+	 * 
+	 * @param absender
+	 * @param betreff
+	 * @param mailInhalt
+	 */
 	public Mail(String absender, String betreff, String mailInhalt) {
 		super();
 		this.absender = absender;
