@@ -10,9 +10,13 @@ public class Aufgabe {
 	private int rufschaden = 0;
 	private Mail aufgabenMail;
 	private Pressekonferenz pressekonferenz;
+	private Interview interview;
+	private Sponsoren sponsoren;
 
-	public Aufgabe(int runde, Pressekonferenz pressekonf) {
+	public Aufgabe(int runde, Pressekonferenz pressekonf, Interview interview, Sponsoren sponsoren) {
 		this.pressekonferenz=pressekonf;
+		this.sponsoren=sponsoren;
+		this.interview=interview;
 		neueAufgabe(runde);
 		
 	}
@@ -26,8 +30,13 @@ public class Aufgabe {
 	private void neueAufgabe(int runde) {
 		switch (new Random().nextInt(7)) {
 		case 0:
-			aufgabe = EAufgaben.INTERVIEW;
-			rufschaden = 10;
+			if (this.interview.kannAufgabeSein()) {
+				aufgabe = EAufgaben.INTERVIEW;
+				rufschaden = 10;
+			}else {
+				this.neueAufgabe(runde);
+			}
+			
 			break;
 		case 1:
 			aufgabe = EAufgaben.PRESSEKONFERENZ_DUERRE;
@@ -49,7 +58,7 @@ public class Aufgabe {
 			break;
 		case 6:
 			aufgabe = EAufgaben.PRESSEKONFERENZ_VIELETOTE;
-			rufschaden = 10;
+			rufschaden = 20;
 			for (int i = 0; i < pressekonferenz.getPressekonferenzThemen().length; i++) {
 				if (this.pressekonferenz.getPressekonferenzThemen()[i].getId() == 1) {
 					this.pressekonferenz.getPressekonferenzThemen()[i].setVerfuegbar(true);
@@ -61,16 +70,21 @@ public class Aufgabe {
 //			rufschaden = 10;
 //			break;
 		case 3:
-			aufgabe = EAufgaben.SPONSOR_ANWERBEN;
-			rufschaden = 10;
+			if (this.sponsoren.kannAufgabeSein()) {
+				aufgabe = EAufgaben.SPONSOR_ANWERBEN;
+				rufschaden = 5;
+			}else {
+				this.neueAufgabe(runde);
+			}
+			
 			break;
 		case 4:
 			aufgabe = EAufgaben.ARZT_ABMAHNEN;
 			rufschaden = 10;
 			break;
 		default:
-			aufgabe = EAufgaben.INTERVIEW;
-			rufschaden = 10;
+			aufgabe = EAufgaben.KEINE;
+			rufschaden = 0;
 		}
 		sendeAufgabenMail(runde);
 	}

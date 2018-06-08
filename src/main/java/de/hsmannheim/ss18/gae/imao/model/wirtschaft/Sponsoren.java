@@ -26,6 +26,21 @@ public class Sponsoren {
 			this.sponsorenErstellt = true;
 		}
 	}
+	
+	/**
+	 * Prüfe ob Sponsoren angeworben werden können um es zu einer Aufgabe  für den Manager machen zu können.
+	 * @return
+	 */
+	public boolean kannAufgabeSein() {
+		for (int i = 0; i < this.sponsoren.length; i++) {
+			if (manager.getRuf() >= this.sponsoren[i].getBenoetigtesAnsehen()) {
+				if (!this.sponsoren[i].isAngeworben()) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 
 	private int getIdCount() {
 		return idCounter++;

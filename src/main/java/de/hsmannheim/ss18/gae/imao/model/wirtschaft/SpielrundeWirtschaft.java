@@ -46,7 +46,7 @@ public class SpielrundeWirtschaft extends Spielrunde {
 				manager.rufVerlust("Nicht erfüllte Aufgabe", aufgabe.getRufschaden());
 			}
 		}
-		aufgabe = new Aufgabe(runde, pressekonferenz);
+		aufgabe = new Aufgabe(runde, pressekonferenz, this.getManager().getInterview(), this.getManager().getSponsoren());
 
 		List<Mail> mails = new ArrayList<>();
 		mails.add(aufgabe.getAufgabenMail());

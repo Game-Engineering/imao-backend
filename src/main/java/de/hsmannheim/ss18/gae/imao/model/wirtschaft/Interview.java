@@ -19,6 +19,15 @@ public class Interview {
 		this.manager = manager;
 		createInterviewPartner();
 	}
+	
+	public boolean kannAufgabeSein() {
+		for (int i = 0; i < interviewPartner.length; i++) {
+			if (interviewPartner[i].isVerfuegbar()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * return ein JSON mit allen verfügbaren InterviewPartnern
