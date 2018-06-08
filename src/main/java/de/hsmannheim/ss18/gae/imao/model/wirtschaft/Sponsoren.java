@@ -81,8 +81,8 @@ public class Sponsoren {
 							"Sehr geehrter Vorstand von IMAO,\n"
 									+ "Es freut uns Ihnen mitteilen zu können, dass wir die Aktivitäten von IMAO unterstützen wollen und zu diesem Zweck die Organisation mit einem Geldbetrag in Höhe von "
 									+ this.sponsoren[i].getMonatlicherBetrag() + "€ für die Dauer von "
-									+ this.sponsoren[i].getAnwerbedauer() + ".Monaten unterstützen.\n"
-									+ "Mit freundlichen Grüßen,\n\n" + this.sponsoren[i].getSponsorName()));
+									+ this.sponsoren[i].getZeitraum() + ". Monaten unterstützen.\n\n"
+									+ "Mit freundlichen Grüßen,\n" + this.sponsoren[i].getSponsorName()));
 					return StatusToString.ok("Der Sponsor (" + sponsorId + ") wurde angeworben");
 				}
 			}
