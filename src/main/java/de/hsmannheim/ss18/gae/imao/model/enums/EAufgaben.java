@@ -12,14 +12,14 @@ public enum EAufgaben {
 			+ "um das Ansehen und die Bekanntheit der Organisation zu steigern, ist es essentiell wichtig, dass ein Interview geführt wird. "
 			+ "In diesem Interview sollen vor allem die Stärken der Organisation betont werden und bei Problemen immer auf eine schnelle Lösung gedeutet werden."),
 	PRESSEKONFERENZ_VIELETOTE("Sehr geehrter Vorstand von IMAO,\n"
-			+ "aufgrund der vielen Todesfälle im Camp muss eine Reaktion Ihrerseits erfolgen. "
-			+ "Damit diese Reaktion einen möglichst großen Kreis zieht halten wir somit eine Pressekonferenz für unumgänglich."),
+           + "aufgrund der vielen Todesfälle im Camp muss eine Reaktion Ihrerseits erfolgen. "
+           + "Damit diese Reaktion einen möglichst großen Kreis zieht, halten wir somit eine Pressekonferenz für unumgänglich."),
 	PRESSEKONFERENZ_GUTEARBEIT("Sehr geehrter Vorstand von IMAO,\n"
-			+ "aufgrund der besonders guten Arbeit der Arztes im Camp muss eine Reaktion Ihrerseits erfolgen. "
-			+ "Damit diese Reaktion einen möglichst großen Kreis zieht halten wir somit eine Pressekonferenz für unumgänglich."),
+           + "aufgrund der besonders guten Arbeit des Arztes im Camp muss eine Reaktion Ihrerseits erfolgen. "
+           + "Damit diese Reaktion einen möglichst großen Kreis zieht, halten wir somit eine Pressekonferenz für unumgänglich."),
 	PRESSEKONFERENZ_DUERRE("Sehr geehrter Vorstand von IMAO,\n"
-			+ "aufgrund der Dürreperiode im Camp muss eine Reaktion Ihrerseits erfolgen. "
-			+ "Damit diese Reaktion einen möglichst großen Kreis zieht halten wir somit eine Pressekonferenz für unumgänglich.")
+           + "aufgrund der Dürreperiode im Camp muss eine Reaktion Ihrerseits erfolgen. "
+           + "Damit diese Reaktion einen möglichst großen Kreis zieht, halten wir somit eine Pressekonferenz für unumgänglich.")
 	// , GREAET_KAUFEN("Kaufen Sie ein Gerät für den Arzt")
 	, SPONSOR_ANWERBEN("Sehr geehrter IMAO Vorstand,\n"
 			+ "Ffür den Unterhalt und die Gehälter der IMAO Mitarbeiter benötigen wir finanzielle Mittel. Sorgen Sie dafür, "
