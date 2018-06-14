@@ -41,7 +41,7 @@ public class Medizin extends Spiel {
 			return "Sie Haben keinen Arzt angelegt";
 		}
 		if (manager == null) {
-			manager = new Manager("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+			manager = new Manager("Rose", "Tyler", EGeschlecht.WEIBLICH);
 		}
 		rundeArzt = new SpielrundeMedizin(++rundencount, manager, arzt);
 		return rundeArzt.toString();

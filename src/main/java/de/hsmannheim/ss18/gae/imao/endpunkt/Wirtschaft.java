@@ -36,7 +36,7 @@ public class Wirtschaft extends Spiel {
 			return "Sie Haben keinen Manager angelegt";
 		}
 		if (arzt == null) {
-			arzt = new Arzt("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+			arzt = new Arzt("John", "Smith", EGeschlecht.MAENNLICH);
 			arzt.getAusgaben().put("Blutbild Patient 1", 10);
 			arzt.getAusgaben().put("Blutbild Patient 2", 10);
 			arzt.getAusgaben().put("Blutbild Patient 3", 10);
