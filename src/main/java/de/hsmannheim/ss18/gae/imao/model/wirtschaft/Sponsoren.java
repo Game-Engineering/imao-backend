@@ -26,9 +26,11 @@ public class Sponsoren {
 			this.sponsorenErstellt = true;
 		}
 	}
-	
+
 	/**
-	 * Prüfe ob Sponsoren angeworben werden können um es zu einer Aufgabe  für den Manager machen zu können.
+	 * Prüfe ob Sponsoren angeworben werden können um es zu einer Aufgabe für
+	 * den Manager machen zu können.
+	 * 
 	 * @return
 	 */
 	public boolean kannAufgabeSein() {
@@ -59,23 +61,32 @@ public class Sponsoren {
 		this.sponsoren[2] = new Sponsor(this.getIdCount(), "Engelbert Fasan", 50000, 50, 48, 0, 0, 0);
 		this.sponsoren[3] = new Sponsor(this.getIdCount(), "Sachse AG", 1600000, 150, 3, 0, 0, 0);
 		this.sponsoren[4] = new Sponsor(this.getIdCount(), "Stodo Arzneimittel", 200000, 80, 12, 0, 0, 0);
-		// this.sponsoren[5] = new Sponsor(this.getIdCount(), "Navortis", 4600000, 0, 0,
+		// this.sponsoren[5] = new Sponsor(this.getIdCount(), "Navortis",
+		// 4600000, 0, 0,
 		// 0, 0, 0);
-		// this.sponsoren[6] = new Sponsor(this.getIdCount(), "Rob Bash GmbH", 7800000,
+		// this.sponsoren[6] = new Sponsor(this.getIdCount(), "Rob Bash GmbH",
+		// 7800000,
 		// 0, 0, 0, 0, 0);
-		// this.sponsoren[7] = new Sponsor(this.getIdCount(), "IBN", 8000000, 0, 0, 0,
+		// this.sponsoren[7] = new Sponsor(this.getIdCount(), "IBN", 8000000, 0,
+		// 0, 0,
 		// 0, 0);
-		// this.sponsoren[8] = new Sponsor(this.getIdCount(), "BWM", 9400000, 0, 0, 0,
+		// this.sponsoren[8] = new Sponsor(this.getIdCount(), "BWM", 9400000, 0,
+		// 0, 0,
 		// 0, 0);
-		// this.sponsoren[9] = new Sponsor(this.getIdCount(), "McDagobert´s", 9700000,
+		// this.sponsoren[9] = new Sponsor(this.getIdCount(), "McDagobert´s",
+		// 9700000,
 		// 0, 0, 0, 0, 0);
-		// this.sponsoren[10] = new Sponsor(this.getIdCount(), "Mississippis", 14000000,
+		// this.sponsoren[10] = new Sponsor(this.getIdCount(), "Mississippis",
+		// 14000000,
 		// 0, 0, 0, 0, 0);
-		// this.sponsoren[11] = new Sponsor(this.getIdCount(), "Pear", 23000000, 0, 0,
+		// this.sponsoren[11] = new Sponsor(this.getIdCount(), "Pear", 23000000,
+		// 0, 0,
 		// 0, 0, 0);
-		// this.sponsoren[12] = new Sponsor(this.getIdCount(), "Gigasoft", 11500000, 0,
+		// this.sponsoren[12] = new Sponsor(this.getIdCount(), "Gigasoft",
+		// 11500000, 0,
 		// 0, 0, 0, 0);
-		// this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner", 18600,
+		// this.sponsoren[13] = new Sponsor(this.getIdCount(), "Globerunner",
+		// 18600,
 		// -100, 0, 0, 0, 0);
 
 	}
@@ -94,9 +105,9 @@ public class Sponsoren {
 
 					this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage",
 							"Sehr geehrter Vorstand von IMAO,\n"
-									+ "Es freut uns Ihnen mitteilen zu können, dass wir die Aktivitäten von IMAO unterstützen wollen und zu diesem Zweck die Organisation mit einem Geldbetrag in Höhe von "
-									+ this.sponsoren[i].getMonatlicherBetrag() + "€ für die Dauer von "
-									+ this.sponsoren[i].getZeitraum() + ". Monaten unterstützen.\n\n"
+									+ "es freut uns, Ihnen mitteilen zu können, dass wir die Aktivitäten von IMAO unterstützen wollen und der Organisation deshalb für die Dauer von "
+									+ this.sponsoren[i].getZeitraum() + "Monaten einen Geldbetrag in Höhe von "
+									+ this.sponsoren[i].getMonatlicherBetrag() + "€ zur Verfügung stellen werden.\n\n"
 									+ "Mit freundlichen Grüßen,\n" + this.sponsoren[i].getSponsorName()));
 					return StatusToString.ok("Der Sponsor (" + sponsorId + ") wurde angeworben");
 				}
@@ -108,10 +119,10 @@ public class Sponsoren {
 				this.manager.erhalteMail(new Mail(this.sponsoren[i].getSponsorName(), "Sponsoringanfrage",
 						"Sehr geehrter Vorstand von IMAO,\n\n"
 								+ "herzlichen Dank für Ihre Anfrage und Ihr damit verbundenes Interesse an unserem Unternehmen. "
-								+ "Wir haben uns sehr darüber gefreut, dass Sie im Rahmen einer Sponsoringanfrage an uns gedacht haben.\n"
-								+ "Aufgrund der zahlreichen Anfragen, die im Laufe eines Jahres an uns herangetragen werden, ist es uns jedoch leider nicht möglich, jedem Wunsch zu entsprehcen. "
-								+ "Aus diesem Grund können wir Ihre Anfrage nicht berücksichtigen.\n"
-								+ "Mit freundlichen Grüßen,\n\n" + this.sponsoren[i].getSponsorName()));
+								+ "Wir haben uns sehr darüber gefreut, dass Sie im Rahmen einer Sponsoring-Anfrage an uns gedacht haben.\n"
+								+ "Aufgrund der zahlreichen Anfragen, die im Laufe eines Jahres an uns herangetragen werden, ist es uns jedoch leider nicht möglich, "
+								+ "jedem Wunsch zu entsprechen. Aus diesem Grund können wir Ihre Anfrage bedauerlicherweise nicht berücksichtigen.\n\n"
+								+ "Mit freundlichen Grüßen,\n" + this.sponsoren[i].getSponsorName()));
 			}
 		}
 		return StatusToString.fehler("Der Sponsor (" + sponsorId + ") wurde nicht angeworben");
