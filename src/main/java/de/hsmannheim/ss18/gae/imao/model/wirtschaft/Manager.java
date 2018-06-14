@@ -21,7 +21,7 @@ public class Manager extends Person {
 	private int rufbilanz = 0;
 	private int budgetbilanz = 0;
 	private int budget = 0;
-	private int ruf = 0;
+	private int ruf = 50;
 	
 	private Interview interview; 
 	private Sponsoren sponsoren;

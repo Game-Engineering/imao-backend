@@ -53,7 +53,7 @@ public class SpielrundeMedizin extends Spielrunde {
 		nachricht = "Runde " + runde + " wurde gestartet.";
 		erzeugePatienten(runde + 2);
 		arzt.setBudget(1000);
-		arzt.setRuf(1000);
+		arzt.setRuf(50);
 	}
 
 	/**
