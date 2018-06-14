@@ -70,43 +70,44 @@ public class Pressekonferenz {
 						case 0://Viele Tote
 							if(this.punkteFuerAktuelleKonferenz >= -11) {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\nDer Ruf unserer Organisation ist gesunken seit der letzten Pressekonferenz, es hätte jedoch auch schlimmer kommen können. Ich danke Ihnen, dass Sie den Schaden in Grenzen halten konnten."));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\n"
+										+ "der Ruf unserer Organisation ist seit der letzten Pressekonferenz gesunken. Es hätte jedoch auch schlimmer kommen können. Ich danke Ihnen, dass Sie den Schaden in Grenzen halten konnten.\n\n"));
 							}else {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
-										"ihre letzte Pressekonferenz war ein Fiasko, der Ruf unserer Organisation ist auf dem Weg in den Keller wie schon lange nicht mehr. Tun Sie etwas!\r\n"));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\n"
+										+ "Ihre letzte Pressekonferenz war ein Fiasko. Der Ruf unserer Organisation ist auf dem Weg in den Keller wie schon lange nicht mehr. Tun Sie etwas!\n\n"));
 							}
 							break;
 						case 1://Gute Arbeit
 							if (this.punkteFuerAktuelleKonferenz <= 6) {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
-										"die Arbeit unserer Ärzte ist hervorragend, Ihre lässt ehr zu wünschen übrig. Unser Ruf ist zwar gestiegen, aber dass ist sicher nicht ihr verdienst. \r\n"));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\n"
+										+ "die Arbeit unserer Ärzte ist hervorragend, Ihre lässt eher zu wünschen übrig. Unser Ruf ist zwar gestiegen, aber das ist sicher nicht Ihr Verdienst.\n\n"));
 							
 							}else {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
-										"Ihre Pressekonferenz war wunderbar, ich bin froh, dass alle bei IMAO so großartig mitarbeiten.\r\n"));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz", "Sehr geehrter Vorstand,\n"
+										+ "Ihre Pressekonferenz war wunderbar. Ich bin froh, dass alle bei IMAO so großartige Arbeit leisten.\n\n"));
 							}
 							
 							break;
 						case 2://Dürre
 							if (this.punkteFuerAktuelleKonferenz <= 10) {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
-										"ich bin froh, dass die Presse gnädig zu Ihnen war, Ihre Antworten waren grauenhaft. Es hätte wesentlich schlimmer ausgehen können.\r\n"));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\n"
+										+ "ich bin froh, dass die Presse gnädig zu Ihnen war, Ihre Antworten waren grauenhaft. Es hätte wesentlich schlimmer ausgehen können.\n\n"));
 							
 							}else {
 								this.spielrundeWirtschaft.getManager()
-								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\r\n" + 
-										"das war eine tolle Pressekonferenz, ich bin mir sicher, dass wir neuen Sponsoren nun nähergekommen  sind. \r\n"));
+								.erhalteMail(new Mail("CHEF", "Feedback zur Pressekonferenz","Sehr geehrter Vorstand,\n"
+										+ "das war eine tolle Pressekonferenz. Ich bin mir sicher, dass wir neuen Sponsoren nun nähergekommen  sind.\n\n"));
 							}
 							break;
 
 						default:
 							this.spielrundeWirtschaft.getManager()
-							.erhalteMail(new Mail("CHEF", "Pressekonferenz?","Sehr geehrter Vorstand,\r\n" + 
-									"irgendetwas hat meinen Terminkalender durcheinandergebracht. Ich habe Ihre Pressekonferenz leider verpasst. Ich hoffe sie lief gut.\r\n"));
+							.erhalteMail(new Mail("CHEF", "Pressekonferenz?","Sehr geehrter Vorstand,\n"
+									+ "irgendetwas hat meinen Terminkalender durcheinandergebracht. Ich habe Ihre Pressekonferenz leider verpasst. Ich hoffe sie lief gut.\n\n"));
 							break;
 						}
 						
