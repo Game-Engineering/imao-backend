@@ -97,7 +97,8 @@ public class Spiel extends ResourceConfig {
 						+ "Einige Patienten warten schon auf Sie. Behandeln Sie so viele Patienten wie möglich. "
 						+ "Mit jedem erfolgreich behandelten Patienten steigt der Ruf Ihrer Organisation. "
 						+ "Wenn Sie neue Gerätschaften benötigen, können Sie diese bei Ihrem Manager anfordern. "
-						+ "Viel Erfolg"
+						+ "Viel Erfolg\n"
+				
 						+ "Ihr IMAO-Team";
 			} else {
 				ueberschrift = "Fehler";
@@ -111,7 +112,7 @@ public class Spiel extends ResourceConfig {
 						+ "Sie haben nur ein Camp, das nicht besonders gut ausgerüstet ist. "
 						+ "Der Ruf der Organisation ist im Keller und Sie haben nur noch einen Sponsor. "
 						+ "Steigern Sie den Ruf der Organisation, gewinnen Sie neue Sponsoren und bauen Sie das Camp aus. "
-						+ "Viel Erfolg"
+						+ "Viel Erfolg\n"
 						+ "Ihr IMAO-Team";
 			} else {
 				ueberschrift = "Fehler";

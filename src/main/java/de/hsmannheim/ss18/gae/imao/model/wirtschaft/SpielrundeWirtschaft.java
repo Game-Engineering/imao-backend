@@ -52,7 +52,8 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		mails.add(aufgabe.getAufgabenMail());
 		if (runde == 1) {
 			mails.add(new Mail(arzt.vorname + ", " + arzt.nachname, "Hilferuf", "Sehr geehrter IMAO Manager,\n"
-					+ "Im Camp ist Chaos ausgebrochen, wir brauchen Hilfe, bitte senden Sie uns Hilfe in Form von Geld oder Materialien.\n\n"
+					+ "Im Camp ist Chaos ausgebrochen, wir brauchen Hilfe, bitte senden Sie uns Hilfe in Form"
+					+ " von Geld oder Materialien.\n\n"
 					+ "Ihr IMAO Arzt"));
 
 		}

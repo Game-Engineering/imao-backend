@@ -178,7 +178,7 @@ public class Interview {
 
 		// Fragen und Antworten für 1. Interviewpartner
 		Antwort[] p1f1a = {
-				new Antwort("a.	Wir haben IMAO von Grund auf aufgebaut und es uns zum Ziel gemacht, "
+				new Antwort("Wir haben IMAO von Grund auf aufgebaut und es uns zum Ziel gemacht, "
 						+ "das Krisengebiet in Libyen zu unterstützen. Dank unserer fantastischen Ärzte und der Unterstützung "
 						+ "unserer Sponsoren ist uns dies sehr gelungen.", 2),
 				new Antwort("Wir haben Ärzte eingestellt, die ihre Arbeit ernst nehmen und dieser sehr "
