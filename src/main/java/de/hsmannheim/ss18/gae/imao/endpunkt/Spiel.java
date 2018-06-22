@@ -6,6 +6,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import de.hsmannheim.ss18.gae.imao.model.MyWiki;
 import org.glassfish.jersey.server.ResourceConfig;
 
 import de.hsmannheim.ss18.gae.imao.model.Person;
@@ -19,6 +20,7 @@ import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Sponsoren;
 public class Spiel extends ResourceConfig {
 	protected static Arzt arzt = null;
 	protected static Manager manager = null;
+	protected static MyWiki wiki=null;
 
 	@GET
 	@Path("/")
@@ -140,6 +142,7 @@ public class Spiel extends ResourceConfig {
 	public String erzeuge(@PathParam("type") String type, @PathParam("vorname") String vorname,
 			@PathParam("nachname") String nachname, @PathParam("geschlecht") String geschlecht) {
 		Person person = null;
+		wiki = new MyWiki();
 		if ("arzt".equals(type)) {
 			if (EGeschlecht.WEIBLICH.name().equals(geschlecht.toUpperCase())) {
 				arzt = new Arzt(vorname, nachname, EGeschlecht.WEIBLICH);
@@ -159,6 +162,30 @@ public class Spiel extends ResourceConfig {
 		}
 
 		return person.toString();
+	}
+
+	@GET
+	@Path("/getWikiKategorien")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getWikiKategorien() {
+
+		return wiki.getWikiKategorie();
+	}
+
+	@GET
+	@Path("/getWikiElement/{index}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getWikiElement(@PathParam("index") String kategorieIndex) {
+
+		return wiki.getWikiElement(Integer.parseInt(kategorieIndex));
+	}
+
+	@GET
+	@Path("/getWikiElement/{index}/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getWikiElement(@PathParam("index") String kategorieIndex, @PathParam("id") String frageID) {
+
+		return wiki.getWikiElement(Integer.parseInt(kategorieIndex), Integer.parseInt(frageID));
 	}
 
 	public static Arzt getArzt() {
