@@ -1,0 +1,39 @@
+{
+  "KRANKHEITEN": [
+    {
+      "question": "Cholera",
+      "content": "Cholera ist eine, durch das Bakterium Vibrio cholerea ausgelöste, Krankheit die vor allem durch Beschwerden im Magen-Darm-Trakt gekennzeichnet ist. So kommt es zum Beispiel zu Brechdurchfall und in Folge dessen zu Flüssigkeitsmangel. ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Cholera",
+        "Krankheiten",
+        "Brechdurchfall",
+        "Magen-Darm",
+        "Flüssigkeitsmangel"
+      ]
+    },
+    {
+      "question": "Bilharziose",
+      "content": "Bilharziose wird durch Schitosomenlarven übertragen. Diese druchdringen die Haut von badenen oder im Wasser watenden Menschen. Die Probleme können von hepatitischen Symptomne bishin zu Blasenfunktionsstörungen reichen. Kann durch einen Nachweis von Eiern im Urin erfolgen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Bilharziose","Baden", "Erreger", "Blasenfunktionsstörung","hepatitische Symptome"
+       
+      ]
+    },
+    {
+      "question": "Leishmaniose",
+      "content": "",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        ","
+       
+      ]
+    }
+  ],
+  "SPIELINTERNES": [],
+  "PROBLEME": []
+}
