@@ -11,6 +11,12 @@ public class Person {
 	public String nachname;
 	protected EGeschlecht geschlecht;
 
+	/**
+	 * Arzt und Manager Erben von dieser Klasse
+	 * @param vorname
+	 * @param nachname
+	 * @param geschlecht
+	 */
 	public Person(String vorname, String nachname, EGeschlecht geschlecht) {
 		this.vorname = vorname;
 		this.nachname = nachname;

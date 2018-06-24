@@ -11,6 +11,12 @@ public class Diagnose {
 	public Diagnose() {
 	}
 
+	/**
+	 *
+	 * @param nachricht
+	 * @param budget
+	 * @param ruf
+	 */
 	public Diagnose(String nachricht, long budget, long ruf) {
 		this.nachricht = nachricht;
 		this.budget = budget;

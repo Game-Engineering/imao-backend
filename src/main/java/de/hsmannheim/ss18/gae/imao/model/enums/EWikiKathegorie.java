@@ -1,4 +1,4 @@
-package de.hsmannheim.ss18.gae.imao.model;
+package de.hsmannheim.ss18.gae.imao.model.enums;
 
 public enum EWikiKathegorie {
     KRANKHEITEN(0),SPIELINTERNES(1), SONSTIGES(10);

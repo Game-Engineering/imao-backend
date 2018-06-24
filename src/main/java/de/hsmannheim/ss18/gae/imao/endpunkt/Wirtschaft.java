@@ -1,15 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
 import de.hsmannheim.ss18.gae.imao.model.StatusToString;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
@@ -17,6 +10,12 @@ import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Aufgabe;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.SpielrundeWirtschaft;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("spiel/wirtschaft")
 public class Wirtschaft extends Spiel {
@@ -114,9 +113,7 @@ public class Wirtschaft extends Spiel {
 	}
 
 	/**
-	 * 
-	 * @param sponsorID
-	 *            String)
+	 *
 	 * @return
 	 */
 	@GET
@@ -305,8 +302,12 @@ public class Wirtschaft extends Spiel {
 	public String antwortePressekonferenz(@PathParam("antwortID") String antwortID) {
 		return rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
 	}
-	
 
+	/**
+	 * Füge Ruf hinzu
+	 * @param menge
+	 * @return
+	 */
 	@GET
 	@Path("/cheatRUF/{menge}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -320,7 +321,12 @@ public class Wirtschaft extends Spiel {
 		}
 		return StatusToString.fehler("Ruf nicht geändert");
 	}
-	
+
+	/**
+	 * Füge Geld hinzu
+	 * @param menge
+	 * @return
+	 */
 	@GET
 	@Path("/cheatBUDGET/{menge}")
 	@Produces(MediaType.APPLICATION_JSON)

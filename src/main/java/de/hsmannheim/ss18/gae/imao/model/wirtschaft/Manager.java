@@ -1,15 +1,14 @@
 package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.hsmannheim.ss18.gae.imao.model.Person;
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import de.hsmannheim.ss18.gae.imao.model.Person;
-import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 
 public class Manager extends Person {
 	private List<Mail> posteingang = new ArrayList<>();
@@ -26,12 +25,22 @@ public class Manager extends Person {
 	private Interview interview; 
 	private Sponsoren sponsoren;
 
+	/**
+	 *
+	 * @param vorname
+	 * @param nachname
+	 * @param geschlecht
+	 */
 	public Manager(String vorname, String nachname, EGeschlecht geschlecht) {
 		super(vorname, nachname, geschlecht);
 		this.interview = new Interview(this);
 		this.sponsoren=new Sponsoren(this);
 	}
 
+	/**
+	 * Bereite den Rundenbeginn vor
+	 * @param neueMails
+	 */
 	public void rundenanfang(List<Mail> neueMails) {
 		List<Mail> alteMails=new ArrayList<Mail>() ;
 		alteMails.addAll(posteingang);
@@ -46,6 +55,10 @@ public class Manager extends Person {
 		budgetbilanz = 0;
 	}
 
+	/**
+	 *
+	 * @param mail
+	 */
 	public void erhalteMail(Mail mail) {
 		List<Mail> alteMails=new ArrayList<Mail>() ;
 		alteMails.addAll(posteingang);
@@ -54,6 +67,10 @@ public class Manager extends Person {
 		posteingang.addAll(alteMails);
 	}
 
+	/**
+	 *
+	 * @param mail
+	 */
 	public void sendeMail(Mail mail) {
 		List<Mail> alteMails=new ArrayList<Mail>() ;
 		alteMails.addAll(posteingang);

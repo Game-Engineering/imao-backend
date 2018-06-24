@@ -1,12 +1,11 @@
 package de.hsmannheim.ss18.gae.imao.model.medizin;
 
-import java.util.Random;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.enums.EKrankheit;
+
+import java.util.Random;
 
 public class Blutbild {
 
@@ -228,10 +227,8 @@ public class Blutbild {
 	}
 
 	/**
-	 * Erstellt ein Blutbild ohne Abweichung der Normalwerte
-	 * 
-	 * @param EGeschlecht
-	 *            gender
+	 * Erstelle ein Blutbild ohne Abweichungen der Normalwerte
+	 * @param gender
 	 */
 	private void erstelleNormalesBlutbild(EGeschlecht gender) {
 		this.leukozyten = random(DEFAULT_MIN_LEUKOZYTEN, DEFAULT_MAX_LEUKOZYTEN);
@@ -254,9 +251,8 @@ public class Blutbild {
 
 	/**
 	 * Ändert ein normales Blutbild entsprechend einer Krankheit ab
-	 * 
-	 * @param EKrankheit
-	 *            krankheit
+	 * @param geschlecht
+	 * @param krankheit
 	 */
 	private void erstelleKrankesBlutbild(EGeschlecht geschlecht, EKrankheit krankheit) {
 
@@ -308,6 +304,10 @@ public class Blutbild {
 		return n;
 	}
 
+	/**
+	 * erstelle das Blutbild als JSON mit allen Grenzwerten
+	 * @return
+	 */
 	public String toString() {
 
 		ObjectMapper mapper = new ObjectMapper();

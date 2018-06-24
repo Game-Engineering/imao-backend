@@ -1,17 +1,16 @@
 package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
 import de.hsmannheim.ss18.gae.imao.model.enums.EAufgaben;
 import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.medizin.Untersuchungsmethode;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class SpielrundeWirtschaft extends Spielrunde {
 	private Aufgabe aufgabe = null;
@@ -19,6 +18,13 @@ public class SpielrundeWirtschaft extends Spielrunde {
 	private String budgetbericht;
 	private Pressekonferenz pressekonferenz;
 
+	/**
+	 *
+	 * @param runde
+	 * @param manager
+	 * @param arzt
+	 * @param aufgabe
+	 */
 	public SpielrundeWirtschaft(int runde, Manager manager, Arzt arzt, Aufgabe aufgabe) {
 		super(runde, manager, arzt);
 		this.aufgabe = aufgabe;
@@ -70,6 +76,11 @@ public class SpielrundeWirtschaft extends Spielrunde {
 
 	}
 
+	/**
+	 *
+	 * @param ID
+	 * @return
+	 */
 	public String sendeMail(String ID) {
 		String absender = "" + manager.vorname + " " + manager.nachname;
 		String betreff;
@@ -124,6 +135,11 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		aufgabe.erledigt();
 	}
 
+	/**
+	 *
+	 * @param geraet
+	 * @return
+	 */
 	public List<Untersuchungsmethode> kaufeGeraet(String geraet) {
 		Iterator<Untersuchungsmethode> iterator = untersuchungsmethoden.iterator();
 		while (iterator.hasNext()) {
@@ -141,6 +157,9 @@ public class SpielrundeWirtschaft extends Spielrunde {
 		return untersuchungsmethoden;
 	}
 
+	/**
+	 *
+	 */
 	private void getBerichteVonLetzterRunde() {
 		ObjectMapper mapper = new ObjectMapper();
 

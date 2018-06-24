@@ -15,11 +15,19 @@ public class Interview {
 	private int aktuellerFrageIndex = 0;
 	private Manager manager;
 
+	/**
+	 *
+	 * @param manager
+	 */
 	public Interview(Manager manager) {
 		this.manager = manager;
 		createInterviewPartner();
 	}
-	
+
+	/**
+	 * Prüfe ob Interview eine Aufgabe sein kann (Sind Interviewpartner Verfügbar?)
+	 * @return
+	 */
 	public boolean kannAufgabeSein() {
 		for (int i = 0; i < interviewPartner.length; i++) {
 			if (interviewPartner[i].isVerfuegbar()) {

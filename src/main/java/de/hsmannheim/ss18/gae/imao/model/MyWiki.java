@@ -3,12 +3,14 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.hsmannheim.ss18.gae.imao.model.enums.EWikiKathegorie;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,9 +22,12 @@ public class MyWiki {
     private WikiElement[][] elements;
     private EWikiKathegorie[] lastKategorieIndex = null;
 
+    /**
+     *
+     */
     public MyWiki() {
         this.elements = new WikiElement[EWikiKathegorie.values().length][0];
-        System.out.print(new File(".").getAbsolutePath());
+        //System.out.print(new File(".").getAbsolutePath());
         loadWiki();
     }
 
@@ -69,7 +74,7 @@ public class MyWiki {
                 }
                 objectNode.put("typ", lastKategorieIndex[kategorieIndex].toString());
                 objectNode.set("response", arrayNode);
-            } else{
+            } else {
                 gebeAus();
                 return StatusToString.fehler("Elemente konnten nicht gefunden werden");
             }
@@ -110,86 +115,54 @@ public class MyWiki {
         return objectNode.toString();
     }
 
-
     /**
-     * reset the counter in every Wiki Element
+     * Lade das Wiki aus der JSON Datei. Die JSON Datei muss auf dem Serverpfad liegen
      */
-    private void resetCounter() {
-        for (int i = 0; i < this.elements.length; i++) {
-            for (int j = 0; j < this.elements[i].length; j++) {
-                this.elements[i][j].resetCount();
-            }
-        }
-    }
-
-    /**
-     * save the counter in a text file
-     */
-    private void saveCounter() {
-
-        PrintWriter pWriter = null;
-        try {
-            pWriter = new PrintWriter(new BufferedWriter(new FileWriter("test.txt")));
-            pWriter.println("Wiki Counter Backup");
-
-            for (int i = 0; i < this.elements.length; i++) {
-                for (int j = 0; j < this.elements[i].length; j++) {
-                    pWriter.print(this.elements[i][j].getCount());
-                }
-                pWriter.println();
-            }
-
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        } finally {
-            if (pWriter != null) {
-                pWriter.flush();
-                pWriter.close();
-            }
-        }
-    }
-
-
     private void loadWiki() {
         JSONParser parser = new JSONParser();
+
+        //System.out.println(new File(".").getAbsolutePath());
+        JSONObject jsonObject = null;
         try {
-            //System.out.println(new File(".").getAbsolutePath());
-            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("WikiBackup.json"));
-
-            for (EWikiKathegorie enumKategorie : EWikiKathegorie.values()) {
-
-                // loop array
-                JSONArray jsonKrankheiten = (JSONArray) jsonObject.get(enumKategorie.toString());
-                if (jsonKrankheiten != null) {
-                    for (Object c : jsonKrankheiten) {
-                        JSONObject jsonInnerObject = (JSONObject) c;
-
-                        String question = jsonInnerObject.get("question").toString();
-                        String content = jsonInnerObject.get("content").toString();
-                        String idObject = jsonInnerObject.get("id").toString();
-                        int id = Integer.parseInt(idObject);
-                        String countObject = jsonInnerObject.get("count").toString();
-                        int count = Integer.parseInt(countObject);
-                        JSONArray jsonTags = (JSONArray) jsonInnerObject.get("tags");
-
-                        int arraySize = jsonTags.size();
-                        String[] tags = new String[arraySize];
-
-                        for (int i = 0; i < arraySize; i++) {
-                            tags[i] = (String) jsonTags.get(i);
-                        }
-                        addElement(new WikiElement(question, content, enumKategorie, tags, id, count));
-                    }
-                }
-            }
-
+            jsonObject = (JSONObject) parser.parse(new FileReader("WikiBackup.json"));
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        for (EWikiKathegorie enumKategorie : EWikiKathegorie.values()) {
+
+            // loop array
+            JSONArray jsonKrankheiten = (JSONArray) jsonObject.get(enumKategorie.toString());
+            if (jsonKrankheiten != null) {
+                for (Object c : jsonKrankheiten) {
+                    JSONObject jsonInnerObject = (JSONObject) c;
+
+                    String question = jsonInnerObject.get("question").toString();
+                    String content = jsonInnerObject.get("content").toString();
+                    String idObject = jsonInnerObject.get("id").toString();
+                    int id = Integer.parseInt(idObject);
+                    String countObject = jsonInnerObject.get("count").toString();
+                    int count = Integer.parseInt(countObject);
+                    JSONArray jsonTags = (JSONArray) jsonInnerObject.get("tags");
+
+                    int arraySize = jsonTags.size();
+                    String[] tags = new String[arraySize];
+
+                    for (int i = 0; i < arraySize; i++) {
+                        tags[i] = (String) jsonTags.get(i);
+                    }
+                    addElement(new WikiElement(question, content, enumKategorie, tags, id, count));
+                }
+            }
+        }
     }
 
+    /**
+     * Füge ein Element dem Wiki hinzu
+     * @param element
+     */
     private void addElement(WikiElement element) {
         boolean freiePlaetze = false;
         for (int i = 0; i < elements.length; i++) {
@@ -218,12 +191,21 @@ public class MyWiki {
 
     }
 
+    /**
+     * Copiere das Array und mache es um einen Platzt länger
+     * @param array
+     * @return
+     */
     private WikiElement[] makeArrayLonger(WikiElement[] array) {
         WikiElement[] newArray = new WikiElement[array.length + 1];
         System.arraycopy(array, 0, newArray, 0, array.length);
         return newArray;
     }
 
+    /**
+     * Für locale testzwecke des Wikis
+     * @param args
+     */
     public static void main(String[] args) {
         MyWiki wiki = new MyWiki();
 
@@ -233,11 +215,14 @@ public class MyWiki {
         wiki.addElement(new WikiElement("titel1", "inhalt", EWikiKathegorie.KRANKHEITEN, null, 100, 0));
         //wiki.saveCounter();
 
-    wiki.gebeAus();
+        wiki.gebeAus();
 
     }
 
-    private void gebeAus(){
+    /**
+     * Für locale testzwecke des Wikis
+     */
+    private void gebeAus() {
         System.out.println("\n\n");
         for (int i = 0; i < elements.length; i++) {
             System.out.println("Kategorie: " + lastKategorieIndex[i]);

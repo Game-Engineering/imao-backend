@@ -7,20 +7,25 @@ package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
  * @author lange
  *
  */
-public class Antwort {
+class Antwort {
 		private String antwort;
 		private int punkte;
-		
-		public Antwort(String antwort,int punkte) {
+
+	/**
+	 *
+	 * @param antwort
+	 * @param punkte
+	 */
+	Antwort(String antwort, int punkte) {
 			this.antwort=antwort;
 			this.punkte=punkte;
 		}
 		
-		public String getAntwort() {
+		String getAntwort() {
 			return this.antwort;
 		}
 		
-		public int getPunkte() {
+		int getPunkte() {
 			return this.punkte;
 		}
 }

@@ -1,8 +1,8 @@
 package de.hsmannheim.ss18.gae.imao.model.wirtschaft;
 
-import java.util.Random;
-
 import de.hsmannheim.ss18.gae.imao.model.enums.EAufgaben;
+
+import java.util.Random;
 
 public class Aufgabe {
 	private EAufgaben aufgabe = null;
@@ -14,6 +14,13 @@ public class Aufgabe {
 	private Sponsoren sponsoren;
 	private String aufgabeBetreff;
 
+	/**
+	 *
+	 * @param runde
+	 * @param pressekonf
+	 * @param interview
+	 * @param sponsoren
+	 */
 	public Aufgabe(int runde, Pressekonferenz pressekonf, Interview interview, Sponsoren sponsoren) {
 		this.pressekonferenz = pressekonf;
 		this.sponsoren = sponsoren;
@@ -124,6 +131,10 @@ public class Aufgabe {
 		sendeAufgabenMail(runde);
 	}
 
+	/**
+	 * Sende die Mail mit der Aufgabe an den Manager
+	 * @param runde
+	 */
 	private void sendeAufgabenMail(int runde) {
 		aufgabenMail = new Mail("CHEF", "R" + runde+" "+aufgabeBetreff, aufgabe.getAufgabeText());
 	}

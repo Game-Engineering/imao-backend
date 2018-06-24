@@ -15,6 +15,10 @@ public class Pressekonferenz {
 
 	private SpielrundeWirtschaft spielrundeWirtschaft;
 
+	/**
+	 *
+	 * @param spielrundeWirtschaft
+	 */
 	public Pressekonferenz(SpielrundeWirtschaft spielrundeWirtschaft) {
 		this.spielrundeWirtschaft = spielrundeWirtschaft;
 		createKonferenzThemen();

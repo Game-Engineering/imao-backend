@@ -19,6 +19,10 @@ public class Sponsoren {
 	private Manager manager;
 	private boolean sponsorenErstellt = false;
 
+	/**
+	 *
+	 * @param manager
+	 */
 	public Sponsoren(Manager manager) {
 		this.manager = manager;
 		if (!this.sponsorenErstellt) {
@@ -49,7 +53,7 @@ public class Sponsoren {
 	}
 
 	/**
-	 * 
+	 * Erstelle alle möglichen Sponsoren (zu Spielbeginn)
 	 */
 	private void erstelleAlleSponsoren() {
 
@@ -185,6 +189,11 @@ public class Sponsoren {
 		return objectNode.toString();
 	}
 
+	/**
+	 * Erstellt JSON-Object des Sponsoren
+	 * @param i
+	 * @return
+	 */
 	private ObjectNode sponsorNode(int i) {
 		ObjectMapper mapper = new ObjectMapper();
 		ObjectNode objectNode = mapper.createObjectNode();

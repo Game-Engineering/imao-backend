@@ -13,6 +13,14 @@ public class Untersuchungsmethode {
 	public Untersuchungsmethode() {
 	}
 
+	/**
+	 *
+	 * @param name
+	 * @param behandlungsKosten
+	 * @param anschaffungsKosten
+	 * @param unterhaltsKosten
+	 * @param freigeschaltet
+	 */
 	public Untersuchungsmethode(String name, int behandlungsKosten, int anschaffungsKosten, int unterhaltsKosten,
 			boolean freigeschaltet) {
 		this.name = name;

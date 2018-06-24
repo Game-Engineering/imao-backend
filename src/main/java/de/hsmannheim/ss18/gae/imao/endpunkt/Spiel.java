@@ -1,20 +1,19 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-
 import de.hsmannheim.ss18.gae.imao.model.MyWiki;
-import org.glassfish.jersey.server.ResourceConfig;
-
 import de.hsmannheim.ss18.gae.imao.model.Person;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
 import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Interview;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Sponsoren;
+import org.glassfish.jersey.server.ResourceConfig;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Path("/spiel")
 public class Spiel extends ResourceConfig {
@@ -22,6 +21,10 @@ public class Spiel extends ResourceConfig {
 	protected static Manager manager = null;
 	protected static MyWiki wiki=null;
 
+	/**
+	 * nicht aktuell
+	 * @return Liste möglicher aufrufe
+	 */
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
@@ -62,13 +65,21 @@ public class Spiel extends ResourceConfig {
 				+ "localhost:8080/imao/api/spiel/wirtschaft/werbeSponsorAn/sponsorID<br>";
 	}
 
+	/**
+	 * Teste ob Server läuft
+	 * @return
+	 */
 	@GET
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String test() {
 		return "{OK}";
 	}
-	
+
+	/**
+	 *
+	 * @return
+	 */
 	@GET
 	@Path("/neuesSpiel")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -85,7 +96,12 @@ public class Spiel extends ResourceConfig {
 		
 		return "{neues Spiel wurde gestartet}";
 	}
-	
+
+	/**
+	 *
+	 * @param type
+	 * @return
+	 */
 	@GET
 	@Path("/start/{type}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -164,6 +180,10 @@ public class Spiel extends ResourceConfig {
 		return person.toString();
 	}
 
+	/**
+	 *
+	 * @return
+	 */
 	@GET
 	@Path("/getWikiKategorien")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -172,6 +192,11 @@ public class Spiel extends ResourceConfig {
 		return wiki.getWikiKategorie();
 	}
 
+	/**
+	 *
+	 * @param kategorieIndex
+	 * @return
+	 */
 	@GET
 	@Path("/getWikiElement/{index}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -180,6 +205,12 @@ public class Spiel extends ResourceConfig {
 		return wiki.getWikiElement(Integer.parseInt(kategorieIndex));
 	}
 
+	/**
+	 *
+	 * @param kategorieIndex
+	 * @param frageID
+	 * @return
+	 */
 	@GET
 	@Path("/getWikiElement/{index}/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

@@ -1,5 +1,7 @@
 package de.hsmannheim.ss18.gae.imao.model;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EWikiKathegorie;
+
 public class WikiElement {
 
     public EWikiKathegorie getCategory() {
@@ -65,7 +67,15 @@ public class WikiElement {
 
     private static int idCounter=0;
 
-
+    /**
+     * Constructor
+     * @param question
+     * @param content
+     * @param category
+     * @param tags
+     * @param id
+     * @param count
+     */
     public WikiElement(String question, String content, EWikiKathegorie category,  String[] tags, int id, int count) {
         this.category = category;
         this.question = question;
@@ -75,7 +85,7 @@ public class WikiElement {
         this.id = id;
     }
     /**
-     *
+     *Constructor
      * @param question
      * @param content
      * @param category
@@ -90,7 +100,7 @@ public class WikiElement {
     }
 
     /**
-     *
+     *Constructor
      * @param question
      * @param content
      */

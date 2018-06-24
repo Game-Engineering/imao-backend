@@ -1,15 +1,7 @@
 package de.hsmannheim.ss18.gae.imao.model.medizin;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-
 import de.hsmannheim.ss18.gae.imao.model.Spielrunde;
 import de.hsmannheim.ss18.gae.imao.model.enums.EDiagnoseErgebnis;
 import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
@@ -17,6 +9,8 @@ import de.hsmannheim.ss18.gae.imao.model.enums.EKrankheit;
 import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Mail;
 import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
+
+import java.util.*;
 
 public class SpielrundeMedizin extends Spielrunde {
 
@@ -26,11 +20,11 @@ public class SpielrundeMedizin extends Spielrunde {
 	private List<Patient> behandeltePatienten = new ArrayList<>();
 	private List<Patient> nichtBehandeltePatienten = new ArrayList<>();
 
-	String[] lybischeWeiblicheVornamen = { "Aya", "Reem", "Mona", "Nesreen", "Ranai", "Hoda", "Fatima", "Sarah",
+	private String[] lybischeWeiblicheVornamen = { "Aya", "Reem", "Mona", "Nesreen", "Ranai", "Hoda", "Fatima", "Sarah",
 			"Marwa", "Eisha" };
-	String[] lybischeMaenlicheVornamen = { "Mohammed", "Hamza", "Abdallah", "Khaled", "Ahmeed", "Ibrahim", "Tareq",
+	private String[] lybischeMaenlicheVornamen = { "Mohammed", "Hamza", "Abdallah", "Khaled", "Ahmeed", "Ibrahim", "Tareq",
 			"Ali", "Mahmoud", "Hassan" };
-	String[] afrikanischeNachnamen = { "Azikiwe", "Awolowo", "Bello", "Balewa", "Akintola", "Okotie-Eboh", "Nzeogwu",
+	private String[] afrikanischeNachnamen = { "Azikiwe", "Awolowo", "Bello", "Balewa", "Akintola", "Okotie-Eboh", "Nzeogwu",
 			"Onwuatuegwu", "Okafor", "Okereke", "Okeke", "Okonkwo", "Okoye", "Okorie", "Obasanjo", "Babangida",
 			"Buhari", "Dimka", "Diya", "Odili" };
 
@@ -44,10 +38,8 @@ public class SpielrundeMedizin extends Spielrunde {
 	}
 
 	/**
-	 * 
-	 * @param runde
+	 *
 	 */
-
 	@Override
 	protected void erzeugeNeueRunde() {
 		nachricht = "Runde " + runde + " wurde gestartet.";
@@ -56,11 +48,10 @@ public class SpielrundeMedizin extends Spielrunde {
 		arzt.setRuf(50);
 	}
 
-	/**
-	 * 
-	 * @param int
-	 *            wartende
-	 */
+    /**
+     *
+     * @param wartende Anzahl der Patienten
+     */
 	private void erzeugePatienten(int wartende) {
 
 		Random random = new Random();
@@ -122,6 +113,11 @@ public class SpielrundeMedizin extends Spielrunde {
 
 	}
 
+    /**
+     *
+     * @param krankheitID
+     * @return
+     */
 	public Diagnose setDiagnose(int krankheitID) {
 		System.out.println("***DIAGNOSE: Vermutung:" + krankheitID);
 		System.out.println("***DIAGNOSE: Tatsächlich:" + inZelt.getKrankheit().getKrankheit().getId());
@@ -140,6 +136,10 @@ public class SpielrundeMedizin extends Spielrunde {
 		return erg;
 	}
 
+    /**
+     *
+     * @return
+     */
 	public String getDiagnose() {
 		if (inZelt.getDiagnose() == EDiagnoseErgebnis.ERFOLGREICH) {
 			return "Erfolgreich";
@@ -150,6 +150,11 @@ public class SpielrundeMedizin extends Spielrunde {
 		}
 	}
 
+    /**
+     *
+     * @param ID
+     * @return
+     */
 	public String sendeMail(String ID) {
 		String absender = "" + arzt.vorname + " " + arzt.vorname;
 		String betreff;
@@ -222,6 +227,10 @@ public class SpielrundeMedizin extends Spielrunde {
 		this.runde = runde;
 	}
 
+    /**
+     *
+     * @return
+     */
 	public List<Untersuchungsmethode> getUntersuchungsmethoden() {
 		List<Untersuchungsmethode> methoden = new ArrayList<>();
 		Iterator<Untersuchungsmethode> it = untersuchungsmethoden.iterator();

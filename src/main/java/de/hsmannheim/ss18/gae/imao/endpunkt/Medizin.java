@@ -1,26 +1,24 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.medizin.*;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Blutbild;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Diagnose;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Krankheit;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Patient;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Roentgen;
-import de.hsmannheim.ss18.gae.imao.model.medizin.SpielrundeMedizin;
-import de.hsmannheim.ss18.gae.imao.model.medizin.Ultraschall;
-import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
-
 @Path("spiel/medizin")
 public class Medizin extends Spiel {
 	private static int rundencount = 0;
 	private static SpielrundeMedizin rundeArzt;
 
+	/**
+	 *
+	 * @return Bestätigung für Browseraufruf
+	 */
 	@Override
 	@GET
 	@Path("/")
@@ -30,7 +28,7 @@ public class Medizin extends Spiel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	@GET
@@ -58,6 +56,7 @@ public class Medizin extends Spiel {
 
 		return manager.toString();
 	}
+
 	/**
 	 * 
 	 * @return
