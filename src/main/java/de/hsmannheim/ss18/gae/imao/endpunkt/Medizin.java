@@ -1,26 +1,24 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.medizin.*;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Manager;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import de.hsmannheim.ss18.gae.imao.model.Blutbild;
-import de.hsmannheim.ss18.gae.imao.model.Diagnose;
-import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
-import de.hsmannheim.ss18.gae.imao.model.Krankheit;
-import de.hsmannheim.ss18.gae.imao.model.Manager;
-import de.hsmannheim.ss18.gae.imao.model.Patient;
-import de.hsmannheim.ss18.gae.imao.model.Roentgen;
-import de.hsmannheim.ss18.gae.imao.model.SpielrundeMedizin;
-import de.hsmannheim.ss18.gae.imao.model.Ultraschall;
-
 @Path("spiel/medizin")
 public class Medizin extends Spiel {
 	private static int rundencount = 0;
 	private static SpielrundeMedizin rundeArzt;
 
+	/**
+	 *
+	 * @return Bestätigung für Browseraufruf
+	 */
 	@Override
 	@GET
 	@Path("/")
@@ -30,7 +28,7 @@ public class Medizin extends Spiel {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	@GET
@@ -41,10 +39,34 @@ public class Medizin extends Spiel {
 			return "Sie Haben keinen Arzt angelegt";
 		}
 		if (manager == null) {
-			manager = new Manager("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+			manager = new Manager("Rose", "Tyler", EGeschlecht.WEIBLICH);
 		}
 		rundeArzt = new SpielrundeMedizin(++rundencount, manager, arzt);
 		return rundeArzt.toString();
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getManagerDaten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getManagerDaten() {
+
+		return manager.toString();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getMails")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getMails() {
+		System.out.println(arzt.getPosteingang().toString());
+		return "{ \"mailliste\" :" + arzt.getPosteingang().toString() + "}";
 	}
 
 	/**
@@ -227,4 +249,15 @@ public class Medizin extends Spiel {
 
 		return ergebniss;
 	}
-}
+
+	public static void resetRundencount() {
+		Medizin.rundencount = 0;
+	}
+
+	public static void resetRundeArzt() {
+		Medizin.rundeArzt = null;
+		Patient.resetIDCount();
+			}
+	
+	
+	}

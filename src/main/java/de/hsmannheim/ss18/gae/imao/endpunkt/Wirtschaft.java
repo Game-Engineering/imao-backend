@@ -1,20 +1,21 @@
 package de.hsmannheim.ss18.gae.imao.endpunkt;
 
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
+import de.hsmannheim.ss18.gae.imao.model.StatusToString;
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+import de.hsmannheim.ss18.gae.imao.model.enums.EMoeglicheMails;
+import de.hsmannheim.ss18.gae.imao.model.medizin.Arzt;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.Aufgabe;
+import de.hsmannheim.ss18.gae.imao.model.wirtschaft.SpielrundeWirtschaft;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-
-import de.hsmannheim.ss18.gae.imao.model.Arzt;
-import de.hsmannheim.ss18.gae.imao.model.Aufgabe;
-import de.hsmannheim.ss18.gae.imao.model.EGeschlecht;
-import de.hsmannheim.ss18.gae.imao.model.EMoeglicheMails;
-import de.hsmannheim.ss18.gae.imao.model.GeraetGekauft;
-import de.hsmannheim.ss18.gae.imao.model.SpielrundeWirtschaft;
 
 @Path("spiel/wirtschaft")
 public class Wirtschaft extends Spiel {
@@ -34,7 +35,7 @@ public class Wirtschaft extends Spiel {
 			return "Sie Haben keinen Manager angelegt";
 		}
 		if (arzt == null) {
-			arzt = new Arzt("Dummy", "Dumm", EGeschlecht.MAENNLICH);
+			arzt = new Arzt("John", "Smith", EGeschlecht.MAENNLICH);
 			arzt.getAusgaben().put("Blutbild Patient 1", 10);
 			arzt.getAusgaben().put("Blutbild Patient 2", 10);
 			arzt.getAusgaben().put("Blutbild Patient 3", 10);
@@ -77,6 +78,18 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
+	@Path("/getArztDaten")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getArztDaten() {
+
+		return arzt.toString();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
 	@Path("/getKatalog")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getKatalog() {
@@ -100,15 +113,33 @@ public class Wirtschaft extends Spiel {
 	}
 
 	/**
+	 *
+	 * @return
+	 */
+	@GET
+	@Path("/getInterviewPartner")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getInterviewPartner() {
+		return rundeManager.getManager().getInterview().getInterviewParter();
+		/*
+		 * List<InterviewPartner> partnerListe = new ArrayList<>(); partnerListe.add(
+		 * new InterviewPartner(1, "Hans", 35, 3)); partnerListe.add( new
+		 * InterviewPartner(2, "Peter", 30, 2)); partnerListe.add( new
+		 * InterviewPartner(5, "Wurst", 10, 0)); return
+		 * " { \"partnerListe\":"+partnerListe.toString()+"}";
+		 */
+	}
+
+	/**
 	 * 
 	 * @return
 	 */
 	@GET
-	@Path("/interview")
+	@Path("/interview/{partnerID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String interview() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+	public String interview(@PathParam("partnerID") String partnerID) {
+		return rundeManager.getManager().getInterview().startInterview(Integer.parseInt(partnerID), "neue/erste Anfrage");
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -118,25 +149,13 @@ public class Wirtschaft extends Spiel {
 	 * @return
 	 */
 	@GET
-	@Path("/interview/{antwortID}")
+	@Path("/interview/{partnerID}/{antwortID}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String interview(@PathParam("antwortID") String antwortID) {
+	public String interview(@PathParam("partnerID") String partnerID, @PathParam("antwortID") String antwortID) {
 		// bei letzter Antwort prüfen ob Inerview die aufgabe war ind wenn ja
 		// auf aufgabe.erledigt() ausführen
-
-		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	@GET
-	@Path("/haltePressekonferenz")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String haltePressekonferenz() {
-
-		return rundeManager.haltePressekonferenz();
+		return rundeManager.getManager().getInterview().getInterview(Integer.parseInt(partnerID), Integer.parseInt(antwortID));
+		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -172,7 +191,7 @@ public class Wirtschaft extends Spiel {
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMails() {
 		System.out.println(manager.getPosteingang().toString());
-		return "{\"mailliste\":" + manager.getPosteingang().toString() + "}";
+		return "{ \"mailliste\" :" + manager.getPosteingang().toString() + "}";
 	}
 
 	/**
@@ -189,10 +208,9 @@ public class Wirtschaft extends Spiel {
 		ObjectNode objectNode = mapper.createObjectNode();
 		objectNode.put(EMoeglicheMails.LOB.name(), EMoeglicheMails.LOB.getMailText());
 		objectNode.put(EMoeglicheMails.ABMAHNUNG.name(), EMoeglicheMails.ABMAHNUNG.getMailText());
-		objectNode.put(EMoeglicheMails.GERAET_GEKAUFT.name(), EMoeglicheMails.GERAET_GEKAUFT.getMailText());
-		objectNode.put(EMoeglicheMails.DEFAULT_MAIL.name(), EMoeglicheMails.DEFAULT_MAIL.getMailText());
+//		objectNode.put(EMoeglicheMails.GERAET_GEKAUFT.name(), EMoeglicheMails.GERAET_GEKAUFT.getMailText());
 
-		return "{\"moeglicheMails\":" + objectNode.toString()+ "}";
+		return objectNode.toString();
 
 	}
 
@@ -218,8 +236,8 @@ public class Wirtschaft extends Spiel {
 	@Path("/getAktuelleSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getAktuelleSponsoren() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.getManager().getSponsoren().getAktuelleSponsoren();
+		//return "{\"Frage\": \"ID\", \"AntwortA\": \"ID\", \"AntwortB\",: \"ID\", \"AntwortC\": \"ID\", \"AntwortD\": \"ID\"}";
 	}
 
 	/**
@@ -230,8 +248,20 @@ public class Wirtschaft extends Spiel {
 	@Path("/getMoeglicheSponsoren")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String getMoeglicheSponsoren() {
-
-		return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.getManager().getSponsoren().getVerfuegbareSponsoren(rundeManager.getManager().getRuf());
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/getAlleSponsoren")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String getAlleSponsoren() {
+		return rundeManager.getManager().getSponsoren().getAlleSponsoren();
+		//return "Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
 
 	/**
@@ -244,7 +274,84 @@ public class Wirtschaft extends Spiel {
 	@Path("/werbeSponsorAn/{sponsorID}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String werbeSponsorAn(@PathParam("sponsorID") String sponsorID) {
-
-		return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
+		return rundeManager.getManager().getSponsoren().werbeSponsorAn(Integer.parseInt(sponsorID),rundeManager.getManager().getRuf());
+		//return " neue Frage, ID, AntwortA, ID, AntwortB, ID, AntwortC, ID, AntwortD, ID";
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	@GET
+	@Path("/startePressekonferenz")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String startePressekonferenz() {
+		//FIXME hier tritt eine NullPointerException auf 
+		return rundeManager.startePressekonferenz();
+		
+	}
+	
+	/**
+	 * 
+	 * @param antwortID
+	 * @return
+	 */
+	@GET
+	@Path("/pressekonferenz/{antwortID}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String antwortePressekonferenz(@PathParam("antwortID") String antwortID) {
+		return rundeManager.antwortePressekonferenz(Integer.parseInt(antwortID));
+	}
+
+	/**
+	 * Füge Ruf hinzu
+	 * @param menge
+	 * @return
+	 */
+	@GET
+	@Path("/cheatRUF/{menge}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String cheatRUF(@PathParam("menge") String menge) {
+		if(Integer.parseInt(menge) < 0) {
+			manager.rufVerlust("CHEAT", Integer.parseInt(menge)*-1);
+			return StatusToString.ok("Ruf verringert");
+		}else if(Integer.parseInt(menge) > 0) {
+			manager.rufZuwachs("CHEAT", Integer.parseInt(menge));
+			return StatusToString.ok("Ruf erhöht");
+		}
+		return StatusToString.fehler("Ruf nicht geändert");
+	}
+
+	/**
+	 * Füge Geld hinzu
+	 * @param menge
+	 * @return
+	 */
+	@GET
+	@Path("/cheatBUDGET/{menge}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String cheatBUDGET(@PathParam("menge") String menge) {
+		if(Integer.parseInt(menge) < 0) {
+			manager.ausgabe("CHEAT", Integer.parseInt(menge)*-1);
+			return StatusToString.ok("Budget verringert");
+		}else if(Integer.parseInt(menge) > 0) {
+			manager.einnahme("CHEAT", Integer.parseInt(menge));
+			return StatusToString.ok("Budget erhöht");
+		}
+		return StatusToString.fehler("Budget nicht geändert");
+	}
+	
+
+	public static void resetRundencount() {
+		Wirtschaft.rundencount = 0;
+	}
+
+	public static void resetRundeManager() {
+		rundeManager = null;
+	}
+
+	public static void resetAufgabe() {
+		Wirtschaft.aufgabe = null;
+	}
+
 }

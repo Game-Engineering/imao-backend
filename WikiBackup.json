@@ -2,7 +2,7 @@
   "KRANKHEITEN": [
     {
       "question": "Cholera",
-      "content": "Cholera ist eine, durch das Bakterium Vibrio cholerea ausgelÃ¶ste, Krankheit die vor allem durch Beschwerden im Magen-Darm-Trakt gekennzeichnet ist. So kommt es zum Beispiel zu Brechdurchfall und in Folge dessen zu FlÃ¼ssigkeitsmangel. ",
+      "content": "Cholera ist eine, durch das Bakterium Vibrio cholerea ausgelöste, Krankheit die vor allem durch Beschwerden im Magen-Darm-Trakt gekennzeichnet ist. So kommt es zum Beispiel zu Brechdurchfall und in Folge dessen zu Flüssigkeitsmangel. ",
       "id": 0,
       "count": 0,
       "tags": [
@@ -10,27 +10,115 @@
         "Krankheiten",
         "Brechdurchfall",
         "Magen-Darm",
-        "FlÃ¼ssigkeitsmangel"
+        "Flüssigkeitsmangel"
       ]
     },
     {
       "question": "Bilharziose",
-      "content": "Bilharziose wird durch Schitosomenlarven Ã¼bertragen. Diese druchdringen die Haut von badenen oder im Wasser watenden Menschen. Die Probleme kÃ¶nnen von hepatitischen Symptomne bishin zu BlasenfunktionsstÃ¶rungen reichen. Kann durch einen Nachweis von Eiern im Urin erfolgen.",
-      "id": 0,
+      "content": "Bilharziose wird durch Schitosomenlarven übertragen. Diese druchdringen die Haut von badenen oder im Wasser watenden Menschen. Die Probleme können von hepatitischen Symptomne bishin zu Blasenfunktionsstörungen reichen. Kann durch einen Nachweis von Eiern im Urin erfolgen.",
+      "id": 1,
       "count": 0,
       "tags": [
-        "Bilharziose","Baden", "Erreger", "BlasenfunktionsstÃ¶rung","hepatitische Symptome"
-       
+        "Bilharziose",
+        "Baden",
+        "Erreger",
+        "Blasenfunktionsstörung",
+        "hepatitische Symptome"
       ]
     },
     {
       "question": "Leishmaniose",
-      "content": "",
-      "id": 0,
+      "content": "Übertragen von Schmetterlingsmücken, kann zu nekrotisierenden Hautgeschwüren führen. Symptome sind unter anderem Fieber, Gewichtsverlust, Leber- und Milzschwellung und Magen-Darm-Symptome.",
+      "id": 2,
       "count": 0,
       "tags": [
-        ","
-       
+        "Leishmaniose",
+        "Hautleishmaniose",
+        "Hautgeschwüre",
+        "Gewichtsverlust",
+        "Fieber",
+        "Leber- und Milzschwellung",
+        "Magen-Darm-Symptome"
+      ]
+    },
+    {
+      "question": "Leishmaniose",
+      "content": "Übertragen von Schmetterlingsmücken, kann zu nekrotisierenden Hautgeschwüren führen. Symptome sind unter anderem Fieber, Gewichtsverlust, Leber- und Milzschwellung und Magen-Darm-Symptome.",
+      "id": 3,
+      "count": 0,
+      "tags": [
+        "Leishmaniose",
+        "Hautleishmaniose",
+        "Hautgeschwüre",
+        "Gewichtsverlust",
+        "Fieber",
+        "Leber- und Milzschwellung",
+        "Magen-Darm-Symptome"
+      ]
+    },
+    {
+      "question": "HIV",
+      "content": "Die HIV Infektion verläuft in mehreren Stadien. Im ersten Stadium haben Patienten oftmals geschwollene Lymphknoten und grippeähnliche Symptome. Im zweiten Stadium kommt zu Fieber dann langahaltender Durchfall dazu, im dritten Stadium liegt starker Gewichtsverlust und eine eingeschränkte Gehrinfunktion vor, dies ist das Stadium, in dem der Patient verstirbt.",
+      "id": 4,
+      "count": 0,
+      "tags": [
+        "HIV",
+        "grippeähnliche Symptome",
+        "geschwollene Lymphknoten",
+        "Fieber",
+        "Durchfall",
+        "starker Gewichtsverlust",
+        "eingeschränkte Gehirnfunktion"
+      ]
+    },
+    {
+      "question": "Gelbfieber",
+      "content": "Eine leichte Form des Gelbfiebers wird häufig weder erkannt noch behandelt, allerdings kann es bei Personen ohne Impfung zu schweren Krankheitsverläufen führen, die unter anderem an hohem Fieber, Kopfschmerzen, Muskelschmerzen, Übelkeit, Erbrechen, Nasenbluten und Schleimhautbluten",
+      "id": 5,
+      "count": 0,
+      "tags": [
+        "Gelbfieber",
+        "hohes Fieber",
+        "Kopfschmerzen",
+        "Muskelschmerzen",
+        "Übelkeit",
+        "Erbrechen",
+        "Nasenbluten",
+        "Schleimhautbluten"
+      ]
+    },
+    {
+      "question": "Masern",
+      "content": "Bei Masern handelt es sich um eine akute Infektionskrankheit, die weltweit verbreitet ist und besonders häufig bei Kindern auftritt. Masern sind vor allem durch die charakteristischen Hautveränderungen gekennzeichnet. Die Erkrankung kann in zwei Stadien aufgeteilt werden",
+      "id": 6,
+      "count": 0,
+      "tags": [
+        ""
+      ]
+    },
+    {
+      "question": "Hepatitis A",
+      "content": "Hepatitis A ist eine durch Viren hervorgerufene Infektion, bei der sich die Leber entzündet. Die Symptome sind unter anderem Fieber, Durchfall, Müdigkeit, Schmerzen in der Bauchgegend und in manchen Fällen Gelbsucht. Im Normalfall heilt diese Krankheit ohne Folgenschäden wieder ab.",
+      "id": 7,
+	  "count": 0,
+      "tags": [
+        "Hepatitis A",
+        "Infektion",
+        "Leber",
+        "Fieber",
+        "Durchfall",
+        "Müdigkeit",
+        "Schmerzen in der Bauchgegend",
+        "Gelbsucht"
+      ]
+    },
+    {
+      "question": "Hepatitis B",
+      "content": "Es gibt akute und chronische Hepatitis, bei der akuten Hepatitis treten kaum Symptome auf",
+      "id": 8,
+	  "count":0,
+      "tags": [
+        ""
       ]
     }
   ],

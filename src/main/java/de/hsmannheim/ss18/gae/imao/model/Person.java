@@ -3,12 +3,20 @@ package de.hsmannheim.ss18.gae.imao.model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import de.hsmannheim.ss18.gae.imao.model.enums.EGeschlecht;
+
 public class Person {
 
-	protected String vorname;
-	protected String nachname;
+	public String vorname;
+	public String nachname;
 	protected EGeschlecht geschlecht;
 
+	/**
+	 * Arzt und Manager Erben von dieser Klasse
+	 * @param vorname
+	 * @param nachname
+	 * @param geschlecht
+	 */
 	public Person(String vorname, String nachname, EGeschlecht geschlecht) {
 		this.vorname = vorname;
 		this.nachname = nachname;
