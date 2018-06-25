@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-// Java program to read JSON from a file
-
 public class MyWiki {
 
 
@@ -23,11 +21,10 @@ public class MyWiki {
     private EWikiKathegorie[] lastKategorieIndex = null;
 
     /**
-     *
+     * Constructor: läd das Wiki aus der JSON datei
      */
     public MyWiki() {
         this.elements = new WikiElement[EWikiKathegorie.values().length][0];
-        //System.out.print(new File(".").getAbsolutePath());
         loadWiki();
     }
 
@@ -131,11 +128,14 @@ public class MyWiki {
             e.printStackTrace();
         }
 
+        //Durchlaufe alle ENUM kategorien
         for (EWikiKathegorie enumKategorie : EWikiKathegorie.values()) {
 
-            // loop array
+            //Durchlaufe alle Elemente einer Kategorie
             JSONArray jsonKrankheiten = (JSONArray) jsonObject.get(enumKategorie.toString());
             if (jsonKrankheiten != null) {
+
+                //Durchlaufe alle Details eines Elements
                 for (Object c : jsonKrankheiten) {
                     JSONObject jsonInnerObject = (JSONObject) c;
 
@@ -145,14 +145,15 @@ public class MyWiki {
                     int id = Integer.parseInt(idObject);
                     String countObject = jsonInnerObject.get("count").toString();
                     int count = Integer.parseInt(countObject);
-                    JSONArray jsonTags = (JSONArray) jsonInnerObject.get("tags");
 
+                    //Tags array
+                    JSONArray jsonTags = (JSONArray) jsonInnerObject.get("tags");
                     int arraySize = jsonTags.size();
                     String[] tags = new String[arraySize];
-
                     for (int i = 0; i < arraySize; i++) {
                         tags[i] = (String) jsonTags.get(i);
                     }
+
                     addElement(new WikiElement(question, content, enumKategorie, tags, id, count));
                 }
             }
@@ -165,30 +166,34 @@ public class MyWiki {
      */
     private void addElement(WikiElement element) {
         boolean freiePlaetze = false;
+
+        //Laufe array durch und suche den richtigen platz, wenn es freie plätze gibt merkle es
         for (int i = 0; i < elements.length; i++) {
             if (elements[i].length > 0) {
+                //wenn die Kategorien übereinstimmen, mache das Array länger und füge das Element ein
                 if (elements[i][0].getCategory() == element.getCategory()) {
                     WikiElement[] array = makeArrayLonger(elements[i]);
                     array[array.length - 1] = element;
                     elements[i] = array;
-                    System.out.println("Element eingefügt1: " + element.getQuestion() + ", pos: " + i + ", j: " + (array.length - 1));
+                   // System.out.println("Element eingefügt1: " + element.getQuestion() + ", pos: " + i + ", j: " + (array.length - 1));
                     return;
                 }
             } else {
                 freiePlaetze = true;
             }
         }
+
+        //Wenn Kategorie noch keine Elemente hat, gibt es freie Plätze
         if (freiePlaetze) {
             for (int i = 0; i < elements.length; i++) {
                 if (elements[i].length == 0) {
                     elements[i] = new WikiElement[1];
                     elements[i][0] = element;
-                    System.out.println("Element eingefügt2: " + element.getQuestion() + ", pos: " + i + ", j: 0");
+                    //System.out.println("Element eingefügt2: " + element.getQuestion() + ", pos: " + i + ", j: 0");
                     return;
                 }
             }
         }
-
     }
 
     /**
@@ -203,7 +208,7 @@ public class MyWiki {
     }
 
     /**
-     * Für locale testzwecke des Wikis
+     * Für locale Testzwecke des Wikis
      * @param args
      */
     public static void main(String[] args) {
@@ -216,11 +221,10 @@ public class MyWiki {
         //wiki.saveCounter();
 
         wiki.gebeAus();
-
     }
 
     /**
-     * Für locale testzwecke des Wikis
+     * Für locale Testzwecke des Wikis
      */
     private void gebeAus() {
         System.out.println("\n\n");
