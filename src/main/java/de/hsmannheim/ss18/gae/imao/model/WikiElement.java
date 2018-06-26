@@ -99,13 +99,4 @@ public class WikiElement {
         this.id = idCounter++;
     }
 
-    /**
-     *Constructor
-     * @param question
-     * @param content
-     */
-    public WikiElement(String question, String content){
-        this(question, content, EWikiKathegorie.SONSTIGES, new String[0]);
-
-    }
 }

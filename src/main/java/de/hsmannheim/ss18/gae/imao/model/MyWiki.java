@@ -154,10 +154,15 @@ public class MyWiki {
                         tags[i] = (String) jsonTags.get(i);
                     }
 
-                    addElement(new WikiElement(question, content, enumKategorie, tags, id, count));
+                    addElement(new WikiElement(question, content, enumKategorie, tags, getIDCounter(), count));
                 }
             }
         }
+    }
+
+    private static int idCounter = 0;
+    private int getIDCounter(){
+        return idCounter++;
     }
 
     /**
