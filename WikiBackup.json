@@ -2,7 +2,7 @@
   "KRANKHEITEN": [
     {
       "question": "Cholera",
-      "content": "Cholera ist eine, durch das Bakterium Vibrio cholerea ausgel�ste, Krankheit die vor allem durch Beschwerden im Magen-Darm-Trakt gekennzeichnet ist. So kommt es zum Beispiel zu Brechdurchfall und in Folge dessen zu Fl�ssigkeitsmangel. ",
+      "content": "Cholera ist eine, durch das Bakterium Vibrio cholerea ausgelöste, Krankheit die vor allem durch Beschwerden im Magen-Darm-Trakt gekennzeichnet ist. So kommt es zum Beispiel zu Brechdurchfall und in Folge dessen zu Flüssigkeitsmangel. ",
       "id": 0,
       "count": 0,
       "tags": [
@@ -10,78 +10,48 @@
         "Krankheiten",
         "Brechdurchfall",
         "Magen-Darm",
-        "Fl�ssigkeitsmangel"
+        "Flüssigkeitsmangel"
       ]
     },
     {
       "question": "Bilharziose",
-      "content": "Bilharziose wird durch Schitosomenlarven �bertragen. Diese druchdringen die Haut von badenen oder im Wasser watenden Menschen. Die Probleme k�nnen von hepatitischen Symptomne bishin zu Blasenfunktionsst�rungen reichen. Kann durch einen Nachweis von Eiern im Urin erfolgen.",
-      "id": 1,
+      "content": "Bilharziose wird durch Schitosomenlarven übertragen. Diese durchdringen die Haut von badenen oder im Wasser watenden Menschen. Die Probleme können von hepatitischen Symptomen bis hin zu Blasenfunktionsstörungen reichen. Kann durch einen Nachweis von Eiern im Urin erfolgen.",
+      "id": 0,
       "count": 0,
       "tags": [
         "Bilharziose",
         "Baden",
         "Erreger",
-        "Blasenfunktionsst�rung",
+        "Blasenfunktionsstörung",
         "hepatitische Symptome"
       ]
     },
     {
       "question": "Leishmaniose",
-      "content": "�bertragen von Schmetterlingsm�cken, kann zu nekrotisierenden Hautgeschw�ren f�hren. Symptome sind unter anderem Fieber, Gewichtsverlust, Leber- und Milzschwellung und Magen-Darm-Symptome.",
-      "id": 2,
+      "content": "Übertragen von Schmetterlingsmücken, kann zu nekrotisierenden Hautgeschwüren führen. Symptome sind unter anderem Fieber, Gewichtsverlust, Leber- und Milzschwellung und Magen-Darm-Symptome.",
+      "id": 0,
       "count": 0,
       "tags": [
         "Leishmaniose",
         "Hautleishmaniose",
-        "Hautgeschw�re",
+        "Hautgeschwüre",
         "Gewichtsverlust",
         "Fieber",
         "Leber- und Milzschwellung",
         "Magen-Darm-Symptome"
-      ]
-    },
-    {
-      "question": "Leishmaniose",
-      "content": "�bertragen von Schmetterlingsm�cken, kann zu nekrotisierenden Hautgeschw�ren f�hren. Symptome sind unter anderem Fieber, Gewichtsverlust, Leber- und Milzschwellung und Magen-Darm-Symptome.",
-      "id": 3,
-      "count": 0,
-      "tags": [
-        "Leishmaniose",
-        "Hautleishmaniose",
-        "Hautgeschw�re",
-        "Gewichtsverlust",
-        "Fieber",
-        "Leber- und Milzschwellung",
-        "Magen-Darm-Symptome"
-      ]
-    },
-    {
-      "question": "HIV",
-      "content": "Die HIV Infektion verl�uft in mehreren Stadien. Im ersten Stadium haben Patienten oftmals geschwollene Lymphknoten und grippe�hnliche Symptome. Im zweiten Stadium kommt zu Fieber dann langahaltender Durchfall dazu, im dritten Stadium liegt starker Gewichtsverlust und eine eingeschr�nkte Gehrinfunktion vor, dies ist das Stadium, in dem der Patient verstirbt.",
-      "id": 4,
-      "count": 0,
-      "tags": [
-        "HIV",
-        "grippe�hnliche Symptome",
-        "geschwollene Lymphknoten",
-        "Fieber",
-        "Durchfall",
-        "starker Gewichtsverlust",
-        "eingeschr�nkte Gehirnfunktion"
       ]
     },
     {
       "question": "Gelbfieber",
-      "content": "Eine leichte Form des Gelbfiebers wird h�ufig weder erkannt noch behandelt, allerdings kann es bei Personen ohne Impfung zu schweren Krankheitsverl�ufen f�hren, die unter anderem an hohem Fieber, Kopfschmerzen, Muskelschmerzen, �belkeit, Erbrechen, Nasenbluten und Schleimhautbluten",
-      "id": 5,
+      "content": "Eine leichte Form des Gelbfiebers wird häufig weder erkannt noch behandelt, allerdings kann es bei Personen ohne Impfung zu schweren Krankheitsverläufen führen, die unter anderem an hohem Fieber, Kopfschmerzen, Muskelschmerzen, Übelkeit, Erbrechen, Nasenbluten und Schleimhautbluten",
+      "id": 0,
       "count": 0,
       "tags": [
         "Gelbfieber",
         "hohes Fieber",
         "Kopfschmerzen",
         "Muskelschmerzen",
-        "�belkeit",
+        "Übelkeit",
         "Erbrechen",
         "Nasenbluten",
         "Schleimhautbluten"
@@ -89,8 +59,8 @@
     },
     {
       "question": "Masern",
-      "content": "Bei Masern handelt es sich um eine akute Infektionskrankheit, die weltweit verbreitet ist und besonders h�ufig bei Kindern auftritt. Masern sind vor allem durch die charakteristischen Hautver�nderungen gekennzeichnet. Die Erkrankung kann in zwei Stadien aufgeteilt werden",
-      "id": 6,
+      "content": "Bei Masern handelt es sich um eine akute Infektionskrankheit, die weltweit verbreitet ist und besonders häufig bei Kindern auftritt. Masern sind vor allem durch die charakteristischen Hautveränderungen gekennzeichnet. Die Erkrankung kann in zwei Stadien aufgeteilt werden",
+      "id": 0,
       "count": 0,
       "tags": [
         ""
@@ -98,30 +68,523 @@
     },
     {
       "question": "Hepatitis A",
-      "content": "Hepatitis A ist eine durch Viren hervorgerufene Infektion, bei der sich die Leber entz�ndet. Die Symptome sind unter anderem Fieber, Durchfall, M�digkeit, Schmerzen in der Bauchgegend und in manchen F�llen Gelbsucht. Im Normalfall heilt diese Krankheit ohne Folgensch�den wieder ab.",
-      "id": 7,
-	  "count": 0,
+      "content": "Hepatitis A ist eine durch Viren hervorgerufene Infektion, bei der sich die Leber entzündet. Die Symptome sind unter anderem Fieber, Durchfall, Müdigkeit, Schmerzen in der Bauchgegend und in manchen Fällen Gelbsucht. Im Normalfall heilt diese Krankheit ohne Folgenschäden wieder ab.",
+      "id": 0,
+      "count": 0,
       "tags": [
         "Hepatitis A",
         "Infektion",
         "Leber",
         "Fieber",
         "Durchfall",
-        "M�digkeit",
+        "Müdigkeit",
         "Schmerzen in der Bauchgegend",
         "Gelbsucht"
       ]
     },
     {
       "question": "Hepatitis B",
-      "content": "Es gibt akute und chronische Hepatitis, bei der akuten Hepatitis treten kaum Symptome auf",
-      "id": 8,
-	  "count":0,
+      "content": "Es gibt akute und chronische Hepatitis, bei der akuten Hepatitis treten kaum Symptome auf, bei dem chronischen Verlauf der Hepatitis B entgegen halten Symptome länger als ein halbes Jahr an. Erfolgt keine Behandlung kann die Leber stark beschädigt werden. Die ersten sichtbaren Symptome umschließen Gelbsucht, Schmerzen im Bauchbereich, Muskelschmerzen, Müdigkeit und Erbrechen.",
+      "id": 0,
+      "count": 0,
       "tags": [
-        ""
+        "Hepatitis B",
+        "Leberschäden",
+        "Gelbsucht",
+        "Schmerzen im Bauchbereich",
+        "Muskelschmerzen",
+        "Müdigkeit",
+        "Erbrechen"
+      ]
+    },
+    {
+      "question": "HIV",
+      "content": "Die HIV Infektion verläuft in mehreren Stadien. Im ersten Stadium haben Patienten oftmals geschwollene Lymphknoten und grippeähnliche Symptome. Im zweiten Stadium kommt zu Fieber dann langanhaltender Durchfall dazu, im dritten Stadium liegt starker Gewichtsverlust und eine eingeschränkte Gehirnfunktion vor, dies ist das Stadium, in dem der Patient verstirbt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "HIV",
+        "grippeähnliche Symptome",
+        "geschwollene Lymphknoten",
+        "Fieber",
+        "Durchfall",
+        "starker Gewichtsverlust",
+        "eingeschränkte Gehirnfunktion"
+      ]
+    },
+    {
+      "question": "Tetanus",
+      "content": "Der Wundstarrkramof wird oft auch als Tetanus bezeichnet. Die Infektion mit den sogenannten Clostridien kommt es vor allem durch das Eindringen durch eine offene Wunde. Nach 3 bis 60 Tagen treten Krankheitserscheinungen wie Krämpfe und Lähmungen auf. Weitere Symptome sind Schwindel, Kopfschmerzen und Abgeschlagenheit.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Tetanus",
+        "Wundstarrkrampf",
+        "Infektion",
+        "Clostridien",
+        "offene Wunde",
+        "Krämpfe",
+        "Lähmungen",
+        "Schwindel",
+        "Kopfschmerzen",
+        "Abgeschlagenheit"
+      ]
+    },
+    {
+      "question": "Dengue-Fieber",
+      "content": "Wird durch Moskitos oder Mücken übertragen und bereits wenige Tage nachdem man gestochen wurde treten die ersten Krankheitssymptome auf. Die klassische Form des Dengue-Fiebers verläuft meist ohne Folgeschäden. Das Dengue-Fieber ähnelt zunächst einer starken Grippe mit Schüttelfrost, Kreislaufbeschwerden und Kopf- und Gliederschmerzen. Hinzu kommen dann grippeuntypische Symptome wie zum Beispiel Bindehautentzündungen, Durchfall und Ausschlag auf der Haut. In der Regel dauert die Erkrankung ca zwei Wochen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Dengue-Fieber",
+        "Moskitos",
+        "Mücken",
+        "Grippe",
+        "Schüttelfrost",
+        "Kreislaufbeschwerden",
+        "Kopfschmerzen",
+        "Gliederschmerzen",
+        "Bindehautentzündungen",
+        "Durchfall",
+        "Ausschlag"
       ]
     }
   ],
-  "SPIELINTERNES": [],
-  "PROBLEME": []
+  "SPIELINTERNES": [
+    {
+      "question": "kleines Blutbild",
+      "content": "In einem kleinen Blutbild sieht man normalerweise die folgenden Werte: Erythrozyten, Leukozyten, Thrombozyten, Hämoglobinkonzentration (HB), Hämatokrit, MCH, MCHC, MCV. Anhand dieser Werte kann man Rückschlüsse auf die Geschenisse schließen, die im Körper des Patienten vor sich gehen. ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "kleines Blutbild",
+        "Erythrozyten",
+        "Leukozyten",
+        "Thrombozyten",
+        "Hämoglobinkonzentration (HB)",
+        "Hämatokrit",
+        "MCH",
+        "MCHC",
+        "MCV"
+      ]
+    },
+    {
+      "question": "Erythrozyten-Werte",
+      "content": "Sind die Erythrozyten-Werte zu niedrig, kann das ein Hinweis für eine Überwässerung oder Blutarmut (Anämie) sein. Zu hohe Werte können zum Beispiel auf eine Erkrankung der blutbildenden Zellen im Knochenmark (Polycythaemia vera) oder eine Austrocknung (Dehydrierung) hindeuten.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Erythrozyten",
+        "Überwässerung",
+        "Blutarmut",
+        "Knochenmark",
+        "Austrocknung"
+      ]
+    },
+    {
+      "question": "Leukozyten-Werte",
+      "content": "Zeigen sich beim kleinen Blutbild zu niedrige Leukozyten-Werte, kann das für Autoimmunerkrankungen, Virusinfektionen, Erkrankungen des Knochenmarks oder Krebserkrankungen sprechen. Sind die Werte zu hoch, könnte das zum Beispiel ein Anzeichen für Infektionskrankheiten oder Leukämie sein. Aber auch Stress, Schwangerschaft, Rauchen, körperliche Belastung oder bestimmte Medikamente (etwa Kortison) können zu einer erhöhten Leukozyten-Zahl führen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Leukozyten",
+        "Autoimmunerkrankung",
+        "Virusinfektion",
+        "Erkrankung des Knochenmarks",
+        "Krebserkrankung",
+        "Leukämie"
+      ]
+    },
+    {
+      "question": "Thrombozyten-Werte",
+      "content": "Wenn ein Patient zu niedrige Thrombozyten-Werte aufweist, kann das beispielsweise ein Anzeichen für eine Erkrankung der Blutgefäße, Blutzellen und der Nieren (hämolytisch-urämisches Syndrom), eine gestörte Blutbildung (Myelodysplastisches Syndrom) oder eine bestimmte Form der Blutarmut(aplastische Anämie) sein. Erhöhte Thrombozyten-Werte können für eine Erkrankung der blutbildenden Zellen im Knochenmark (Polycythaemia vera) sprechen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Thrombpzyten",
+        "Erkrankung der Blutgefäße",
+        "Blutzellen",
+        "Nieren",
+        "gestörte Blutbildung",
+        "Blutarmut",
+        "Knochenmark"
+      ]
+    },
+    {
+      "question": "Hämoglobin-Werte",
+      "content": "Lassen sich im kleinen Blutbild zu niedrige Hämoglobin-Werte erkennen, könnte das ein Hinweis auf eine Überwässerung oder Blutarmut (Anämie) sein. Auch bei einer Schwangerschaft sinkt der Hämoglobin-Wert. Bei zu hohen Werten könnte eine Austrocknung oder eine übermäßige Vermehrung der Blutzellen (Polyglobulie, Polycythaemia vera) vorliegen. Polyglobulie tritt zum Beispiel bei schweren Herz-, Lungen- sowie bestimmten Nierenerkrankungen auf. Aber auch starkes Rauchen und ein längerer Aufenthalt in höheren Lagen lassen den Hb-Wert ansteigen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Hämoglobin",
+        "HB",
+        "Überwässerung",
+        "Blutarmut",
+        "Anämie",
+        "Schwangerschaft",
+        "Austrocknung",
+        "übermäßige Vermehrung der Blutzellen",
+        "Polyglubie",
+        "Herze-krankung",
+        "Lungenerkrankung",
+        "Nierenerkrankung"
+      ]
+    },
+    {
+      "question": "Hämatokrit-Wert",
+      "content": "Sind die Hämatokrit-Werte zu niedrig, könnte das für Blutverlust, Überwässerung oder bestimmte Formen von Anämie sprechen. Erhöhte Werte können auf eine Austrocknung oder eine übermäßige Vermehrung der roten Blutkörperchen (Polyglobulie) hinweisen, die zum Beispiel bei schweren Herz-, Lungen- sowie bestimmten Nierenerkrankungen auftritt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Hämatokrit",
+        "Blutverlust",
+        "Überwässerung",
+        "Anämie",
+        "Austrocknung",
+        "übermäßige Vermehrung der roten Blutkörperchen",
+        "Polyglobulie",
+        "Herzerkrankung",
+        "Lungenerkrankung",
+        "Nierenerkrankung"
+      ]
+    },
+    {
+      "question": "MCH-Werte",
+      "content": "Zu niedrige MCH-Werte können ein Anzeichen für Eisen-, Kupfer- oder Vitamin-B6-Mangel sein. Zeigen sich im kleinen Blutbild zu hohe Werte, könnte das auf einen Folsäure- oder Vitamin-B12-Mangel hindeuten.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "MCH",
+        "Eisenmangel",
+        "Kupfermangel",
+        "Vitamin-B6-Mangel",
+        "Folsäure-Mangel",
+        "Vitamin-B12-Mangel"
+      ]
+    },
+    {
+      "question": "MCHC-Werte",
+      "content": "Sind die MCHC-Werte bei einem Patienten zu niedrig, könnte er zum Beispiel an Eisen- oder Kupfermangel leiden. Auch das myelodysplastische Syndrom kommt infrage. Erhöhte Werte könnten etwa für einen Vitamin-B12-Mangel sprechen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "MCHC",
+        "Eisenmangel",
+        "Kupfermangel",
+        "myelodysplastisches Syndrom",
+        "Vitamin-B12-Mangel"
+      ]
+    },
+    {
+      "question": "MCV-Werte",
+      "content": "Niedrige MCV-Werte könnten ein Hinweis auf Eisen- oder Vitamin-B6-Mangel sein. Auch Infektionen könnten die Ursache für niedrige Werte sein. Sind die MCV-Werte eines Patienten erhöht, könnte das zum Beispiel auf Alkoholsucht sowie chronische Lebererkrankungen hindeuten.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "MCV",
+        "Eisenmangel",
+        "Vitamin-B6-Mangel",
+        "Infektion",
+        "Alkoholsucht",
+        "chronische Lebererkrankung"
+      ]
+    },
+    {
+      "question": "Normalwerte des kleine Blutbilds",
+      "content": "Erythrozyten: Frauen (3,9-5,3 Mio./µl), Männer (4,3-5,7Mio./µl), Leukozyten: Frauen (3.800-10.500/µl), Männer(3.800-10.500/µl), Thrombozyten: Frauen (140.000-345.000/µl), Männer (140.000-345.000/µl), Hämöglobinkonzentration HB: Frauen (12-16 g/dl), Männer (13,5-17 g/dl), Hämatokrit: Frauen (37-48%), Männer(40-52%), ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        ""
+      ]
+    },
+    {
+      "question": "Anamnese",
+      "content": "Die Anamnese ist das professionelle Gespräch, das ein Arzt mit einem Patienten führt, um eventuell relevante Informationen über den Patienten zu erfahren. In einer Anamnese kann der Arzt anhand der gegebenen Informationen weiterführende Untersuchungen bestimmen oder erste Verdachtsdiagnosen stellen. Die Anamnese ist in unserem Spiel ist dies besonders wichtig, da man anhand der Symptome bereits Rückschlüsse auf die Krankheit ziehen kann. ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Anamnese",
+        "professionelles Gespräch",
+        "Hintergrundinformationen",
+        "Verdachtsdiagnose",
+        "Krankheit",
+        "Rückschlüsse"
+      ]
+    },
+    {
+      "question": "Fehldiagnose",
+      "content": "Fehldiagnosen zu stellen kann leider den besten Ärzten passieren. Dies muss nicht immer fatale Folgen haben, aber wir werden hier darauf eingehen, was passiert wenn einer unserer Patienten falsch diagnostiziert wird. Fehldiagnosen im Falle von Cholera können dazu führen, dass der Patient innerhalb kürzester Zeit austrocknet und verstirbt, hier wäre es somit fatal, wenn die Krankheit nicht direkt als solche erkannt wird. Im Falle der Bilharziose kann es dazu kommen, dass Organe so stark beschädigt werden, dass diese versagen. Auch das würde zum Tod des Patienten führen, allerdings dauert dies deutlich länger und es tritt kein sofortiger Tod ein. Bei der Leishmaniose ist es so, dass sie grundsätzlich unkompliziert verläuft, allerdings im Bereich des Einstichs immer eine Narbe zurückbleibt. Wird eine HIV Erkrankung nicht diagnostiziert führt es vor allem dazu, dass der Patient weitere Menschen in seiner Umgebung unwissentlich anstecken kann, des Weiteren ist es gerade bei einer HIV Infektion wichtig so schnell wie möglich mit der Therapie zu beginnen. Befindet sich der Betroffene erst einmal im dritten Stadium dieser Krankheit so ist der Ausgang tödlich. Allgemein lässt sich Aids nur behandeln und nicht heilen. Das Gelbfieber ist eine weitere Krankheit, bei der eine frühzeitige Diagnose die Überlebenschancen der Betroffenen stark erhöht. Befindet sich ein Betroffener erst in der zweiten Phase der Krankheit, in der Schleimhautbluten auftritt und Leber und Niere anfangen zu vesagen und sich die Hirnhaut entzündet kann auch diese Krankheit einen tödlichen Verlauf haben. Masern, die vor allem in Deutschland eher als Kinderkrankheit gelten sind weitesgehend ungefährlich. Der Patient durchläuft zwei Krankheitsstadien, die zwar unangenehm aber ungefährlich sind, einzig das hohe Fieber muss im Blick gehalten werden. Gegen Ende des zweiten Krankheitsstadiums sinkt das Fieber wieder und der Hautausschlag heilt langsam ab. Auch die Hepatitis A ist im Grunde ungefährlich, außer es kommt zu Komplikationen, wie einer Herzmuskelentzündung. Eine andere lebensbedrohliche Komplikation, die zu einer Hepatitis-A-Infektion gehört ist Leberversagen.   ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Anamnese"
+      ]
+    }
+  ],
+  "AUSZEICHNUNGEN": [
+    {
+      "question": "Dürre",
+      "content": "Sie haben Ihre erste Dürre erlebt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Dürre"
+      ]
+    },
+    {
+      "question": "Verdurstet",
+      "content": "Die von Ihnen vorgenommene Rationierung der Wasservorräte",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Verdurstet","Rationierung"
+      ]
+    },
+    {
+      "question": "Kamel",
+      "content": "Sie haben eine Dürre ohne Zwischenfälle überstanden.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Kamel","Dürre"
+      ]
+    },
+    {
+      "question": "Pestbringer",
+      "content": "Sie haben durch Ihre Behandlungsmethoden eine Epidemie ausgelöst.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Epidemie","Pestbringer"
+      ]
+    },
+    {
+      "question": "Das ist keine Grippe",
+      "content": "Sie haben eine Epidemie erlebt",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Epidemie","Grippe"
+      ]
+    },
+    {
+      "question": "Kollegiale Hilfe",
+      "content": "Ein freiwilliger Arzt unterstützt Sie mit seiner fachkundigen Hilfe",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Kollege","Hilfe","Unterstützung"
+      ]
+    },
+    {
+      "question": "Kollegialer Überflieger",
+      "content": "Ein freiwilliger Arzt hat mehr Patienten behandelt, als Sie",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Überflieger","Kollege","Behandlung"
+      ]
+    },
+    {
+      "question": "Viele, viele bunte Pillen",
+      "content": "Eine große Menge abgestoßener Medikamente wurde Ihnen zum Spottpreis zur Verfügung gestellt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Medikamente","Spottpreis","Pillen"
+      ]
+    },
+    {
+      "question": "Du wirst geheilt, Du wirst geheilt und Du wirst geheilt",
+      "content": "Sie haben fast alle Patienten einer Runde erfolgreich behandelt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Geheilt","Behandlung","erfolgreich"
+      ]
+    },
+    {
+      "question": "So richtig in Fahrt",
+      "content": "Sie haben fast alle Patienten zweier aufeinanderfolgender Runden erfolgreich behandelt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "in Fahrt","Behandlung","erfolgreich"
+      ]
+    },
+    {
+      "question": "Tropenlegende",
+      "content": "Sie haben durch Ihre phänomenalen Erfolge einen schon fast legendären Ruf erhalten.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Tropenlegende","Erfolg","Ruf"
+      ]
+    },
+    {
+      "question": "Kriegsgeschehen",
+      "content": "Ein Krieg hat Ihre Umgebung erreicht und nun überfluten viele Verletzte Ihr Lager.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Kriegsgeschehen","Krieg","Verletzte"
+      ]
+    },
+    {
+      "question": "Allein gelassen",
+      "content": "Sie haben ein Hilfgesuch an Ihren Manager geschickt, doch er hat Sie ignoriert.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Allein","Hilfgesuch","Manager"
+      ]
+    },
+    {
+      "question": "Schutztruppen...?",
+      "content": "Sie haben ein Hilfgesuch an Ihren Manager geschickt und er hat mit Soldaten geantwortet. ",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Soldaten", "Schutztruppen","Manager"
+      ]
+    },
+    {
+      "question": "Notversorgung",
+      "content": "Sie haben ein Hilfgesuch an Ihren Manager geschickt und er hat mit Ausrüstung, Medikamenten und Verpflegung geantwortet.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Notversorgung","Hilfgesuch","Manager","Ausrüstung","Medikamente","Verpflegung"
+      ]
+    },
+    {
+      "question": "Lieferengpass",
+      "content": "Eine Lieferung Medikamente kam nicht rechtzeitig an.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Lieferengpass","Lieferung","Medikamente"
+      ]
+    },
+    {
+      "question": "Rettung in letzter Sekunde",
+      "content": "Es kam nach einem Lieferengpass eine neue Lieferung Medikamente an, kurz bevor sie Ihnen ausgegangen wären.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Rettung","letzte Sekunde","Lieferengpass","Medikamente"
+      ]
+    },
+    {
+      "question": "Gelangweilte Soldaten",
+      "content": "Die Soldaten, die das Lager beschützen sollten, belästigen stattdessen die Patienten und das Personal.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Soldaten","gelangweilt","Lager"
+      ]
+    },
+    {
+      "question": "Versteckter Truppentransport",
+      "content": "Der für das Lager organisierte militärische Schutz war stattdessen ein getarnter Truppentransport.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Truppentransport","militärischer Schutz","getarnter Truppentransport"
+      ]
+    },
+    {
+      "question": "Verrat",
+      "content": "Der für das Lager organisierte militärische Schutz hat sich gegen Sie gewandt und das Lager aufgelöst.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Verrat","Lager","militärischer Schutz"
+      ]
+    },
+    {
+      "question": "Haben wir WLAN?",
+      "content": "Sie erhalten durch renommierte Krankenhaus vor Ort fachkundige Online-Beratung",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "WLAN","Krankenhaus","Online-Beratung"
+      ]
+    },
+    {
+      "question": "Sabotage!",
+      "content": "Nach der erfolgreichen Reparatur eines medizinsichen Gerätes werden Sie auf Zeichen mutwilliger Beschädigung hingewiesen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Sabotage","Reparatur","medizinische Geräte","mutwillige Beschädigung"
+      ]
+    },
+    {
+      "question": "Staatsgewalt",
+      "content": "Sie haben sich der Macht der Regierung vor Ort gebeugt und einen Patienten dessen Behandlung verboten wurde, zurückgewiesen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Staatsgewalt","Regierung","Behandlung"
+      ]
+    },
+    {
+      "question": "Lasst mich durch, ich bin Arzt!",
+      "content": "Sie haben fünf Patienten behandelt, dessen Behandlung die Regierung vor Ort verboten hat.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Arzt","Behandlung","verboten"
+      ]
+    },
+    {
+      "question": "Jedes Leben zählt!",
+      "content": "Sie haben in einer Runde keinen einzigen Patienten abgewiesen, obwohl die Regierung vor Ort verboten hat.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Patienten","Regierung"
+      ]
+    },
+    {
+      "question": "Hoppla...",
+      "content": "Die Regierung hat Ihnen Ihr rebellisches Verhalten zurückgezahlt.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Hoppla","Rache","Regierung","rebellisch"
+      ]
+    },
+    {
+      "question": "Verdi kündigt Streik des Pflegepersonals an...",
+      "content": "Das Pflegepersonal streikt für bessere Löhne in Deutschland.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Verdi","Streik","Pflegepersonal"
+      ]
+    }
+  ],
+  "EINSTELLUNGEN":[
+
+    {
+      "question": "Auflösung",
+      "content": "1920x1080 ist die Auflösung, die idealerweise gewählt werden sollte.Ist dies nicht möglich sollte zumindest die Computereigenen Seitenverhältnisse entsprechend angepasst werden, um schwarze Ränder zu vermeiden.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Auflösung","1920x1080"
+      ]
+    },
+    {
+      "question": "Vollbild",
+      "content": "Es gibt die Möglichkeit zwischen einer Vollbild Darstellung und einer Darstellung in einem kleineren Fenster zu wählen.",
+      "id": 0,
+      "count": 0,
+      "tags": [
+        "Vollbild","Fenster"
+      ]
+    }]
 }
