@@ -1,7 +1,7 @@
 package de.hsmannheim.ss18.gae.imao.model.enums;
 
 public enum EWikiKathegorie {
-    KRANKHEITEN(0),SPIELINTERNES(1), AUSZEICHNUNGEN(2);
+    KRANKHEITEN(0),SPIELINTERNES(1), AUSZEICHNUNGEN(2), EINSTELLUNGEN(3);
 
     private int id;
 
